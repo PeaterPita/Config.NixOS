@@ -20,7 +20,8 @@ let
           home.stateVersion = "25.05";
           home.enableNixpkgsReleaseCheck = false;
         }
-        ../users/${user}
+        ../users/${user} # Default user config. Applies to all machines that  user is present on
+        ../users/${user}/${hostname}.nix # Per host user config. Only applies to that user on that host.
 
       ]
       ++ filesFromDirRec ../modules/home # # TODO: Filter for only defaults and <user>.nix

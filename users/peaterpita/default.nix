@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   osConfig,
   ...
 }:
@@ -45,18 +46,17 @@
 
     };
 
-    modules.discord.enable = true;
-    modules.waybar.enable = true;
-    modules.zsh.enable = true;
-    modules.hyprland.enable = true;
-    modules.nvim.enable = true;
-    modules.syncthing.enable = true;
-    modules.tmux.enable = true;
-    modules.mpv.enable = true;
-    # modules.thunderbird.enable = true;
-    #modules.idea.enable = true;
-
     modules = {
+      discord.enable = true;
+      waybar.enable = lib.mkDefault true;
+      zsh.enable = true;
+      hyprland.enable = true;
+      nvim.enable = true;
+      syncthing.enable = true;
+      tmux.enable = true;
+      mpv.enable = true;
+      thunderbird.enable = true;
+      idea.enable = true;
       direnv.enable = true;
       firefox.enable = true;
       fuzzel.enable = true;
