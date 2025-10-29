@@ -36,12 +36,12 @@
   };
 
   # Default background image + color scheme
-  stylix.enable = true;
-  stylix.image = pkgs.fetchurl {
-    url = "https://github.com/NixOS/nixos-artwork/blob/master/wallpapers/nix-wallpaper-nineish-catppuccin-macchiato-alt.png?raw=true";
-    hash = "sha256-OUT0SsToRH5Zdd+jOwhr9iVBoVNUKhUkJNBYFDKZGOU=";
-  };
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/brewer.yaml";
+  # stylix.enable = true;
+  # stylix.image = pkgs.fetchurl {
+  #   url = "https://github.com/NixOS/nixos-artwork/blob/master/wallpapers/nix-wallpaper-nineish-catppuccin-macchiato-alt.png?raw=true";
+  #   hash = "sha256-OUT0SsToRH5Zdd+jOwhr9iVBoVNUKhUkJNBYFDKZGOU=";
+  # };
+  # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/brewer.yaml";
 
   services.greetd = {
 

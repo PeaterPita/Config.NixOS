@@ -8,10 +8,9 @@
 {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   modules.virt.enable = true;
-  modules.hyprland.enable = true;
+  modules.plasma.enable = true;
   modules.steam.enable = true;
   # modules.nvidia.enable = true;
 
