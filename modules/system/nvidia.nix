@@ -15,8 +15,11 @@ in
 
   config = lib.mkIf cfg.enable {
     hardware.graphics.enable = true;
+    boot.blacklistedKernelModules = [ "nouveau" ];
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = true;
       open = true; # Tried both true and false
       # package = config.boot.kernelPackages.nvidiaPackages.beta; # Tried Stable, Beta, Production
       # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
