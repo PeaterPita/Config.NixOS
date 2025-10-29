@@ -21,10 +21,11 @@
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
-    timeout = 0; # <- Make it so that the generation choice doesnt appear UNLESS key is held during boot sequence.
+    timeout = 10; # <- Make it so that the generation choice doesnt appear UNLESS key is held during boot sequence.
   };
 
   boot = {
+    kernel.sysctl."kernel.sysrq" = 1;
     consoleLogLevel = 3;
     initrd.verbose = false;
     initrd.systemd.enable = true;
