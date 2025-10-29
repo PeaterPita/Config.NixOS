@@ -14,6 +14,8 @@
   modules.steam.enable = true;
   #  modules.nvidia.enable = true;
 
+  hardware.cpu.intel.updateMicrocode = true;
+
   environment.systemPackages = with pkgs; [
 
     memtester

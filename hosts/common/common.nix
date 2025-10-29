@@ -20,6 +20,7 @@
 
   boot.loader = {
     systemd-boot.enable = true;
+    systemd-boot.memtest86.enable = true;
     efi.canTouchEfiVariables = true;
     timeout = 10; # <- Make it so that the generation choice doesnt appear UNLESS key is held during boot sequence.
   };
@@ -49,7 +50,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland --remember";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember";
         user = "peaterpita";
       };
     };
