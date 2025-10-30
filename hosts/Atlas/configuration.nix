@@ -12,9 +12,7 @@
   modules.virt.enable = true;
   modules.plasma.enable = true;
   modules.steam.enable = true;
-  modules.nvidia.enable = true;
-
-  hardware.cpu.intel.updateMicrocode = true;
+  # modules.nvidia.enable = true;
 
   environment.systemPackages = with pkgs; [
 
