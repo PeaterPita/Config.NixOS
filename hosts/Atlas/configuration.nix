@@ -9,14 +9,18 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  modules.virt.enable = true;
-  modules.plasma.enable = true;
+  # modules.virt.enable = true;
+  modules.hyprland.enable = true;
   modules.steam.enable = true;
-  # modules.nvidia.enable = true;
+  modules.nvidia.enable = true;
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   environment.systemPackages = with pkgs; [
 
     memtester
+    screen
+    ncdu
     smartmontools
   ];
 
@@ -36,7 +40,5 @@
       refreshRate = 75;
     }
   ];
-
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }
