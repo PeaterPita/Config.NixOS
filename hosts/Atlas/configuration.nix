@@ -12,9 +12,9 @@
   # modules.virt.enable = true;
   modules.hyprland.enable = true;
   modules.steam.enable = true;
-  modules.nvidia.enable = true;
+#  modules.nvidia.enable = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+ # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   environment.systemPackages = with pkgs; [
 

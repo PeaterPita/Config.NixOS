@@ -11,7 +11,6 @@
     userSettings = {
       gitName = "PeaterPita";
       gitEmail = "[REDACTED_EMAIL]";
-
     };
 
     modules = {

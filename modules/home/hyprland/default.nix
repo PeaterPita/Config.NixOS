@@ -17,11 +17,13 @@ in
   config = lib.mkIf cfg.enable {
     home.sessionVariables.NIXOS_OZONE_WL = "1";
 
-    modules = {
-      swaync.enable = true;
-      fuzzel.enable = true;
-    };
     services.network-manager-applet.enable = true;
+
+    modules = {
+      waybar.enable = true;
+      fuzzel.enable = true;
+      swaync.enable = true;
+    };
 
     home.packages = with pkgs; [
       qimgv

@@ -40,12 +40,10 @@
   };
 
   modules = {
-    waybar.enable = lib.mkDefault true;
     hyprland.enable = true;
     syncthing.enable = true;
     obsidian.enable = true;
     office.enable = true;
     packetTrace.enable = true;
-    swaync.enable = true;
   };
 }
