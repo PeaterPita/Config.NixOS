@@ -22,7 +22,7 @@
     systemd-boot.enable = true;
     systemd-boot.memtest86.enable = true;
     efi.canTouchEfiVariables = true;
-    timeout = 10; # <- Make it so that the generation choice doesnt appear UNLESS key is held during boot sequence.
+    timeout = 0; # <- Make it so that the generation choice doesnt appear UNLESS key is held during boot sequence.
   };
 
   boot = {
@@ -38,15 +38,17 @@
   };
 
   # Default background image + color scheme
-  # stylix.enable = true;
-  # stylix.image = pkgs.fetchurl {
-  #   url = "https://github.com/NixOS/nixos-artwork/blob/master/wallpapers/nix-wallpaper-nineish-catppuccin-macchiato-alt.png?raw=true";
-  #   hash = "sha256-OUT0SsToRH5Zdd+jOwhr9iVBoVNUKhUkJNBYFDKZGOU=";
-  # };
-  # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/brewer.yaml";
+  stylix = lib.mkIf (!config.modules.plasma.enable) {
+    enable = true;
+    image = pkgs.fetchurl {
+      url = "https://github.com/NixOS/nixos-artwork/blob/master/wallpapers/nix-wallpaper-nineish-catppuccin-macchiato-alt.png?raw=true";
+      hash = "sha256-OUT0SsToRH5Zdd+jOwhr9iVBoVNUKhUkJNBYFDKZGOU=";
+    };
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/brewer.yaml";
+
+  };
 
   services.greetd = {
-
     enable = true;
     settings = {
       default_session = {

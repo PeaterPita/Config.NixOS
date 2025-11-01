@@ -7,6 +7,7 @@
 
 let
   cfg = config.modules.sound;
+  blueToothEnabled = config.modules.bluetooth.enable;
 in
 {
   options = {
@@ -17,18 +18,18 @@ in
     security.rtkit.enable = true;
     environment.systemPackages = with pkgs; [
       playerctl
+      pavucontrol
     ];
 
-    nixpkgs.config.pipewire = {
-      withLibBluetooth = true;
-    };
+    nixpkgs.config.pipewire.withLibBluetooth = lib.mkIfif blueToothEnabled true;
+
     services.pipewire = {
       enable = true;
       wireplumber.enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      extraConfig.pipewire-pulse."context.properties" = {
+      extraConfig.pipewire-pulse."context.properties" = lib.mkIf blueToothEnabled {
         "bluez5.codecs" = [
           "ldac"
           "aac"

@@ -14,12 +14,10 @@
 
   environment.systemPackages = with pkgs; [
     kdePackages.ark
-    pavucontrol
     wl-clipboard
     cliphist
     xdg-utils
     swtpm
-    networkmanagerapplet
     libnotify
     brightnessctl
     nixfmt-tree

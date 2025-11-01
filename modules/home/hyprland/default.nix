@@ -21,7 +21,6 @@ in
 
     modules = {
       waybar.enable = true;
-      fuzzel.enable = true;
       swaync.enable = true;
     };
 

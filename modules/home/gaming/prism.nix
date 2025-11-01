@@ -6,11 +6,11 @@
 }:
 
 let
-  cfg = config.modules.prism;
+  cfg = config.modules.gaming.prism;
 in
 {
   options = {
-    modules.prism.enable = lib.mkEnableOption "prism";
+    modules.gaming.prism.enable = lib.mkEnableOption "prism";
   };
 
   config = lib.mkIf cfg.enable {

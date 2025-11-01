@@ -9,19 +9,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # modules.virt.enable = true;
-  modules.hyprland.enable = true;
+  modules.virt.enable = true;
+  modules.plasma.enable = true;
   modules.steam.enable = true;
-#  modules.nvidia.enable = true;
-
- # boot.kernelPackages = pkgs.linuxPackages_latest;
+  modules.nvidia.enable = true;
 
   environment.systemPackages = with pkgs; [
-
-    memtester
-    screen
-    ncdu
-    smartmontools
   ];
 
   monitors = [

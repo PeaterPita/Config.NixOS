@@ -6,11 +6,11 @@
 }:
 
 let
-  cfg = config.modules.vintagestory;
+  cfg = config.modules.gaming.vintagestory;
 in
 {
   options = {
-    modules.vintagestory.enable = lib.mkEnableOption "vintagestory";
+    modules.gaming.vintagestory.enable = lib.mkEnableOption "vintagestory";
   };
 
   config = lib.mkIf cfg.enable {

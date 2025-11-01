@@ -16,5 +16,6 @@ in
   config = lib.mkIf cfg.enable {
     programs.steam.enable = true;
     hardware.steam-hardware.enable = true;
+    programs.gamemode.enable = true;
   };
 }
