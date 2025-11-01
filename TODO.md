@@ -21,11 +21,11 @@ https://www.latex-project.org/
 ## Hardware Support
 - [ ] Mouse Button Side Buttons (Logitech G502)
 - [ ] Webcam (Background Blur + Zoom)
-- [ ] Atlas Nvidia card support
+- [x] Atlas Nvidia card support
 
 
 ## Further Down
-- [ ] Atlas Config
+- [x] Atlas Config
 
 
 
