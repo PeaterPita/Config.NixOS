@@ -14,9 +14,11 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.steam.enable = true;
     hardware.steam-hardware.enable = true;
-    programs.gamemode.enable = true;
-    programs.gamescope.enable = true;
+    programs = {
+      steam.enable = true;
+      gamemode.enable = true;
+      gamescope.enable = true;
+    };
   };
 }

@@ -20,7 +20,7 @@ in
       hunspellDicts.en_GB-ise
       hyphenDicts.en_US
       zotero
-      temurin-jre-bin-17
+      openjdk21
     ];
 
   };
