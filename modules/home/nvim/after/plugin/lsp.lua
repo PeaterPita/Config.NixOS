@@ -38,7 +38,9 @@ local caps = require('cmp_nvim_lsp').default_capabilities()
 vim.lsp.enable('nixd')
 vim.lsp.enable('luals')
 vim.lsp.enable('jdtls')
-
+vim.lsp.enable('html')
+vim.lsp.enable('cssls')
+vim.lsp.enable('jsonls')
 
 
 local nvim_lsp = require("lspconfig")
@@ -62,9 +64,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- LSP Binds
 local lsp_mappings = {
-    { 'gD',         vim.lsp.buf.declaration },   -- Go to declaration
     { 'gd',         vim.lsp.buf.definition },    -- Go to definition
-    { 'K',          vim.lsp.buf.hover },         -- Hover Docs
+    { 'gr',         vim.lsp.buf.references },    -- Go to definition
+    { 'gD',         vim.lsp.buf.declaration },   -- Go to declaration
+    { 'k',          vim.lsp.buf.hover },         -- Hover Docs
     { '<leader>ca', vim.lsp.buf.code_action },   -- Code Actions
     { '<leader>e',  vim.diagnostic.open_float }, -- Code Actions
 }
@@ -75,9 +78,6 @@ for i, map in pairs(lsp_mappings) do
     vim.keymap.set('n', map[1], function() map[2]() end, opts)
 end
 -- end)
-
-
-
 
 
 vim.lsp.config['luals'] = {

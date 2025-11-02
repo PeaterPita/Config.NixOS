@@ -9,11 +9,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  modules.virt.enable = true;
-  modules.plasma.enable = true;
-  modules.steam.enable = true;
-  modules.nvidia.enable = true;
-
+  modules = {
+    virt.enable = true;
+    mongo.enable = true;
+    plasma.enable = true;
+    steam.enable = true;
+    nvidia.enable = true;
+  };
   environment.systemPackages = with pkgs; [
   ];
 

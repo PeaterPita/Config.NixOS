@@ -18,6 +18,7 @@
       nvim.enable = true;
       tmux.enable = true;
       mpv.enable = true;
+      idea.enable = true;
       #thunderbird.enable = true;
       direnv.enable = true;
       firefox.enable = true;
