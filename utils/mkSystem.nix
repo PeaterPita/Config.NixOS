@@ -1,11 +1,11 @@
 {
-  lib,
   inputs,
 }:
 
-hostname: users:
+hostname: users: system:
 
 let
+  lib = inputs.nixpkgs.lib;
 
   filesFromDirRec =
     dir: builtins.filter (path: lib.hasSuffix ".nix" path) (lib.filesystem.listFilesRecursive dir);
@@ -30,7 +30,7 @@ let
 
   systemUsers = lib.genAttrs users (user: {
     isNormalUser = true;
-    description = "${user} (mkUser) (RW)";
+    description = "${user} (mkUser)";
     extraGroups = [
       "wheel"
       "power"
@@ -44,20 +44,13 @@ let
 
 in
 inputs.nixpkgs.lib.nixosSystem {
-  system = "x86_64-linux";
+  inherit system;
   specialArgs = { inherit inputs lib; };
-
   modules = [
-
     { networking.hostName = hostname; }
     { users.users = systemUsers; }
-    { nixpkgs.config.allowUnfree = true; }
-    {
-      nixpkgs.config.pipewire = {
-        withLibcamera = false;
-        withLibBluetooth = true;
-      };
-    }
+
+    { nixpkgs.overlays = [ (final: prev: { myTestAttr = 5; }) ]; }
 
     ../hosts/common/common.nix
     ../hosts/${hostname}/hardware-configuration.nix

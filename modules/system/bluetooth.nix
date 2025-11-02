@@ -14,6 +14,12 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+
+    nixpkgs.config.pipewire = {
+      withLibcamera = false;
+      withLibBluetooth = true;
+    };
+
     hardware.bluetooth = {
       enable = true;
       powerOnBoot = true;

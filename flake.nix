@@ -3,19 +3,17 @@
   outputs =
     { nixpkgs, ... }@inputs:
     let
-      lib = nixpkgs.lib;
 
       mkSystem = import ./utils/mkSystem.nix {
         inherit
-          lib
           inputs
           ;
       };
     in
     {
       nixosConfigurations = {
-        laptop = mkSystem "Icarus" [ "peaterpita" ];
-        desktop = mkSystem "Atlas" [ "peaterpita" ];
+        laptop = mkSystem "Icarus" [ "peaterpita" ] "x86_64-linux";
+        desktop = mkSystem "Atlas" [ "peaterpita" ] "x86_64-linux";
       };
     };
 

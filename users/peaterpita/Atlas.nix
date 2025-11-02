@@ -8,6 +8,7 @@
     discord.enable = true;
     syncthing.enable = true;
     kdeConnect.enable = true;
+    # packetTrace.enable = true;
     office.enable = true;
     gaming = {
       vintagestory.enable = true;

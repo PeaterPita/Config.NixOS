@@ -44,6 +44,6 @@
     syncthing.enable = true;
     obsidian.enable = true;
     office.enable = true;
-    packetTrace.enable = true;
+    # packetTrace.enable = true;
   };
 }

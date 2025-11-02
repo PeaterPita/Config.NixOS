@@ -7,16 +7,7 @@
 
 {
   imports = [ ./common-programs.nix ];
-  services.openssh.enable = true;
-  modules.tailscale.enable = true;
-
   users.defaultUserShell = pkgs.zsh;
-
-  modules.networking.enable = true;
-  modules.sound.enable = true;
-
-  services.xserver.enable = true;
-  services.journald.extraConfig = "SystemMaxUse=100M";
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -35,17 +26,6 @@
       "splash"
       "boot.shell_on_fail"
     ];
-  };
-
-  # Default background image + color scheme
-  stylix = lib.mkIf (!config.modules.plasma.enable) {
-    enable = true;
-    image = pkgs.fetchurl {
-      url = "https://github.com/NixOS/nixos-artwork/blob/master/wallpapers/nix-wallpaper-nineish-catppuccin-macchiato-alt.png?raw=true";
-      hash = "sha256-OUT0SsToRH5Zdd+jOwhr9iVBoVNUKhUkJNBYFDKZGOU=";
-    };
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/brewer.yaml";
-
   };
 
   services.greetd = {
@@ -67,6 +47,9 @@
   time.hardwareClockInLocalTime = true;
   i18n.defaultLocale = "en_GB.UTF-8";
 
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
   nix = {
     settings.auto-optimise-store = true;
     settings.experimental-features = [
@@ -83,7 +66,5 @@
     gc.dates = "weekly";
     gc.options = "--delete-older-than 14d";
   };
-
-  environment.defaultPackages = [ ]; # Remove all preinstalled packages
 
 }

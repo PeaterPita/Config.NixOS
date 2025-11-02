@@ -14,7 +14,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [ ciscoPacketTracer8 ];
+    home.packages = with pkgs; [
+      ciscoPacketTracer8
+      wireshark
+    ];
 
   };
 }
