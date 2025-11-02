@@ -12,10 +12,11 @@ https://www.latex-project.org/
 - [ ] auto open [UNI] ++ obsidian ++ terminal if connected to eduroam on boot up.
 - [ ] ResearchRabbit could help identify relevant research papers
 
+
 ## Deco
 - [ ] TitleBars on floating windows.
 - [ ] Note Book theme: [minerva on nixos discord]
-
+- [ ] End Summary screen. Color coded modules based on users using them.
 
 
 ## Hardware Support
@@ -26,8 +27,12 @@ https://www.latex-project.org/
 
 ## Further Down
 - [x] Atlas Config
+- [ ] Docs
 
 
+## Custom Packages
+- [ ] Soulframe package
+^ May require users adding installer themselves to nixstore
 
 
 
