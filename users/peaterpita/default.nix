@@ -19,7 +19,7 @@
       tmux.enable = true;
       mpv.enable = true;
       idea.enable = true;
-      #thunderbird.enable = true;
+      dolphin.enable = true;
       direnv.enable = true;
       firefox.enable = true;
       git.enable = true;

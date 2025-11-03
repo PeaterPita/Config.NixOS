@@ -122,7 +122,7 @@ in
 
           "$mod, Space, exec, fuzzel"
           "$mod, Q, exec, kitty"
-          "$mod, E, exec, thunar"
+          "$mod, E, exec, dolphin"
 
           "$mod SHIFT, S, exec, grimblast --notify --freeze copysave area"
 
