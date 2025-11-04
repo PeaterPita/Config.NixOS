@@ -42,6 +42,7 @@
   modules = {
     hyprland.enable = true;
     syncthing.enable = true;
+    kdeConnect.enable = true;
     obsidian.enable = true;
     office.enable = true;
     # packetTrace.enable = true;

@@ -17,6 +17,7 @@
       zsh.enable = true;
       nvim.enable = true;
       tmux.enable = true;
+      discord.enable = true;
       mpv.enable = true;
       idea.enable = true;
       dolphin.enable = true;
