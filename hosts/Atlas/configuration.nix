@@ -8,6 +8,7 @@
 {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   modules = {
     virt.enable = true;
@@ -16,8 +17,6 @@
     steam.enable = true;
     nvidia.enable = true;
   };
-  environment.systemPackages = with pkgs; [
-  ];
 
   monitors = [
     {

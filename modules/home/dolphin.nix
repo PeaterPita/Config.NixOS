@@ -14,7 +14,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    stylix.targets.kde.enable = false;
     home.packages = with pkgs; [
       kdePackages.dolphin
 
