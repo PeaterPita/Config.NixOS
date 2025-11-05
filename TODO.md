@@ -2,20 +2,20 @@
 ---
 
 ## Immediate 
-- [ ] Fix nvim lsp crashing. Something to do with jdtls
+- [x] Fix nvim lsp crashing. Something to do with jdtls
+
+
+## Utility
+- [ ] NixVim
+^ Attempted before but gave up. If im sticking with Nix might as well go all in
+- [ ] ResearchRabbit could help identify relevant research papers
 - [ ] LaTeX editor? Could provide better looking dissertation reports.
 ^ VimTex? https://www.reddit.com/r/LaTeX/comments/sle89v/preferred_latex_editor/
 https://www.latex-project.org/
 
-## Utility
-- [ ] Default workspaces on start up
-- [ ] auto open [UNI] ++ obsidian ++ terminal if connected to eduroam on boot up.
-- [ ] ResearchRabbit could help identify relevant research papers
-
 
 ## Deco
-- [ ] TitleBars on floating windows.
-- [ ] Note Book theme: [minerva on nixos discord]
+- [ ] Themes folder. Actual functional themes ++ (Theme switcher?)
 - [ ] End Summary screen. Color coded modules based on users using them.
 
 
