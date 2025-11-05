@@ -5,6 +5,7 @@
 }:
 
 {
+
   modules = {
     syncthing.enable = true;
     kdeConnect.enable = true;
