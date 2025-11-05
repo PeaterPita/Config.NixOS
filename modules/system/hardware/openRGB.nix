@@ -14,7 +14,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.hardware.openrgb.enable = true;
-
+    nixpkgs.config.permittedInsecurePackages = [ "mbedtls-2.28.10" ];
+    services.hardware.openrgb = {
+      enable = true;
+      package = pkgs.openrgb-with-all-plugins;
+    };
   };
 }
