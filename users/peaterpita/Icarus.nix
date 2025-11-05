@@ -39,6 +39,7 @@
 
   };
 
+  home.packages = with pkgs; [ putty ];
   modules = {
     hyprland.enable = true;
     syncthing.enable = true;
