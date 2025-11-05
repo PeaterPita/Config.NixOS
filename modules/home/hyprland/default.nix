@@ -25,7 +25,6 @@ in
     };
 
     home.packages = with pkgs; [
-      qimgv
       ffmpeg
       grimblast
     ];

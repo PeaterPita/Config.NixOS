@@ -35,6 +35,7 @@
     wl-clipboard
     cliphist
     xdg-utils
+    qimgv
     swtpm
     libnotify
     brightnessctl
