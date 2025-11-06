@@ -25,7 +25,13 @@ let
         inputs.nixvim.homeModules.nixvim
 
       ]
-      ++ builtins.filter (m: lib.strings.hasPrefix "default" m) filesFromDirRec ../modules/home # # TODO: Filter for only defaults and <user>.nix
+      ++ builtins.filter (
+        path:
+        let
+          bn = builtins.baseNameOf path;
+        in
+        bn == "default.nix" || bn == "${hostname}.nix"
+      ) (filesFromDirRec ../modules/home)
     )
   );
 
