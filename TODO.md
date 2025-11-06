@@ -8,6 +8,7 @@
 ## Utility
 - [ ] NixVim
 ^ Attempted before but gave up. If im sticking with Nix might as well go all in
+https://github.com/nix-community/nixvim
 - [ ] ResearchRabbit could help identify relevant research papers
 - [ ] LaTeX editor? Could provide better looking dissertation reports.
 ^ VimTex? https://www.reddit.com/r/LaTeX/comments/sle89v/preferred_latex_editor/

@@ -22,6 +22,7 @@ let
         }
         ../users/${user} # Default user config. Applies to all machines that  user is present on
         ../users/${user}/${hostname}.nix # Per host user config. Only applies to that user on that host.
+        inputs.nixvim.homeModules.nixvim
 
       ]
       ++ filesFromDirRec ../modules/home # # TODO: Filter for only defaults and <user>.nix
@@ -66,6 +67,7 @@ inputs.nixpkgs.lib.nixosSystem {
     }
 
     inputs.stylix.nixosModules.stylix
+    # inputs.nixvim.homeModules.nixvim
   ]
   ++ filesFromDirRec ../modules/system;
 }

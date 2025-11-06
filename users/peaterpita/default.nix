@@ -16,6 +16,7 @@
     modules = {
       zsh.enable = true;
       nvim.enable = true;
+      # nixvim.enable = true;
       tmux.enable = true;
       discord.enable = true;
       mpv.enable = true;
