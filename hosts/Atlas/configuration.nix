@@ -12,7 +12,7 @@
 
   modules = {
     virt.enable = true;
-    mongo.enable = true;
+    obs.enable = true;
     plasma.enable = true;
     steam.enable = true;
     nvidia.enable = true;
