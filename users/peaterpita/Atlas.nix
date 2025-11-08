@@ -10,6 +10,7 @@
     syncthing.enable = true;
     kdeConnect.enable = true;
     scrcpy.enable = true;
+    obs.enable = true;
 
     # packetTrace.enable = true;
     gaming = {

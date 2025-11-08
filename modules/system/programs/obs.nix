@@ -1,6 +1,5 @@
 {
   config,
-  osConfig,
   pkgs,
   lib,
   ...
@@ -17,12 +16,13 @@ in
   config = lib.mkIf cfg.enable {
 
     programs.obs-studio = {
-      package = lib.mkIf osConfig.modules.nvidia.enable (
+      package = lib.mkIf config.modules.nvidia.enable (
         pkgs.obs-studio.override {
           cudaSupport = true;
         }
       );
       enable = true;
+      enableVirtualCamera = true;
       plugins = with pkgs.obs-studio-plugins; [
         wlrobs
         obs-backgroundremoval
