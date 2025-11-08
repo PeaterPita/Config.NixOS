@@ -16,12 +16,10 @@ in
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
       enable = true;
-      colorschemes.gruvbox.enable = true;
-      extraPlugins = with pkgs.vimPlugins; [
-        nvim-treesitter
 
-      ];
-
+      plugins = {
+        treesitter.enable = true;
+      };
     };
   };
 }
