@@ -21,7 +21,7 @@ in
       pavucontrol
     ];
 
-    nixpkgs.config.pipewire.withLibBluetooth = lib.mkIfif blueToothEnabled true;
+    nixpkgs.config.pipewire.withLibBluetooth = lib.mkIf blueToothEnabled true;
 
     services.pipewire = {
       enable = true;
@@ -29,6 +29,7 @@ in
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+      jack.enable = true;
       extraConfig.pipewire-pulse."context.properties" = lib.mkIf blueToothEnabled {
         "bluez5.codecs" = [
           "ldac"

@@ -7,12 +7,13 @@
 
 {
   programs.zsh.enable = true;
-  programs.ladybird.enable = true;
+  # programs.ladybird.enable = true;
 
   services.openssh.enable = true;
   modules.tailscale.enable = true;
   modules.networking.enable = true;
   modules.sound.enable = true;
+  modules.docker.enable = true;
 
   services.xserver.enable = true;
   services.journald.extraConfig = "SystemMaxUse=100M";
