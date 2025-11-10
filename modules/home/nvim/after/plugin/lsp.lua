@@ -43,6 +43,7 @@ vim.lsp.enable('yamlls')
 vim.lsp.enable('cssls')
 vim.lsp.enable('jsonls')
 vim.lsp.enable('clangd')
+vim.lsp.enable('svelte')
 
 
 local nvim_lsp = require("lspconfig")
