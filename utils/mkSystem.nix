@@ -41,7 +41,6 @@ let
     extraGroups = [
       "wheel"
       "power"
-      "wireshark"
       "networkManager"
       "libvirtd"
     ];
