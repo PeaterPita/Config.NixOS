@@ -14,13 +14,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    networking.firewall.trustedInterfaces = [ "virbr0" ];
 
     environment.systemPackages = with pkgs; [
-      virt-manager
       virt-viewer
-      spice
-      spice-gtk
-      spice-protocol
       win-virtio
       win-spice
       adwaita-icon-theme
@@ -28,6 +25,7 @@ in
 
     virtualisation.libvirtd = {
       enable = true;
+      allowedBridges = [ "virbr0" ];
 
       qemu.swtpm.enable = true;
       qemu.ovmf = {
