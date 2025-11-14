@@ -1,6 +1,6 @@
 {
 
-    # Key binds map leader
+  # Key binds map leader
   # globalOpts = { mapleader = " "; };
 
   opts = {
@@ -47,7 +47,7 @@
     foldlevel = 99;
     foldlevelstart = 99;
 
-
+    undofile = true;
 
     # Spell check
     spell = true;

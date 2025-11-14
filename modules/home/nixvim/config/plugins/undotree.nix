@@ -7,7 +7,7 @@
     {
       mode = "n";
       key = "<leader>u";
-      action = "vim.cmd.UndotreeToggle";
+      action = "<cmd>UndotreeToggle<cr>";
       options = {
         silent = true;
         desc = "Undotree toggle";
