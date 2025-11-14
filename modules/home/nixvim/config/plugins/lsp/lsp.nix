@@ -3,6 +3,17 @@
   plugins.lspconfig.enable = true;
   plugins.lsp-lines.enable = true;
 
+  autoCmd = [
+    {
+      event = [ "BufWritePre" ];
+      pattern = "*";
+      callback = {
+        __raw = "function() vim.lsp.buf.format({timeout_ms = 2000}) end";
+      };
+
+    }
+
+  ];
   lsp = {
     inlayHints.enable = true;
     servers = {

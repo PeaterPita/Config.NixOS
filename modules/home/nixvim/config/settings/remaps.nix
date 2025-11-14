@@ -32,7 +32,7 @@
       # Move block up
       mode = [ "v" ];
       key = "K";
-      action = ":m <-2<CR>gv=gv";
+      action = ":m '<-2<CR>gv=gv";
     }
 
     {
@@ -74,14 +74,14 @@
 
     {
       ## Exit keybind ##
-      mode =  "n" ;
+      mode = "n";
       key = "<leader>pv";
       action = ":Ex<CR>";
       options = {
-            noremap = true;
-            silent = true;
+        noremap = true;
+        silent = true;
 
-            };
+      };
     }
 
   ];
