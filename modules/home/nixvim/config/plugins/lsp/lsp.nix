@@ -1,0 +1,64 @@
+{ lib, ... }:
+{
+  plugins.lspconfig.enable = true;
+  plugins.lsp-lines.enable = true;
+
+  lsp = {
+    inlayHints.enable = true;
+    servers = {
+      "*" = { };
+      nixd.enable = true;
+      html.enable = true;
+      lua_ls.enable = true;
+      luals.enable = true;
+      jdtls.enable = true;
+      cssls.enable = true;
+      clangd.enable = true;
+      svelte.enable = true;
+      pyright.enable = true;
+
+      jsonls.enable = true;
+
+      yamlls.enable = true;
+
+    };
+
+    keymaps = [
+
+      {
+        key = "gd";
+        lspBufAction = "definition";
+      }
+
+      {
+        key = "gr";
+        lspBufAction = "references";
+      }
+      {
+        key = "gD";
+        lspBufAction = "declaration";
+
+      }
+
+      {
+        key = "k";
+        lspBufAction = "hover";
+
+      }
+
+      {
+        key = "<leader>ca";
+        lspBufAction = "code_action";
+
+      }
+
+      {
+        key = "<leader>e";
+        action = lib.nixvim.mkRaw "function() vim.diagnostic.open_float() end";
+
+      }
+
+    ];
+  };
+
+}

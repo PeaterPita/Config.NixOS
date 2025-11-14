@@ -72,7 +72,6 @@ inputs.nixpkgs.lib.nixosSystem {
     }
 
     inputs.stylix.nixosModules.stylix
-    # inputs.nixvim.homeModules.nixvim
   ]
   ++ filesFromDirRec ../modules/system;
 }

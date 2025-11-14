@@ -1,0 +1,6 @@
+{
+  plugins.fidget = {
+    enable = true;
+  };
+
+}

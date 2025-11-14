@@ -6,7 +6,7 @@
 
 
 ## Utility
-- [ ] NixVim
+- [x] NixVim
 ^ Attempted before but gave up. If im sticking with Nix might as well go all in
 https://github.com/nix-community/nixvim
 - [ ] ResearchRabbit could help identify relevant research papers

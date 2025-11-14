@@ -14,12 +14,21 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.nixvim = {
-      enable = true;
 
-      plugins = {
-        treesitter.enable = true;
-      };
+    home.packages = with pkgs; [
+      nixd
+      nixfmt-rfc-style
+    ];
+
+    programs.ripgrep.enable = true;
+
+    programs.nixvim = {
+      imports = builtins.filter (path: lib.hasSuffix ".nix" path) (
+        lib.filesystem.listFilesRecursive ./config
+      );
+      enable = true;
+      vimAlias = true;
+
     };
   };
 }
