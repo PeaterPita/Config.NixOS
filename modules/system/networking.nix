@@ -18,5 +18,16 @@ in
     systemd.services.NetworkManager-wait-online.enable = false;
     programs.nm-applet.enable = true;
 
+    networking.wireless.networks.eduroam = {
+      auth = ''
+        key_mgmt=WPA-EAP
+        eap=PEAP
+
+        identity = "[ID]@[UNI].ac.uk"
+        password = ""
+      '';
+
+    };
+
   };
 }

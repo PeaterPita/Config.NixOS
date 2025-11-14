@@ -23,6 +23,8 @@ in
 
         accel_profile = "flat";
 
+        animation = [ "global, 0" ];
+
       };
       binde = [
         " ,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
