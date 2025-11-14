@@ -23,7 +23,6 @@ https://www.latex-project.org/
 ## Hardware Support
 - [ ] Mouse Button Side Buttons (Logitech G502)
 - [ ] Webcam (Background Blur + Zoom)
-- [x] Atlas Nvidia card support
 
 
 ## Further Down
@@ -34,7 +33,7 @@ https://www.latex-project.org/
 ## Custom Packages
 - [ ] Soulframe package
 ^ May require users adding installer themselves to nixstore
-
+- [ ] VintageStory server package ++ VintageStory server module
 
 
 
