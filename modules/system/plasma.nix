@@ -23,6 +23,7 @@ in
       elisa
       gwenview
       kate
+      okular
     ];
   };
 }

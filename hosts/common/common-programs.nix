@@ -35,6 +35,7 @@
     kdePackages.ark
     wl-clipboard
     cliphist
+    zathura
     xdg-utils
     qimgv
     swtpm
