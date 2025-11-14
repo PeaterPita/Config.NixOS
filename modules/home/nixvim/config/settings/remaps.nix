@@ -74,9 +74,14 @@
 
     {
       ## Exit keybind ##
-      mode = [ "n" ];
+      mode =  "n" ;
       key = "<leader>pv";
-      action = "vim.cmd.Ex";
+      action = ":Ex<CR>";
+      options = {
+            noremap = true;
+            silent = true;
+
+            };
     }
 
   ];
