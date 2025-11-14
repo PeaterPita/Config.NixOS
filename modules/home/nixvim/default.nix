@@ -4,6 +4,12 @@
   lib,
   ...
 }:
+#########################################################################
+#                            Super Helpful Doc Site                     #
+#             https://nix-community.github.io/nixvim/index.html         #
+#                             ++Example config                          #
+# https://github.com/dc-tec/nixvim/blob/main/config/plugins/cmp/cmp.nix #
+#########################################################################
 
 let
   cfg = config.modules.nixvim;
@@ -28,7 +34,12 @@ in
       );
       enable = true;
       vimAlias = true;
-
+      diagnostic.settings = {
+        virtual_text = false;
+        signs = true;
+        update_in_insert = true;
+        underline = true;
+      };
     };
   };
 }
