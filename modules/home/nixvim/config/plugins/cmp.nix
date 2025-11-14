@@ -4,25 +4,26 @@
     enable = true;
     autoEnableSources = true;
     settings = {
-            sources = [
-                { name = "nvim_lsp"; }
-                { name = "path"; }
-                { name = "buffer"; }
-                { name = "cmdline"; }
-                { name = "luasnip"; }
-                { name = "vimtex"; }
-            ];
+      sources = [
+        { name = "nvim_lsp"; }
+        { name = "path"; }
+        { name = "buffer"; }
+        # { name = "cmdline"; }
+        { name = "luasnip"; }
+        { name = "vimtex"; }
+      ];
 
-    mapping = {
-        "<C-p>" = "cmp.mapping.select_prev_item()";
-        "<C-n>" = "cmp.mapping.select_next_item()";
-        "<C-Space>" = "cmp.mapping.complete()";
-        "<C-e>" = "cmp.mapping.abort()";
-        "<tab>" = "cmp.mapping.confirm({ select = true })";
+      mapping = {
+        "<Up>" = "cmp.mapping.select_prev_item()";
+        "<Down>" = "cmp.mapping.select_next_item()";
+        "<esc>" = "cmp.mapping.abort()";
+        "<CR>" = "cmp.mapping.confirm({ select = true })";
+        "<S-Tab>" = "cmp.mapping.select_prev_item()";
+        "<Tab>" = "cmp.mapping.select_next_item()";
 
-        };
+      };
 
-        };
+    };
   };
 
 }

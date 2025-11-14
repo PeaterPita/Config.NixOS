@@ -22,7 +22,25 @@
       html.enable = true;
       lua_ls.enable = true;
       luals.enable = true;
-      jdtls.enable = true;
+      jdtls = {
+        enable = true;
+        settings = {
+
+          keymaps = [
+            {
+              key = "<leader>ji";
+              action = "require('jdtls').organize_imports";
+
+            }
+
+          ];
+          root_markers = [
+            "pom.xml"
+            "gradle.build"
+          ];
+
+        };
+      };
       cssls.enable = true;
       clangd.enable = true;
       svelte.enable = true;
