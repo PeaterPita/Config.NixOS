@@ -30,6 +30,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ###########################################
+    #   Neovim configuration system for nix   #
+    # https://github.com/nix-community/nixvim #
+    ###########################################
     nixvim = {
       url = "github:nix-community/nixvim/nixos-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
