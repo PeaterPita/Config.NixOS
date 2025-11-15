@@ -3,8 +3,15 @@
 
 ## Immediate 
 - [x] Fix nvim lsp crashing. Something to do with jdtls
+- [ ] Sops support for emails and passwords
+^ Make config public after
 
 
+
+## Nix
+- [ ] Add templates for easier dev envs
+- [ ] Custom pkgs
+- [ ] Custom modules
 
 
 
