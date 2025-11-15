@@ -17,6 +17,7 @@
     steam.enable = true;
     nvidia.enable = true;
     hardware.g502.enable = true;
+    hardware.camera.enable = true;
   };
 
   monitors = [
