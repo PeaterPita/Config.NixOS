@@ -35,7 +35,7 @@ https://www.latex-project.org/
 ## Hardware Support
 - [ ] Mouse Button Side Buttons (Logitech G502)
 - [ ] Webcam (Background Blur + Zoom)
-
+- [ ] Camera controls (reverse camera whatever)
 
 ## Further Down
 - [x] Atlas Config
