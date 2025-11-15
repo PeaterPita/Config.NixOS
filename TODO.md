@@ -5,6 +5,11 @@
 - [x] Fix nvim lsp crashing. Something to do with jdtls
 
 
+
+
+
+
+
 ## Utility
 - [x] NixVim
 ^ Attempted before but gave up. If im sticking with Nix might as well go all in
