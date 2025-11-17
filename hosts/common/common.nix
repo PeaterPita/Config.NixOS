@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   ...
 }:
@@ -27,11 +28,6 @@
     ];
   };
 
-  # fonts.packages = with pkgs; [
-  #   font-awesome
-  #   nerd-fonts.iosevka
-  # ];
-
   time.timeZone = "Europe/London";
   time.hardwareClockInLocalTime = true;
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -40,6 +36,10 @@
     allowUnfree = true;
   };
   nix = {
+    registry.dev.to = {
+      type = "path";
+      path = "/home/peaterpita/nixos";
+    };
     settings.auto-optimise-store = true;
     settings.experimental-features = [
       "nix-command"

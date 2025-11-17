@@ -9,12 +9,21 @@
           inputs
           ;
       };
+
+      devTemplates = import ./devshells;
     in
     {
+      ####################################################
+      #                Possible outputs:                 #
+      # https://wiki.nixos.org/wiki/Flakes#Output_schema #
+      ####################################################
       nixosConfigurations = {
         laptop = mkSystem "Icarus" [ "peaterpita" ] "x86_64-linux";
         desktop = mkSystem "Atlas" [ "peaterpita" ] "x86_64-linux";
       };
+
+      templates = devTemplates;
+
     };
 
   inputs = {
