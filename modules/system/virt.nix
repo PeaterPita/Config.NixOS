@@ -18,6 +18,7 @@ in
 
     environment.systemPackages = with pkgs; [
       virt-viewer
+      swtpm
       win-virtio
       win-spice
       adwaita-icon-theme

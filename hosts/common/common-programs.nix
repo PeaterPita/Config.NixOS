@@ -7,16 +7,16 @@
 
 {
   programs.zsh.enable = true;
-  # programs.ladybird.enable = true;
-
   services.openssh.enable = true;
-  modules.tailscale.enable = true;
-  modules.networking.enable = true;
-  modules.sound.enable = true;
-  modules.docker.enable = true;
+
+  modules = {
+    tailscale.enable = true;
+    networking.enable = true;
+    sound.enable = true;
+    docker.enable = true;
+  };
 
   services.xserver.enable = true;
-  services.journald.extraConfig = "SystemMaxUse=100M";
   # Default background image + color scheme
   stylix = lib.mkIf (!config.modules.plasma.enable) {
     enable = true;
@@ -27,18 +27,13 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/brewer.yaml";
 
   };
-  services.gvfs.enable = true;
-  services.tumbler.enable = true;
 
   environment.defaultPackages = [ ]; # Remove all preinstalled packages
   environment.systemPackages = with pkgs; [
     kdePackages.ark
     wl-clipboard
-    cliphist
     zathura
     xdg-utils
-    qimgv
-    swtpm
     libnotify
     brightnessctl
     nixfmt-tree

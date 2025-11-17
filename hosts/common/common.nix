@@ -1,13 +1,12 @@
 {
-  config,
   pkgs,
-  lib,
   ...
 }:
 
 {
   imports = [ ./common-programs.nix ];
   users.defaultUserShell = pkgs.zsh;
+  services.journald.extraConfig = "SystemMaxUse=100M";
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -28,20 +27,10 @@
     ];
   };
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember";
-        user = "peaterpita";
-      };
-    };
-  };
-
-  fonts.packages = with pkgs; [
-    font-awesome
-    nerd-fonts.iosevka
-  ];
+  # fonts.packages = with pkgs; [
+  #   font-awesome
+  #   nerd-fonts.iosevka
+  # ];
 
   time.timeZone = "Europe/London";
   time.hardwareClockInLocalTime = true;
