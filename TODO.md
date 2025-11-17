@@ -2,9 +2,13 @@
 ---
 
 ## Immediate 
-- [x] Fix nvim lsp crashing. Something to do with jdtls
 - [ ] Sops support for emails and passwords
 ^ Make config public after
+
+
+## NixVim
+- [ ] File tree even if not actually used by me
+- [ ] create default modules
 
 
 
@@ -18,13 +22,7 @@
 
 
 ## Utility
-- [x] NixVim
-^ Attempted before but gave up. If im sticking with Nix might as well go all in
-https://github.com/nix-community/nixvim
 - [ ] ResearchRabbit could help identify relevant research papers
-- [x] LaTeX editor? Could provide better looking dissertation reports.
-^ VimTex? https://www.reddit.com/r/LaTeX/comments/sle89v/preferred_latex_editor/
-https://www.latex-project.org/
 
 
 ## Deco
@@ -38,7 +36,6 @@ https://www.latex-project.org/
 - [ ] Camera controls (reverse camera whatever)
 
 ## Further Down
-- [x] Atlas Config
 - [ ] Docs
 
 
