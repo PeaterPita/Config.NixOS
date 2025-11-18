@@ -1,8 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
-  osConfig,
   ...
 }:
 {
@@ -15,7 +12,6 @@
 
     modules = {
       zsh.enable = true;
-      # nvim.enable = true;
       nixvim.enable = true;
       discord.enable = true;
       mpv.enable = true;
@@ -38,9 +34,6 @@
       btop
       bat
     ];
-    home.sessionVariables = {
-
-    };
   };
 
 }
