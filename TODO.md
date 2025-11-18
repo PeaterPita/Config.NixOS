@@ -35,6 +35,8 @@
 - [ ] Mouse Button Side Buttons (Logitech G502)
 - [ ] Webcam (Background Blur + Zoom)
 - [ ] Camera controls (reverse camera whatever)
+- [ ] Finally set up keyboard firmware environment.
+^ https://docs.qmk.fm/newbs_building_firmware
 
 ## Further Down
 - [ ] Docs
