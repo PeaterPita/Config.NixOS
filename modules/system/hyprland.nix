@@ -14,10 +14,14 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.hyprland.enable = true;
-    programs.hyprland.xwayland.enable = true;
-    programs.hyprlock.enable = true;
 
+    environment.systemPackages = with pkgs; [ udiskie ];
+    services.udisks2.enable = true;
+    programs = {
+      hyprland.enable = true;
+      hyprland.xwayland.enable = true;
+      hyprlock.enable = true;
+    };
     xdg.portal.enable = true;
     xdg.portal.extraPortals = with pkgs; [
       xdg-desktop-portal-gtk

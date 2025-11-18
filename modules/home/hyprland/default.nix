@@ -59,7 +59,7 @@ in
       enable = true;
       settings = {
         "$mod" = "SUPER";
-        exec-once = "";
+        exec-once = [ "udiskie" ];
 
         general = {
           gaps_out = 0;
