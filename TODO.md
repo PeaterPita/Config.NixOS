@@ -23,7 +23,8 @@
 
 ## Utility
 - [ ] ResearchRabbit could help identify relevant research papers
-
+- [ ] Hyprland nvimTex doesnt automatically open Zathura. 
+^ Opens libre instead. change this
 
 ## Deco
 - [ ] Themes folder. Actual functional themes ++ (Theme switcher?)
