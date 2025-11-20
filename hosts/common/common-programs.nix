@@ -27,17 +27,17 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/brewer.yaml";
 
   };
-    services.postgresql = {
-        enable = true;
-        ensureDatabases = [ "postgres" ];
-        authentication = pkgs.lib.mkOverride 10 ''
-            #type database DBuser auth-method
-            local all all trust
-            host all all 127.0.0.1/32 trust
-            host all all ::1/128 trust
-        '';
-
-    };
+  # services.postgresql = {
+  #     enable = true;
+  #     ensureDatabases = [ "postgres" ];
+  #     authentication = pkgs.lib.mkOverride 10 ''
+  #         #type database DBuser auth-method
+  #         local all all trust
+  #         host all all 127.0.0.1/32 trust
+  #         host all all ::1/128 trust
+  #     '';
+  #
+  # };
 
   environment.defaultPackages = [ ]; # Remove all preinstalled packages
   environment.systemPackages = with pkgs; [

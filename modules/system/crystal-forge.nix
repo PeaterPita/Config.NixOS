@@ -8,55 +8,35 @@
 
   services.crystal-forge = {
     enable = false;
+    local-database = true;
 
     database = {
       host = "localhost";
-      user = "crystal_forge";
-      name = "crystal_forge";
-    };
+      user = "crystal_forge3";
+      name = "crystal_forge3";
+      port = 5432;
 
+    };
+    #
     server = {
       enable = true;
-      host = "127.0.0.1";
-      port = 2929;
-
+      host = "0.0.0.0";
+      port = 3000;
     };
-    #
-    # build = {
-    #   enable = true;
-    #   max_jobs = 6;
-    #
-    # };
-    #
-
-    # flakes.watched = [
-    #   {
-    #     name = "infrastructure";
-    #     repo_url = "https://github.com/Misterio77/nix-starter-configs";
-    #     auto_poll = false;
-    #   }
-    # ];
-
-    # environments = [
-    #   {
-    #     name = "infrastructure";
-    #     description = "testing";
-    #     is_active = true;
-    #     risk_profile = "LOW";
-    #     compliance_level = "NONE";
-    #
-    #   }
-    #
-    # ];
-
-    systems = [
-      {
-        hostname = "nixos";
-        public_key = "kka3TPJ+nI5VQinIpw+kkZielOLPYikGVbcz/E2HTYc=";
-        deployment_policy = "manual";
-        environment = "dev";
-        # flake_name = "infrastructure";
-      }
-    ];
   };
+
+  # cache = {
+  #   push_after_build = false;
+  #   push_to = null;
+  # };
+  #
+  # systems = [
+  #   {
+  #     hostname = "nixos";
+  #     public_key = "kka3TPJ+nI5VQinIpw+kkZielOLPYikGVbcz/E2HTYc=";
+  #     deployment_policy = "manual";
+  #     environment = "dev";
+  #   }
+  # ];
+  # };
 }
