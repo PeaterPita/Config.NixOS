@@ -9,8 +9,8 @@
 {
 
   stylix.image = pkgs.fetchurl {
-    url = "https://w.wallhaven.cc/full/yq/wallhaven-yqxkxl.jpg";
-    hash = "sha256-lMV1jGo3IB7DWfs5KM5+3W9f5u0zLkXMtyav0KGQeS0=";
+    url = "https://w.wallhaven.cc/full/6l/wallhaven-6lqvql.jpg";
+    hash = "sha256-1HpDc/nqDpWYK0HC+KajvvaADTky80bRqorcNeXtp5k=";
   };
 
   stylix.polarity = "dark";

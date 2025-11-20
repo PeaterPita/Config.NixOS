@@ -16,7 +16,7 @@
 - [ ] Add templates for easier dev envs
 - [ ] Custom pkgs
 - [ ] Custom modules
-
+- [ ] change `/devshells` to `/templates`, to support `/templates/devshells` and `/templates/projects`
 
 
 
