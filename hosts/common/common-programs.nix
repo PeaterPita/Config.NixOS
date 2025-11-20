@@ -7,6 +7,7 @@
 
 {
   programs.zsh.enable = true;
+  programs.ladybird.enable = true;
   services.openssh.enable = true;
 
   modules = {
