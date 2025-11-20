@@ -7,7 +7,7 @@
   ######################################################################################################################
 
   services.crystal-forge = {
-    enable = false;
+    enable = true;
     local-database = true;
 
     database = {
@@ -17,7 +17,19 @@
       port = 5432;
 
     };
-    #
+
+    dashboards = {
+      enable = true;
+      datasource = {
+        host = "localhost";
+        port = 5432;
+        database = "crystal_forge3";
+        user = "crystal_forge3";
+
+      };
+
+    };
+
     server = {
       enable = true;
       host = "0.0.0.0";
