@@ -7,7 +7,7 @@
   ######################################################################################################################
 
   services.crystal-forge = {
-    enable = true;
+    enable = false;
     local-database = true;
 
     database = {
