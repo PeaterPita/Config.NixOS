@@ -4,6 +4,7 @@
 ## Immediate 
 - [ ] Sops support for emails and passwords
 ^ Make config public after
+- [ ] Turn off middle click to paste
 
 
 ## NixVim
