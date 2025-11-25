@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  environment.systemPackages = [ pkgs.kdePackages.picmi ];
   services.displayManager.defaultSession = "hyprland";
 
   powerManagement = {

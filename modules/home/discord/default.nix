@@ -14,7 +14,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.vesktop.enable = true;
+    # programs.vesktop.enable = true;
+    home.packages = with pkgs; [
+      discord
+    ];
 
   };
 
