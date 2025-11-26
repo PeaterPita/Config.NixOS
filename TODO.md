@@ -1,16 +1,15 @@
 # TODO
 ---
 
+
 ## Immediate 
 - [ ] Sops support for emails and passwords
 ^ Make config public after
-- [ ] Turn off middle click to paste
 
 
 ## NixVim
-- [ ] File tree even if not actually used by me
+- [x] File tree even if not actually used by me
 - [ ] create default modules
-
 
 
 ## Nix
@@ -20,12 +19,11 @@
 - [ ] change `/devshells` to `/templates`, to support `/templates/devshells` and `/templates/projects`
 
 
-
-
 ## Utility
 - [ ] ResearchRabbit could help identify relevant research papers
 - [ ] Hyprland nvimTex doesnt automatically open Zathura. 
 ^ Opens libre instead. change this
+
 
 ## Deco
 - [ ] Themes folder. Actual functional themes ++ (Theme switcher?)
@@ -39,6 +37,7 @@
 - [ ] Finally set up keyboard firmware environment.
 ^ https://docs.qmk.fm/newbs_building_firmware
 
+
 ## Further Down
 - [ ] Docs
 
@@ -47,7 +46,6 @@
 - [ ] Soulframe package
 ^ May require users adding installer themselves to nixstore
 - [ ] VintageStory server package ++ VintageStory server module
-
 
 
 ## Future projects
