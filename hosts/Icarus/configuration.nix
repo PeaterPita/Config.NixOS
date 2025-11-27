@@ -1,8 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = [ pkgs.kdePackages.picmi ];
-  services.displayManager.defaultSession = "hyprland";
+  # services.displayManager.defaultSession = "hyprland";
 
   powerManagement = {
     enable = true;
@@ -15,7 +14,8 @@
 
   modules.virt.enable = true;
   modules.bluetooth.enable = true;
-  modules.hyprland.enable = true;
+  # modules.hyprland.enable = true;
+  modules.plasma.enable = true;
   modules.mongo.enable = true;
 
   monitors = [

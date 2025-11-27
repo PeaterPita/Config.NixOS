@@ -12,10 +12,10 @@
 
     modules = {
       zsh.enable = true;
+      syncthing.enable = true;
       nixvim.enable = true;
       discord.enable = true;
       mpv.enable = true;
-      idea.enable = true;
       dolphin.enable = true;
       direnv.enable = true;
       firefox.enable = true;
@@ -24,7 +24,6 @@
       fuzzel.enable = true;
       obsidian.enable = true;
       office.enable = true;
-      spotify.enable = true;
 
     };
 
@@ -32,7 +31,6 @@
       fastfetch
       tree
       btop
-      bat
     ];
   };
 
