@@ -18,7 +18,6 @@ in
       enable = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
-      initContent = lib.mkOrder 1500 "fastfetch";
     };
   };
 }

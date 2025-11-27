@@ -73,7 +73,7 @@ inputs.nixpkgs.lib.nixosSystem {
     }
 
     inputs.stylix.nixosModules.stylix
-    inputs.crystal-forge.nixosModules.crystal-forge
+    # inputs.crystal-forge.nixosModules.crystal-forge
   ]
   ++ filesFromDirRec ../modules/system;
 }

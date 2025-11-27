@@ -52,11 +52,11 @@
     #     Compliance-First NixOS Fleet Management    #
     # https://gitlab.com/crystal-forge/crystal-forge #
     ##################################################
-    crystal-forge = {
-      url = "gitlab:crystal-forge/crystal-forge";
-      inputs.nixpkgs.follows = "nixpkgs";
-
-    };
+    # crystal-forge = {
+    #   url = "gitlab:crystal-forge/crystal-forge";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #
+    # };
 
   };
 }
