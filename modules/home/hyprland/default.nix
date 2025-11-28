@@ -20,6 +20,7 @@ in
     services.network-manager-applet.enable = true;
 
     modules = {
+      fuzzel.enable = true;
       waybar.enable = true;
       swaync.enable = true;
     };

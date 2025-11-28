@@ -19,9 +19,9 @@
       dolphin.enable = true;
       direnv.enable = true;
       firefox.enable = true;
+      thunderbird.enable = true;
       git.enable = true;
       kitty.enable = true;
-      fuzzel.enable = true;
       obsidian.enable = true;
       office.enable = true;
 

@@ -42,6 +42,7 @@
   environment.defaultPackages = [ ]; # Remove all preinstalled packages
   environment.systemPackages = with pkgs; [
     kdePackages.ark
+    unrar
     pinta
     wl-clipboard
     zathura
