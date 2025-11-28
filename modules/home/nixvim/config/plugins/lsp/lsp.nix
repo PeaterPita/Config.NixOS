@@ -24,7 +24,7 @@
       luals.enable = true;
       jdtls = {
         enable = true;
-        settings = {
+        config = {
 
           keymaps = [
             {

@@ -19,7 +19,8 @@ in
     environment.systemPackages = with pkgs; [
       virt-viewer
       swtpm
-      win-virtio
+      # win-virtio
+      virtio-win
       win-spice
       adwaita-icon-theme
     ];
@@ -28,10 +29,10 @@ in
       enable = true;
       allowedBridges = [ "virbr0" ];
       qemu.swtpm.enable = true;
-      qemu.ovmf = {
-        enable = true;
-        packages = [ pkgs.OVMFFull.fd ];
-      };
+      # qemu.ovmf = {
+      #   enable = true;
+      #   packages = [ pkgs.OVMFFull.fd ];
+      # };
     };
     programs.virt-manager.enable = true;
   };

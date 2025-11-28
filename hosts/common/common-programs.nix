@@ -44,6 +44,7 @@
     kdePackages.ark
     unrar
     pinta
+    xenia-canary
     wl-clipboard
     zathura
     baobab

@@ -19,9 +19,9 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.git.enable = true;
-    programs.git = {
-      userName = config.userSettings.gitName;
-      userEmail = config.userSettings.gitEmail;
+    programs.git.settings = {
+      user.name = config.userSettings.gitName;
+      user.email = config.userSettings.gitEmail;
     };
   };
 }
