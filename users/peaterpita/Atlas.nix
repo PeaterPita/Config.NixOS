@@ -12,6 +12,7 @@
     scrcpy.enable = true;
 
     gaming = {
+      enable = true;
       vintagestory.enable = true;
       prism.enable = true;
     };
