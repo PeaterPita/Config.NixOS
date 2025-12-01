@@ -14,8 +14,8 @@
 
   modules.virt.enable = true;
   modules.bluetooth.enable = true;
-  # modules.hyprland.enable = true;
-  modules.plasma.enable = true;
+  modules.hyprland.enable = true;
+  # modules.plasma.enable = true;
   modules.mongo.enable = true;
 
   monitors = [
