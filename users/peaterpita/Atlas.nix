@@ -15,6 +15,7 @@
       enable = true;
       vintagestory.enable = true;
       prism.enable = true;
+      # xenia.enable = true;
     };
   };
 }

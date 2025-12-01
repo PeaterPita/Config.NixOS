@@ -1,5 +1,4 @@
 {
-
   outputs =
     { nixpkgs, ... }@inputs:
     let

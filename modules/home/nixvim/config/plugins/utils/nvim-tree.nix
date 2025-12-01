@@ -1,7 +1,24 @@
 {
+
+  ################################################################################
+  #                           Very handy documentation                           #
+  # https://github.com/nvim-tree/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt #
+  ################################################################################
+
+
+  extraConfigLua = ''
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+  '';
   plugins.nvim-tree = {
+
     enable = true;
     openOnSetup = true;
+    settings = {
+      view = {
+        auto_resize = true;
+      };
+    };
 
   };
 

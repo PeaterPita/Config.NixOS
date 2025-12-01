@@ -22,7 +22,14 @@ in
       [
       ]
       ++ lib.optional cfg.prism.enable prismlauncher
+      # ++ lib.optional cfg.xenia.enable (
+      #   xenia-canary.overrideAttrs (old: {
+      #     postInstall = ''cp ${./gamecontrollerdb.txt} $out/bin/gamecontrollerdb.txt'';
+      #   })
+      # )
+
       ++ lib.optional cfg.xenia.enable xenia-canary
+
       ++ lib.optional cfg.vintagestory.enable (
         vintagestory.overrideAttrs (old: rec {
           version = "1.21.5";
