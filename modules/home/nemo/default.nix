@@ -6,18 +6,16 @@
 }:
 
 let
-  cfg = config.modules.dolphin;
+  cfg = config.modules.nemo;
 in
 {
   options = {
-    modules.dolphin.enable = lib.mkEnableOption "dolphin";
+    modules.nemo.enable = lib.mkEnableOption "nemo";
   };
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      kdePackages.dolphin
-
+      nemo-with-extensions
     ];
-
   };
 }
