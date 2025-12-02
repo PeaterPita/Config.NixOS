@@ -9,6 +9,11 @@
   programs.zsh.enable = true;
   services.openssh.enable = true;
 
+  ############################################################
+  #   Disable when not needed. Adds 4seconds to boot time    #
+  ############################################################
+  virtualisation.docker.enable = false;
+
   modules = {
     tailscale.enable = true;
     networking.enable = true;
