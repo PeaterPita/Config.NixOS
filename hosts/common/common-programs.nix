@@ -18,7 +18,6 @@
     tailscale.enable = true;
     networking.enable = true;
     sound.enable = true;
-    docker.enable = true;
   };
 
   services.xserver.enable = true;

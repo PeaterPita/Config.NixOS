@@ -9,8 +9,10 @@
   };
 
   services.power-profiles-daemon.enable = true;
-  services.logind.lidSwitch = "lock";
-  services.logind.lidSwitchDocked = "ignore";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "lock";
+    HandleLidSwitchDocked = "ignore";
+  };
 
   modules.virt.enable = true;
   modules.bluetooth.enable = true;

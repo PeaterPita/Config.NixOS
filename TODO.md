@@ -9,14 +9,12 @@
 
 ## NixVim
 - [x] File tree even if not actually used by me
-- [ ] create default modules
+- [ ] Create default modules
 
 
 ## Nix
-- [ ] Add templates for easier dev envs
+- [x] Add templates for easier dev envs
 - [ ] Custom pkgs
-- [ ] Custom modules
-- [ ] change `/devshells` to `/templates`, to support `/templates/devshells` and `/templates/projects`
 
 
 ## Utility
@@ -34,7 +32,7 @@
 - [ ] Mouse Button Side Buttons (Logitech G502)
 - [ ] Webcam (Background Blur + Zoom)
 - [ ] Camera controls (reverse camera whatever)
-- [ ] Finally set up keyboard firmware environment.
+- [x] Finally set up keyboard firmware environment.
 ^ https://docs.qmk.fm/newbs_building_firmware
 
 

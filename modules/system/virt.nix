@@ -17,10 +17,10 @@ in
     networking.firewall.trustedInterfaces = [ "virbr0" ];
 
     environment.systemPackages = with pkgs; [
-      virt-viewer
+      # virt-viewer
       swtpm
       virtio-win
-      win-spice
+      # win-spice
       adwaita-icon-theme
     ];
 
@@ -28,6 +28,7 @@ in
       enable = true;
       allowedBridges = [ "virbr0" ];
       qemu.swtpm.enable = true;
+    };
     programs.virt-manager.enable = true;
   };
 }
