@@ -16,7 +16,6 @@
       nixvim.enable = true;
       discord.enable = true;
       mpv.enable = true;
-      nemo.enable = true;
       direnv.enable = true;
       firefox.enable = true;
       thunderbird.enable = true;

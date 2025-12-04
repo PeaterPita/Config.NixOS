@@ -11,7 +11,9 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  environment.systemPackages = with pkgs; [ gimp ];
+  environment.systemPackages = with pkgs; [
+    gimp
+  ];
   modules = {
     virt.enable = true;
     obs.enable = true;

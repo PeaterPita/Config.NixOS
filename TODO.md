@@ -34,7 +34,7 @@
 - [ ] Camera controls (reverse camera whatever)
 - [x] Finally set up keyboard firmware environment.
 ^ https://docs.qmk.fm/newbs_building_firmware
-
+- [ ] Investigate why Scrcpy is no longer working. QTScrcpy is an alternative for now
 
 ## Further Down
 - [ ] Docs

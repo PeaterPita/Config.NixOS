@@ -17,6 +17,7 @@ in
   config = lib.mkIf cfg.enable {
     home.sessionVariables.NIXOS_OZONE_WL = "1";
 
+    modules.nemo.enable = true;
     services.network-manager-applet.enable = true;
 
     modules = {
