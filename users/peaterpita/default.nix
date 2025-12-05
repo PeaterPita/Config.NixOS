@@ -24,6 +24,8 @@
       obsidian.enable = true;
       office.enable = true;
 
+      quickshell.enable = true;
+
     };
 
     home.packages = with pkgs; [
