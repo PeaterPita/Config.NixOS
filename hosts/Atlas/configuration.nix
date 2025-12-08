@@ -13,7 +13,6 @@
 
   environment.systemPackages = with pkgs; [
     gimp
-    ghidra
   ];
   modules = {
     virt.enable = true;

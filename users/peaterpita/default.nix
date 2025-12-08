@@ -25,6 +25,7 @@
       office.enable = true;
 
       quickshell.enable = true;
+      malware.enable = true;
 
     };
 

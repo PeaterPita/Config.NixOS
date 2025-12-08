@@ -48,6 +48,7 @@
     kdePackages.ark
     unrar
     pinta
+    yt-dlp
     wl-clipboard
     zathura
     baobab
