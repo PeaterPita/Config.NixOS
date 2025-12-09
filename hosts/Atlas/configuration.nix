@@ -9,8 +9,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-
   environment.systemPackages = with pkgs; [
     gimp
   ];
@@ -25,6 +23,11 @@
       qmkBoards.enable = true;
       camera.enable = true;
     };
+  };
+
+  services.rustdesk-server = {
+    enable = true;
+    openFirewall = true;
   };
 
   monitors = [

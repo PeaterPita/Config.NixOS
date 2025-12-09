@@ -39,6 +39,8 @@
 
   };
 
+  environment.systemPackages = with pkgs; [ rustdesk-flutter ];
+
   modules = {
     hyprland.enable = true;
     syncthing.enable = true;
