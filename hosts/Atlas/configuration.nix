@@ -28,6 +28,8 @@
   services.rustdesk-server = {
     enable = true;
     openFirewall = true;
+    relay.enable = false;
+    signal.relayHosts = [ "127.0.0.1" ];
   };
 
   monitors = [
