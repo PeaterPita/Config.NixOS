@@ -31,6 +31,7 @@
 
     home.packages = with pkgs; [
       asunder
+      rustdesk-flutter
       tree
       btop
     ];
