@@ -56,7 +56,7 @@ inputs.nixpkgs.lib.nixosSystem {
     { networking.hostName = hostname; }
     { users.users = systemUsers; }
 
-    { nixpkgs.overlays = [ (final: prev: { myTestAttr = 5; }) ]; }
+    { nixpkgs.overlays = [ (import ../pkgs/default.nix) ]; }
 
     ../hosts/common/common.nix
     ../hosts/${hostname}/hardware-configuration.nix

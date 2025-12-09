@@ -20,6 +20,10 @@
     sound.enable = true;
   };
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "ciscoPacketTracer8-8.2.2"
+    "qtwebengine-5.15.19"
+  ];
   services.xserver.enable = true;
   # Default background image + color scheme
   stylix = lib.mkIf (!config.modules.plasma.enable) {
@@ -46,6 +50,7 @@
   environment.defaultPackages = [ ]; # Remove all preinstalled packages
   environment.systemPackages = with pkgs; [
     kdePackages.ark
+    # ciscoPacketTracer9
     unrar
     pinta
     yt-dlp
