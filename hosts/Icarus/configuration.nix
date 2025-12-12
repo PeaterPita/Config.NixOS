@@ -1,23 +1,36 @@
 { config, pkgs, ... }:
 
 {
-  # services.displayManager.defaultSession = "hyprland";
-
   powerManagement = {
     enable = true;
     powertop.enable = true;
   };
 
-  services.power-profiles-daemon.enable = true;
+  services.power-profiles-daemon.enable = false;
+  services.tlp.enable = false;
+
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      battery = {
+        governor = "powersave";
+        turbo = "never";
+      };
+      charger = {
+        governor = "performance";
+        turbo = "auto";
+      };
+    };
+  };
+
   services.logind.settings.Login = {
     HandleLidSwitch = "lock";
+    HandleLidSwitchExternalPower = "lock";
     HandleLidSwitchDocked = "ignore";
   };
 
   modules.bluetooth.enable = true;
   modules.hyprland.enable = true;
-  # modules.plasma.enable = true;
-  modules.mongo.enable = true;
 
   monitors = [
     {
