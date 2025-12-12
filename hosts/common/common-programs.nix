@@ -52,11 +52,9 @@
     kdePackages.ark
     # ciscoPacketTracer9
     unrar
-    pinta
-    yt-dlp
     wl-clipboard
     zathura
-    baobab
+    ncdu
     xdg-utils
     libnotify
     brightnessctl
