@@ -51,6 +51,7 @@
   environment.systemPackages = with pkgs; [
     kdePackages.ark
     # ciscoPacketTracer9
+
     unrar
     wl-clipboard
     zathura
