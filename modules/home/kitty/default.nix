@@ -16,6 +16,11 @@ in
   config = lib.mkIf cfg.enable {
     programs.kitty = {
       enable = true;
+      font = {
+
+        package = pkgs.monocraft;
+        name = "Monocraft";
+      };
       shellIntegration.enableZshIntegration = true;
       themeFile = "VibrantInk";
       settings = {

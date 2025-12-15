@@ -10,17 +10,17 @@ let
 in
 {
   options = {
-    modules.virt.enable = lib.mkEnableOption "virt";
+    modules.virt = {
+      enable = lib.mkEnableOption "virt";
+    };
   };
 
   config = lib.mkIf cfg.enable {
     networking.firewall.trustedInterfaces = [ "virbr0" ];
 
     environment.systemPackages = with pkgs; [
-      # virt-viewer
       swtpm
       virtio-win
-      # win-spice
       adwaita-icon-theme
     ];
 

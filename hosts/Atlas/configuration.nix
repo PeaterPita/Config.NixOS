@@ -14,6 +14,7 @@
   ];
   modules = {
     virt.enable = true;
+
     obs.enable = true;
     plasma.enable = true;
     steam.enable = true;

@@ -22,6 +22,7 @@ in
       with pkgs;
       [
       ]
+      ++ lib.optional cfg.prism.enable cubiomes-viewer
       ++ lib.optional cfg.prism.enable prismlauncher
       ++ lib.optional cfg.xenia.enable xenia-canary
       ++ lib.optional cfg.pcsx2.enable pcsx2

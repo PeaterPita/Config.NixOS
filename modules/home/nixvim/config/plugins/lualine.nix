@@ -1,4 +1,5 @@
 {
+
   plugins.lualine = {
     enable = true;
     settings = {
@@ -21,7 +22,19 @@
           "filetype"
           "lsp_status"
         ];
-        lualine_z = [ "location" ];
+
+        lualine_z = [
+
+          {
+            __unkeyed = {
+              __raw = ''
+                function() 
+                    return "Words: " .. vim.fn.wordcount().words
+                end
+              '';
+            };
+          }
+        ];
       };
 
     };
