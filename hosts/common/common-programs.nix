@@ -52,6 +52,7 @@
     kdePackages.ark
     # ciscoPacketTracer9
     unrar
+    feh
     wl-clipboard
     zathura
     ncdu

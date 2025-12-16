@@ -45,6 +45,7 @@
     kdeConnect.enable = true;
     obsidian.enable = true;
     office.enable = true;
+    spotify.enable = true;
     packetTrace.enable = true;
     gaming.prism.enable = true;
   };

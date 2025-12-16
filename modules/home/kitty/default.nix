@@ -18,8 +18,8 @@ in
       enable = true;
       font = {
 
-        package = pkgs.monocraft;
-        name = "Monocraft";
+        package = lib.mkForce pkgs.monocraft;
+        name = lib.mkForce "Monocraft";
       };
       shellIntegration.enableZshIntegration = true;
       themeFile = "VibrantInk";
