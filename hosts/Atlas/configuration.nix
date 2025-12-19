@@ -25,6 +25,7 @@
       camera.enable = true;
     };
   };
+  virtualisation.docker.enable = true;
 
   monitors = [
     {
