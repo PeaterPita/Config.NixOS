@@ -52,7 +52,9 @@
     # ciscoPacketTracer9
     unrar
     feh
+    fastfetch
     wl-clipboard
+    rsync
     zathura
     ncdu
     xdg-utils

@@ -18,6 +18,7 @@
       mpv.enable = true;
       direnv.enable = true;
       firefox.enable = true;
+      qute.enable = true;
       thunderbird.enable = true;
       git.enable = true;
       kitty.enable = true;
@@ -31,7 +32,6 @@
 
     home.packages = with pkgs; [
       asunder
-      # rustdesk-flutter
       tree
       btop
     ];

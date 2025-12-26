@@ -18,7 +18,7 @@
 
 
 ## Utility
-- [ ] ResearchRabbit could help identify relevant research papers
+- [ ] Set up Rsync with Aliases
 - [ ] Hyprland nvimTex doesnt automatically open Zathura. 
 ^ Opens libre instead. change this
 
