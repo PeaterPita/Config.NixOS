@@ -43,6 +43,7 @@
       };
       cssls.enable = true;
       clangd.enable = true;
+      cmake.enable = true;
       svelte.enable = true;
       pyright.enable = true;
       ts_ls.enable = true;
