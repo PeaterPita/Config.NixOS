@@ -40,6 +40,7 @@ let
     description = "${user} (mkUser)";
     extraGroups = [
       "wheel"
+      "wireshark"
       "power"
       "networkManager"
       "libvirtd"

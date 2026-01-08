@@ -18,7 +18,6 @@
 
 
 ## Utility
-- [ ] Set up Rsync with Aliases
 - [ ] Hyprland nvimTex doesnt automatically open Zathura. 
 ^ Opens libre instead. change this
 
@@ -30,8 +29,7 @@
 
 ## Hardware Support
 - [ ] Mouse Button Side Buttons (Logitech G502)
-- [ ] Webcam (Background Blur + Zoom)
-- [ ] Camera controls (reverse camera whatever)
+- [ ] ffmpeg ++ camera tool  (DSLR)
 - [x] Finally set up keyboard firmware environment.
 ^ https://docs.qmk.fm/newbs_building_firmware
 - [ ] Investigate why Scrcpy is no longer working. QTScrcpy is an alternative for now

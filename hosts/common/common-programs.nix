@@ -21,7 +21,7 @@
 
   nixpkgs.config.permittedInsecurePackages = [
     "ciscoPacketTracer8-8.2.2"
-    "qtwebengine-5.15.19"
+    # "qtwebengine-5.15.19"
   ];
   services.xserver.enable = true;
   # Default background image + color scheme
@@ -54,7 +54,7 @@
     feh
     fastfetch
     wl-clipboard
-    rsync
+    file
     zathura
     ncdu
     xdg-utils

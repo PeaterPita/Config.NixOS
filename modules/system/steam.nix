@@ -14,6 +14,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [ mangohud ];
     hardware.steam-hardware.enable = true;
     programs = {
       steam.enable = true;

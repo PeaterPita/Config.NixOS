@@ -12,6 +12,14 @@
   environment.systemPackages = with pkgs; [
     gimp
   ];
+
+  programs.wireshark = {
+    enable = true;
+    dumpcap.enable = true;
+    usbmon.enable = true;
+    package = pkgs.wireshark-qt;
+  };
+
   modules = {
     virt.enable = true;
 

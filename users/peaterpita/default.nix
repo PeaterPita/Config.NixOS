@@ -18,7 +18,8 @@
       mpv.enable = true;
       direnv.enable = true;
       firefox.enable = true;
-      qute.enable = true;
+      qute.enable = false;
+      packetTrace.enable = true;
       thunderbird.enable = true;
       git.enable = true;
       kitty.enable = true;
@@ -26,7 +27,7 @@
       office.enable = true;
 
       quickshell.enable = true;
-      malware.enable = true;
+      # malware.enable = true;
 
     };
 
