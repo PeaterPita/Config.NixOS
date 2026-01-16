@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   plugins.lspconfig.enable = true;
   plugins.lsp-lines.enable = true;
@@ -42,7 +42,21 @@
         };
       };
       cssls.enable = true;
-      clangd.enable = true;
+      clangd = {
+        enable = true;
+        config = {
+          cmd = [
+            "clangd"
+            "--background-index"
+            "--clang-tidy"
+            "--header-insertion=iwyu"
+            "--completion-style=detailed"
+            "--function-arg-placeholders"
+            "--fallback-style=llvm"
+          ];
+        };
+      };
+
       cmake.enable = true;
       svelte.enable = true;
       pyright.enable = true;
@@ -58,7 +72,7 @@
 
       {
         key = "gd";
-        lspBufAction = "definition";
+        action = lib.nixvim.mkRaw "require('telescope.builtin').lsp_definitions";
       }
 
       {

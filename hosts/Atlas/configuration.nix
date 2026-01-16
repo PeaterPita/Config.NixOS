@@ -11,6 +11,7 @@
 
   environment.systemPackages = with pkgs; [
     gimp
+    mongodb-compass
   ];
 
   programs.wireshark = {
@@ -21,7 +22,7 @@
   };
 
   modules = {
-    virt.enable = true;
+    # virt.enable = true;
 
     obs.enable = true;
     plasma.enable = true;

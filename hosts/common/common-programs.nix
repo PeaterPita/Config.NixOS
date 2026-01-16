@@ -17,6 +17,7 @@
     tailscale.enable = true;
     networking.enable = true;
     sound.enable = true;
+    yazi.enable = true;
   };
 
   nixpkgs.config.permittedInsecurePackages = [
@@ -55,7 +56,6 @@
     fastfetch
     wl-clipboard
     file
-    zathura
     ncdu
     xdg-utils
     libnotify

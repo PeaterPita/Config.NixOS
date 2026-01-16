@@ -31,6 +31,13 @@
 
     };
 
+    programs.zathura = {
+      enable = true;
+      options = {
+        selection-clipboard = "clipboard";
+      };
+    };
+
     home.packages = with pkgs; [
       asunder
       tree
