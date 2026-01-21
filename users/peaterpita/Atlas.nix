@@ -6,7 +6,7 @@
 
 {
 
-  home.packages = with pkgs; [ gnome-disk-utility ];
+  home.packages = with pkgs.unstable; [ blockbench ];
 
   modules = {
     spotify.enable = true;

@@ -21,6 +21,8 @@
     package = pkgs.wireshark-qt;
   };
 
+  services.flatpak.enable = true;
+
   modules = {
     # virt.enable = true;
 
