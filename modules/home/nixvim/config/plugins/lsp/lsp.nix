@@ -65,7 +65,15 @@
       jsonls.enable = true;
 
       yamlls.enable = true;
-      qmlls.enable = true;
+      qmlls = {
+        enable = true;
+        config = {
+          cmd = [
+            "qmlls"
+            "-E"
+          ];
+        };
+      };
 
     };
 

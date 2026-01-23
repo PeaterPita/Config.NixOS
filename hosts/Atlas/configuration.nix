@@ -10,9 +10,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   environment.systemPackages = with pkgs; [
-    gimp
-    davinci-resolve
+    quickshell
   ];
+
+  qt.enable = true;
 
   programs.wireshark = {
     enable = true;

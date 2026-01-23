@@ -81,22 +81,6 @@ in
           }"
         ) (osConfig.monitors));
 
-        # Block of window rules to allow KDE Presentation mode to "work" Still not perfect
-
-        windowrule = [
-          "nofocus, title:KDE Connect Daemon"
-          "suppressevent fullscreen, title:KDE Connect Daemon"
-          "float, title:KDE Connect Daemon"
-          "opacity 1, title:KDE Connect Daemon"
-          "noblur, title:KDE Connect Daemon"
-          "noborder, title:KDE Connect Daemon"
-          "noshadow, title:KDE Connect Daemon"
-          "noanim, title:KDE Connect Daemon"
-          "pin, title:KDE Connect Daemon"
-          "minsize 1920 1080, title:KDE Connect Daemon"
-          "move 0 0, title:KDE Connect Daemon"
-        ];
-
         bindm = [
           "$mod, mouse:272, movewindow"
           "$mod, mouse:273, resizewindow"
