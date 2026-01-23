@@ -22,10 +22,6 @@
 ^ Opens libre instead. change this
 
 
-
-
-
-
 ## Deco
 - [ ] Themes folder. Actual functional themes ++ (Theme switcher?)
 - [ ] End Summary screen. Color coded modules based on users using them.

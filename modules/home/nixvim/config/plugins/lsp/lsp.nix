@@ -65,6 +65,7 @@
       jsonls.enable = true;
 
       yamlls.enable = true;
+      qmlls.enable = true;
 
     };
 

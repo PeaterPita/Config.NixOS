@@ -1,5 +1,6 @@
 {
   config,
+  osConfig,
   pkgs,
   lib,
   ...
@@ -11,6 +12,17 @@
 ############################################################
 let
   cfg = config.modules.quickshell;
+
+  modulesPath = ./Modules;
+  hostPath = ./. + "/${osConfig.networking.hostName}";
+
+  finalConfig = pkgs.runCommand "qs-merged" { } ''
+    mkdir -p $out
+    cp -r ${hostPath}/* $out/
+    cp -r ${modulesPath}/* $out/
+    pwd
+  '';
+
 in
 {
   options = {
@@ -18,7 +30,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.quickshell.enable = true;
-    home.file.".config/quickshell/shell.qml".source = config.lib.file.mkOutOfStoreSymlink ./shell.qml;
+    programs.quickshell = {
+      enable = true;
+      configs.default = finalConfig;
+      activeConfig = "default";
+    };
   };
 }
