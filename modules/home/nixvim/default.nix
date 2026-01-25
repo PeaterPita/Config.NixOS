@@ -35,7 +35,7 @@ in
       enable = true;
       vimAlias = true;
       diagnostic.settings = {
-        virtual_text = false;
+        virtual_text = true;
         signs = true;
         update_in_insert = true;
         underline = true;

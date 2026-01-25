@@ -2,9 +2,10 @@
   plugins.neogit = {
     enable = true;
     settings = {
-      graph_style = "kitty";
+      graph_style = "unicode";
       kind = "floating";
 
+      log_view.kind = "floating";
     };
   };
 
@@ -13,7 +14,7 @@
       key = "<leader>gs";
       action = "<cmd>Neogit<CR>";
       options = {
-        desc = "Find project files";
+        desc = "Git manager";
       };
     }
   ];

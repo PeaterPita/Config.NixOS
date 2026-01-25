@@ -8,7 +8,6 @@
         { name = "nvim_lsp"; }
         { name = "path"; }
         { name = "buffer"; }
-        # { name = "cmdline"; }
         { name = "luasnip"; }
         { name = "vimtex"; }
       ];

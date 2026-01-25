@@ -1,7 +1,6 @@
 { lib, pkgs, ... }:
 {
   plugins.lspconfig.enable = true;
-  plugins.lsp-lines.enable = true;
 
   autoCmd = [
     {
@@ -10,7 +9,6 @@
       callback = {
         __raw = "function() vim.lsp.buf.format({timeout_ms = 2000}) end";
       };
-
     }
 
   ];
@@ -20,8 +18,12 @@
       "*" = { };
       nixd.enable = true;
       html.enable = true;
-      lua_ls.enable = true;
-      luals.enable = true;
+      lua_ls = {
+        enable = true;
+        config = {
+          diagnostics.globals = [ "vim" ];
+        };
+      };
       jdtls = {
         enable = true;
         config = {
@@ -59,7 +61,19 @@
 
       cmake.enable = true;
       svelte.enable = true;
-      pyright.enable = true;
+      ruff = {
+        enable = true;
+        config = {
+          lint.select = [
+            "E"
+            "W"
+            "D"
+            "PL"
+            "F"
+          ];
+        };
+
+      };
       ts_ls.enable = true;
 
       jsonls.enable = true;
@@ -95,7 +109,7 @@
       }
 
       {
-        key = "k";
+        key = "K";
         lspBufAction = "hover";
 
       }
@@ -106,11 +120,11 @@
 
       }
 
-      {
-        key = "<leader>e";
-        action = lib.nixvim.mkRaw "function() vim.diagnostic.open_float() end";
-
-      }
+      # {
+      #   key = "<leader>e";
+      #   action = lib.nixvim.mkRaw "function() vim.diagnostic.open_float() end";
+      #
+      # }
 
     ];
   };
