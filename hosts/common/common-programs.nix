@@ -46,6 +46,7 @@
   #   '';
   #
   # };
+  virtualisation.docker.enable = true;
 
   environment.defaultPackages = [ ]; # Remove all preinstalled packages
   environment.systemPackages = with pkgs; [
