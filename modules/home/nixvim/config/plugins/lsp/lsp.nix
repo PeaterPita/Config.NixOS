@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 {
   plugins.lspconfig.enable = true;
 
@@ -15,7 +15,7 @@
   lsp = {
     inlayHints.enable = true;
     servers = {
-      "*" = { };
+      # "*" = { };
       nixd.enable = true;
       html.enable = true;
       lua_ls = {
@@ -61,18 +61,36 @@
 
       cmake.enable = true;
       svelte.enable = true;
+      basedpyright = {
+        enable = true;
+        config = {
+          settings.basedpyright = {
+            disableOrganizeImports = true;
+            analysis = {
+              ignore = [ "*" ];
+              autoSearchPaths = true;
+              useLibraryCodeForTypes = true;
+              typeCheckingMode = "off";
+            };
+          };
+        };
+      };
       ruff = {
         enable = true;
         config = {
-          lint.select = [
-            "E"
-            "W"
-            "D"
-            "PL"
-            "F"
-          ];
+          init_options = {
+            settings = {
+              lint.select = [
+                "E"
+                "W"
+                "PL"
+                "I"
+                "UP"
+                "F"
+              ];
+            };
+          };
         };
-
       };
       ts_ls.enable = true;
 
