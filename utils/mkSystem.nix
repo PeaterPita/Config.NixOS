@@ -7,14 +7,12 @@ hostname: users: system:
 let
   lib = inputs.nixpkgs.lib;
 
-    unstable-overlay = final: prev: {
-        unstable = import inputs.nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-        };
+  unstable-overlay = final: prev: {
+    unstable = import inputs.nixpkgs-unstable {
+      inherit system;
+      config.allowUnfree = true;
     };
-
-
+  };
 
   filesFromDirRec =
     dir: builtins.filter (path: lib.hasSuffix ".nix" path) (lib.filesystem.listFilesRecursive dir);
@@ -66,7 +64,12 @@ inputs.nixpkgs.lib.nixosSystem {
     { networking.hostName = hostname; }
     { users.users = systemUsers; }
 
-    { nixpkgs.overlays = [ (import ../pkgs/default.nix) unstable-overlay ]; }
+    {
+      nixpkgs.overlays = [
+        (import ../pkgs/default.nix)
+        unstable-overlay
+      ];
+    }
 
     ../hosts/common/common.nix
     ../hosts/${hostname}/hardware-configuration.nix

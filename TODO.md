@@ -6,6 +6,10 @@
 - [ ] Sops support for emails and passwords
 ^ Make config public after
 
+- [ ] Look into robot hash. Seems like a cool project/Idea
+
+
+
 
 ## NixVim
 - [x] File tree even if not actually used by me

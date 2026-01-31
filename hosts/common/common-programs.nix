@@ -8,6 +8,7 @@
 {
   programs.zsh.enable = true;
   services.openssh.enable = true;
+  services.mullvad-vpn.enable = true;
 
   ############################################################
   #   Disable when not needed. Adds 4seconds to boot time    #

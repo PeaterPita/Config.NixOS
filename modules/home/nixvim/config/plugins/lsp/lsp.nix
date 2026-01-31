@@ -16,14 +16,10 @@
     inlayHints.enable = true;
     servers = {
       # "*" = { };
-      nixd.enable = true;
-      html.enable = true;
-      lua_ls = {
-        enable = true;
-        config = {
-          diagnostics.globals = [ "vim" ];
-        };
-      };
+
+      ########
+      # Java #
+      ########
       jdtls = {
         enable = true;
         config = {
@@ -43,7 +39,15 @@
 
         };
       };
-      cssls.enable = true;
+      ########
+      # Rust #
+      ########
+
+      rust_analyzer.enable = true;
+
+      #########
+      # C/C++ #
+      #########
       clangd = {
         enable = true;
         config = {
@@ -58,14 +62,15 @@
           ];
         };
       };
-
       cmake.enable = true;
-      svelte.enable = true;
+
+      ##########
+      # Python #
+      ##########
       basedpyright = {
         enable = true;
         config = {
           settings.basedpyright = {
-            disableOrganizeImports = true;
             analysis = {
               ignore = [ "*" ];
               autoSearchPaths = true;
@@ -83,6 +88,8 @@
               lint.select = [
                 "E"
                 "W"
+                "N"
+                "DOC"
                 "PL"
                 "I"
                 "UP"
@@ -92,11 +99,26 @@
           };
         };
       };
+      ##########
+      # Web #
+      ##########
       ts_ls.enable = true;
-
+      svelte.enable = true;
+      cssls.enable = true;
+      html.enable = true;
       jsonls.enable = true;
 
+      ########
+      # Misc #
+      ########
       yamlls.enable = true;
+      nixd.enable = true;
+      lua_ls = {
+        enable = true;
+        config = {
+          diagnostics.globals = [ "vim" ];
+        };
+      };
       qmlls = {
         enable = true;
         config = {

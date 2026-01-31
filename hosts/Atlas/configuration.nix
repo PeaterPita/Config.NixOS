@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   ...
 }:
@@ -11,6 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     quickshell
+    pandoraLauncher
   ];
 
   qt.enable = true;

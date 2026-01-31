@@ -7,7 +7,7 @@
   config = {
     userSettings = {
       gitName = "PeaterPita";
-      gitEmail = "[REDACTED_EMAIL]";
+      gitEmail = "90217572+PeaterPita@users.noreply.github.com";
     };
 
     modules = {
@@ -19,12 +19,12 @@
       direnv.enable = true;
       firefox.enable = true;
       qute.enable = false;
-      packetTrace.enable = false;
-      thunderbird.enable = true;
+      # packetTrace.enable = true;
       git.enable = true;
       kitty.enable = true;
       obsidian.enable = true;
-      office.enable = true;
+      # office.enable = true;
+      zellij.enable = true;
 
       # quickshell.enable = true;
       # malware.enable = true;
@@ -39,7 +39,6 @@
     };
 
     home.packages = with pkgs; [
-      asunder
       tree
       btop
     ];
