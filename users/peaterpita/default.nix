@@ -23,7 +23,7 @@
       git.enable = true;
       kitty.enable = true;
       obsidian.enable = true;
-      # office.enable = true;
+      office.enable = true;
       zellij.enable = true;
 
       # quickshell.enable = true;

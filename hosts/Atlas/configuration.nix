@@ -9,7 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     quickshell
-    pandoraLauncher
+    azahar
   ];
 
   qt.enable = true;
