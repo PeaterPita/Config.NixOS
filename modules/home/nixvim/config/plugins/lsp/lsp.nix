@@ -72,10 +72,9 @@
         config = {
           settings.basedpyright = {
             analysis = {
-              ignore = [ "*" ];
               autoSearchPaths = true;
               useLibraryCodeForTypes = true;
-              typeCheckingMode = "off";
+              typeCheckingMode = "recommended";
             };
           };
         };
