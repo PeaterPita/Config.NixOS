@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   ...
 }:
@@ -8,8 +7,8 @@
 
   home.packages = with pkgs.unstable; [
     blockbench
-
     teamspeak6-client
+    element-desktop
   ];
 
   modules = {
@@ -19,7 +18,7 @@
 
     gaming = {
       enable = true;
-      vintagestory.enable = true;
+      # vintagestory.enable = true;
       prism.enable = true;
     };
   };

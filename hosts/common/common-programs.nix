@@ -10,10 +10,6 @@
   services.openssh.enable = true;
   services.mullvad-vpn.enable = true;
 
-  ############################################################
-  #   Disable when not needed. Adds 4seconds to boot time    #
-  ############################################################
-
   modules = {
     tailscale.enable = true;
     networking.enable = true;
@@ -36,32 +32,15 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/brewer.yaml";
 
   };
-  # services.postgresql = {
-  #   enable = true;
-  #   ensureDatabases = [ "postgres" ];
-  #   authentication = pkgs.lib.mkOverride 10 ''
-  #     #type database DBuser auth-method
-  #     local all all trust
-  #     host all all 127.0.0.1/32 trust
-  #     host all all ::1/128 trust
-  #   '';
-  #
-  # };
   virtualisation.docker.enable = true;
 
   environment.defaultPackages = [ ]; # Remove all preinstalled packages
   environment.systemPackages = with pkgs; [
     kdePackages.ark
-    # ciscoPacketTracer9
     unrar
     feh
-    fastfetch
-    wl-clipboard
-    file
     ncdu
     xdg-utils
-    libnotify
-    brightnessctl
     nixfmt-tree
   ];
 }

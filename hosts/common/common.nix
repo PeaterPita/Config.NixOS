@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   ...
 }:
@@ -53,7 +52,7 @@
 
     gc.automatic = true;
     gc.dates = "weekly";
-    gc.options = "--delete-older-than 14d";
+    gc.options = "--delete-older-than 7d";
   };
 
 }

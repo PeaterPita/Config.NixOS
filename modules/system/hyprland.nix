@@ -15,7 +15,14 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    environment.systemPackages = with pkgs; [ udiskie ];
+    environment.systemPackages = with pkgs; [
+      udiskie
+
+      libnotify
+      brightnessctl
+      wl-clipboard
+
+    ];
     services.udisks2.enable = true;
     programs = {
       hyprland.enable = true;

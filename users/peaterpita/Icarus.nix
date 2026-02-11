@@ -39,6 +39,10 @@
 
   };
 
+  home.packages = with pkgs; [
+    file
+  ];
+
   modules = {
     hyprland.enable = true;
     syncthing.enable = true;
