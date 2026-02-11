@@ -6,7 +6,11 @@
 
 {
 
-  home.packages = with pkgs.unstable; [ blockbench ];
+  home.packages = with pkgs.unstable; [
+    blockbench
+
+    teamspeak6-client
+  ];
 
   modules = {
     spotify.enable = true;

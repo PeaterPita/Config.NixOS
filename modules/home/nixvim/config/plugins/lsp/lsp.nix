@@ -116,6 +116,7 @@
       # Misc #
       ########
       yamlls.enable = true;
+      tombi.enable = true;
       nixd.enable = true;
       lua_ls = {
         enable = true;
