@@ -81,22 +81,22 @@
       };
       ruff = {
         enable = true;
-        config = {
-          init_options = {
-            settings = {
-              lint.select = [
-                "E"
-                "W"
-                "N"
-                "DOC"
-                "PL"
-                "I"
-                "UP"
-                "F"
-              ];
-            };
-          };
-        };
+        # config = {
+        #   init_options = {
+        #     settings = {
+        #       lint.select = [
+        #         "E"
+        #         "W"
+        #         "N"
+        #         "DOC"
+        #         "PL"
+        #         "I"
+        #         "UP"
+        #         "F"
+        #       ];
+        #     };
+        #   };
+        # };
       };
 
       gopls = {
