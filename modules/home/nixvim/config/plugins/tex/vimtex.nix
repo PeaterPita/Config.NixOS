@@ -42,5 +42,8 @@
     enable = true;
     texlivePackage = pkgs.texliveFull.withPackages (ps: [ ps.collection-bibtexextra ]);
   };
+  # plugins.typst-vim = {
+  #   enable = true;
+  # };
 
 }

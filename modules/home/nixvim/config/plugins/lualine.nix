@@ -18,9 +18,18 @@
         ];
         lualine_c = [ "filename" ];
         lualine_x = [
-          "encoding"
           "filetype"
           "lsp_status"
+          {
+            __unkeyed.__raw = ''
+              function()
+                  if vim.g.typst_pinned then
+                      return "Pinned: " .. vim.g.typst_pinned
+                  end
+                  return ""
+              end
+            '';
+          }
         ];
 
         lualine_z = [

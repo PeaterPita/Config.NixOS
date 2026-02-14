@@ -32,6 +32,8 @@ in
       imports = builtins.filter (path: lib.hasSuffix ".nix" path) (
         lib.filesystem.listFilesRecursive ./config
       );
+
+      plugins.lensline.enable = true;
       enable = true;
       vimAlias = true;
       diagnostic.settings = {

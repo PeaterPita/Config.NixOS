@@ -11,11 +11,23 @@
       };
     }
 
+    # {
+    #   event = [
+    #     "BufEnter"
+    #     "BufWritePost"
+    #     "InsertLeave"
+    #   ];
+    #   pattern = "*";
+    #   callback.__raw = ''
+    #     function() vim.lsp.codelens.refresh({bufnr = 0}) end
+    #   '';
+    # }
+    #
   ];
   lsp = {
     inlayHints.enable = true;
     servers = {
-      # "*" = { };
+      "*" = { };
 
       ########
       # Java #
@@ -79,25 +91,7 @@
           };
         };
       };
-      ruff = {
-        enable = true;
-        # config = {
-        #   init_options = {
-        #     settings = {
-        #       lint.select = [
-        #         "E"
-        #         "W"
-        #         "N"
-        #         "DOC"
-        #         "PL"
-        #         "I"
-        #         "UP"
-        #         "F"
-        #       ];
-        #     };
-        #   };
-        # };
-      };
+      ruff.enable = true;
 
       gopls = {
         enable = true;
@@ -117,6 +111,45 @@
       ########
       yamlls.enable = true;
       tombi.enable = true;
+      tinymist = {
+        enable = true;
+        config = {
+          settings = {
+            exportPdf = "onType";
+            formatterMode = "typstfmt";
+            lint = {
+              enabled = true;
+              when = "onType";
+            };
+            outputPath = "$root/build/$dir/$name";
+          };
+          on_attach = lib.nixvim.mkRaw ''
+            function(client, bufnr)
+                vim.keymap.set("n", "<leader>tp", function()
+                vim.g.typst_pinned = vim.fn.expand("%:t")
+                client:exec_cmd({
+                title = "pin",
+                command = "tinymist.pinMain",
+                arguments = { vim.api.nvim_buf_get_name(0) },
+                }, { bufnr = bufnr })
+                print("Pinned: " .. vim.g.typst_pinned)
+                    end, { desc = "[T]inymist [P]in", noremap = true })
+
+
+
+                vim.keymap.set("n", "<leader>tu", function()
+                    vim.g.typst_pinned = nil
+                client:exec_cmd({
+                title = "unpin",
+                command = "tinymist.pinMain",
+                arguments = { vim.v.null },
+                }, { bufnr = bufnr })
+                    end, { desc = "[T]inymist [U]npin", noremap = true })
+
+            end
+          '';
+        };
+      };
       nixd.enable = true;
       lua_ls = {
         enable = true;
@@ -156,21 +189,18 @@
       {
         key = "K";
         lspBufAction = "hover";
-
       }
+
+      # {
+      #   key = "<leader>cr";
+      #   action = lib.nixvim.mkRaw "vim.lsp.codelens.run";
+      # }
 
       {
         key = "<leader>ca";
         lspBufAction = "code_action";
 
       }
-
-      # {
-      #   key = "<leader>e";
-      #   action = lib.nixvim.mkRaw "function() vim.diagnostic.open_float() end";
-      #
-      # }
-
     ];
   };
 
