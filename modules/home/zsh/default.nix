@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }:
@@ -22,6 +21,7 @@ in
 
       shellAliases = {
         ll = "ls -l";
+        open = "xdg-open";
       };
 
       oh-my-zsh = {
