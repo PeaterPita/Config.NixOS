@@ -9,6 +9,7 @@
         { name = "path"; }
         { name = "buffer"; }
         { name = "luasnip"; }
+        { name = "git"; }
         { name = "vimtex"; }
       ];
 

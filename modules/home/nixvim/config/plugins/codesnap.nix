@@ -18,15 +18,6 @@
       action = "<cmd>CodeSnap<cr>";
       options.desc = "Save the current selction to clipboard";
     }
-    {
-      mode = [
-        "v"
-        "n"
-      ];
-      key = "ca";
-      action = "<cmd>CodeSnapASCII<cr>";
-      options.desc = "Generate ASCII codesnap to clipboard";
-    }
   ];
   plugins.codesnap = {
     enable = true;

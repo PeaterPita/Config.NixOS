@@ -11,7 +11,7 @@
         };
       };
       "<leader>pa" = {
-        action = "<cmd>Telescope find_files no_ignore=true hidden=true<CR>";
+        action = "find_files no_ignore=true hidden=true";
         options = {
           desc = "All Search";
         };

@@ -1,5 +1,10 @@
 {
 
+  colorschemes = {
+    catppuccin = {
+      enable = true;
+    };
+  };
   # Key binds map leader
   # globalOpts = { mapleader = " "; };
 
@@ -52,6 +57,7 @@
     # Spell check
     spell = true;
 
+    cmdheight = 0;
   };
 
 }

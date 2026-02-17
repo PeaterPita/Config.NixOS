@@ -18,7 +18,6 @@
       mpv.enable = true;
       direnv.enable = true;
       firefox.enable = true;
-      qute.enable = false;
       # packetTrace.enable = true;
       git.enable = true;
       kitty.enable = true;

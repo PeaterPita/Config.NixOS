@@ -33,7 +33,6 @@ in
         lib.filesystem.listFilesRecursive ./config
       );
 
-      plugins.lensline.enable = true;
       enable = true;
       vimAlias = true;
       diagnostic.settings = {

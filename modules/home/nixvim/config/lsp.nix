@@ -11,18 +11,6 @@
       };
     }
 
-    # {
-    #   event = [
-    #     "BufEnter"
-    #     "BufWritePost"
-    #     "InsertLeave"
-    #   ];
-    #   pattern = "*";
-    #   callback.__raw = ''
-    #     function() vim.lsp.codelens.refresh({bufnr = 0}) end
-    #   '';
-    # }
-    #
   ];
   lsp = {
     inlayHints.enable = true;
@@ -203,11 +191,6 @@
         key = "K";
         lspBufAction = "hover";
       }
-
-      # {
-      #   key = "<leader>cr";
-      #   action = lib.nixvim.mkRaw "vim.lsp.codelens.run";
-      # }
 
       {
         key = "<leader>ca";
