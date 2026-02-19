@@ -42,5 +42,6 @@
     ncdu
     xdg-utils
     nixfmt-tree
+
   ];
 }
