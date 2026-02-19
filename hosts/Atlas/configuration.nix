@@ -21,6 +21,13 @@
     package = pkgs.wireshark-qt;
   };
 
+  services.navidrome = {
+    enable = true;
+    settings = {
+      MusicFolder = "/mnt/music";
+    };
+  };
+
   services.flatpak.enable = true;
 
   modules = {

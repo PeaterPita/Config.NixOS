@@ -9,11 +9,8 @@
     settings = {
       highlight.enable = true;
       indent.enable = true;
-
     };
-
   };
-
   plugins.treesitter-textobjects = {
     enable = true;
   };

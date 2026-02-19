@@ -1,8 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
-  osConfig,
   ...
 }:
 
@@ -50,6 +47,7 @@
     obsidian.enable = true;
     office.enable = true;
     spotify.enable = true;
-    gaming.prism.enable = true;
+    quickshell.enable = true;
+
   };
 }

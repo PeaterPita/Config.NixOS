@@ -20,6 +20,8 @@
       nixosConfigurations = {
         laptop = mkSystem "Icarus" [ "peaterpita" ] "x86_64-linux";
         desktop = mkSystem "Atlas" [ "peaterpita" ] "x86_64-linux";
+        server = mkSystem "Olympus" [ "peaterpita" ] "x86_64-linux";
+
       };
 
       templates = devTemplates;

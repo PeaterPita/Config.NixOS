@@ -1,6 +1,6 @@
 {
   config,
-  osConfig,
+  # osConfig,
   pkgs,
   lib,
   ...
@@ -13,15 +13,15 @@
 let
   cfg = config.modules.quickshell;
 
-  modulesPath = ./Modules;
-  hostPath = ./. + "/${osConfig.networking.hostName}";
+  # modulesPath = ./Modules;
+  # hostPath = ./. + "/${osConfig.networking.hostName}";
 
-  finalConfig = pkgs.runCommand "qs-merged" { } ''
-    mkdir -p $out
-    cp -r ${hostPath}/* $out/
-    cp -r ${modulesPath}/* $out/
-    pwd
-  '';
+  # finalConfig = pkgs.runCommand "qs-merged" { } ''
+  #   mkdir -p $out
+  #   cp -r ${hostPath}/* $out
+  #   cp -r ${modulesPath} $out/Modules
+  #   pwd
+  # '';
 
 in
 {
@@ -30,9 +30,18 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      nerd-fonts.iosevka
+    ];
+
+    xdg.configFile = {
+      "quickshell".source =
+        config.lib.file.mkOutOfStoreSymlink "/home/peaterpita/nixos/modules/home/quickshell";
+    };
+
     programs.quickshell = {
       enable = true;
-      configs.default = finalConfig;
+      # configs.default = finalConfig;
       activeConfig = "default";
     };
   };

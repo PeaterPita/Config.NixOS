@@ -1,0 +1,4 @@
+singleton Theme 1.0 Theme.qml
+singleton GlobalState 1.0 GlobalState.qml
+ModuleBase 1.0 ./Modules/ModuleBase.qml
+

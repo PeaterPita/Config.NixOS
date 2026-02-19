@@ -6,8 +6,6 @@
 {
 
   home.packages = with pkgs.unstable; [
-    blockbench
-    teamspeak6-client
     element-desktop
   ];
 
@@ -15,10 +13,10 @@
     spotify.enable = true;
     kdeConnect.enable = true;
     scrcpy.enable = true;
+    quickshell.enable = true;
 
     gaming = {
       enable = true;
-      # vintagestory.enable = true;
       prism.enable = true;
     };
   };
