@@ -7,6 +7,7 @@ hostname: users: system:
 let
   lib = inputs.nixpkgs.lib;
   utils = import ../utils/utils.nix { inherit lib; };
+  mkUser = import ../utils/mkUser.nix;
 
   unstable-overlay = final: prev: {
     unstable = import inputs.nixpkgs-unstable {
@@ -15,44 +16,18 @@ let
     };
   };
 
-  homeUsers = lib.genAttrs users (
+  userModules = map (
     user:
-    lib.mkMerge (
-      [
-        {
-          home.username = user;
-          home.homeDirectory = "/home/${user}";
-          home.stateVersion = "25.05";
-          home.enableNixpkgsReleaseCheck = false;
-        }
-        ../users/${user} # Default user config. Applies to all machines that  user is present on
-        (utils.importIfExists ../users/${user}/${hostname}.nix) # Per host user config. Only applies to that user on that host.
-        inputs.nixvim.homeModules.nixvim
-
-      ]
-      ++ builtins.filter (
-        path:
-        let
-          bn = builtins.baseNameOf path;
-        in
-        bn == "default.nix" || bn == "${hostname}.nix"
-      ) (utils.filesFromDirRec ../modules/home)
-    )
-  );
-
-  systemUsers = lib.genAttrs users (user: {
-    isNormalUser = true;
-    description = "${user} (mkUser)";
-    extraGroups = [
-      "wheel"
-      "wireshark"
-      "power"
-      "networkManager"
-      "libvirtd"
-    ];
-  }
-
-  );
+    mkUser {
+      inherit
+        inputs
+        lib
+        utils
+        hostname
+        user
+        ;
+    }
+  ) users;
 
 in
 inputs.nixpkgs.lib.nixosSystem {
@@ -60,7 +35,7 @@ inputs.nixpkgs.lib.nixosSystem {
   specialArgs = { inherit inputs lib; };
   modules = [
     { networking.hostName = hostname; }
-    { users.users = systemUsers; }
+    # { users.users = systemUsers; }
 
     {
       nixpkgs.overlays = [
@@ -80,10 +55,10 @@ inputs.nixpkgs.lib.nixosSystem {
       home-manager.extraSpecialArgs = { inherit inputs; };
 
       home-manager.backupFileExtension = "backup";
-      home-manager.users = homeUsers;
     }
 
     inputs.stylix.nixosModules.stylix
   ]
+  ++ userModules
   ++ utils.filesFromDirRec ../modules/system;
 }
