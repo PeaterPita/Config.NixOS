@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell.Io
 import ".."
+import "../Components"
 
 ModuleBase {
     id: cpu
@@ -52,9 +53,9 @@ ModuleBase {
 
     Text {
         text: ""
-        color: Theme.colFg
-        font.pixelSize: Theme.fontSize
-        font.family: Theme.fontFamily
+        color: Theme.active.colFg
+        font.pixelSize: Theme.active.fontSize
+        font.family: Theme.active.fontFamily
         font.bold: true
         Layout.fillWidth: true
         elide: Text.ElideRight
@@ -62,7 +63,7 @@ ModuleBase {
     }
 
     dropdownWidth: 80
-    dropdownHeight: Theme.barHeight
+    dropdownHeight: Theme.active.barHeight
 
     dropdownComponent: Component {
 
@@ -75,17 +76,17 @@ ModuleBase {
 
                 Text {
                     text: "CPU"
-                    color: Theme.colMuted
-                    font.pixelSize: Theme.fontSize
-                    font.family: Theme.fontFamily
+                    color: Theme.active.colMuted
+                    font.pixelSize: Theme.active.fontSize
+                    font.family: Theme.active.fontFamily
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
                 }
 
                 Text {
                     text: cpu.cpuUsage + "%"
-                    color: Theme.colRed
-                    font.pixelSize: Theme.fontSize
-                    font.family: Theme.fontFamily
+                    color: Theme.active.colRed
+                    font.pixelSize: Theme.active.fontSize
+                    font.family: Theme.active.fontFamily
                     font.bold: true
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 }

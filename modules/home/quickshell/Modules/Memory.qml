@@ -1,4 +1,6 @@
 import QtQuick
+import "../Components"
+import "../Widgets"
 import QtQuick.Layouts
 import Quickshell.Io
 import ".."
@@ -8,25 +10,34 @@ ModuleBase {
 
     property int memUsage: 0
 
-    dropdownWidth: 140
-    dropdownHeight: Theme.barHeight
+    dropdownWidth: 380
+    dropdownHeight: Theme.active.barHeight * 3
 
     dropdownComponent: Component {
-        Column {
-            anchors.centerIn: parent
-            Text {
-                text: "Memory Usage"
-                color: Theme.colYellow
-                font.pixelSize: 18
-            }
-            Text {
-                text: mem.memUsage + "%"
-                color: Theme.colRed
-                font.pixelSize: 11
-                font.bold: true
+        Item {
+            anchors.fill: parent
+
+            ResourceWidget {
+                anchors.fill: parent
             }
         }
     }
+    // dropdownComponent: Component {
+    //     Column {
+    //         anchors.centerIn: parent
+    //         Text {
+    //             text: "Memory Usage"
+    //             color: Theme.active.colYellow
+    //             font.pixelSize: 18
+    //         }
+    //         Text {
+    //             text: mem.memUsage + "%"
+    //             color: Theme.active.colRed
+    //             font.pixelSize: 11
+    //             font.bold: true
+    //         }
+    //     }
+    // }
     // MEM Process
     Process {
         id: memProc
@@ -53,10 +64,9 @@ ModuleBase {
 
     Text {
         text: ""
-        color: Theme.colFg
-        font.pixelSize: Theme.fontSize
-        font.family: Theme.fontFamily
+        color: Theme.active.colFg
+        font.pixelSize: Theme.active.fontSize
+        font.family: Theme.active.fontFamily
         font.bold: true
-        Layout.rightMargin: 8
     }
 }

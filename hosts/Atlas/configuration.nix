@@ -9,10 +9,11 @@
 
   environment.systemPackages = with pkgs; [
     quickshell
-    azahar
+    pufferpanel
   ];
 
   qt.enable = true;
+  system.isDesktop = true;
 
   programs.wireshark = {
     enable = true;
@@ -23,8 +24,10 @@
 
   services.navidrome = {
     enable = true;
+    openFirewall = true;
     settings = {
       MusicFolder = "/mnt/music";
+      Address = "0.0.0.0";
     };
   };
 

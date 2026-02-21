@@ -5,6 +5,7 @@
     enable = true;
     powertop.enable = true;
   };
+  system.isDesktop = true;
 
   services.power-profiles-daemon.enable = false;
   services.tlp.enable = false;

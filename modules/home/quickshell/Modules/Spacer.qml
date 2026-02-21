@@ -1,4 +1,5 @@
 import QtQuick
+import "../Components"
 import QtQuick.Layouts
 import ".."
 
@@ -8,5 +9,5 @@ Rectangle {
     Layout.alignment: Qt.AlignVCenter
     Layout.leftMargin: 0
     Layout.rightMargin: 8
-    color: Theme.colMuted
+    color: Theme.active.colMuted
 }

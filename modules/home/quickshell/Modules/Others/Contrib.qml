@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
-import "../Services"
-import ".."
+import "../../Services"
+import "../../"
 
 Item {
     id: contributionCalendar
@@ -12,14 +12,14 @@ Item {
 
     function contributionColor(level) {
         if (level === 0)
-            return Theme.colCyan;
+            return Theme.active.colCyan;
         if (level === 1)
-            return Theme.colCyan;
+            return Theme.active.colBg;
         if (level === 2)
-            return Theme.colPurple;
+            return Theme.active.colPurple;
         if (level === 3)
-            return Theme.colRed;
-        return Theme.colFg; // fallback for level 4+
+            return Theme.active.colRed;
+        return Theme.active.colFg; // fallback for level 4+
     }
 
     GridLayout {
@@ -49,16 +49,6 @@ Item {
 
                             property int realIndex: weekIndex * 7 + index
                             color: contributionColor(contribs[realIndex]?.level || 0)
-
-                            MouseArea {
-                                id: infoMouseArea
-                                anchors.fill: parent
-                                hoverEnabled: true
-                                // StyledToolTip {
-                                //     content: `${contribs[realIndex]?.count || 0} commits on ${contribs[realIndex]?.date || "unknown"}`
-                                //     extraVisibleCondition: infoMouseArea.containsMouse
-                                // }
-                            }
                         }
                     }
                 }

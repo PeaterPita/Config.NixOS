@@ -38,10 +38,15 @@
 
   home.packages = with pkgs; [
     file
+    feishin
   ];
 
   modules = {
     hyprland.enable = true;
+    discord.enable = true;
+    zathura.enable = true;
+    mpv.enable = true;
+    firefox.enable = true;
     syncthing.enable = true;
     kdeConnect.enable = true;
     obsidian.enable = true;

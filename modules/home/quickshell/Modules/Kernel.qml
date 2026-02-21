@@ -1,4 +1,5 @@
 import QtQuick
+import "../Components"
 import QtQuick.Layouts
 import Quickshell.Io
 import ".."
@@ -29,22 +30,49 @@ ModuleBase {
 
     Text {
         text: ""
-        color: Theme.colFg
-        font.pixelSize: Theme.fontSize
-        font.family: Theme.fontFamily
+        color: Theme.active.colFg
+        font.pixelSize: Theme.active.fontSize
+        font.family: Theme.active.fontFamily
         font.bold: true
     }
 
-    dropdownWidth: 140
-    dropdownHeight: Theme.barHeight
+    dropdownWidth: 180
+    dropdownHeight: Theme.active.barHeight
 
     dropdownComponent: Component {
-        Column {
-            anchors.centerIn: parent
-            Text {
-                text: kernel.kernelVersion
-                color: Theme.colYellow
-                font.pixelSize: 11
+
+        Item {
+            anchors.fill: parent
+
+            RowLayout {
+                anchors.fill: parent
+                anchors.leftMargin: 20
+                anchors.rightMargin: 20
+                spacing: 12
+
+                GradientText {
+                    id: dateText
+                    text: Qt.formatDateTime(new Date(), "ddd MMM d")
+                    font.pixelSize: Theme.active.fontSize
+                    font.family: Theme.active.fontFamily
+                    gradient: Theme.active.gradOrange
+                    Layout.alignment: Qt.AlignVCenter
+                }
+
+                Text {
+                    text: "|"
+                    color: Theme.active.colMuted
+                    font.pixelSize: Theme.active.fontSize
+                    Layout.alignment: Qt.AlignVCenter
+                }
+                Text {
+                    id: timeText
+                    text: Qt.formatDateTime(new Date(), "h:mm AP")
+                    color: Theme.active.colFg
+                    font.pixelSize: Theme.active.fontSize
+                    font.family: Theme.active.fontFamily
+                    Layout.alignment: Qt.AlignVCenter
+                }
             }
         }
     }

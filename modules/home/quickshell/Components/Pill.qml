@@ -5,7 +5,6 @@ import ".."
 Item {
     id: root
     z: 1
-    y: Theme.barHeight
     x: GlobalState.pillX
 
     Behavior on x {
@@ -37,7 +36,7 @@ Item {
         id: pillMain
         anchors.fill: parent
         radius: 16
-        color: Theme.colBg
+        color: Theme.active.colBg
 
         HoverHandler {
             id: pillHover
@@ -54,9 +53,9 @@ Item {
 
         Timer {
             id: pillCloseTimer
-            interval: 1150
+            interval: 350
             onTriggered: {
-                if (!GlobalState.pillHovered && GlobalState.activeModule && !GlobalState.activeModule.isHovered) {
+                if (!GlobalState.pillPinned && !GlobalState.pillHovered && GlobalState.activeModule && !GlobalState.activeModule.isHovered) {
                     GlobalState.pillVisible = false;
                     GlobalState.activeModule = null;
                 }
@@ -64,12 +63,13 @@ Item {
         }
 
         Rectangle {
-            anchors.top: parent.top
+            anchors.top: Theme.active.barTop ? parent.top : undefined
+            anchors.bottom: Theme.active.barTop ? undefined : parent.bottom
             anchors.left: parent.left
             anchors.right: parent.right
             height: Math.min(12, root.height)
             visible: root.height > 0
-            color: Theme.colBg
+            color: Theme.active.colBg
         }
 
         Loader {
@@ -87,21 +87,25 @@ Item {
     }
 
     property real filletHeight: Math.min(24, root.height / 3)
-    property real filletWidth: Math.max(16, root.filletHeight * 1.5)
+    property real filletWidth: root.filletHeight * 1.5
 
     Shape {
         anchors.right: pillMain.left
-        anchors.top: pillMain.top
+
+        anchors.top: Theme.active.barTop ? pillMain.top : undefined
+        anchors.bottom: Theme.active.barTop ? undefined : pillMain.bottom
 
         width: root.filletWidth
         height: root.filletHeight
 
-        // width: 16
-        // height: 16
-        opacity: root.height > 1 ? 1 : 0
+        visible: root.height > 0
+        transform: Scale {
+            origin.y: root.filletHeight / 2
+            yScale: Theme.active.barTop ? 1 : -1
+        }
 
         ShapePath {
-            fillColor: Theme.colBg
+            fillColor: Theme.active.colBg
             strokeColor: "transparent"
             startX: root.filletWidth
             startY: root.filletHeight
@@ -128,13 +132,22 @@ Item {
 
     Shape {
         anchors.left: pillMain.right
-        anchors.top: pillMain.top
+
+        anchors.top: Theme.active.barTop ? pillMain.top : undefined
+        anchors.bottom: Theme.active.barTop ? undefined : pillMain.bottom
+
         width: root.filletWidth
         height: root.filletHeight
-        opacity: root.height > 5 ? 1 : 0
+
+        visible: root.height > 0
+
+        transform: Scale {
+            origin.y: root.filletHeight / 2
+            yScale: Theme.active.barTop ? 1 : -1
+        }
 
         ShapePath {
-            fillColor: Theme.colBg
+            fillColor: Theme.active.colBg
             strokeColor: "transparent"
 
             startX: 0

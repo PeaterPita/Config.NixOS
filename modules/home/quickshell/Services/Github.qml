@@ -24,7 +24,7 @@ Singleton {
         stdout: StdioCollector {
             onStreamFinished: {
                 const json = JSON.parse(text);
-                const year = DateTime.year;
+                const year = new Date().getFullYear();
                 // Calculate total contributions in the last 365 days
                 const oneYearAgo = new Date();
                 oneYearAgo.setDate(oneYearAgo.getDate() - 365);

@@ -11,27 +11,18 @@
     };
 
     modules = {
-
       zsh.enable = true;
-      syncthing.enable = true;
       nixvim.enable = true;
-      discord.enable = true;
-      zathura.enable = true;
-      mpv.enable = true;
-      direnv.enable = true;
-      firefox.enable = true;
-      git.enable = true;
       kitty.enable = true;
-      obsidian.enable = true;
-      office.enable = true;
       zellij.enable = true;
+      direnv.enable = true;
+      git.enable = true;
 
     };
 
     home.packages = with pkgs; [
       tree
       btop
-      feishin
     ];
   };
 

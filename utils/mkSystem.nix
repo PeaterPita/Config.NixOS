@@ -6,6 +6,7 @@ hostname: users: system:
 
 let
   lib = inputs.nixpkgs.lib;
+  utils = import ../utils/utils.nix { inherit lib; };
 
   unstable-overlay = final: prev: {
     unstable = import inputs.nixpkgs-unstable {
@@ -13,9 +14,6 @@ let
       config.allowUnfree = true;
     };
   };
-
-  filesFromDirRec =
-    dir: builtins.filter (path: lib.hasSuffix ".nix" path) (lib.filesystem.listFilesRecursive dir);
 
   homeUsers = lib.genAttrs users (
     user:
@@ -28,7 +26,7 @@ let
           home.enableNixpkgsReleaseCheck = false;
         }
         ../users/${user} # Default user config. Applies to all machines that  user is present on
-        ../users/${user}/${hostname}.nix # Per host user config. Only applies to that user on that host.
+        (utils.importIfExists ../users/${user}/${hostname}.nix) # Per host user config. Only applies to that user on that host.
         inputs.nixvim.homeModules.nixvim
 
       ]
@@ -38,7 +36,7 @@ let
           bn = builtins.baseNameOf path;
         in
         bn == "default.nix" || bn == "${hostname}.nix"
-      ) (filesFromDirRec ../modules/home)
+      ) (utils.filesFromDirRec ../modules/home)
     )
   );
 
@@ -86,7 +84,6 @@ inputs.nixpkgs.lib.nixosSystem {
     }
 
     inputs.stylix.nixosModules.stylix
-    # inputs.crystal-forge.nixosModules.crystal-forge
   ]
-  ++ filesFromDirRec ../modules/system;
+  ++ utils.filesFromDirRec ../modules/system;
 }

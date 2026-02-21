@@ -1,8 +1,8 @@
 import Quickshell
-import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
 import "../Modules"
+import "../Components"
 import ".."
 
 Scope {
@@ -16,13 +16,14 @@ Scope {
             screen: modelData
 
             anchors {
-                top: true
+                top: Theme.active.barTop ? true : false
+                bottom: Theme.active.barTop ? false : true
                 left: true
                 right: true
             }
 
-            implicitHeight: 300
-            exclusiveZone: Theme.barHeight
+            implicitHeight: 800
+            exclusiveZone: Theme.active.barHeight
             color: "transparent"
 
             margins {
@@ -34,6 +35,8 @@ Scope {
 
             Pill {
                 id: pill
+
+                y: Theme.active.barTop ? Theme.active.barHeight : bar.height - Theme.active.barHeight - height
             }
 
             mask: Region {
@@ -47,11 +50,12 @@ Scope {
             }
             Rectangle {
                 id: realBar
-                anchors.top: parent.top
+                anchors.top: Theme.active.barTop ? parent.top : undefined
+                anchors.bottom: Theme.active.barTop ? undefined : parent.bottom
                 anchors.left: parent.left
                 anchors.right: parent.right
-                height: Theme.barHeight
-                color: Theme.colBg
+                height: Theme.active.barHeight
+                color: Theme.active.colBg
                 z: 2
 
                 RowLayout {
@@ -60,55 +64,58 @@ Scope {
                     anchors.rightMargin: 12
                     spacing: 10
 
-                    Text {
+                    // Repeater {
+                    //     model: 9
+                    //     Rectangle {
+                    //         width: 20
+                    //         height: parent.height
+                    //         color: "transparent"
+                    //
+                    //         property var workspace: Hyprland.workspaces.values.find(ws => ws.id === index + 1) ?? null
+                    //         property bool isActive: Hyprland.focusedWorkspace?.id === (index + 1)
+                    //         property bool hasWindows: workspace !== null
+                    //
+                    //         Text {
+                    //             text: index + 1
+                    //             color: parent.isActive ? Theme.active.colCyan : (parent.hasWindows ? Theme.active.colCyan : Theme.active.colMuted)
+                    //             font.pixelSize: Theme.active.fontSize
+                    //             font.family: Theme.active.fontFamily
+                    //             font.bold: true
+                    //             anchors.centerIn: parent
+                    //         }
+                    //
+                    //         Rectangle {
+                    //             width: 20
+                    //             height: 3
+                    //             color: parent.isActive ? Theme.active.colPurple : Theme.active.colBg
+                    //             anchors.horizontalCenter: parent.horizontalCenter
+                    //             anchors.bottom: parent.bottom
+                    //         }
+                    //
+                    //         MouseArea {
+                    //             anchors.fill: parent
+                    //             onClicked: Hyprland.dispatch("workspace " + (index + 1))
+                    //         }
+                    //     }
+                    // }
+
+                    Workspaces {}
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    GradientText {
                         text: ""
-                        color: Theme.colCyan
-                        font.pixelSize: 18
+                        font.pixelSize: 24
+                        font.family: Theme.active.fontFamily
+                        gradient: Theme.active.gradOrange
                         Layout.alignment: Qt.AlignVCenter
 
                         MouseArea {
                             anchors.fill: parent
+                            onClicked: GlobalState.controlCenterShow = !GlobalState.controlCenterShow
                         }
-                    }
-
-                    Spacer {}
-
-                    Repeater {
-                        model: 9
-                        Rectangle {
-                            width: 20
-                            height: parent.height
-                            color: "transparent"
-
-                            property var workspace: Hyprland.workspaces.values.find(ws => ws.id === index + 1) ?? null
-                            property bool isActive: Hyprland.focusedWorkspace?.id === (index + 1)
-                            property bool hasWindows: workspace !== null
-
-                            Text {
-                                text: index + 1
-                                color: parent.isActive ? Theme.colCyan : (parent.hasWindows ? Theme.colCyan : Theme.colMuted)
-                                font.pixelSize: Theme.fontSize
-                                font.family: Theme.fontFamily
-                                font.bold: true
-                                anchors.centerIn: parent
-                            }
-
-                            Rectangle {
-                                width: 20
-                                height: 3
-                                color: parent.isActive ? Theme.colPurple : Theme.colBg
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                anchors.bottom: parent.bottom
-                            }
-
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: Hyprland.dispatch("workspace " + (index + 1))
-                            }
-                        }
-                    }
-                    Item {
-                        Layout.fillWidth: true
                     }
 
                     Item {
@@ -135,11 +142,6 @@ Scope {
 
                         Loader {
                             active: true
-                            source: "../Modules/Disk.qml"
-                        }
-
-                        Loader {
-                            active: true
                             source: "../Modules/Kernel.qml"
                         }
 
@@ -151,16 +153,16 @@ Scope {
                         Text {
                             id: clockText
                             text: Qt.formatDateTime(new Date(), "MMM dd  •  HH:mm")
-                            color: Theme.colFg
-                            font.pixelSize: Theme.fontSize
-                            font.family: Theme.fontFamily
+                            color: Theme.active.colFg
+                            font.pixelSize: Theme.active.fontSize
+                            font.family: Theme.active.fontFamily
                             font.bold: true
 
                             Timer {
                                 interval: 1000
                                 running: true
                                 repeat: true
-                                onTriggered: clockText.text = Qt.formatDateTime(new Date(), "MMM dd  |  HH:mm")
+                                onTriggered: clockText.text = Qt.formatDateTime(new Date(), "MMM dd  •  HH:mm")
                             }
                         }
                     }
