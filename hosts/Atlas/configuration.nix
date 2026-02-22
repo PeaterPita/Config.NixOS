@@ -9,7 +9,6 @@
 
   environment.systemPackages = with pkgs; [
     quickshell
-    pufferpanel
   ];
 
   qt.enable = true;

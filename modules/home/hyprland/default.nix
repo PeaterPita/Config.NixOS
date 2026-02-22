@@ -61,7 +61,10 @@ in
       enable = true;
       settings = {
         "$mod" = "SUPER";
-        exec-once = [ "udiskie" ];
+        exec-once = [
+          "udiskie"
+          "qs"
+        ];
 
         general = {
           gaps_out = 0;
