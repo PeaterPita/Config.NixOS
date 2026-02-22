@@ -34,7 +34,9 @@ let
         userPkgsStr = builtins.concatStringsSep ", " userPkgs;
 
       in
-      " ${color}[${user}]${Reset} | ${color}${userPkgsStr}${Reset} | ${color}${toString userPkgsCount}${Reset}"
+
+      "print_sidebar_row \"${user}\" \"${color}\" \"${toString userPkgsCount}\" \"${userPkgsStr}\""
+      # ${color}[${user}]${Reset} | ${color}${userPkgsStr}${Reset} | ${color}${toString userPkgsCount}${Reset}
 
     ) hmUsers
   );
@@ -42,32 +44,67 @@ let
 in
 
 {
-  environment.systemPackages = [ pkgs.util-linux ];
+  environment.systemPackages = [
+    pkgs.coreutils
+    pkgs.gawk
+  ];
   system.activationScripts.afterActionReport = {
 
     text = ''
-       echo ""
-       echo -e "${Bold}============================================== ${Reset}"
-       echo -e "${Bold}              Nixos Rebuild Successful ${Reset}"
-       echo -e "${Bold}============================================== ${Reset}"
-       echo -e " Build Time: $(date)"
-       echo -e " System Version: ${config.system.nixos.label}"
-       echo -e "${Bold}============================================== ${Reset}"
-       echo -e ""
+       print_sidebar_row() {
+       local title="$1"
+       local color="$2"
+       local count="$3"
+       local items="$4"
 
 
-      TMP_TABLE=$(mktemp)
+       echo "$items" | fold -s -w 65 | ${pkgs.gawk}/bin/awk -v t="$title" -v c="$color" -v r="${Reset}" -v cnt="$count" '
+       BEGIN {
+        title_fmt = substr(toupper(t), 1, 12)
+       }
 
-      echo -e "${Bold}SCOPE|ENABLED Packages | Count${Reset}" >> $TMP_TABLE
-      echo -e "-------------------|----------------|------" >> $TMP_TABLE
+        NR==1 { printf "%s%-12s%s | %s%s%s\n", c, title_fmt, r, c, $0, r}
 
-      echo -e " [SYSTEM] | ${sysPkgsStr}${Reset} | ${toString sysPkgsCount}${Reset} " >> $TMP_TABLE
+        NR>1 { printf "%-12s | %s%s%s\n", "", c, $0, r}
 
-      echo -e "${userRows}" >> $TMP_TABLE
+        END {
 
-      column -t -s '|' $TMP_TABLE
+            if (NR==0) { printf "%s%-12s%s | %s(0 Packages)%s\n", c, title_fmt, r, c, r}
+            else { printf "%-12s | %s(%d packages)%s\n", "", c, cnt, r}
+            printf "%-12s |\n", ""
+        }
+        '
+       }
 
-      rm $TMP_TABLE
+      echo ""
+      echo -e "${Bold}============================================== ${Reset}"
+      echo -e "${Bold}              Nixos Rebuild Successful ${Reset}"
+      echo -e "${Bold}============================================== ${Reset}"
+      echo -e " Build Time: $(date)"
+      echo -e " System Version: ${config.system.nixos.label}"
+      echo -e "${Bold}============================================== ${Reset}"
+      echo -e ""
+
+      print_sidebar_row "SYSTEM" "${Bold}" "${toString sysPkgsCount}" "${sysPkgsStr}"
+
+      ${userRows}
+
+      echo -e "${Bold}============================================== ${Reset}"
+      echo ""
+
     '';
   };
 }
+
+# TMP_TABLE=$(mktemp)
+#
+# echo -e "${Bold}SCOPE|ENABLED Packages | Count${Reset}" >> $TMP_TABLE
+# echo -e "-------------------|----------------|------" >> $TMP_TABLE
+#
+# echo -e " [SYSTEM] | ${sysPkgsStr}${Reset} | ${toString sysPkgsCount}${Reset} " >> $TMP_TABLE
+#
+# echo -e "${userRows}" >> $TMP_TABLE
+#
+# column -t -s '|' $TMP_TABLE
+#
+# rm $TMP_TABLE
