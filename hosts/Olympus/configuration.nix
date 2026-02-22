@@ -9,10 +9,18 @@
 
   services.postgresql = {
     enable = true;
-    ensureDatabases = [ "nextcloud" ];
+    ensureDatabases = [
+      "nextcloud"
+      "authentik"
+    ];
     ensureUsers = [
       {
         name = "nextcloud";
+        ensureDBOwnership = true;
+      }
+
+      {
+        name = "authentik";
         ensureDBOwnership = true;
       }
     ];
@@ -22,42 +30,18 @@
     nextcloud = {
       enable = true;
     };
+    authentik = {
+      enable = true;
+      port = 6379;
+    };
   };
 
   virtualisation.oci-containers.backend = "docker";
+  virtualisation.docker.enable = true;
 
   # ############################################################
-  # #                         SERVICES                         #
+  # #                         Homepage                         #
   # ############################################################
-
-  services.nextcloud = {
-    enable = true;
-    hostName = "nextcloud.home.arpa";
-
-    config = {
-      dbtype = "pgsql";
-      dbname = "nextcloud";
-      dbuser = "nextcloud";
-      adminpassFile = "/home/peaterpita/nixos/secrets/nextcloud-admin-pass";
-    };
-    configureRedis = true;
-    datadir = "/mnt/media/nextcloud-data";
-  };
-
-  services.jellyfin = {
-    enable = true;
-  };
-
-  services.navidrome = {
-    enable = true;
-    openFirewall = true;
-    settings = {
-      MusicFolder = "/mnt/media/music";
-      Address = "0.0.0.0";
-      Port = 4533;
-    };
-  };
-
   services.homepage-dashboard = {
     enable = true;
 
@@ -124,7 +108,41 @@
 
     ];
   };
+  # ############################################################
+  # #                         SERVICES                         #
+  # ############################################################
 
+  services.nextcloud = {
+    enable = true;
+    hostName = "nextcloud.home.arpa";
+
+    config = {
+      dbtype = "pgsql";
+      dbname = "nextcloud";
+      dbuser = "nextcloud";
+      adminpassFile = "/home/peaterpita/nixos/secrets/nextcloud-admin-pass";
+    };
+    configureRedis = true;
+    datadir = "/mnt/media/nextcloud-data";
+  };
+
+  services.jellyfin = {
+    enable = true;
+  };
+
+  services.navidrome = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      MusicFolder = "/mnt/media/music";
+      Address = "0.0.0.0";
+      Port = 4533;
+    };
+  };
+
+  # ############################################################
+  # #                   Docker-run Services                    #
+  # ############################################################
   virtualisation.oci-containers.containers = {
 
     "vaultwarden" = {
@@ -134,6 +152,21 @@
         SIGNUPS_ALLOWED = "true";
       };
       volumes = [ "/var/lib/vaultwarden:/data" ];
+    };
+
+    authentik-server = {
+      image = "ghcr.io/goauthentik/server:2025.12.4";
+      ports = [
+        "9000:9000"
+        "9443:9443"
+      ];
+
+      environment = {
+        AUTHENTIK_REDIS__HOST = "127.0.0.1";
+        AUTHENTIK_POSTGRESQL__HOST = "127.0.0.1";
+        AUTHENTIK_POSTGRESQL__USER = "authentik";
+        AUTHENTIK_POSTGRESQL__NAME = "authentik";
+      };
     };
 
   };
