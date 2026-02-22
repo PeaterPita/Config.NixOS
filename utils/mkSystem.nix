@@ -35,8 +35,6 @@ inputs.nixpkgs.lib.nixosSystem {
   specialArgs = { inherit inputs lib; };
   modules = [
     { networking.hostName = hostname; }
-    # { users.users = systemUsers; }
-
     {
       nixpkgs.overlays = [
         (import ../pkgs/default.nix)
@@ -45,6 +43,7 @@ inputs.nixpkgs.lib.nixosSystem {
     }
 
     ../hosts/common/common.nix
+
     ../hosts/${hostname}/hardware-configuration.nix
     ../hosts/${hostname}/configuration.nix
 
