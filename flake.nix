@@ -7,6 +7,7 @@
     ####################################################
     { nixpkgs, ... }@inputs:
     let
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";
 
       mkSystem = import ./utils/mkSystem.nix {
         inherit
@@ -14,7 +15,6 @@
           ;
       };
 
-      devTemplates = import ./devshells;
     in
     {
       nixosConfigurations = {
@@ -25,8 +25,14 @@
 
       };
 
-      templates = devTemplates;
+      templates = import ./devshells;
 
+      devShells."x86_64-linux".default = pkgs.mkShell {
+        packages = with pkgs; [
+          sops
+          age
+        ];
+      };
     };
 
   inputs = {

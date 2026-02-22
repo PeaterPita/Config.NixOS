@@ -6,9 +6,9 @@
 - [ ] Sops support for emails and passwords
 ^ Make config public after
 
-## Nix
-- [ ] Custom pkgs
-
+history changes:
+remove git email 
+networking module history
 
 ## Utility
 - [ ] Hyprland nvimTex doesnt automatically open Zathura. 
