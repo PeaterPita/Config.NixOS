@@ -10,6 +10,7 @@
     asunder
     vlc
     feishin
+    davinci-resolve
     picard
     libdvdcss
   ];

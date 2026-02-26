@@ -1,7 +1,6 @@
 # TODO
 ---
 
-
 ## Immediate 
 - [ ] Sops support for emails and passwords
 ^ Make config public after

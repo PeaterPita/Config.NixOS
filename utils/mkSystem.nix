@@ -57,6 +57,14 @@ inputs.nixpkgs.lib.nixosSystem {
     }
 
     inputs.stylix.nixosModules.stylix
+    inputs.sops-nix.nixosModules.sops
+    {
+      sops.defaultSopsFile = ../secrets/secrets.yaml;
+      sops.defaultSopsFormat = "yaml";
+
+      sops.age.keyFile = "/home/peaterpita/.config/sops/age/keys.txt";
+
+    }
   ]
   ++ userModules
   ++ utils.filesFromDirRec ../modules/system;

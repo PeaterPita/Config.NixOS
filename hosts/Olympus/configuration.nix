@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 
@@ -7,183 +8,47 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  services.postgresql = {
+  services.openssh = {
     enable = true;
-    ensureDatabases = [
-      "nextcloud"
-      "authentik"
-    ];
-    ensureUsers = [
-      {
-        name = "nextcloud";
-        ensureDBOwnership = true;
-      }
-
-      {
-        name = "authentik";
-        ensureDBOwnership = true;
-      }
-    ];
+    settings.PermitRootLogin = "yes";
   };
 
-  services.redis.servers = {
-    nextcloud = {
-      enable = true;
-    };
-    authentik = {
-      enable = true;
-      port = 6379;
-    };
+  services.qemuGuest.enable = true;
+
+  homelab.services = {
+    # authentik.enable = true;
+    homepage.enable = true;
+    # nextcloud.enable = true;
+    jellyfin.enable = true;
+    navidrome.enable = true;
+    # vaultwarden.enable = true;
   };
 
-  virtualisation.oci-containers.backend = "docker";
-  virtualisation.docker.enable = true;
+  environment.systemPackages = with pkgs; [ nfs-utils ];
 
-  # ############################################################
-  # #                         Homepage                         #
-  # ############################################################
-  services.homepage-dashboard = {
-    enable = true;
+  fileSystems = {
 
-    settings = {
-      title = "PeaterPita Home";
-      theme = "dark";
-    };
-    widgets = [
-      {
-        resources = {
-          cpu = true;
-          memory = true;
-          disk = "/";
-        };
-      }
-
-      {
-        search = {
-          provider = "duckduckgo";
-          target = "_blank";
-        };
-
-      }
-    ];
-
-    services = [
-      {
-        "Core" = [
-          {
-            Nextcloud = {
-              icon = "nextcloud.png";
-              href = "https://nextcloud.home.arpa";
-              description = "Personal Cloud Storage";
-              ping = "https://nextcloud.home.arpa";
-            };
-          }
-
-          {
-            Jellyfin = {
-              icon = "jellyfin.png";
-              href = "https://jellyfin.home.arpa";
-              ping = "https://jellyfin.home.arpa";
-            };
-          }
-        ];
-      }
-
-      {
-        "Games" = [
-          {
-            "Pterodactyl Panel" = {
-              icon = "pterodactyl.png";
-              href = "https://panel.home.arpa";
-              description = "Minecraft server hosting";
-              widget = {
-                type = "pterodactyl";
-                url = "http://192.168.1.Y";
-                key = "";
-              };
-            };
-          }
-        ];
-      }
-
-    ];
-  };
-  # ############################################################
-  # #                         SERVICES                         #
-  # ############################################################
-
-  services.nextcloud = {
-    enable = true;
-    hostName = "nextcloud.home.arpa";
-
-    config = {
-      dbtype = "pgsql";
-      dbname = "nextcloud";
-      dbuser = "nextcloud";
-      adminpassFile = "/home/peaterpita/nixos/secrets/nextcloud-admin-pass";
-    };
-    configureRedis = true;
-    datadir = "/mnt/media/nextcloud-data";
-  };
-
-  services.jellyfin = {
-    enable = true;
-  };
-
-  services.navidrome = {
-    enable = true;
-    openFirewall = true;
-    settings = {
-      MusicFolder = "/mnt/media/music";
-      Address = "0.0.0.0";
-      Port = 4533;
-    };
-  };
-
-  # ############################################################
-  # #                   Docker-run Services                    #
-  # ############################################################
-  virtualisation.oci-containers.containers = {
-
-    "vaultwarden" = {
-      image = "vaultwarden/server:latest";
-      ports = [ "8222:80" ];
-      environment = {
-        SIGNUPS_ALLOWED = "true";
-      };
-      volumes = [ "/var/lib/vaultwarden:/data" ];
-    };
-
-    authentik-server = {
-      image = "ghcr.io/goauthentik/server:2025.12.4";
-      ports = [
-        "9000:9000"
-        "9443:9443"
+    "/mnt/media/movies" = {
+      device = "${config.homelab.storageIP}:/mnt/tank/Media/Movies";
+      fsType = "nfs";
+      options = [
+        "x-systemd.automount"
+        "noauto"
+        "x-systemd.idle-timeout==600"
       ];
 
-      environment = {
-        AUTHENTIK_REDIS__HOST = "127.0.0.1";
-        AUTHENTIK_POSTGRESQL__HOST = "127.0.0.1";
-        AUTHENTIK_POSTGRESQL__USER = "authentik";
-        AUTHENTIK_POSTGRESQL__NAME = "authentik";
-      };
     };
 
-  };
+    "/mnt/media/music" = {
+      device = "${config.homelab.storageIP}:/mnt/tank/Media/Music";
+      fsType = "nfs";
+      options = [
+        "x-systemd.automount"
+        "noauto"
+        "x-systemd.idle-timeout==600"
+      ];
 
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [
-      80
-      8082
-      8096
-      4533
-      8222
-      2283
-      9100
-    ];
-    allowedUDPPorts = [ 53 ];
-
+    };
   };
 
   system.stateVersion = "25.11"; # Did you read the comment?
