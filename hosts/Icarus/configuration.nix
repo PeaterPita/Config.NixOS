@@ -32,6 +32,7 @@
 
   modules.bluetooth.enable = true;
   modules.hyprland.enable = true;
+  modules.wireshark.enable = true;
 
   monitors = [
     {

@@ -17,13 +17,6 @@
   qt.enable = true;
   system.isDesktop = true;
 
-  programs.wireshark = {
-    enable = true;
-    dumpcap.enable = true;
-    usbmon.enable = true;
-    package = pkgs.wireshark-qt;
-  };
-
   services.navidrome = {
     enable = true;
     openFirewall = true;
@@ -40,6 +33,7 @@
     # virt.enable = true;
 
     obs.enable = true;
+    wireshark.enable = true;
     plasma.enable = true;
     steam.enable = true;
     nvidia.enable = true;
