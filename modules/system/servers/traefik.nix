@@ -100,7 +100,7 @@ in
 
               home = {
                 rule = "Host(`${vars.baseDomain}`)";
-                service = "${config.homelab.coreIP}:8082";
+                service = "home-backend";
                 tls = { };
                 entryPoints = [
                   "websecure"
@@ -110,8 +110,15 @@ in
             }
           ];
 
-          services = builtins.mapAttrs mkService cfg.services;
+          services = lib.mkMerge [
+            (builtins.mapAttrs mkService cfg.services)
 
+            {
+              home-backend = {
+                loadBalancer.servers = [ { url = "http://${vars.coreIP}:8082"; } ];
+              };
+            }
+          ];
           middlewares = {
             internal-only.ipWhiteList.sourceRange = [
               "127.0.0.1/32"

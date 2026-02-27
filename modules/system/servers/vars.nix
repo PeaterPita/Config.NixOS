@@ -14,7 +14,7 @@
       default = "192.168.0.134";
     };
 
-    ingressip = lib.mkOption {
+    ingressIP = lib.mkOption {
       type = lib.types.str;
       description = "ip address of ingress (virtual) machine";
       default = "192.168.0.135";
@@ -31,6 +31,14 @@
       description = "IP address of the gameserver machine";
       default = "192.168.X.X";
     };
-  };
 
+    ports = {
+      navidrome = lib.mkOption { default = 4533; };
+      jellyfin = lib.mkOption { default = 8096; };
+      authentik = lib.mkOption { default = 9000; };
+      gitea = lib.mkOption { default = 3000; };
+
+    };
+
+  };
 }

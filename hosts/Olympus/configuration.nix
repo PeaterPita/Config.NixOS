@@ -16,12 +16,13 @@
   services.qemuGuest.enable = true;
 
   homelab.services = {
-    # authentik.enable = true;
     homepage.enable = true;
+    authentik.enable = true;
     # nextcloud.enable = true;
     jellyfin.enable = true;
+    gitea.enable = true;
     navidrome.enable = true;
-    # vaultwarden.enable = true;
+    vaultwarden.enable = true;
   };
 
   environment.systemPackages = with pkgs; [ nfs-utils ];

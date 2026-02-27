@@ -18,13 +18,33 @@
         };
 
         pterodactyl = {
-          host = config.homelab.coreIP;
+          host = config.homelab.gameIP;
           port = 80;
           middlewares = [ "internal-only" ];
         };
         nextcloud = {
           host = config.homelab.gameIP;
           port = 8080;
+        };
+
+        navidrome = {
+          host = config.homelab.coreIP;
+          port = config.homelab.ports.navidrome;
+        };
+
+        jellyfin = {
+          host = config.homelab.coreIP;
+          port = config.homelab.ports.jellyfin;
+        };
+
+        auth = {
+          host = config.homelab.coreIP;
+          port = config.homelab.ports.authentik;
+        };
+
+        git = {
+          host = config.homelab.coreIP;
+          port = 3000;
         };
 
       };
