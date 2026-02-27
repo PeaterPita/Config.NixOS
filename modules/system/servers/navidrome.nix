@@ -16,15 +16,17 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    # homelab.services.homepage.groups."Core" = [
-    #   {
-    #     Jellyfin = {
-    #       icon = "navidrome.png";
-    #       href = "https://navidrome.${vars.baseDomain}";
-    #       ping = "https://navidrome.${vars.baseDomain}";
-    #     };
-    #   }
-    # ];
+    homelab.services.homepage.groups."Core" = [
+      {
+        Navidrome = {
+          icon = "navidrome.png";
+          href = "https://navidrome.${vars.baseDomain}";
+          ping = "http://127.0.0.1:${builtins.toString config.homelab.ports.navidrome}";
+        };
+      }
+    ];
+
+    networking.firewall.allowedTCPPorts = [ vars.ports.navidrome ];
 
     services.navidrome = {
       enable = true;
@@ -32,7 +34,7 @@ in
       settings = {
         MusicFolder = "/mnt/media/music";
         Address = "0.0.0.0";
-        Port = 4533;
+        Port = vars.ports.navidrome;
       };
     };
   };

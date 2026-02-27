@@ -29,16 +29,16 @@ in
       ];
     };
 
-    # homelab.services.homepage.groups."Core" = [
-    #   {
-    #     Nextcloud = {
-    #       icon = "nextcloud.png";
-    #       href = "https://nextcloud.home.arpa";
-    #       description = "Personal Cloud Storage";
-    #       ping = "https://nextcloud.home.arpa";
-    #     };
-    #   }
-    # ];
+    homelab.services.homepage.groups."Core" = [
+      {
+        Nextcloud = {
+          icon = "nextcloud.png";
+          href = "https://nextcloud.${vars.baseDomain}";
+          description = "Personal Cloud Storage";
+          ping = "https://nextcloud.${vars.baseDomain}";
+        };
+      }
+    ];
 
     services.redis.servers.nextcloud.enable = true;
 
