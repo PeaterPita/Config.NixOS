@@ -12,6 +12,7 @@
     feishin
     davinci-resolve
     picard
+    pkgs.jellyfin-desktop
     libdvdcss
   ];
 

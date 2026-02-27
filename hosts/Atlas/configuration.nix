@@ -7,8 +7,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  networking.nameservers = [ "192.168.0.135" ];
+
   environment.systemPackages = with pkgs; [
     quickshell
+
   ];
 
   qt.enable = true;
@@ -26,6 +29,7 @@
     openFirewall = true;
     settings = {
       MusicFolder = "/mnt/music";
+      Jukebox.Enabled = true;
       Address = "0.0.0.0";
     };
   };
