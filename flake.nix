@@ -31,6 +31,7 @@
         packages = with pkgs; [
           sops
           age
+          openssl
         ];
       };
     };

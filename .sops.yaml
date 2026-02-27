@@ -1,10 +1,17 @@
 keys:
   - &Atlas age18e3wp3a62t9yc8fe2yvjaxxpc4ze984ljead6ljh0av9pc02cp4qpl6ndt
-  - &Ingress age1wnxksdjsfc2nflmxxzqnqanwrl0peu23zzt8qhe6rl623de5e5sqwvpm9q
+  - &Hermes age1wnxksdjsfc2nflmxxzqnqanwrl0peu23zzt8qhe6rl623de5e5sqwvpm9q
+  - &Olympus age16h4rus0c80t5lelf6zy8pvch2ffhpjenzg3cr7wuv92gd5tugveqh6e7fs
 
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
       - age:
           - *Atlas
-          - *Ingress
+          - *Hermes
+
+  - path_regex: secrets/services.yaml$
+    key_groups:
+      - age:
+          - *Atlas
+          - *Olympus
