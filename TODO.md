@@ -2,7 +2,7 @@
 ---
 
 ## Immediate 
-- [ ] Sops support for emails and passwords
+- [x] Sops support for emails and passwords
 ^ Make config public after
 
 history changes:
@@ -16,7 +16,7 @@ networking module history
 
 ## Deco
 - [ ] Themes folder. Actual functional themes ++ (Theme switcher?)
-- [ ] End Summary screen. Color coded modules based on users using them.
+- [x] End Summary screen. Color coded modules based on users using them.
 
 
 ## Hardware Support

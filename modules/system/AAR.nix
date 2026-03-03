@@ -15,7 +15,7 @@ let
     "\\033[1;34m" # Blue
   ];
 
-  sysPkgs = map lib.getName config.environment.systemPackages;
+  sysPkgs = lib.unique (map (lib.getName) config.environment.systemPackages);
   sysPkgsCount = builtins.length sysPkgs;
   sysPkgsStr = builtins.concatStringsSep ", " sysPkgs;
 
