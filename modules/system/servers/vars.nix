@@ -36,9 +36,6 @@
       navidrome = lib.mkOption { default = 4533; };
       jellyfin = lib.mkOption { default = 8096; };
       authentik = lib.mkOption { default = 9000; };
-      gitea = lib.mkOption { default = 3000; };
-
     };
-
   };
 }

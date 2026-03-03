@@ -41,12 +41,6 @@
           host = config.homelab.coreIP;
           port = config.homelab.ports.authentik;
         };
-
-        git = {
-          host = config.homelab.coreIP;
-          port = 3000;
-        };
-
       };
     };
     adguard.enable = true;
