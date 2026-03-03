@@ -17,11 +17,11 @@ in
 
     environment.systemPackages = with pkgs; [
       udiskie
+      swww
 
       libnotify
       brightnessctl
       wl-clipboard
-
     ];
     services.udisks2.enable = true;
     programs = {

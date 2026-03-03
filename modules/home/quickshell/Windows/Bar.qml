@@ -99,12 +99,6 @@ Scope {
                     //     }
                     // }
 
-                    Workspaces {}
-
-                    Item {
-                        Layout.fillWidth: true
-                    }
-
                     GradientText {
                         text: ""
                         font.pixelSize: 24
@@ -117,6 +111,8 @@ Scope {
                             onClicked: GlobalState.controlCenterShow = !GlobalState.controlCenterShow
                         }
                     }
+
+                    Workspaces {}
 
                     Item {
                         Layout.fillWidth: true
