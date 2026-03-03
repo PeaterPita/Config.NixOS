@@ -2,21 +2,15 @@
 ---
 
 ## Immediate 
-- [x] Sops support for emails and passwords
-^ Make config public after
 
 history changes:
 remove git email 
 networking module history
 
-## Utility
-- [ ] Hyprland nvimTex doesnt automatically open Zathura. 
-^ Opens libre instead. change this
 
 
 ## Deco
 - [ ] Themes folder. Actual functional themes ++ (Theme switcher?)
-- [x] End Summary screen. Color coded modules based on users using them.
 
 
 ## Hardware Support
@@ -28,12 +22,3 @@ networking module history
 - [ ] Docs
 
 
-## Custom Packages
-- [ ] Soulframe package
-^ May require users adding installer themselves to nixstore
-
-- [ ] Look into package for https://github.com/cowtoolz/webcamize
-
-## Future projects
-- [ ] SPEN working on laptop?
-^ Looked into. Wont be possible on this laptop. But maybe one with a compatible digitizer.
