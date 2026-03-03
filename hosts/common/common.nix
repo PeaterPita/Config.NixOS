@@ -15,6 +15,8 @@
     timeout = 0; # <- Make it so that the generation choice doesnt appear UNLESS key is held during boot sequence.
   };
 
+  services.resolved.enable = true;
+
   boot = {
     kernel.sysctl."kernel.sysrq" = 1;
     consoleLogLevel = 3;

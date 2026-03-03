@@ -32,6 +32,7 @@ in
       };
 
       services.mullvad-vpn.enable = true;
+      services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
       services.xserver.enable = true;
       # Default background image + color scheme
