@@ -30,9 +30,16 @@
     HandleLidSwitchDocked = "ignore";
   };
 
-  modules.bluetooth.enable = true;
-  modules.hyprland.enable = true;
-  modules.wireshark.enable = true;
+  modules = {
+
+    bluetooth.enable = true;
+    hyprland.enable = true;
+    wireshark.enable = true;
+    networking = {
+      enable = true;
+      wireless.enable = true;
+    };
+  };
 
   monitors = [
     {
