@@ -3,11 +3,6 @@
 
 ## Immediate 
 
-history changes:
-remove git email 
-networking module history
-
-
 
 ## Deco
 - [ ] Themes folder. Actual functional themes ++ (Theme switcher?)
