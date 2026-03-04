@@ -1,5 +1,4 @@
 # Personal NixOS System Configuration
----
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 [![NixOS](https://img.shields.io/badge/NixOS-25.11-blue?style=flat&logo=nixos&logoColor=white)](https://nixos.org)
 
@@ -10,7 +9,6 @@ This repo should also not be used for inspiration for your own configs; I would 
 ---
 
 ## Machines
----
 
 | Hostname | Role | Status | Notes |
 | :--- | :--- | :--- | :--- |
@@ -22,7 +20,6 @@ This repo should also not be used for inspiration for your own configs; I would 
 
 
 ## References / Resources
----
 - [NixOS Wiki](https://wiki.nixos.org/wiki/NixOS_Wiki)
 - [NixOS manual](https://nixos.org/manual/nix/stable)
 - [Home-manager docs](https://nix-community.github.io/home-manager/index.html#ch-nix-flakes)
