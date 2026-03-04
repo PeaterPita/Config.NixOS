@@ -37,10 +37,6 @@
     allowUnfree = true;
   };
   nix = {
-    registry.dev.to = {
-      type = "path";
-      path = "/home/peaterpita/nixos";
-    };
     settings.auto-optimise-store = true;
     settings.experimental-features = [
       "nix-command"
@@ -51,6 +47,11 @@
       # keep-outputs = true
       # keep-derivations = true
     '';
+
+    registry.temps.to = {
+      type = "git";
+      url = "git+ssh://git@github.com/PeaterPita/nixtemplates.git";
+    };
 
     gc.automatic = true;
     gc.dates = "weekly";
