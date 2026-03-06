@@ -1,5 +1,6 @@
 keys:
   - &Atlas age18e3wp3a62t9yc8fe2yvjaxxpc4ze984ljead6ljh0av9pc02cp4qpl6ndt
+  - &Icarus age1s6mpeq7tundjx4xf33dp4alndhjcv5pu6kdr2szgzdy05pw9zyuqugduyw
   - &Hermes age1wnxksdjsfc2nflmxxzqnqanwrl0peu23zzt8qhe6rl623de5e5sqwvpm9q
   - &Olympus age16h4rus0c80t5lelf6zy8pvch2ffhpjenzg3cr7wuv92gd5tugveqh6e7fs
 
@@ -8,6 +9,7 @@ creation_rules:
     key_groups:
       - age:
           - *Atlas
+          - *Icarus
           - *Hermes
 
   - path_regex: secrets/services.yaml$
