@@ -12,7 +12,6 @@
   environment.systemPackages = with pkgs; [
     quickshell
     sqlitebrowser
-
   ];
 
   qt.enable = true;
