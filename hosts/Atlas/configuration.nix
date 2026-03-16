@@ -30,6 +30,7 @@
   services.flatpak.enable = true;
 
   modules = {
+    kdeConnect.enable = true;
     # virt.enable = true;
 
     obs.enable = true;

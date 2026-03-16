@@ -26,7 +26,6 @@
     firefox.enable = true;
     obsidian.enable = true;
     office.enable = true;
-    kdeConnect.enable = true;
     scrcpy.enable = true;
     quickshell.enable = true;
 

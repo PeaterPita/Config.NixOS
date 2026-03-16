@@ -31,6 +31,7 @@
   };
 
   modules = {
+    kdeConnect.enable = true;
 
     bluetooth.enable = true;
     hyprland.enable = true;

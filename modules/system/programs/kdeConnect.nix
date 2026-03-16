@@ -14,6 +14,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.kdeconnect.enable = true;
+    programs.kdeconnect = {
+      enable = true;
+      package = lib.mkForce pkgs.unstable.kdePackages.kdeconnect-kde;
+    };
   };
 }

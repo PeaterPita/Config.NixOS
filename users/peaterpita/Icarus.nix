@@ -48,7 +48,6 @@
     mpv.enable = true;
     firefox.enable = true;
     syncthing.enable = true;
-    kdeConnect.enable = true;
     obsidian.enable = true;
     office.enable = true;
     spotify.enable = true;
