@@ -22,7 +22,7 @@ in
   config = lib.mkIf cfg.enable {
 
     home.packages = with pkgs; [
-      nixd
+      # nixd
       nixfmt-rfc-style
     ];
 
@@ -38,7 +38,7 @@ in
       diagnostic.settings = {
         virtual_text = true;
         signs = true;
-        update_in_insert = true;
+        update_in_insert = false;
         underline = true;
       };
     };

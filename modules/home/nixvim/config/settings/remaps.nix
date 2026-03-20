@@ -49,6 +49,19 @@
       action = ">gv";
     }
 
+    # Open all folds in file
+    {
+      mode = [ "n" ];
+      key = "<leader>zo";
+      action = "zR";
+    }
+
+    # Close all folds in file
+    {
+      mode = [ "n" ];
+      key = "<leader>zc";
+      action = "zM";
+    }
     ###################
     # System Commands #
     ###################
@@ -63,25 +76,13 @@
     }
 
     {
-      ## Paste to system ##
+      ## Paste from system ##
       mode = [
         "n"
         "v"
       ];
       key = "<leader>p";
       action = "\"+p";
-    }
-
-    {
-      ## Exit keybind ##
-      mode = "n";
-      key = "<leader>pv";
-      action = ":Ex<CR>";
-      options = {
-        noremap = true;
-        silent = true;
-
-      };
     }
 
   ];

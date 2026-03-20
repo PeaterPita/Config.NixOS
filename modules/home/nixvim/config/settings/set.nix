@@ -46,18 +46,25 @@
     signcolumn = "yes";
 
     # ms between updates
-    updatetime = 50;
+    updatetime = 250;
 
-    # Folds
+    # # Folds
     foldlevel = 99;
     foldlevelstart = 99;
+    foldmethod = "expr";
+    foldexpr = "nvim_treesitter#foldexpr()";
 
     undofile = true;
 
-    # Spell check
+    # # Spell check
     spell = true;
 
-    cmdheight = 0;
+    # cmdheight = 0;
+
+    cursorline = true;
+    ignorecase = true;
+    smartcase = true;
+
   };
 
 }

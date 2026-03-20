@@ -15,7 +15,6 @@
   lsp = {
     inlayHints.enable = true;
     servers = {
-      "*" = { };
 
       ########
       # Java #
@@ -99,6 +98,8 @@
       ########
       yamlls.enable = true;
       tombi.enable = true;
+      marksman.enable = true;
+
       tinymist = {
         enable = true;
         config = {
@@ -110,7 +111,7 @@
               enabled = true;
               when = "onType";
             };
-            outputPath = "$root/build/$dir/$name";
+            outputPath = "$root/build/$name";
           };
           on_attach = lib.nixvim.mkRaw ''
             function(client, bufnr)
@@ -178,13 +179,29 @@
       }
 
       {
+        key = "gi";
+        lspBufAction = "implementation";
+      }
+
+      {
+        key = "gi";
+        lspBufAction = "type_definition";
+      }
+
+      {
         key = "gr";
         lspBufAction = "references";
       }
+
       {
         key = "gD";
         lspBufAction = "declaration";
 
+      }
+
+      {
+        key = "<leader>rn";
+        lspBufAction = "rename";
       }
 
       {
@@ -196,6 +213,11 @@
         key = "<leader>ca";
         lspBufAction = "code_action";
 
+      }
+
+      {
+        key = "leader>ih";
+        action = lib.nixvim.mkRaw "function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end";
       }
     ];
   };
