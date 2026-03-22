@@ -5,7 +5,7 @@
     #                Possible outputs:                 #
     # https://wiki.nixos.org/wiki/Flakes#Output_schema #
     ####################################################
-    { nixpkgs, ... }@inputs:
+    { self, nixpkgs, ... }@inputs:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
 
@@ -32,6 +32,11 @@
           openssl
         ];
       };
+
+      checks."x86_64-linux" = builtins.mapAttrs (
+        _: cfg: cfg.config.system.build.toplevel
+      ) self.nixosConfigurations;
+
     };
 
   inputs = {
