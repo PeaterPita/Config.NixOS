@@ -56,7 +56,6 @@ inputs.nixpkgs.lib.nixosSystem {
       home-manager.backupFileExtension = "backup";
     }
 
-    inputs.stylix.nixosModules.stylix
     inputs.sops-nix.nixosModules.sops
     {
       sops.defaultSopsFile = ../secrets/secrets.yaml;

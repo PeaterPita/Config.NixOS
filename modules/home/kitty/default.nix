@@ -26,6 +26,7 @@ in
       settings = {
         confirm_os_window_close = "0";
         map = "ctrl+c copy_or_interrupt";
+        background_opacity = "0.8";
       };
     };
   };
