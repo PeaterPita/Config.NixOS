@@ -7,7 +7,7 @@
     ####################################################
     { self, nixpkgs, ... }@inputs:
     let
-      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      lib = nixpkgs.lib;
 
       mkSystem = import ./utils/mkSystem.nix {
         inherit
@@ -15,23 +15,24 @@
           ;
       };
 
+      hostNames = builtins.filter (name: name != "common") (
+        builtins.attrNames (lib.filterAttrs (_: type: type == "directory") (builtins.readDir ./hosts))
+      );
+
+      nixosConfigurations = builtins.listToAttrs (
+        map (hostname: {
+          name = hostname;
+          value =
+            let
+              meta = import ./hosts/${hostname}/host.nix;
+            in
+            mkSystem hostname meta.users meta.system;
+        }) hostNames
+      );
+
     in
     {
-      nixosConfigurations = {
-        laptop = mkSystem "Icarus" [ "peaterpita" ] "x86_64-linux";
-        desktop = mkSystem "Atlas" [ "peaterpita" ] "x86_64-linux";
-        server = mkSystem "Olympus" [ "peaterpita" ] "x86_64-linux";
-        ingress = mkSystem "Hermes" [ "peaterpita" ] "x86_64-linux";
-
-      };
-
-      devShells."x86_64-linux".default = pkgs.mkShell {
-        packages = with pkgs; [
-          sops
-          age
-          openssl
-        ];
-      };
+      inherit nixosConfigurations;
 
       checks."x86_64-linux" = builtins.mapAttrs (
         _: cfg: cfg.config.system.build.toplevel

@@ -12,6 +12,7 @@
   environment.systemPackages = with pkgs; [
     quickshell
     sqlitebrowser
+    parsec-bin
   ];
 
   qt.enable = true;
