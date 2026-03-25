@@ -10,7 +10,7 @@
   ];
 
   modules = {
-    # niri.enable = true;
+    niri.enable = true;
     discord.enable = true;
     zathura.enable = true;
     mpv.enable = true;

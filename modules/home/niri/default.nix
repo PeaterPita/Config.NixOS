@@ -120,7 +120,6 @@ in
                 natural-scroll
             }
 
-            }
         }
         ${monitorsText}
         overview {
@@ -254,12 +253,10 @@ in
             ${workspaceBinds}
             Mod+Shift+Slash { show-hotkey-overlay; }
             Mod+Shift+O hotkey-overlay-title="toggle opacity" { toggle-window-rule-opacity; }
-            Mod+Shift+W hotkey-overlay-title="random wallpaper" { spawn-sh "waypaper --random"; }    
 
-            Mod+W hotkey-overlay-title="toggle waybar" repeat=false { spawn-sh "pkill -SIGUSR1 qs || qs"; }
+            Mod+Shift+W hotkey-overlay-title="toggle waybar" repeat=false { spawn-sh "pkill -SIGUSR1 qs || qs"; }
 
             Mod+Q hotkey-overlay-title="Open a Terminal " { spawn "kitty"; }
-            Mod+F hotkey-overlay-title="Open a Browser " { spawn "firefox"; }
             Mod+O hotkey-overlay-title="Open a Obsidian " { spawn "obsidian"; }
             Mod+E hotkey-overlay-title="Open a FileManager " { spawn "files"; }
             Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "wofi --show drun"; }
@@ -281,7 +278,7 @@ in
 
             Mod+TAB repeat=false { toggle-overview; }
 
-            Mod+Q repeat=false { close-window; }
+            Mod+W repeat=false { close-window; }
 
             Mod+Left  { focus-column-left; }
             Mod+Down  { focus-window-or-workspace-down; }
