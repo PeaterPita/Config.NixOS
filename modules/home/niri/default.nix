@@ -25,7 +25,6 @@ in
     };
 
     home.packages = with pkgs; [
-      ffmpeg
       grimblast
     ];
 
@@ -87,26 +86,37 @@ in
           '') osConfig.monitors
         );
 
+        workspaces = [
+          "1"
+          "2"
+          "3"
+          "4"
+          "5"
+          "6"
+          "7"
+          "8"
+          "9"
+        ];
+
         workspaceBinds = lib.concatStringsSep "\n" (
-          builtins.genList (
-            i:
+          lib.imap1 (
+            i: name:
             let
-              ws = toString (i + 1);
+              ws = toString i;
             in
             ''
               Mod+${ws} { focus-workspace ${ws}; }
               Mod+Shift+${ws} { move-window-to-workspace ${ws}; }
             ''
-          ) 9
+          ) workspaces
         );
 
       in
-
       ''
         input {
             keyboard {
                 xkb {
-                    layout "us,es"
+                    layout "us,gb"
                     options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
                 }
                 numlock
@@ -168,9 +178,6 @@ in
             skip-at-startup
         }
         screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-        animations {
-            // off
-            }
 
 
         window-rule {
@@ -184,16 +191,6 @@ in
             default-floating-position x=100 y=100 relative-to="bottom-right"
             tiled-state true
         }
-
-        workspace "1"
-        workspace "brow"
-        workspace "term"
-        workspace "4"
-        workspace "5"
-        workspace "6"
-        workspace "7"
-        workspace "obs"
-        workspace "oss"
 
         window-rule {
             match app-id=r#"obs"#
@@ -217,7 +214,7 @@ in
             open-on-workspace "brow"
         }
         window-rule {
-            match app-id=r#"ghostty"#
+            match app-id=r#"kitty"#
             open-maximized true
             opacity 0.65
             open-on-workspace "term"
@@ -242,11 +239,9 @@ in
         }
 
 
-        // This line starts waybar, a commonly used bar for Wayland compositors.
         spawn-at-startup "qs"
         spawn-at-startup "obsidian"
         spawn-at-startup "firefox"
-        spawn-sh-at-startup "swayidle -w timeout 600 'swaylock -f' timeout 900 'niri msg output power off' resume 'niri msg output power on' before-sleep 'swaylock -f'"
 
         binds {
 
@@ -259,7 +254,7 @@ in
             Mod+Q hotkey-overlay-title="Open a Terminal " { spawn "kitty"; }
             Mod+O hotkey-overlay-title="Open a Obsidian " { spawn "obsidian"; }
             Mod+E hotkey-overlay-title="Open a FileManager " { spawn "files"; }
-            Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "wofi --show drun"; }
+            Mod+Space hotkey-overlay-title="Run an Application" { spawn-sh "fuzzel"; }
             Super+Shift+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "swaylock "; }
             Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
