@@ -87,8 +87,8 @@ in
         );
 
         workspaces = [
-          "1"
-          "2"
+          "term"
+          "main"
           "3"
           "4"
           "5"
@@ -160,15 +160,10 @@ in
 
             shadow {
                 on
-
                 draw-behind-window true
-
                 softness 50
-
                 spread 5
-
                 offset x=0 y=5
-
                 color "#0007"
             }
             background-color "transparent"
@@ -177,13 +172,7 @@ in
         hotkey-overlay {
             skip-at-startup
         }
-        screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-
-
-        window-rule {
-            match app-id=r#"^org\.wezfurlong\.wezterm$"#
-            default-column-width {}
-        }
+        screenshot-path "~/Pictures/Screenshots/Screenshot %Y-%m-%d %H-%M-%S.png"
 
         window-rule {
             match title="Picture in picture"
@@ -193,44 +182,21 @@ in
         }
 
         window-rule {
-            match app-id=r#"obs"#
-            open-on-workspace "obs"
-        }
-        window-rule {
-            match app-id=r#"steam"#
-            open-on-workspace "oss"
-        }
-        window-rule {
-            match app-id=r#"^Spotify$"#
-            open-on-workspace "oss"
-        }
-        window-rule {
-            match app-id=r#"^discord$"#
-            open-on-workspace "oss"
-        }
-        window-rule {
-            match app-id=r#"chromium"#
-            open-maximized true
-            open-on-workspace "brow"
-        }
-        window-rule {
             match app-id=r#"kitty"#
             open-maximized true
-            opacity 0.65
+            opacity 0.80
             open-on-workspace "term"
         }
 
+
         window-rule {
-            match app-id=r#"qemu"#
-            open-on-workspace "5"
-            open-maximized true
+            match app-id=r#"firefox"#
+            open-on-workspace "main"
         }
 
-        /-window-rule {
-            match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-            match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
-            block-out-from "screen-capture"
+        window-rule {
+            match app-id=r#"obsidian"#
+            open-on-workspace "main"
         }
 
         window-rule {
@@ -249,14 +215,13 @@ in
             Mod+Shift+Slash { show-hotkey-overlay; }
             Mod+Shift+O hotkey-overlay-title="toggle opacity" { toggle-window-rule-opacity; }
 
-            Mod+Shift+W hotkey-overlay-title="toggle waybar" repeat=false { spawn-sh "pkill -SIGUSR1 qs || qs"; }
+            Mod+Shift+W hotkey-overlay-title="toggle bar" repeat=false { spawn-sh "pkill -SIGUSR1 qs || qs"; }
 
             Mod+Q hotkey-overlay-title="Open a Terminal " { spawn "kitty"; }
             Mod+O hotkey-overlay-title="Open a Obsidian " { spawn "obsidian"; }
             Mod+E hotkey-overlay-title="Open a FileManager " { spawn "files"; }
             Mod+Space hotkey-overlay-title="Run an Application" { spawn-sh "fuzzel"; }
             Super+Shift+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "swaylock "; }
-            Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
             XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"; }
             XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
@@ -279,20 +244,12 @@ in
             Mod+Down  { focus-window-or-workspace-down; }
             Mod+Up    { focus-window-or-workspace-up; }
             Mod+Right { focus-column-right; }
-            Mod+H     { focus-column-left; }
-            Mod+L     { focus-column-right; }
 
             Mod+Ctrl+Left  { move-column-left; }
             Mod+Ctrl+Down  { move-window-down; }
             Mod+Ctrl+Up    { move-window-up; }
             Mod+Ctrl+Right { move-column-right; }
-            Mod+Ctrl+H     { move-column-left; }
-            Mod+Ctrl+L     { move-column-right; }
 
-            Mod+J     { focus-window-or-workspace-down; }
-            Mod+K     { focus-window-or-workspace-up; }
-            Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-            Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
 
             Mod+Home { focus-column-first; }
             Mod+End  { focus-column-last; }
@@ -361,26 +318,13 @@ in
 
 
 
-            Print { screenshot; }
-            Ctrl+Print { screenshot-screen; }
-            Alt+Print { screenshot-window; }
-
+            Mod+Shift+S { screenshot; }
             Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
-            Mod+Shift+E { quit; }
-            Ctrl+Alt+Delete { quit; }
-
-            Mod+Shift+P { power-off-monitors; }
         }
         layer-rule {
             place-within-backdrop true
         }
-
-
-
-
-
-
       '';
   };
 }
