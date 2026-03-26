@@ -1,14 +1,13 @@
 import QtQuick
+import QtQuick.Layouts
 import ".."
 
 Item {
     id: root
     signal clicked
 
-    implicitWidth: contentContainer.width
-    implicitHeight: contentContainer.height
-
-    default property alias contentItem: contentContainer.data
+    implicitHeight: Theme.active.barHeight
+    implicitWidth: contentContainer.implicitWidth + 5 * 2 + 4
 
     property Component dropdownComponent: null
     property real dropdownWidth: 150
@@ -46,8 +45,8 @@ Item {
     Item {
         id: contentContainer
         anchors.centerIn: parent
-        width: childrenRect.width
-        height: childrenRect.height
+        Layout.alignment: Qt.AlignVCenter
+        default property alias content: contentContainer.data
     }
 
     MouseArea {

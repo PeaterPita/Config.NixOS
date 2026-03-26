@@ -9,9 +9,11 @@ Item {
 
     Behavior on x {
         enabled: GlobalState.pillVisible
-        NumberAnimation {
-            duration: 400
-            easing.type: Easing.OutExpo
+        SpringAnimation {
+            spring: Theme.pillSpringX
+            damping: Theme.pillDampingX
+            mass: Theme.pillMassX
+            epsilon: 0.5
         }
     }
 
@@ -19,19 +21,24 @@ Item {
 
     Behavior on width {
         enabled: GlobalState.pillVisible
-        NumberAnimation {
-            duration: 400
-            easing.type: Easing.OutExpo
+        SpringAnimation {
+            spring: Theme.pillSpringWidth
+            damping: Theme.pillDampingWidth
+            mass: Theme.pillMassWidth
+            epsilon: 0.5
         }
     }
 
     height: GlobalState.pillVisible ? GlobalState.pillHeight : 0
     Behavior on height {
-        NumberAnimation {
-            duration: 400
-            easing.type: Easing.OutExpo
+        SpringAnimation {
+            spring: Theme.pillSpringHeight
+            damping: Theme.pillDampingHeight
+            mass: Theme.pillMassHeight
+            epsilon: 0.5
         }
     }
+
     Rectangle {
         id: pillMain
         anchors.fill: parent
@@ -76,10 +83,10 @@ Item {
             id: contentLoader
             anchors.fill: parent
             sourceComponent: GlobalState.pillContent
-            opacity: GlobalState.pillVisible ? 1 : 0
+            opacity: GlobalState.pillVisible && root.height > 8 ? 1 : 0
             Behavior on opacity {
                 NumberAnimation {
-                    duration: 250
+                    duration: 200
                     easing.type: Easing.InOutQuad
                 }
             }
