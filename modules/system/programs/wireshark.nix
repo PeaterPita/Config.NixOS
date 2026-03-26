@@ -14,7 +14,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ termshark ];
     programs.wireshark = {
       enable = true;
       dumpcap.enable = true;
