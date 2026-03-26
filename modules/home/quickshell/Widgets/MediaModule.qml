@@ -210,7 +210,7 @@ Item {
             LinearGradient {
                 anchors.fill: completedBar
                 source: completedBar
-                gradient: Theme.active.gradGreen
+                gradient: Theme.gradGreen
                 start: Qt.point(0, 0)
                 end: Qt.point(width, 0)
             }
@@ -340,7 +340,7 @@ Item {
 
                         font.pixelSize: Theme.active.fontSize
                         font.family: Theme.active.fontFamily
-                        gradient: Theme.active.gradGreen
+                        gradient: Theme.gradGreen
                         Layout.alignment: Qt.AlignVCenter
                     }
 

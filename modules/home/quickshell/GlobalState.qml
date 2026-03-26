@@ -1,9 +1,11 @@
 pragma Singleton
 import QtQuick
+import Quickshell
 
-QtObject {
+Singleton {
+    id: root
+    property Item barRoot: null
 
-    // PILL
     property int pillX: 0
     property Component pillContent: null
     property bool pillVisible: false
@@ -13,7 +15,4 @@ QtObject {
     property bool pillHovered: false
 
     property bool pillPinned: false
-
-    // Control Center
-    property bool controlCenterShow: false
 }

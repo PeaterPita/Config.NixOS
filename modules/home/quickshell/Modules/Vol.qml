@@ -8,7 +8,6 @@ ModuleBase {
     id: volume
 
     property int volumeLevel: 0
-    // Volume level (wpctl for PipeWire)
     Process {
         id: volProc
         command: ["wpctl", "get-volume", "@DEFAULT_AUDIO_SINK@"]

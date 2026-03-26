@@ -5,9 +5,46 @@ import Quickshell
 Singleton {
     property QtObject active: darkTop
 
+    readonly property real springStiffness: 6.5
+    readonly property real springDamping: 0.72
+    readonly property real springMass: 0.6
+
+    readonly property real pillSpringX: 7.0
+    readonly property real pillDampingX: 0.65
+    readonly property real pillMassX: 0.8
+
+    readonly property real pillSpringWidth: 6.0
+    readonly property real pillDampingWidth: 0.70
+    readonly property real pillMassWidth: 0.8
+
+    readonly property real pillSpringHeight: 5.0
+    readonly property real pillDampingHeight: 0.35
+    readonly property real pillMassHeight: 0.7
+
+    property Gradient gradOrange: Gradient {
+        GradientStop {
+            position: 0.0
+            color: "#ff9e64"
+        }
+        GradientStop {
+            position: 1.0
+            color: "#e0af68"
+        }
+    }
+
+    property Gradient gradGreen: Gradient {
+        GradientStop {
+            position: 0.0
+            color: "#9ece6a"
+        }
+        GradientStop {
+            position: 1.0
+            color: "#73daca"
+        }
+    }
+
     QtObject {
         id: darkTop
-        // Theme colors
         property color colBg: "#222222"
         property color colFg: "#a9b1d6"
         property color colMuted: "#444b6a"
@@ -17,40 +54,15 @@ Singleton {
         property color colYellow: "#e0af68"
         property color colBlue: "#7aa2f7"
 
-        // Gradients
-        property Gradient gradOrange: Gradient {
-            GradientStop {
-                position: 0.0
-                color: "#ff9e64"
-            }
-            GradientStop {
-                position: 1.0
-                color: "#e0af68"
-            }
-        }
-
-        property Gradient gradGreen: Gradient {
-            GradientStop {
-                position: 0.0
-                color: "#9ece6a"
-            }
-            GradientStop {
-                position: 1.0
-                color: "#73daca"
-            }
-        }
-        // Font
         property string fontFamily: "JetBrainsMono Nerd Font"
         property int fontSize: 14
 
-        // Bar
         property int barHeight: 30
         property bool barTop: true
     }
 
     QtObject {
         id: bottom
-        // Theme colors
         property color colBg: "#235EDC"
         property color colFg: "#111111"
         property color colMuted: "#888888"
@@ -60,11 +72,9 @@ Singleton {
         property color colYellow: "#cc8800"
         property color colBlue: "#0044cc"
 
-        // Font
         property string fontFamily: "JetBrainsMono Nerd Font"
         property int fontSize: 14
 
-        // Bar
         property int barHeight: 40
         property bool barTop: false
     }

@@ -25,7 +25,6 @@ Singleton {
             onStreamFinished: {
                 const json = JSON.parse(text);
                 const year = new Date().getFullYear();
-                // Calculate total contributions in the last 365 days
                 const oneYearAgo = new Date();
                 oneYearAgo.setDate(oneYearAgo.getDate() - 365);
                 root.contribution_number = json.contributions.filter(c => new Date(c.date) >= oneYearAgo).reduce((sum, c) => sum + c.count, 0);

@@ -55,7 +55,7 @@ ModuleBase {
                     text: Qt.formatDateTime(new Date(), "ddd MMM d")
                     font.pixelSize: Theme.active.fontSize
                     font.family: Theme.active.fontFamily
-                    gradient: Theme.active.gradOrange
+                    gradient: Theme.gradOrange
                     Layout.alignment: Qt.AlignVCenter
                 }
 
