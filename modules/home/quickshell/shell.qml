@@ -9,5 +9,4 @@ ShellRoot {
     id: root
 
     Windows.Bar {}
-    Windows.ControlCenter {}
 }

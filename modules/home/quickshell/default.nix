@@ -33,7 +33,6 @@ in
     home.packages = with pkgs; [
       nerd-fonts.iosevka
       qt6.qt5compat
-
     ];
 
     xdg.configFile = {
