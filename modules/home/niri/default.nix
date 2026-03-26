@@ -28,7 +28,26 @@ in
       grimblast
     ];
 
-    programs.swaylock.enable = true;
+    programs.swaylock = {
+      enable = true;
+      settings = {
+        color = "1e1e2e";
+        indicator-radius = 100;
+        indicator-thickness = 7;
+        ring-color = "7fc8ff";
+        inside-color = "1e1e2ecc";
+        line-color = "00000000";
+        key-hl-color = "7fc8ff";
+        text-color = "cdd6f4";
+        ring-ver-color = "a6e3a1";
+        ring-wrong-color = "f38ba8";
+        inside-ver-color = "1e1e2ecc";
+        inside-wrong-color = "1e1e2ecc";
+        text-ver-color = "a6e3a1";
+        text-wrong-color = "f38ba8";
+        show-failed-attempts = true;
+      };
+    };
 
     services.swayidle = {
       enable = true;
@@ -114,6 +133,7 @@ in
       in
       ''
         input {
+            disable-power-key-handling
             keyboard {
                 xkb {
                     layout "us,gb"
@@ -141,12 +161,12 @@ in
             center-focused-column "on-overflow"
             always-center-single-column
 
-            focus-ring {
-                width 2
-                active-color "#7fc8ff"
-                inactive-color "#505050"
-
-            }
+            // focus-ring {
+            //     width 2
+            //    active-color "#7fc8ff"
+            //     inactive-color "#505050"
+            //
+            // }
 
             border {
                 off
