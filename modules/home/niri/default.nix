@@ -22,6 +22,7 @@ in
       swaync.enable = true;
       theme.enable = true;
       nemo.enable = true;
+      waybar.enable = true;
     };
 
     home.packages = with pkgs; [
@@ -204,7 +205,6 @@ in
         window-rule {
             match app-id=r#"kitty"#
             open-maximized true
-            opacity 0.80
             open-on-workspace "term"
         }
 
@@ -226,6 +226,7 @@ in
 
 
         spawn-at-startup "qs"
+        spawn-at-startup "swww-daemon"
         spawn-at-startup "obsidian"
         spawn-at-startup "firefox"
 
@@ -265,33 +266,20 @@ in
             Mod+Up    { focus-window-or-workspace-up; }
             Mod+Right { focus-column-right; }
 
-            Mod+Ctrl+Left  { move-column-left; }
-            Mod+Ctrl+Down  { move-window-down; }
-            Mod+Ctrl+Up    { move-window-up; }
-            Mod+Ctrl+Right { move-column-right; }
 
+            Mod+Shift+Left  { move-column-left; }
+            Mod+Shift+Right { move-column-right; }
+            Mod+Alt+Down    { move-window-down; }
+            Mod+Alt+Up      { move-window-up; }
 
-            Mod+Home { focus-column-first; }
-            Mod+End  { focus-column-last; }
-            Mod+Ctrl+Home { move-column-to-first; }
-            Mod+Ctrl+End  { move-column-to-last; }
+            Mod+Shift+Down { move-column-to-workspace-down; }
+            Mod+Shift+Up   { move-column-to-workspace-up; }
 
+            Mod+Ctrl+Left  { set-column-width "-10%"; }
+            Mod+Ctrl+Right { set-column-width "+10%"; }
+            Mod+Ctrl+Up    { set-window-height "-10%"; }
+            Mod+Ctrl+Down  { set-window-height "+10%"; }
 
-
-            Mod+Page_Down      { focus-workspace-down; }
-            Mod+Page_Up        { focus-workspace-up; }
-            Mod+U              { focus-workspace-down; }
-            Mod+I              { focus-workspace-up; }
-            Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
-            Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-            Mod+Ctrl+U         { move-column-to-workspace-down; }
-            Mod+Ctrl+I         { move-column-to-workspace-up; }
-
-
-            Mod+Shift+Page_Down { move-workspace-down; }
-            Mod+Shift+Page_Up   { move-workspace-up; }
-            Mod+Shift+U         { move-workspace-down; }
-            Mod+Shift+I         { move-workspace-up; }
 
             Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
             Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
@@ -312,9 +300,6 @@ in
             Mod+BracketLeft  { consume-or-expel-window-left; }
             Mod+BracketRight { consume-or-expel-window-right; }
 
-            Mod+Comma  { consume-window-into-column; }
-            Mod+Period { expel-window-from-column; }
-
             Mod+R { switch-preset-column-width; }
             Mod+Shift+R { switch-preset-window-height; }
             Mod+Ctrl+R { reset-window-height; }
@@ -326,12 +311,6 @@ in
             Mod+C { center-column; }
 
             Mod+Ctrl+C { center-visible-columns; }
-
-            Mod+Minus { set-column-width "-10%"; }
-            Mod+Equal { set-column-width "+10%"; }
-
-            Mod+Shift+Minus { set-window-height "-10%"; }
-            Mod+Shift+Equal { set-window-height "+10%"; }
 
             Mod+V       { toggle-window-floating; }
             Mod+Shift+V { switch-focus-between-floating-and-tiling; }
