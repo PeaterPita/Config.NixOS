@@ -23,8 +23,11 @@ in
       with pkgs;
       [
       ]
-      ++ lib.optional cfg.prism.enable cubiomes-viewer
-      ++ lib.optional cfg.prism.enable prismlauncher
+      ++ lib.optionals cfg.prism.enable [
+        prismlauncher
+        openjdk25
+        cubiomes-viewer
+      ]
       ++ lib.optional cfg.xenia.enable xenia-canary
       ++ lib.optional cfg.pcsx2.enable pcsx2
       ++ lib.optional cfg.ds.enable azahar
