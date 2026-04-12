@@ -21,6 +21,28 @@
     #####################
     # Movement Commands #
     #####################
+
+    # move by line VISUALLY rather than logically
+    {
+      mode = [
+        "n"
+        "v"
+      ];
+      key = "<Up>";
+      action = "gk";
+      options.silent = true;
+    }
+
+    {
+      mode = [
+        "n"
+        "v"
+      ];
+      key = "<Down>";
+      action = "gj";
+      options.silent = true;
+    }
+
     {
       # Move block down
       mode = [ "v" ];
