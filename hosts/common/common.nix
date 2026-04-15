@@ -7,6 +7,7 @@
   imports = [ ./common-programs.nix ];
   users.defaultUserShell = pkgs.zsh;
   services.journald.extraConfig = "SystemMaxUse=100M";
+  boot.kernelPackages = pkgs.linuxPackages_6_18;
 
   boot.loader = {
     systemd-boot.enable = true;

@@ -7,10 +7,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_6_18;
   boot.kernelModules = [ "ntsync" ];
-
-  networking.nameservers = [ "192.168.0.135" ];
 
   environment.systemPackages = with pkgs; [
     quickshell
