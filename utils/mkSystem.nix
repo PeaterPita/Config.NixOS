@@ -1,5 +1,6 @@
 {
   inputs,
+  self,
 }:
 
 hostname: users: system:
@@ -32,7 +33,7 @@ let
 in
 inputs.nixpkgs.lib.nixosSystem {
   inherit system;
-  specialArgs = { inherit inputs lib; };
+  specialArgs = { inherit inputs lib self; };
   modules = [
     { networking.hostName = hostname; }
     {

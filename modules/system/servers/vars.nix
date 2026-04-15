@@ -5,31 +5,19 @@
     baseDomain = lib.mkOption {
       type = lib.types.str;
       default = "home.arpa";
-      description = "Base of homelab domain"; # To be changed
-    };
-
-    storageIP = lib.mkOption {
-      type = lib.types.str;
-      description = "ip address of the storage vm";
-      default = "192.168.0.134";
+      description = "Internal domain for LAN + Tailscale access";
     };
 
     ingressIP = lib.mkOption {
       type = lib.types.str;
-      description = "ip address of ingress (virtual) machine";
-      default = "192.168.0.135";
+      default = "192.168.0.201";
+      description = "IP of Hermes";
     };
 
     coreIP = lib.mkOption {
       type = lib.types.str;
-      description = "IP address of core services (virtual) machine";
-      default = "192.168.0.136";
-    };
-
-    gameIP = lib.mkOption {
-      type = lib.types.str;
-      description = "IP address of the gameserver machine";
-      default = "192.168.X.X";
+      default = "192.168.0.200";
+      description = "IP of Olympus";
     };
 
     ports = {

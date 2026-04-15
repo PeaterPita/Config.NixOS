@@ -12,6 +12,7 @@
       mkSystem = import ./utils/mkSystem.nix {
         inherit
           inputs
+          self
           ;
       };
 
@@ -60,6 +61,15 @@
     ###########################################
     nixvim = {
       url = "github:nix-community/nixvim/nixos-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    ########################################
+    #  MicroVM for lightweight NixOS VMs   #
+    # https://github.com/astro/microvm.nix #
+    ########################################
+    microvm = {
+      url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
