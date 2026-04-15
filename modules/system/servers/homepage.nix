@@ -12,7 +12,7 @@ in
 
 {
   options.homelab.services.homepage = {
-    enable = lib.mkEnableOption "Enable the Homepage dashboard ";
+    enable = lib.mkEnableOption "Enable the Homepage dashboard";
 
     groups = lib.mkOption {
       type = lib.types.attrsOf (lib.types.listOf lib.types.attrs);
@@ -21,19 +21,11 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+
     networking.firewall.allowedTCPPorts = [ 8082 ];
-
-    sops.secrets."proxmox-api-token" = {
-      sopsFile = ../../../secrets/services.yaml;
-    };
-
-    sops.templates."homepage.env".content = ''
-      HOMEPAGE_VAR_PROXMOX_TOKEN=${config.sops.placeholder."proxmox-api-token"}
-    '';
 
     services.homepage-dashboard = {
       enable = true;
-      environmentFile = config.sops.templates."homepage.env".path;
 
       allowedHosts = lib.concatStringsSep "," [
         vars.baseDomain
@@ -46,20 +38,18 @@ in
         title = "PeaterPita Home";
         theme = "dark";
       };
-      widgets = [
 
+      widgets = [
         {
           search = {
             provider = "duckduckgo";
             target = "_blank";
           };
-
         }
-
       ];
 
       services = lib.mapAttrsToList (name: items: { "${name}" = items; }) cfg.groups;
-
     };
+
   };
 }
