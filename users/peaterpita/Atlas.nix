@@ -6,14 +6,9 @@
 {
 
   home.packages = with pkgs.unstable; [
-    element-desktop
-    asunder
     vlc
     feishin
-    davinci-resolve
-    picard
-    pkgs.jellyfin-desktop
-    libdvdcss
+    claude-code
   ];
 
   modules = {
