@@ -47,7 +47,7 @@ in
       hostName = "nextcloud.${vars.baseDomain}";
 
       configureRedis = true;
-      datadir = "/mnt/media/nextcloud-data";
+      datadir = "/mnt/nextcloud";
       config = {
         dbtype = "pgsql";
         dbname = "nextcloud";

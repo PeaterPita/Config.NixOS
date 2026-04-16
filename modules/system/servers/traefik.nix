@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 
@@ -19,7 +18,7 @@ let
       host = lib.mkOption {
         type = lib.types.str;
         default = "127.0.0.1";
-        description = "IP address of the service";
+        description = "IP address of the backend service";
       };
 
       port = lib.mkOption {
@@ -31,15 +30,29 @@ let
         type = lib.types.listOf lib.types.str;
         default = [ ];
       };
+
+      protected = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Require Authentik SSO to access this service";
+      };
     };
   };
 
   mkRouter = name: value: {
     rule = "Host(`${name}.${vars.baseDomain}`)";
-    service = "${name}";
+    service = name;
     entryPoints = [ "websecure" ];
     tls = { };
-    middlewares = value.middlewares;
+    middlewares = value.middlewares ++ lib.optional value.protected "authentik";
+  };
+
+  mkPublicRouter = name: value: {
+    rule = "Host(`${name}.${vars.baseDomain}`)";
+    service = "public-${name}";
+    entryPoints = [ "websecure" ];
+    tls.certResolver = "letsencrypt";
+    middlewares = value.middlewares ++ lib.optional value.protected "authentik";
   };
 
   mkService = name: value: {
@@ -50,15 +63,23 @@ in
 
 {
   options.homelab.services.traefik = {
-    enable = lib.mkEnableOption "Enable the Traefik Reverse Proxy";
+    enable = lib.mkEnableOption "Enable the Traefik reverse proxy";
 
     services = lib.mkOption {
       type = lib.types.attrsOf serviceSubmodule;
       default = { };
+      description = "Internal services routed by baseDomain";
+    };
+
+    publicServices = lib.mkOption {
+      type = lib.types.attrsOf serviceSubmodule;
+      default = { };
+      description = "Public services routed by publicDomain";
     };
   };
 
   config = lib.mkIf cfg.enable {
+
     networking.firewall.allowedTCPPorts = [
       80
       443
@@ -69,68 +90,86 @@ in
 
       staticConfigOptions = {
         api.dashboard = true;
+
         entryPoints = {
           web = {
             address = ":80";
-            http.redirections.entryPoint.to = "websecure";
-            http.redirections.entryPoint.scheme = "https";
+            http.redirections.entryPoint = {
+              to = "websecure";
+              scheme = "https";
+            };
           };
-          websecure = {
-            address = ":443";
-          };
+          websecure.address = ":443";
         };
+
       };
 
-      dynamicConfigOptions = {
+      dynamicConfigOptions.http = {
+        routers = lib.mkMerge [
+          (builtins.mapAttrs mkRouter cfg.services)
 
-        http = {
+          (lib.mapAttrs' (
+            name: value: lib.nameValuePair "public-${name}" (mkPublicRouter name value)
+          ) cfg.publicServices)
 
-          routers = lib.mkMerge [
-            (builtins.mapAttrs mkRouter cfg.services)
-            {
+          {
+            api = {
+              rule = "Host(`traefik.${vars.baseDomain}`)";
+              service = "api@internal";
+              entryPoints = [ "websecure" ];
+              tls = { };
+              middlewares = [ "internal-only" ];
+            };
 
-              api = {
-                rule = "Host(`traefik.${vars.baseDomain}`)";
-                service = "api@internal";
-                tls = { };
-                entryPoints = [
-                  "websecure"
-                ];
-              };
+            home = {
+              rule = "Host(`${vars.baseDomain}`)";
+              service = "home-backend";
+              entryPoints = [ "websecure" ];
+              tls = { };
+              middlewares = [ "internal-only" ];
+            };
+          }
+        ];
 
-              home = {
-                rule = "Host(`${vars.baseDomain}`)";
-                service = "home-backend";
-                tls = { };
-                entryPoints = [
-                  "websecure"
-                ];
-              };
+        services = lib.mkMerge [
+          (builtins.mapAttrs mkService cfg.services)
+          (lib.mapAttrs' (
+            name: value: lib.nameValuePair "public-${name}" (mkService name value)
+          ) cfg.publicServices)
 
-            }
+          {
+            home-backend.loadBalancer.servers = [ { url = "http://${vars.coreIP}:8082"; } ];
+          }
+        ];
+
+        middlewares = {
+          internal-only.ipWhiteList.sourceRange = [
+            "127.0.0.1/32"
+            "192.168.0.0/24"
+            "100.64.0.0/10"
           ];
 
-          services = lib.mkMerge [
-            (builtins.mapAttrs mkService cfg.services)
-
-            {
-              home-backend = {
-                loadBalancer.servers = [ { url = "http://${vars.coreIP}:8082"; } ];
-              };
-            }
-          ];
-          middlewares = {
-            internal-only.ipWhiteList.sourceRange = [
-              "127.0.0.1/32"
-              "192.168.0.0/24"
+          authentik.forwardAuth = {
+            address = "http://${vars.coreIP}:${toString vars.ports.authentik}/outpost.goauthentik.io/auth/traefik";
+            trustForwardHeader = true;
+            authResponseHeaders = [
+              "X-authentik-username"
+              "X-authentik-groups"
+              "X-authentik-email"
+              "X-authentik-name"
+              "X-authentik-uid"
+              "X-authentik-jwt"
+              "X-authentik-meta-jwks"
+              "X-authentik-meta-outpost"
+              "X-authentik-meta-provider"
+              "X-authentik-meta-app"
+              "X-authentik-meta-version"
             ];
           };
-
         };
-      };
 
+      };
     };
 
   };
-
 }
