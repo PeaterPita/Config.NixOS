@@ -33,17 +33,15 @@ in
       }
     ];
 
-    disko.devices.zpool.tank.datasets = {
-      "mealie" = {
-        type = "zfs_fs";
-        mountpoint = "/mnt/tank/mealie";
-      };
+    disko.devices.zpool.tank.datasets."mealie" = {
+      type = "zfs_fs";
+      mountpoint = "/mnt/mealie";
     };
 
     fileSystems."/var/lib/mealie" = {
-      device = "/mnt/tank/mealie";
+      device = "/mnt/mealie";
       options = [ "bind" ];
-      depends = [ "/mnt/tank/mealie" ];
+      depends = [ "/mnt/mealie" ];
     };
 
     services.postgresql = {

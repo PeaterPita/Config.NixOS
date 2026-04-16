@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   ...
 }:
@@ -15,7 +16,17 @@ in
     enable = lib.mkEnableOption "Enable the Nextcloud file storage service";
   };
 
+  imports = [
+    inputs.disko.nixosModules.disko
+  ];
+
   config = lib.mkIf cfg.enable {
+
+    disko.devices.zpool.tank.datasets."nextcloud" = {
+      type = "zfs_fs";
+      mountpoint = "/mnt/nextcloud";
+    };
+
     networking.firewall.allowedTCPPorts = [ 80 ];
 
     services.postgresql = {

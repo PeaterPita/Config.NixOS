@@ -75,6 +75,20 @@ in
     mealie.enable = true;
     # nextcloud.enable = true;
 
+    samba = {
+      enable = true;
+      shares = {
+        movies = {
+          path = "/mnt/media/movies";
+          comment = "Movie library";
+        };
+        music = {
+          path = "/mnt/media/music";
+          comment = "Music library";
+        };
+      };
+    };
+
     homepage = {
       enable = true;
 
@@ -190,10 +204,6 @@ in
           "media/music" = {
             type = "zfs_fs";
             mountpoint = "/mnt/media/music";
-          };
-          "nextcloud" = {
-            type = "zfs_fs";
-            mountpoint = "/mnt/nextcloud";
           };
           "immich" = {
             type = "zfs_fs";
