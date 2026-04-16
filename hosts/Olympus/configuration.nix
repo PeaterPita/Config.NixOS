@@ -5,9 +5,22 @@
   ...
 }:
 
+#############################################################################
+#                            Useful docs                                    #
+# Disko: https://github.com/nix-community/disko/blob/master/example/zfs.nix #
+#############################################################################
+
+let
+  tankDrives = [
+    "/dev/disk/by-id/???"
+  ];
+
+in
+
 {
   imports = [
     inputs.microvm.nixosModules.host
+    inputs.disko.nixosModules.disko
   ];
 
   networking.useDHCP = false;
@@ -59,7 +72,8 @@
     authentik.enable = true;
     jellyfin.enable = true;
     navidrome.enable = true;
-    nextcloud.enable = true;
+    mealie.enable = true;
+    # nextcloud.enable = true;
 
     homepage = {
       enable = true;
@@ -82,33 +96,6 @@
           }
         ];
 
-        "Media" = [
-          {
-            Jellyfin = {
-              icon = "jellyfin.png";
-              href = "https://jellyfin.${config.homelab.baseDomain}";
-              description = "Media Streaming";
-            };
-          }
-          {
-            Navidrome = {
-              icon = "navidrome.png";
-              href = "https://navidrome.${config.homelab.baseDomain}";
-              description = "Music Streaming";
-            };
-          }
-        ];
-
-        "Storage" = [
-          {
-            Nextcloud = {
-              icon = "nextcloud.png";
-              href = "https://nextcloud.${config.homelab.baseDomain}";
-              description = "Personal Cloud Storage";
-            };
-          }
-        ];
-
         "Security" = [
           {
             Authentik = {
@@ -122,10 +109,8 @@
     };
   };
 
-  networking.hostId = "00000000";
-
+  networking.hostId = "35ab6c06";
   boot.supportedFilesystems = [ "zfs" ];
-  boot.zfs.forceImportRoot = false;
 
   services.zfs = {
     autoScrub.enable = true;
@@ -133,21 +118,91 @@
     trim.enable = true;
   };
 
-  fileSystems = {
-    "/mnt/media/movies" = {
-      device = "tank/media/movies";
-      fsType = "zfs";
+  disko.devices = {
+    disk = {
+      os-drive = {
+        type = "disk";
+        device = "";
+        content = {
+          type = "gpt";
+          partitions = {
+            ESP = {
+              size = "1G";
+              type = "EF00";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
+                mountOptions = [ "umask=0077" ];
+              };
+            };
+            root = {
+              size = "100%";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/";
+              };
+            };
+          };
+        };
+      };
+    }
+    // builtins.listToAttrs (
+      map (device: {
+        name = builtins.baseNameOf device;
+        value = {
+          type = "disk";
+          inherit device;
+          content = {
+            type = "gpt";
+            partitions.zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "tank";
+              };
+            };
+          };
+        };
+      }) tankDrives
+    );
+
+    zpool = {
+      tank = {
+        type = "zpool";
+        mode = "raidz2";
+        options = {
+          ashift = "12";
+          autotrim = "on";
+
+        };
+        rootFsOptions = {
+          compression = "lz4";
+          acltype = "posixacl";
+          xattr = "sa";
+        };
+        datasets = {
+          "media/movies" = {
+            type = "zfs_fs";
+            mountpoint = "/mnt/media/movies";
+          };
+          "media/music" = {
+            type = "zfs_fs";
+            mountpoint = "/mnt/media/music";
+          };
+          "nextcloud" = {
+            type = "zfs_fs";
+            mountpoint = "/mnt/nextcloud";
+          };
+          "immich" = {
+            type = "zfs_fs";
+            mountpoint = "/mnt/immich";
+          };
+        };
+      };
     };
 
-    "/mnt/media/music" = {
-      device = "tank/media/music";
-      fsType = "zfs";
-    };
-
-    "/mnt/nextcloud" = {
-      device = "tank/nextcloud";
-      fsType = "zfs";
-    };
   };
 
   services.openssh.settings = {
