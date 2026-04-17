@@ -10,7 +10,7 @@
   ];
 
   modules = {
-    niri.enable = true;
+    hyprland.enable = true;
     discord.enable = true;
     zathura.enable = true;
     mpv.enable = true;

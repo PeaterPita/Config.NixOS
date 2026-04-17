@@ -35,7 +35,7 @@
     kdeConnect.enable = true;
 
     bluetooth.enable = true;
-    niri.enable = true;
+    hyprland.enable = true;
     wireshark.enable = true;
     networking = {
       enable = true;

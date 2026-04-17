@@ -64,6 +64,7 @@ in
         exec-once = [
           "udiskie"
           "qs"
+          "swww-daemon"
         ];
 
         general = {
