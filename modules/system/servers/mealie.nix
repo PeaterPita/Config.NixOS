@@ -38,11 +38,11 @@ in
     #   mountpoint = "/mnt/mealie";
     # };
 
-    fileSystems."/var/lib/mealie" = {
-      device = "/mnt/mealie";
-      options = [ "bind" ];
-      depends = [ "/mnt/mealie" ];
-    };
+    # fileSystems."/var/lib/mealie" = {
+    #   device = "/mnt/mealie";
+    #   options = [ "bind" ];
+    #   depends = [ "/mnt/mealie" ];
+    # };
 
     services.postgresql = {
       enable = true;
@@ -62,7 +62,7 @@ in
       port = vars.ports.mealie;
       settings = {
         DB_ENGINE = "postgres";
-        POSTGRES_SERVER = "/run/postgresql";
+        POSTGRES_SERVER = "127.0.0.1";
         POSTGRES_USER = "mealie";
         POSTGRES_DB = "mealie";
 

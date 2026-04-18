@@ -17,7 +17,13 @@
   };
 
   services.resolved.enable = true;
-
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = true;
+      KbdInteractiveAuthentication = true;
+    };
+  };
   boot = {
     kernel.sysctl."kernel.sysrq" = 1;
     consoleLogLevel = 3;
@@ -38,6 +44,7 @@
     allowUnfree = true;
   };
   nix = {
+    settings.trusted-users = [ "peaterpita" ];
     settings.auto-optimise-store = true;
     settings.experimental-features = [
       "nix-command"

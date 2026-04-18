@@ -5,6 +5,11 @@
   ...
 }:
 
+#############################################################
+#                  Potentially usful docs                   #
+# https://microvm-nix.github.io/microvm.nix/interfaces.html #
+#############################################################
+
 {
   imports = [
     inputs.microvm.nixosModules.microvm
@@ -12,8 +17,9 @@
 
   microvm = {
     hypervisor = "qemu";
-    mem = 2048;
+    mem = 3084;
     vcpu = 2;
+    vsock.cid = 3;
 
     interfaces = [
       {

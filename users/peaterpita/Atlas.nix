@@ -13,6 +13,11 @@
 
   modules = {
 
+    zsh.enable = true;
+    nixvim.enable = true;
+    kitty.enable = true;
+    zellij.enable = true;
+    direnv.enable = true;
     spotify.enable = true;
     syncthing.enable = true;
     discord.enable = true;

@@ -14,8 +14,8 @@ This repo should also not be used for inspiration for your own configs; I would 
 | :--- | :--- | :--- | :--- |
 | **Atlas** | Main workhorse & Gaming | 🟢 Functional | Running an NVIDIA GPU | 
 | **Icarus** | University laptop | 🟢 Functional | Semi-light weight |
-| **Hermes** | Ingress node | 🟡 In-Progress |  Currently virtualized on the same hardware as **Olympus**, but i hope to transplant this over to an arm micro-computer at some point. |
-| **Olympus** | Core homelab server | 🔴 WIP | Nonfunctional right now. This machine will run all my self hosting services |
+| **Hermes** | Ingress node | 🟡 In-Progress |  Currently virtualized on the same hardware as **Olympus** through microVM |
+| **Olympus** | Core homelab server | 🔴 WIP | In testing! Dell r730 -> Acer Laptop during this time |
 | **Apollo** | *Arr Stack | ⚫ Planned | |
 
 

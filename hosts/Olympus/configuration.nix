@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   inputs,
   self,
   ...
@@ -24,7 +25,7 @@ in
   ];
 
   networking.useDHCP = false;
-  networking.bridges.br0.interfaces = [ "int" ];
+  networking.bridges.br0.interfaces = [ "enp1s0" ];
   networking.interfaces.br0 = {
     useDHCP = false;
     ipv4.addresses = [
@@ -40,11 +41,9 @@ in
     "1.1.1.1"
   ];
 
-  systemd.network.networks."30-hermes-tap" = {
-    matchConfig.Name = "vm-hermes";
-    networkConfig.Bridge = "br0";
-    linkConfig.RequiredForOnline = "enslaved";
-  };
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="net", KERNEL=="vm-hermes", RUN+="${pkgs.iproute2}/bin/ip link set vm-hermes master br0"
+  '';
 
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1;
@@ -69,10 +68,10 @@ in
   };
 
   homelab.services = {
-    authentik.enable = true;
+    # authentik.enable = true;
     jellyfin.enable = true;
     navidrome.enable = true;
-    mealie.enable = true;
+    # mealie.enable = true;
     # nextcloud.enable = true;
 
     samba = {
@@ -214,11 +213,6 @@ in
   #   };
   #
   # };
-
-  services.openssh.settings = {
-    PermitRootLogin = "no";
-    PasswordAuthentication = false;
-  };
 
   system.stateVersion = "25.11";
 }

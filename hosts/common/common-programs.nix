@@ -15,10 +15,8 @@ in
     {
 
       environment.defaultPackages = [ ]; # Remove all preinstalled packages
-
       programs.zsh.enable = true;
-      services.openssh.enable = true;
-      virtualisation.docker.enable = true;
+      modules.networking.enable = true;
 
     }
 
@@ -26,7 +24,6 @@ in
 
       modules = {
         tailscale.enable = true;
-        networking.enable = true;
         sound.enable = true;
         yazi.enable = true;
         fonts.enable = true;
