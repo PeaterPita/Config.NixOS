@@ -22,10 +22,10 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    disko.devices.zpool.tank.datasets."nextcloud" = {
-      type = "zfs_fs";
-      mountpoint = "/mnt/nextcloud";
-    };
+    # disko.devices.zpool.tank.datasets."nextcloud" = {
+    #   type = "zfs_fs";
+    #   mountpoint = "/mnt/nextcloud";
+    # };
 
     networking.firewall.allowedTCPPorts = [ 80 ];
 

@@ -33,10 +33,10 @@ in
       }
     ];
 
-    disko.devices.zpool.tank.datasets."mealie" = {
-      type = "zfs_fs";
-      mountpoint = "/mnt/mealie";
-    };
+    # disko.devices.zpool.tank.datasets."mealie" = {
+    #   type = "zfs_fs";
+    #   mountpoint = "/mnt/mealie";
+    # };
 
     fileSystems."/var/lib/mealie" = {
       device = "/mnt/mealie";

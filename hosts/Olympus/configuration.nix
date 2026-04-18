@@ -20,7 +20,7 @@ in
 {
   imports = [
     inputs.microvm.nixosModules.host
-    inputs.disko.nixosModules.disko
+    # inputs.disko.nixosModules.disko
   ];
 
   networking.useDHCP = false;
@@ -132,88 +132,88 @@ in
     trim.enable = true;
   };
 
-  disko.devices = {
-    disk = {
-      os-drive = {
-        type = "disk";
-        device = "";
-        content = {
-          type = "gpt";
-          partitions = {
-            ESP = {
-              size = "1G";
-              type = "EF00";
-              content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot";
-                mountOptions = [ "umask=0077" ];
-              };
-            };
-            root = {
-              size = "100%";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
-              };
-            };
-          };
-        };
-      };
-    }
-    // builtins.listToAttrs (
-      map (device: {
-        name = builtins.baseNameOf device;
-        value = {
-          type = "disk";
-          inherit device;
-          content = {
-            type = "gpt";
-            partitions.zfs = {
-              size = "100%";
-              content = {
-                type = "zfs";
-                pool = "tank";
-              };
-            };
-          };
-        };
-      }) tankDrives
-    );
-
-    zpool = {
-      tank = {
-        type = "zpool";
-        mode = "raidz2";
-        options = {
-          ashift = "12";
-          autotrim = "on";
-
-        };
-        rootFsOptions = {
-          compression = "lz4";
-          acltype = "posixacl";
-          xattr = "sa";
-        };
-        datasets = {
-          "media/movies" = {
-            type = "zfs_fs";
-            mountpoint = "/mnt/media/movies";
-          };
-          "media/music" = {
-            type = "zfs_fs";
-            mountpoint = "/mnt/media/music";
-          };
-          "immich" = {
-            type = "zfs_fs";
-            mountpoint = "/mnt/immich";
-          };
-        };
-      };
-    };
-
-  };
+  # disko.devices = {
+  #   disk = {
+  #     os-drive = {
+  #       type = "disk";
+  #       device = "";
+  #       content = {
+  #         type = "gpt";
+  #         partitions = {
+  #           ESP = {
+  #             size = "1G";
+  #             type = "EF00";
+  #             content = {
+  #               type = "filesystem";
+  #               format = "vfat";
+  #               mountpoint = "/boot";
+  #               mountOptions = [ "umask=0077" ];
+  #             };
+  #           };
+  #           root = {
+  #             size = "100%";
+  #             content = {
+  #               type = "filesystem";
+  #               format = "ext4";
+  #               mountpoint = "/";
+  #             };
+  #           };
+  #         };
+  #       };
+  #     };
+  #   }
+  #   // builtins.listToAttrs (
+  #     map (device: {
+  #       name = builtins.baseNameOf device;
+  #       value = {
+  #         type = "disk";
+  #         inherit device;
+  #         content = {
+  #           type = "gpt";
+  #           partitions.zfs = {
+  #             size = "100%";
+  #             content = {
+  #               type = "zfs";
+  #               pool = "tank";
+  #             };
+  #           };
+  #         };
+  #       };
+  #     }) tankDrives
+  #   );
+  #
+  #   zpool = {
+  #     tank = {
+  #       type = "zpool";
+  #       mode = "raidz2";
+  #       options = {
+  #         ashift = "12";
+  #         autotrim = "on";
+  #
+  #       };
+  #       rootFsOptions = {
+  #         compression = "lz4";
+  #         acltype = "posixacl";
+  #         xattr = "sa";
+  #       };
+  #       datasets = {
+  #         "media/movies" = {
+  #           type = "zfs_fs";
+  #           mountpoint = "/mnt/media/movies";
+  #         };
+  #         "media/music" = {
+  #           type = "zfs_fs";
+  #           mountpoint = "/mnt/media/music";
+  #         };
+  #         "immich" = {
+  #           type = "zfs_fs";
+  #           mountpoint = "/mnt/immich";
+  #         };
+  #       };
+  #     };
+  #   };
+  #
+  # };
 
   services.openssh.settings = {
     PermitRootLogin = "no";
