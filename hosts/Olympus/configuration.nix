@@ -80,6 +80,7 @@ in
     navidrome.enable = true;
     # mealie.enable = true;
     # nextcloud.enable = true;
+    glances.enable = true;
 
     samba = {
       enable = true;
@@ -97,35 +98,6 @@ in
 
     homepage = {
       enable = true;
-
-      groups = {
-        "Infrastructure" = [
-          {
-            Traefik = {
-              icon = "traefik.png";
-              href = "http://traefik.${config.homelab.baseDomain}";
-              description = "Reverse Proxy";
-            };
-          }
-          {
-            AdGuard = {
-              icon = "adguard-home.png";
-              href = "http://adguard.${config.homelab.baseDomain}";
-              description = "DNS / Ad Blocking";
-            };
-          }
-        ];
-
-        "Security" = [
-          {
-            Authentik = {
-              icon = "authentik.png";
-              href = "http://auth.${config.homelab.baseDomain}";
-              description = "SSO / User Management";
-            };
-          }
-        ];
-      };
     };
   };
 

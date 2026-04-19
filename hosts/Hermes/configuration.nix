@@ -74,6 +74,7 @@
   '';
 
   homelab.services = {
+    glances.enable = true;
     adguard = {
       enable = true;
       rewrites = [

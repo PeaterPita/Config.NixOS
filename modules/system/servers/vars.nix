@@ -25,6 +25,8 @@
       jellyfin = lib.mkOption { default = 8096; };
       authentik = lib.mkOption { default = 9000; };
       mealie = lib.mkOption { default = 9004; };
+
+      glances = lib.mkOption { default = 61208; };
     };
   };
 }
