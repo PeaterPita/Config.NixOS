@@ -74,7 +74,19 @@
   '';
 
   homelab.services = {
-    adguard.enable = true;
+    adguard = {
+      enable = true;
+      rewrites = [
+        {
+          domain = "*.${config.homelab.baseDomain}";
+          answer = config.homelab.ingressIP;
+        }
+        {
+          domain = config.homelab.baseDomain;
+          answer = config.homelab.ingressIP;
+        }
+      ];
+    };
 
     traefik = {
       enable = true;
