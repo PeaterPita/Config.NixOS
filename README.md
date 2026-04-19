@@ -12,11 +12,47 @@ This repo should also not be used for inspiration for your own configs; I would 
 
 | Hostname | Role | Status | Notes |
 | :--- | :--- | :--- | :--- |
-| **Atlas** | Main workhorse & Gaming | 🟢 Functional | Running an NVIDIA GPU | 
-| **Icarus** | University laptop | 🟢 Functional | Semi-light weight |
-| **Hermes** | Ingress node | 🟡 In-Progress |  Currently virtualized on the same hardware as **Olympus** through microVM |
-| **Olympus** | Core homelab server | 🔴 WIP | In testing! Dell r730 -> Acer Laptop during this time |
-| **Apollo** | *Arr Stack | ⚫ Planned | |
+| **Atlas**     | Main workhorse & Gaming   | 🟢 Functional | Running an NVIDIA GPU | 
+| **Icarus**    | University laptop         | 🟢 Functional | Semi-light weight     |
+| &nbsp;        |                           |               | |
+| **Olympus**   | Core homelab server       | 🔴 WIP        | In testing! Dell r730 -> Acer Laptop during this time |
+| **Hermes**    | Ingress node              | 🟡 In-Progress| Virtualised on **Olympus** through microVM |
+| **Apollo**    | *Arr Stack                | ⚫ Planned    | |
+
+
+## Homelab Services
+
+| Service | Host | Status |
+| :--- | :--- | :--- |
+| **Traefik**           | Hermes    | 🟢 Functional |
+| **AdGuard**           | Hermes    | 🟢 Functional |
+| **Fail2Ban**          | Hermes    | ⚫ Planned    |
+| &nbsp;                |           |               |
+| **Homepage**          | Olympus   | 🟡 In-Progress|
+| **Tailscale**         | Olympus   | 🟢 Functional |
+| **Authentik**         | Olympus   | ⚫ Planned    |
+| **Jellyfin**          | Olympus   | 🔴 Redundant  |
+| **Navidrome**         | Olympus   | 🟢 Functional |
+| **Nextcloud**         | Olympus   | ⚫ Planned    |
+| **Mealie**            | Olympus   | ⚫ Planned    |
+| **Home Assistant**    | Olympus   | ⚫ Planned    |
+| **Gitea**             | Olympus   | ⚫ Planned    |
+| **Immich**            | Olympus   | ⚫ Planned    |
+| **Umami**             | Olympus   | ⚫ Planned    |
+| **Personal Sites**    | Olympus   | ⚫ Planned    |
+| **Obsidian LiveSync** | Olympus   | ⚫ Planned    |
+| **Openreads**         | Olympus   | ⚫ Planned    |
+| **Booklore**          | Olympus   | ⚫ Looking-For|
+| **Paperless-ngx**     | Olympus   | ⚫ Planned    |
+| &nbsp;                |           |               |
+| **Arr Stack**         | Apollo    | ⚫ Planned    |
+
+
+
+
+
+## Future 
+Look into diyHue
 
 
 ## References / Resources
