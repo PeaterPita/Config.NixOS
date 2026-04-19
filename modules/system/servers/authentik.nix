@@ -24,7 +24,7 @@ in
       {
         Authentik = {
           icon = "authentik.png";
-          href = "https://auth.${vars.baseDomain}";
+          href = "http://auth.${vars.baseDomain}";
           description = "User management and authentication";
           ping = "https://127.0.0.1:9000";
         };

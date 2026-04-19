@@ -20,7 +20,7 @@ in
       {
         Navidrome = {
           icon = "navidrome.png";
-          href = "https://navidrome.${vars.baseDomain}";
+          href = "http://navidrome.${vars.baseDomain}";
           ping = "http://127.0.0.1:${builtins.toString config.homelab.ports.navidrome}";
         };
       }

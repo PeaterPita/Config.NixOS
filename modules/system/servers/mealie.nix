@@ -27,7 +27,7 @@ in
       {
         Mealie = {
           icon = "mealie.png";
-          href = "https://mealie.${vars.baseDomain}";
+          href = "http://mealie.${vars.baseDomain}";
           ping = "http://127.0.0.1:${builtins.toString vars.ports.mealie}";
         };
       }

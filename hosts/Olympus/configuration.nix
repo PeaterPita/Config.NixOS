@@ -67,6 +67,13 @@ in
     ];
   };
 
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
+    HandleLidSwitchDocked = "ignore";
+    LidSwitchIgnoreInhibited = "no";
+  };
+
   homelab.services = {
     # authentik.enable = true;
     jellyfin.enable = true;
@@ -96,14 +103,14 @@ in
           {
             Traefik = {
               icon = "traefik.png";
-              href = "https://traefik.${config.homelab.baseDomain}";
+              href = "http://traefik.${config.homelab.baseDomain}";
               description = "Reverse Proxy";
             };
           }
           {
             AdGuard = {
               icon = "adguard-home.png";
-              href = "https://adguard.${config.homelab.baseDomain}";
+              href = "http://adguard.${config.homelab.baseDomain}";
               description = "DNS / Ad Blocking";
             };
           }
@@ -113,7 +120,7 @@ in
           {
             Authentik = {
               icon = "authentik.png";
-              href = "https://auth.${config.homelab.baseDomain}";
+              href = "http://auth.${config.homelab.baseDomain}";
               description = "SSO / User Management";
             };
           }

@@ -42,8 +42,7 @@ let
   mkRouter = name: value: {
     rule = "Host(`${name}.${vars.baseDomain}`)";
     service = name;
-    entryPoints = [ "websecure" ];
-    tls = { };
+    entryPoints = [ "web" ];
     middlewares = value.middlewares ++ lib.optional value.protected "authentik";
   };
 
@@ -92,13 +91,7 @@ in
         api.dashboard = true;
 
         entryPoints = {
-          web = {
-            address = ":80";
-            http.redirections.entryPoint = {
-              to = "websecure";
-              scheme = "https";
-            };
-          };
+          web.address = ":80";
           websecure.address = ":443";
         };
 
@@ -116,16 +109,14 @@ in
             api = {
               rule = "Host(`traefik.${vars.baseDomain}`)";
               service = "api@internal";
-              entryPoints = [ "websecure" ];
-              tls = { };
+              entryPoints = [ "web" ];
               middlewares = [ "internal-only" ];
             };
 
             home = {
               rule = "Host(`${vars.baseDomain}`)";
               service = "home-backend";
-              entryPoints = [ "websecure" ];
-              tls = { };
+              entryPoints = [ "web" ];
               middlewares = [ "internal-only" ];
             };
           }

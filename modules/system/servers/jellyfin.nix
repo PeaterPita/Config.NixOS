@@ -20,7 +20,7 @@ in
       {
         Jellyfin = {
           icon = "jellyfin.png";
-          href = "https://jellyfin.${config.homelab.baseDomain}";
+          href = "http://jellyfin.${config.homelab.baseDomain}";
           ping = "http://127.0.0.1:${builtins.toString config.homelab.ports.jellyfin}";
         };
       }

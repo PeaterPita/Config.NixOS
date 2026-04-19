@@ -32,6 +32,7 @@ in
         "${vars.baseDomain}:8082"
         "127.0.0.1:8082"
         vars.ingressIP
+        "${vars.ingressIP}:8082"
       ];
 
       settings = {

@@ -44,9 +44,9 @@ in
       {
         Nextcloud = {
           icon = "nextcloud.png";
-          href = "https://nextcloud.${vars.baseDomain}";
+          href = "http://nextcloud.${vars.baseDomain}";
           description = "Personal Cloud Storage";
-          ping = "https://nextcloud.${vars.baseDomain}";
+          ping = "http://nextcloud.${vars.baseDomain}";
         };
       }
     ];
