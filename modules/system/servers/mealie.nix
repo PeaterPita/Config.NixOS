@@ -23,7 +23,7 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    homelab.services.homepage.groups."Core" = [
+    homelab.services.homepage.groups."Media" = [
       {
         Mealie = {
           icon = "mealie.png";

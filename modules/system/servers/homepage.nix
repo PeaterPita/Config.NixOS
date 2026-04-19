@@ -8,6 +8,15 @@ let
   cfg = config.homelab.services.homepage;
   vars = config.homelab;
 
+  mkGlance = host: metric: {
+    widget = {
+      type = "glances";
+      inherit metric;
+      url = "http://${host}:${toString vars.ports.glances}";
+      version = 4;
+    };
+  };
+
 in
 
 {
@@ -38,18 +47,53 @@ in
       settings = {
         title = "PeaterPita Home";
         theme = "dark";
+        color = "slate";
+        headerStyle = "clean";
+
+        layout = [
+          {
+            "Monitoring" = {
+              style = "row";
+              columns = 4;
+            };
+          }
+
+          {
+            "Media" = {
+              style = "row";
+              columns = 3;
+            };
+          }
+          {
+            "Infrastructure" = {
+              style = "row";
+              columns = 3;
+            };
+          }
+          {
+            "Security" = {
+              style = "row";
+              columns = 3;
+            };
+          }
+        ];
       };
 
       widgets = [
-        {
-          search = {
-            provider = "duckduckgo";
-            target = "_blank";
-          };
-        }
       ];
 
-      services = lib.mapAttrsToList (name: items: { "${name}" = items; }) cfg.groups;
+      services = [
+        {
+          "Monitoring" = [
+            { "CPU" = mkGlance vars.coreIP "cpu"; }
+            { "TEMP" = mkGlance vars.coreIP "sensor:Package id 0"; }
+            { "RAM" = mkGlance vars.coreIP "memory"; }
+            { "Hermes" = mkGlance vars.ingressIP "info"; }
+
+          ];
+        }
+      ]
+      ++ lib.mapAttrsToList (name: items: { "${name}" = items; }) cfg.groups;
     };
 
   };

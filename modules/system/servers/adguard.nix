@@ -50,6 +50,7 @@ in
         filtering = {
           rewrites = map (r: {
             inherit (r) domain answer;
+            enabled = true;
           }) cfg.rewrites;
         };
 

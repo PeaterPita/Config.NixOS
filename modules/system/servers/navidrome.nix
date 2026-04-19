@@ -16,11 +16,12 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    homelab.services.homepage.groups."Core" = [
+    homelab.services.homepage.groups."Media" = [
       {
         Navidrome = {
           icon = "navidrome.png";
           href = "http://navidrome.${vars.baseDomain}";
+          description = "Music Streaming";
           ping = "http://127.0.0.1:${builtins.toString config.homelab.ports.navidrome}";
         };
       }

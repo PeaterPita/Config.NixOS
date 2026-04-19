@@ -40,7 +40,7 @@ in
       ];
     };
 
-    homelab.services.homepage.groups."Core" = [
+    homelab.services.homepage.groups."Infrastructure" = [
       {
         Nextcloud = {
           icon = "nextcloud.png";

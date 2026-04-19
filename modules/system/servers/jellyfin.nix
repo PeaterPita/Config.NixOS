@@ -16,11 +16,12 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    homelab.services.homepage.groups."Core" = [
+    homelab.services.homepage.groups."Media" = [
       {
         Jellyfin = {
           icon = "jellyfin.png";
           href = "http://jellyfin.${config.homelab.baseDomain}";
+          description = "Movies & TV";
           ping = "http://127.0.0.1:${builtins.toString config.homelab.ports.jellyfin}";
         };
       }
