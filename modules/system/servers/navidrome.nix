@@ -16,6 +16,8 @@ in
 
   config = lib.mkIf cfg.enable {
 
+    homelab.services.homepage.disks = [ "/mnt/media/music" ];
+
     homelab.services.homepage.groups."Media" = [
       {
         Navidrome = {

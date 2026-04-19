@@ -40,6 +40,8 @@ in
       ];
     };
 
+    homelab.services.homepage.disks = [ "/mnt/nextcloud" ];
+
     homelab.services.homepage.groups."Infrastructure" = [
       {
         Nextcloud = {

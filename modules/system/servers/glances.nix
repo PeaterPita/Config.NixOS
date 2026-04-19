@@ -11,6 +11,7 @@ in
 {
   options.homelab.services.glances = {
     enable = lib.mkEnableOption "Enable Glances";
+    port = lib.mkOption { default = 61208; };
   };
 
   config = lib.mkIf cfg.enable {
