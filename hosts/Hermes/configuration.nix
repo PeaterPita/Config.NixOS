@@ -17,7 +17,7 @@
 
   microvm = {
     hypervisor = "qemu";
-    mem = 3084;
+    mem = 1024;
     vcpu = 2;
     vsock.cid = 3;
 

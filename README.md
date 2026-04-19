@@ -29,21 +29,21 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Fail2Ban**          | Hermes    | ⚫ Planned    |
 | &nbsp;                |           |               |
 | **Homepage**          | Olympus   | 🟡 In-Progress|
-| **Tailscale**         | Olympus   | 🟢 Functional |
-| **Authentik**         | Olympus   | ⚫ Planned    |
-| **Jellyfin**          | Olympus   | 🔴 Redundant  |
-| **Navidrome**         | Olympus   | 🟢 Functional |
-| **Nextcloud**         | Olympus   | ⚫ Planned    |
-| **Mealie**            | Olympus   | ⚫ Planned    |
-| **Home Assistant**    | Olympus   | ⚫ Planned    |
 | **Gitea**             | Olympus   | ⚫ Planned    |
-| **Immich**            | Olympus   | ⚫ Planned    |
 | **Umami**             | Olympus   | ⚫ Planned    |
+| **Mealie**            | Olympus   | ⚫ Planned    |
+| **Immich**            | Olympus   | ⚫ Planned    |
+| **Booklore**          | Olympus   | ⚫ Looking-For|
+| **Jellyfin**          | Olympus   | 🔴 Redundant  |
+| **Authentik**         | Olympus   | ⚫ Planned    |
+| **Nextcloud**         | Olympus   | ⚫ Planned    |
+| **Navidrome**         | Olympus   | 🟢 Functional |
+| **Openreads**         | Olympus   | ⚫ Planned    |
+| **Tailscale**         | Olympus   | 🟢 Functional |
+| **Paperless-ngx**     | Olympus   | ⚫ Planned    |
+| **Home Assistant**    | Olympus   | ⚫ Planned    |
 | **Personal Sites**    | Olympus   | ⚫ Planned    |
 | **Obsidian LiveSync** | Olympus   | ⚫ Planned    |
-| **Openreads**         | Olympus   | ⚫ Planned    |
-| **Booklore**          | Olympus   | ⚫ Looking-For|
-| **Paperless-ngx**     | Olympus   | ⚫ Planned    |
 | &nbsp;                |           |               |
 | **Arr Stack**         | Apollo    | ⚫ Planned    |
 
@@ -53,7 +53,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 
 ## Future 
 Look into diyHue
-
+The-One-File
 
 ## References / Resources
 - [NixOS Wiki](https://wiki.nixos.org/wiki/NixOS_Wiki)
