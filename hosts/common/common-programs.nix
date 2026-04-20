@@ -15,12 +15,12 @@ in
     {
 
       environment.defaultPackages = [ ]; # Remove all preinstalled packages
-      programs.zsh.enable = true;
       modules.networking.enable = true;
 
     }
 
     (lib.mkIf cfg {
+      users.defaultUserShell = pkgs.zsh;
 
       modules = {
         tailscale.enable = true;
@@ -29,6 +29,7 @@ in
         fonts.enable = true;
       };
 
+      programs.zsh.enable = true;
       services.mullvad-vpn.enable = true;
       services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
