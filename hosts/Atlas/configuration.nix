@@ -11,24 +11,11 @@
 
   environment.systemPackages = with pkgs; [
     quickshell
-    sqlitebrowser
     parsec-bin
-    vulnix
-    qbittorrent
   ];
 
   qt.enable = true;
   system.isDesktop = true;
-
-  services.navidrome = {
-    enable = true;
-    openFirewall = true;
-    settings = {
-      MusicFolder = "/mnt/music";
-      Jukebox.Enabled = true;
-      Address = "0.0.0.0";
-    };
-  };
 
   services.flatpak.enable = true;
 
