@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 
@@ -16,10 +17,6 @@ let
       readOnly = lib.mkOption {
         type = lib.types.bool;
         default = false;
-      };
-      comment = lib.mkOption {
-        type = lib.types.str;
-        default = "";
       };
       validUsers = lib.mkOption {
         type = lib.types.listOf lib.types.str;
@@ -41,6 +38,7 @@ in
   config = lib.mkIf cfg.enable {
     services.samba = {
       enable = true;
+      smbd.enable = true;
       openFirewall = true;
       settings = {
         global = {
@@ -54,29 +52,26 @@ in
         };
       }
       // lib.mapAttrs (name: shareCfg: {
-        path = shareCfg.path;
+        "path" = shareCfg.path;
         "read only" = if shareCfg.readOnly then "yes" else "no";
-        browseable = "yes";
-        comment = shareCfg.comment;
+        "browseable" = "yes";
         "valid users" = lib.concatStringsSep " " shareCfg.validUsers;
         "create mask" = "0664";
         "directory mask" = "0775";
       }) cfg.shares;
     };
 
-    services.samba-wsdd = {
+    services.avahi = {
+      publish.enable = true;
+      publish.userServices = true;
+      nssmdns4 = true;
       enable = true;
       openFirewall = true;
     };
 
-    homelab.services.homepage.groups."Infrastructure" = [
-      {
-        "File Shares" = {
-          icon = "samba.png";
-          href = "smb://olympus";
-          description = "SMB shares";
-        };
-      }
-    ];
+    services.samba-wsdd = {
+      enable = true;
+      openFirewall = true;
+    };
   };
 }

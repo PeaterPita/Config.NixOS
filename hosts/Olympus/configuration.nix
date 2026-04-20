@@ -74,6 +74,16 @@ in
     LidSwitchIgnoreInhibited = "no";
   };
 
+  users.groups.media = { };
+  users.users.peaterpita.extraGroups = [ "media" ];
+
+  systemd.tmpfiles.rules = [
+    "d /mnt/media 0775 root media - -"
+    "d /mnt/media/music 2775 root media - -"
+    "d /mnt/media/movies 2775 root media - -"
+    "d /mnt/media/landing 2775 root media - -"
+  ];
+
   homelab.services = {
     # authentik.enable = true;
     jellyfin.enable = true;
@@ -87,11 +97,9 @@ in
       shares = {
         movies = {
           path = "/mnt/media/movies";
-          comment = "Movie library";
         };
         music = {
           path = "/mnt/media/music";
-          comment = "Music library";
         };
       };
     };

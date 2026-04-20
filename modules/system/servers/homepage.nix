@@ -53,6 +53,126 @@ in
         "${vars.ingressIP}:${toString cfg.port}"
       ];
 
+      customCSS = ''
+        .information-widget-resource div[style*="width"] {
+            background: linear-gradient(90deg, #4ade80 0%, #2dd4bf 40%, #3b82f6 75%, #b80fde 100%) !important;
+            opacity: 0.40 !important;
+            border-radius: 10px !important;
+        }
+         
+        .information-widget-resource:nth-of-type(1) svg { color: #4ade80 !important; } 
+        .information-widget-resource:nth-of-type(2) svg { color: #22d3ee !important; }
+        .information-widget-resource:nth-of-type(3) svg { color: #ef4444 !important; }
+        .information-widget-resource:nth-of-type(4) svg { color: #3b82f6 !important; }
+
+
+
+
+
+        #tabs ul {
+            width: fit-content !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            display: flex !important;            
+            flex-direction: row !important;      
+            flex-wrap: wrap !important;
+            justify-content: center !important;  
+            gap: 4px !important;
+            border-radius: 50px !important;
+            padding: 4px !important;
+            background-color: rgba(58, 58, 58, 0.2);
+        }
+         
+        #tabs ul li {
+            width: auto !important;
+            flex: 0 0 auto !important;
+        }
+         
+        #tabs ul li button {
+            width: auto !important;
+            border-radius: 50px !important;
+            padding: 6px 20px !important;
+            min-height: unset !important;
+            color: #ffffff83 !important; 
+            background-color: transparent !important;
+        }
+         
+        #tabs ul li button[aria-selected="true"] {
+            color: #6aabbf !important;
+            background-color: rgba(78, 59, 122, 0.15) !important;
+            font-weight: bold !important;
+        }
+         
+        @media (max-width: 768px) {
+            #tabs ul li button {
+                padding: 5px 10px !important; 
+                font-size: 13px !important;   
+            }
+            #tabs ul {
+                max-width: 100% !important;
+            }
+        }
+
+                         
+        /* Desktop and Tablet */
+        @media (min-width: 768px) {
+            .widget-container,
+            .information-widget-logo,
+            [class*="information-widget-glances"] {
+                background-color: rgba(58, 58, 58, 0.2) !important;
+                border-radius: 50px !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
+                height: 42px !important;
+                display: flex !important;
+                align-items: center !important;
+                padding: 0 16px !important;
+                margin-top: 10px !important;
+                box-shadow: none !important;
+            }
+        }
+         
+        /* Mobile */
+        @media (max-width: 767px) {
+            .widget-container,
+            .information-widget-logo,
+            [class*="information-widget-glances"] {
+                background-color: rgba(58, 58, 58, 0.2) !important;
+                border-radius: 25px !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
+                height: auto !important;
+                min-height: 40px !important;
+                padding: 8px 12px !important;
+                margin: 5px 0 !important;
+                width: 100% !important;
+            }
+         
+            .information-widget-inner, 
+            [class*="information-widget-glances"] > div {
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                gap: 8px !important;
+            }
+        }
+         
+        /* Global Alignment for Widgets */
+        .information-widget-logo img {
+            margin: 0 !important;
+            max-height: 24px !important;
+        }
+         
+        .information-widget-resource,
+        .widget-inner-text,
+        .resource-icon {
+            display: flex !important;
+            align-items: center !important;
+            margin: 0 !important;
+        }
+         
+        .information-widget-resource {
+            margin-right: 12px !important;
+        }
+
+      '';
       settings = {
         title = "PeaterPita Home";
         theme = "dark";
@@ -113,7 +233,11 @@ in
             version = 4;
             cpu = false;
             mem = false;
-            disk = [ "/" ] ++ cfg.disks;
+            disk = [
+              "/"
+            ]
+
+            ++ cfg.disks;
           };
         }
 

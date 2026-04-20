@@ -19,6 +19,7 @@ in
 
     homelab.services.homepage.disks = [ "/mnt/media/music" ];
 
+    users.users.navidrome.extraGroups = [ "media" ];
     homelab.services.homepage.groups."Media" = [
       {
         Navidrome = {
