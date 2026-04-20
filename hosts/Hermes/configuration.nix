@@ -115,6 +115,12 @@ in
           port = services.navidrome.port;
           middlewares = [ "internal-only" ];
         };
+
+        speed = {
+          host = cfg.coreIP;
+          port = services.speedtest-tracker.port;
+          middlewares = [ "internal-only" ];
+        };
       };
 
       publicServices = {

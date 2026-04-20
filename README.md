@@ -34,21 +34,18 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Kavita**            | Olympus   | ⚫ Planned    |
 | **Mealie**            | Olympus   | ⚫ Planned    |
 | **Immich**            | Olympus   | ⚫ Planned    |
-| **Booklore**          | Olympus   | ⚫ Looking-For|
 | **Jellyfin**          | Olympus   | 🔴 Redundant  |
 | **Authentik**         | Olympus   | ⚫ Planned    |
 | **Nextcloud**         | Olympus   | ⚫ Planned    |
 | **Navidrome**         | Olympus   | 🟢 Functional |
 | **Openreads**         | Olympus   | ⚫ Planned    |
 | **Tailscale**         | Olympus   | 🟢 Functional |
-| **Excalidraw**        | Olympus   | ⚫ Planned    |
+| **drafft-ink**        | Olympus   | ⚫ Planned    |
 | **Vaultwarden**       | Olympus   | ⚫ Planned    |
 | **Uptime Kuma**       | Olympus   | ⚫ Planned    |
 | **Paperless-ngx**     | Olympus   | ⚫ Planned    |
-| **Home Assistant**    | Olympus   | ⚫ Planned    |
 | **Personal Sites**    | Olympus   | ⚫ Planned    |
-| **Speedtest Tracker** | Olympus   | ⚫ Planned    |
-| **Obsidian LiveSync** | Olympus   | ⚫ Planned    |
+| **Speedtest Tracker** | Olympus   | 🟢 Functional |
 | &nbsp;                |           |               |
 | **Arr Stack**         | Apollo    | ⚫ Planned    |
 

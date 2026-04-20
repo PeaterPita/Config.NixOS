@@ -91,6 +91,7 @@ in
     # mealie.enable = true;
     # nextcloud.enable = true;
     glances.enable = true;
+    speedtest-tracker.enable = true;
 
     samba = {
       enable = true;
