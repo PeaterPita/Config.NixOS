@@ -141,7 +141,7 @@ in
           ];
 
           authentik.forwardAuth = {
-            address = "http://${vars.coreIP}:${toString vars.ports.authentik}/outpost.goauthentik.io/auth/traefik";
+            address = "http://${vars.coreIP}:${toString vars.services.authentik.port}/outpost.goauthentik.io/auth/traefik";
             trustForwardHeader = true;
             authResponseHeaders = [
               "X-authentik-username"

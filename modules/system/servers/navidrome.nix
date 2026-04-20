@@ -12,6 +12,7 @@ in
 {
   options.homelab.services.navidrome = {
     enable = lib.mkEnableOption "Enable the Jellyfin Media Streaming Service";
+    port = lib.mkOption { default = 4533; };
   };
 
   config = lib.mkIf cfg.enable {
@@ -24,12 +25,12 @@ in
           icon = "navidrome.png";
           href = "http://navidrome.${vars.baseDomain}";
           description = "Music Streaming";
-          ping = "http://127.0.0.1:${builtins.toString config.homelab.ports.navidrome}";
+          ping = "http://127.0.0.1:${builtins.toString cfg.port}";
         };
       }
     ];
 
-    networking.firewall.allowedTCPPorts = [ vars.ports.navidrome ];
+    networking.firewall.allowedTCPPorts = [ cfg.port ];
 
     services.navidrome = {
       enable = true;
@@ -37,7 +38,7 @@ in
       settings = {
         MusicFolder = "/mnt/media/music";
         Address = "0.0.0.0";
-        Port = vars.ports.navidrome;
+        Port = cfg.port;
       };
     };
   };

@@ -6,7 +6,6 @@
 
 let
   cfg = config.homelab.services.glances;
-  port = config.homelab.ports.glances;
 in
 {
   options.homelab.services.glances = {
@@ -18,7 +17,7 @@ in
     services.glances = {
       enable = true;
       openFirewall = true;
-      inherit port;
+      port = cfg.port;
     };
   };
 }

@@ -14,6 +14,7 @@ in
 {
   options.homelab.services.nextcloud = {
     enable = lib.mkEnableOption "Enable the Nextcloud file storage service";
+    port = lib.mkOption { default = 80; };
   };
 
   imports = [
@@ -27,7 +28,7 @@ in
     #   mountpoint = "/mnt/nextcloud";
     # };
 
-    networking.firewall.allowedTCPPorts = [ 80 ];
+    networking.firewall.allowedTCPPorts = [ cfg.port ];
 
     services.postgresql = {
       enable = true;

@@ -13,6 +13,7 @@ in
 {
   options.homelab.services.mealie = {
     enable = lib.mkEnableOption "Enable the Mealie recipe storage and sharing platform";
+    port = lib.mkOption { default = 9004; };
   };
 
   imports = [
@@ -28,7 +29,7 @@ in
         Mealie = {
           icon = "mealie.png";
           href = "http://mealie.${vars.baseDomain}";
-          ping = "http://127.0.0.1:${builtins.toString vars.ports.mealie}";
+          ping = "http://127.0.0.1:${builtins.toString cfg.port}";
         };
       }
     ];
@@ -55,11 +56,11 @@ in
       ];
     };
 
-    networking.firewall.allowedTCPPorts = [ vars.ports.mealie ];
+    networking.firewall.allowedTCPPorts = [ cfg.port ];
 
     services.mealie = {
       enable = true;
-      port = vars.ports.mealie;
+      port = cfg.port;
       settings = {
         DB_ENGINE = "postgres";
         POSTGRES_SERVER = "127.0.0.1";

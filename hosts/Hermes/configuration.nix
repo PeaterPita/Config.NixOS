@@ -10,6 +10,11 @@
 # https://microvm-nix.github.io/microvm.nix/interfaces.html #
 #############################################################
 
+let
+  cfg = config.homelab;
+  services = cfg.services;
+in
+
 {
   imports = [
     inputs.microvm.nixosModules.microvm
@@ -61,7 +66,7 @@
     networks."10-lan" = {
       matchConfig.MACAddress = "02:00:00:00:01:01";
       networkConfig = {
-        Address = "${config.homelab.ingressIP}/24";
+        Address = "${cfg.ingressIP}/24";
         Gateway = "192.168.0.1";
         DNS = "127.0.0.1";
       };
@@ -79,12 +84,12 @@
       enable = true;
       rewrites = [
         {
-          domain = "*.${config.homelab.baseDomain}";
-          answer = config.homelab.ingressIP;
+          domain = "*.${cfg.baseDomain}";
+          answer = cfg.ingressIP;
         }
         {
-          domain = config.homelab.baseDomain;
-          answer = config.homelab.ingressIP;
+          domain = cfg.baseDomain;
+          answer = cfg.ingressIP;
         }
       ];
     };
@@ -97,25 +102,25 @@
           middlewares = [ "internal-only" ];
         };
         auth = {
-          host = config.homelab.coreIP;
-          port = config.homelab.ports.authentik;
+          host = cfg.coreIP;
+          port = services.authentik.port;
         };
         jellyfin = {
-          host = config.homelab.coreIP;
-          port = config.homelab.ports.jellyfin;
+          host = cfg.coreIP;
+          port = services.jellyfin.port;
           middlewares = [ "internal-only" ];
         };
         navidrome = {
-          host = config.homelab.coreIP;
-          port = config.homelab.ports.navidrome;
+          host = cfg.coreIP;
+          port = services.navidrome.port;
           middlewares = [ "internal-only" ];
         };
       };
 
       publicServices = {
         nextcloud = {
-          host = config.homelab.coreIP;
-          port = 80;
+          host = cfg.coreIP;
+          port = services.nextcloud.port;
         };
       };
     };

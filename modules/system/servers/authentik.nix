@@ -16,6 +16,7 @@ in
 {
   options.homelab.services.authentik = {
     enable = lib.mkEnableOption "Enable the Authentik identiy provider service";
+    port = lib.mkOption { default = 9000; };
   };
 
   config = lib.mkIf cfg.enable {
@@ -45,6 +46,7 @@ in
     '';
 
     networking.firewall.allowedTCPPorts = [
+      cfg.port
       9000
       9443
     ];

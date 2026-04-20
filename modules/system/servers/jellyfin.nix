@@ -12,6 +12,7 @@ in
 {
   options.homelab.services.jellyfin = {
     enable = lib.mkEnableOption "Enable the Jellyfin Media Streaming Service";
+    port = lib.mkOption { default = 8096; };
   };
 
   config = lib.mkIf cfg.enable {
@@ -24,12 +25,12 @@ in
           icon = "jellyfin.png";
           href = "http://jellyfin.${config.homelab.baseDomain}";
           description = "Movies & TV";
-          ping = "http://127.0.0.1:${builtins.toString config.homelab.ports.jellyfin}";
+          ping = "http://127.0.0.1:${builtins.toString cfg.port}";
         };
       }
     ];
 
-    networking.firewall.allowedTCPPorts = [ config.homelab.ports.jellyfin ];
+    networking.firewall.allowedTCPPorts = [ cfg.port ];
 
     environment.systemPackages = with pkgs; [
       jellyfin
