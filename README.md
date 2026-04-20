@@ -31,6 +31,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Homepage**          | Olympus   | 🟡 In-Progress|
 | **Gitea**             | Olympus   | ⚫ Planned    |
 | **Umami**             | Olympus   | ⚫ Planned    |
+| **Kavita**            | Olympus   | ⚫ Planned    |
 | **Mealie**            | Olympus   | ⚫ Planned    |
 | **Immich**            | Olympus   | ⚫ Planned    |
 | **Booklore**          | Olympus   | ⚫ Looking-For|
@@ -40,9 +41,13 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Navidrome**         | Olympus   | 🟢 Functional |
 | **Openreads**         | Olympus   | ⚫ Planned    |
 | **Tailscale**         | Olympus   | 🟢 Functional |
+| **Excalidraw**        | Olympus   | ⚫ Planned    |
+| **Vaultwarden**       | Olympus   | ⚫ Planned    |
+| **Uptime Kuma**       | Olympus   | ⚫ Planned    |
 | **Paperless-ngx**     | Olympus   | ⚫ Planned    |
 | **Home Assistant**    | Olympus   | ⚫ Planned    |
 | **Personal Sites**    | Olympus   | ⚫ Planned    |
+| **Speedtest Tracker** | Olympus   | ⚫ Planned    |
 | **Obsidian LiveSync** | Olympus   | ⚫ Planned    |
 | &nbsp;                |           |               |
 | **Arr Stack**         | Apollo    | ⚫ Planned    |
