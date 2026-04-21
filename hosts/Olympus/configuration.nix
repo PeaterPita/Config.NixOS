@@ -53,9 +53,28 @@ in
   microvm.vms.Hermes = {
     flake = self;
     autostart = true;
+    restartIfChanged = true;
+  };
+
+  systemd.services."microvm@Hermes" = {
+    after = [ "sops-nix.service" ];
+    wants = [ "sops-nix.service" ];
   };
 
   sops.secrets."tailscale/auth_key" = { };
+
+  sops.secrets."cloudflare/api_token" = {
+    sopsFile = ../../secrets/services.yaml;
+  };
+
+  sops.secrets."personal/email" = {
+    sopsFile = ../../secrets/services.yaml;
+  };
+
+  sops.templates."traefik.env".content = ''
+    CF_DNS_API_TOKEN=${config.sops.placeholder."cloudflare/api_token"}
+    ACME_EMAIL=${config.sops.placeholder."personal/email"}
+  '';
 
   services.tailscale = {
     enable = true;
@@ -91,6 +110,7 @@ in
     # mealie.enable = true;
     # nextcloud.enable = true;
     glances.enable = true;
+    kavita.enable = true;
     speedtest-tracker.enable = true;
 
     samba = {
@@ -101,6 +121,9 @@ in
         };
         music = {
           path = "/mnt/media/music";
+        };
+        books = {
+          path = "/mnt/media/books";
         };
       };
     };

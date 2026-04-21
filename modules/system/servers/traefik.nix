@@ -42,7 +42,8 @@ let
   mkRouter = name: value: {
     rule = "Host(`${name}.${vars.baseDomain}`)";
     service = name;
-    entryPoints = [ "web" ];
+    entryPoints = [ "websecure" ];
+    tls.certResolver = "letsencrypt";
     middlewares = value.middlewares ++ lib.optional value.protected "authentik";
   };
 
@@ -75,6 +76,11 @@ in
       default = { };
       description = "Public services routed by publicDomain";
     };
+
+    environmentFile = lib.mkOption {
+      type = lib.types.nullOr lib.types.path;
+      default = null;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -87,14 +93,33 @@ in
     services.traefik = {
       enable = true;
 
+      environmentFiles = lib.optional (cfg.environmentFile != null) cfg.environmentFile;
+
       staticConfigOptions = {
         api.dashboard = true;
 
         entryPoints = {
-          web.address = ":80";
+          web = {
+            address = ":80";
+            http.redirections.entryPoint = {
+              to = "websecure";
+              scheme = "https";
+            };
+          };
           websecure.address = ":443";
         };
 
+        certificatesResolvers.letsencrypt.acme = {
+          email = "$ACME_EMAIL";
+          storage = "${config.services.traefik.dataDir}/acme.json";
+          dnsChallenge = {
+            provider = "cloudflare";
+            resolvers = [
+              "1.1.1.1:53"
+              "8.8.8.8:53"
+            ];
+          };
+        };
       };
 
       dynamicConfigOptions.http = {
@@ -109,15 +134,16 @@ in
             api = {
               rule = "Host(`traefik.${vars.baseDomain}`)";
               service = "api@internal";
-              entryPoints = [ "web" ];
+              entryPoints = [ "websecure" ];
+              tls.certResolver = "letsencrypt";
               middlewares = [ "internal-only" ];
             };
 
             home = {
               rule = "Host(`${vars.baseDomain}`)";
               service = "home-backend";
-              entryPoints = [ "web" ];
-              middlewares = [ "internal-only" ];
+              entryPoints = [ "websecure" ];
+              tls.certResolver = "letsencrypt";
             };
           }
         ];

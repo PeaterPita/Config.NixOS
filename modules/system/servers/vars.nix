@@ -4,7 +4,7 @@
   options.homelab = {
     baseDomain = lib.mkOption {
       type = lib.types.str;
-      default = "home.arpa";
+      default = "peaterpita.com";
       description = "Internal domain for LAN + Tailscale access";
     };
 

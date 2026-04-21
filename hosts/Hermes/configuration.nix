@@ -41,10 +41,16 @@ in
         tag = "ro-store";
         proto = "virtiofs";
       }
+      # {
+      #   source = "/home/peaterpita/.config/sops/age";
+      #   mountPoint = "/run/sops-age";
+      #   tag = "sops-age";
+      #   proto = "virtiofs";
+      # }
       {
-        source = "/home/peaterpita/.config/sops/age";
-        mountPoint = "/run/sops-age";
-        tag = "sops-age";
+        source = "/run/secrets/rendered";
+        mountPoint = "/run/host-secrets";
+        tag = "host-secrets";
         proto = "virtiofs";
       }
     ];
@@ -58,7 +64,7 @@ in
     ];
   };
 
-  sops.age.keyFile = lib.mkForce "/run/sops-age/keys.txt";
+  # sops.age.keyFile = lib.mkForce "/run/sops-age/keys.txt";
 
   networking.useNetworkd = true;
   systemd.network = {
@@ -96,6 +102,7 @@ in
 
     traefik = {
       enable = true;
+      environmentFile = "/run/host-secrets/traefik.env";
       services = {
         adguard = {
           port = 3000;
@@ -104,6 +111,11 @@ in
         auth = {
           host = cfg.coreIP;
           port = services.authentik.port;
+        };
+
+        books = {
+          host = cfg.coreIP;
+          port = services.kavita.port;
         };
         jellyfin = {
           host = cfg.coreIP;
