@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 
@@ -42,6 +43,7 @@
   nixpkgs.config = {
     allowUnfree = true;
   };
+
   nix = {
     settings.trusted-users = [ "peaterpita" ];
     settings.auto-optimise-store = true;
@@ -49,11 +51,6 @@
       "nix-command"
       "flakes"
     ];
-
-    extraOptions = ''
-      # keep-outputs = true
-      # keep-derivations = true
-    '';
 
     registry.temps.to = {
       type = "git";

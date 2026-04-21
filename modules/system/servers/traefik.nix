@@ -139,9 +139,9 @@ in
               middlewares = [ "internal-only" ];
             };
 
-            home = {
+            portfolio = {
               rule = "Host(`${vars.baseDomain}`)";
-              service = "home-backend";
+              service = "portfolio-backend";
               entryPoints = [ "websecure" ];
               tls.certResolver = "letsencrypt";
             };
@@ -155,7 +155,7 @@ in
           ) cfg.publicServices)
 
           {
-            home-backend.loadBalancer.servers = [ { url = "http://${vars.coreIP}:8082"; } ];
+            portfolio-backend.loadBalancer.servers = [ { url = "http://${vars.coreIP}:3005"; } ];
           }
         ];
 

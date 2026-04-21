@@ -113,6 +113,11 @@ in
     kavita.enable = true;
     speedtest-tracker.enable = true;
 
+    static-sites.sites.astro-site = {
+      package = inputs.astro-site.packages.x86_64-linux.default;
+      port = 3005;
+    };
+
     samba = {
       enable = true;
       shares = {

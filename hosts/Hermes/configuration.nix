@@ -116,6 +116,12 @@ in
         books = {
           host = cfg.coreIP;
           port = services.kavita.port;
+          middlewares = [ "internal-only" ];
+        };
+        home = {
+          host = cfg.coreIP;
+          port = services.homepage.port;
+          middlewares = [ "internal-only" ];
         };
         jellyfin = {
           host = cfg.coreIP;

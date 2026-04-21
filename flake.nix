@@ -64,6 +64,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    astro-site = {
+      url = "git+ssh://git@github.com/PeaterPita/astro-site.git?ref=master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ########################################
     #  MicroVM for lightweight NixOS VMs   #
     # https://github.com/astro/microvm.nix #

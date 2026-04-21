@@ -46,6 +46,8 @@ in
       enable = true;
 
       allowedHosts = lib.concatStringsSep "," [
+        "home.${vars.baseDomain}"
+        "home.${vars.baseDomain}:${toString cfg.port}"
         vars.baseDomain
         "${vars.baseDomain}:${toString cfg.port}"
         "127.0.0.1:${toString cfg.port}"
