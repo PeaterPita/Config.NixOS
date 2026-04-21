@@ -46,6 +46,7 @@ in
             PUID = "1000";
             PGID = "1000";
             APP_URL = "http://speed.${vars.baseDomain}";
+            DISPLAY_TIMEZONE = "Europe/London";
             SPEEDTEST_SCHEDULE = "0 */4 * * *";
 
           };

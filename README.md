@@ -31,7 +31,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Homepage**          | Olympus   | 🟡 In-Progress|
 | **Gitea**             | Olympus   | ⚫ Planned    |
 | **Umami**             | Olympus   | ⚫ Planned    |
-| **Kavita**            | Olympus   | ⚫ Planned    |
+| **Kavita**            | Olympus   | 🟡 In-Progress|
 | **Mealie**            | Olympus   | ⚫ Planned    |
 | **Immich**            | Olympus   | ⚫ Planned    |
 | **Jellyfin**          | Olympus   | 🔴 Redundant  |
