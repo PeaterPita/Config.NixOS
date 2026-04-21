@@ -34,8 +34,8 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Kavita**            | Olympus   | 🟡 In-Progress|
 | **Mealie**            | Olympus   | ⚫ Planned    |
 | **Immich**            | Olympus   | ⚫ Planned    |
+| **Authelia**         | Olympus   | ⚫ Planned    |
 | **Jellyfin**          | Olympus   | 🔴 redundant  |
-| **Authentik**         | Olympus   | ⚫ Planned    |
 | **Nextcloud**         | Olympus   | ⚫ Planned    |
 | **Navidrome**         | Olympus   | 🟢 Functional |
 | **Openreads**         | Olympus   | ⚫ Planned    |

@@ -98,6 +98,15 @@ in
       staticConfigOptions = {
         api.dashboard = true;
 
+        # accessLog = {
+        #   format = "json";
+        #   filePath = "/var/log/traefik/access.json";
+        #   fields.headers = {
+        #     defaultMode = "keep";
+        #     Authorization = "drop";
+        #   };
+        # };
+
         entryPoints = {
           web = {
             address = ":80";
@@ -141,6 +150,13 @@ in
 
             portfolio = {
               rule = "Host(`${vars.baseDomain}`)";
+              service = "portfolio-backend";
+              entryPoints = [ "websecure" ];
+              tls.certResolver = "letsencrypt";
+            };
+
+            portfolio-www = {
+              rule = "Host(`www.${vars.baseDomain}`)";
               service = "portfolio-backend";
               entryPoints = [ "websecure" ];
               tls.certResolver = "letsencrypt";
