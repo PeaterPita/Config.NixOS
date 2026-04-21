@@ -179,6 +179,7 @@ in
         title = "PeaterPita Home";
         theme = "dark";
         color = "slate";
+        bookmarksStyle = "icons";
         headerStyle = "boxedWidgets";
 
         layout = [
@@ -194,6 +195,14 @@ in
             "Tools" = {
               tab = "Apps";
               style = "row";
+            };
+          }
+
+          {
+            "Personal" = {
+              tab = "Links";
+              style = "row";
+              iconsOnly = true;
             };
           }
 
@@ -269,6 +278,23 @@ in
         }
       ]
       ++ lib.mapAttrsToList (name: items: { "${name}" = items; }) cfg.groups;
+
+      bookmarks =
+
+        [
+          {
+            Personal = [
+              {
+                Portfolio = [
+                  {
+                    abbr = "PO";
+                    href = "https://${vars.baseDomain}";
+                  }
+                ];
+              }
+            ];
+          }
+        ];
     };
 
   };
