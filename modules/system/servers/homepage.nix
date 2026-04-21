@@ -185,6 +185,15 @@ in
           {
             "Media" = {
               tab = "Apps";
+              style = "row";
+              columns = 4;
+            };
+          }
+
+          {
+            "Tools" = {
+              tab = "Apps";
+              style = "row";
             };
           }
 
@@ -205,12 +214,7 @@ in
           }
 
           {
-            "Infrastructure" = {
-              tab = "System";
-            };
-          }
-          {
-            "Security" = {
+            "Infra" = {
               tab = "System";
             };
           }

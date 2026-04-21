@@ -16,6 +16,8 @@ let
     "/dev/disk/by-id/???"
   ];
 
+  vars = config.homelab;
+
 in
 
 {
@@ -135,6 +137,20 @@ in
 
     homepage = {
       enable = true;
+      groups."Infra" = [
+        {
+          Traefik = {
+            icon = "traefik.png";
+            href = "http://traefik.${vars.baseDomain}";
+          };
+        }
+        {
+          Adguard = {
+            icon = "adguard-home.png";
+            href = "http://adguard.${vars.baseDomain}";
+          };
+        }
+      ];
     };
   };
 

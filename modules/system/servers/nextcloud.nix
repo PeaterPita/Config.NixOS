@@ -43,7 +43,7 @@ in
 
     homelab.services.homepage.disks = [ "/mnt/nextcloud" ];
 
-    homelab.services.homepage.groups."Infrastructure" = [
+    homelab.services.homepage.groups."Tools" = [
       {
         Nextcloud = {
           icon = "nextcloud.png";

@@ -34,7 +34,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Kavita**            | Olympus   | 🟡 In-Progress|
 | **Mealie**            | Olympus   | ⚫ Planned    |
 | **Immich**            | Olympus   | ⚫ Planned    |
-| **Jellyfin**          | Olympus   | 🔴 Redundant  |
+| **Jellyfin**          | Olympus   | 🔴 redundant  |
 | **Authentik**         | Olympus   | ⚫ Planned    |
 | **Nextcloud**         | Olympus   | ⚫ Planned    |
 | **Navidrome**         | Olympus   | 🟢 Functional |
@@ -44,18 +44,13 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Vaultwarden**       | Olympus   | ⚫ Planned    |
 | **Uptime Kuma**       | Olympus   | ⚫ Planned    |
 | **Paperless-ngx**     | Olympus   | ⚫ Planned    |
-| **Personal Sites**    | Olympus   | ⚫ Planned    |
+| **Personal Sites**    | Olympus   | 🔴 WIP        |
 | **Speedtest Tracker** | Olympus   | 🟢 Functional |
 | &nbsp;                |           |               |
 | **Arr Stack**         | Apollo    | ⚫ Planned    |
 
 
 
-
-
-## Future 
-Look into diyHue
-The-One-File
 
 ## References / Resources
 - [NixOS Wiki](https://wiki.nixos.org/wiki/NixOS_Wiki)
