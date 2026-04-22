@@ -134,6 +134,12 @@ in
           middlewares = [ "internal-only" ];
         };
 
+        lldap = {
+          host = cfg.coreIP;
+          port = services.lldap.webport;
+          middlewares = [ "internal-only" ];
+        };
+
         speed = {
           host = cfg.coreIP;
           port = services.speedtest-tracker.port;

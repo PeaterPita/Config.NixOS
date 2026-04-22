@@ -223,7 +223,7 @@ in
           }
 
           {
-            "Infra" = {
+            "Infrastructure" = {
               tab = "System";
             };
           }
@@ -272,6 +272,7 @@ in
             { "CPU" = mkGlance vars.coreIP "cpu"; }
             { "TEMP" = mkGlance vars.coreIP "sensor:Package id 0"; }
             { "RAM" = mkGlance vars.coreIP "memory"; }
+            { "Networking" = mkGlance vars.coreIP "network:enp1s0"; }
             { "Hermes" = mkGlance vars.ingressIP "info"; }
 
           ];

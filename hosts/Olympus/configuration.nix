@@ -113,6 +113,7 @@ in
     # nextcloud.enable = true;
     glances.enable = true;
     kavita.enable = true;
+    lldap.enable = true;
     speedtest-tracker.enable = true;
 
     static-sites.sites.astro-site = {
@@ -137,7 +138,7 @@ in
 
     homepage = {
       enable = true;
-      groups."Infra" = [
+      groups."Infrastructure" = [
         {
           Traefik = {
             icon = "traefik.png";
