@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   inputs,
   ...
 }:
@@ -33,7 +32,6 @@ in
         mac = "02:00:00:00:01:01";
       }
     ];
-
     shares = [
       {
         source = "/nix/store";
@@ -59,7 +57,7 @@ in
       {
         mountPoint = "/var";
         image = "hermes-var.img";
-        size = 16; # GB
+        size = 1000;
       }
     ];
   };
@@ -79,6 +77,13 @@ in
     };
   };
 
+  users.users.admin = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ4UunpG+zwcD8K6yKG0Tl9DOG4fbl+tb0MjIVIOGNyp"
+    ];
+  };
   services.resolved.extraConfig = ''
     DNS=1.1.1.1
     DNSStubListener=no
@@ -107,43 +112,42 @@ in
         adguard = {
           port = 3000;
           middlewares = [ "internal-only" ];
-        };
-        auth = {
-          host = cfg.coreIP;
-          port = services.authentik.port;
+          protected = true;
         };
 
         books = {
           host = cfg.coreIP;
           port = services.kavita.port;
-          middlewares = [ "internal-only" ];
+          protected = true;
         };
         home = {
           host = cfg.coreIP;
           port = services.homepage.port;
+          protected = true;
           middlewares = [ "internal-only" ];
         };
         jellyfin = {
           host = cfg.coreIP;
           port = services.jellyfin.port;
-          middlewares = [ "internal-only" ];
+          protected = true;
         };
         navidrome = {
           host = cfg.coreIP;
           port = services.navidrome.port;
-          middlewares = [ "internal-only" ];
+          protected = true;
         };
 
         lldap = {
           host = cfg.coreIP;
           port = services.lldap.webport;
           middlewares = [ "internal-only" ];
+          protected = true;
         };
 
         speed = {
           host = cfg.coreIP;
           port = services.speedtest-tracker.port;
-          middlewares = [ "internal-only" ];
+          protected = true;
         };
       };
 
@@ -151,6 +155,7 @@ in
         nextcloud = {
           host = cfg.coreIP;
           port = services.nextcloud.port;
+          protected = true;
         };
       };
     };
