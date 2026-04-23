@@ -26,6 +26,7 @@ in
   options.homelab.services.homepage = {
     enable = lib.mkEnableOption "Enable the Homepage dashboard";
     port = lib.mkOption { default = 8082; };
+    domain = lib.mkOption { default = "home.${vars.baseDomain}"; };
 
     groups = lib.mkOption {
       type = lib.types.attrsOf (lib.types.listOf lib.types.attrs);
@@ -45,11 +46,10 @@ in
     homelab.services.authelia.rules = [
       {
         domain = [
-          "home.${vars.baseDomain}"
+          cfg.domain
         ];
         policy = "one_factor";
         subject = [
-          "group:admin"
           "group:family"
         ];
       }
@@ -58,8 +58,8 @@ in
       enable = true;
 
       allowedHosts = lib.concatStringsSep "," [
-        "home.${vars.baseDomain}"
-        "home.${vars.baseDomain}:${toString cfg.port}"
+        cfg.domain
+        "${cfg.domain}:${toString cfg.port}"
         vars.baseDomain
         "${vars.baseDomain}:${toString cfg.port}"
         "127.0.0.1:${toString cfg.port}"

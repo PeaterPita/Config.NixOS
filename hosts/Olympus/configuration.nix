@@ -37,7 +37,7 @@ in
       }
     ];
   };
-  networking.defaultGateway = "192.168.0.1";
+  networking.defaultGateway = vars.gatewayIP;
   networking.nameservers = [
     config.homelab.ingressIP
     "1.1.1.1"
@@ -108,7 +108,7 @@ in
   homelab.services = {
     jellyfin.enable = true;
     navidrome.enable = true;
-    # mealie.enable = true;
+    mealie.enable = true;
     # nextcloud.enable = true;
     glances.enable = true;
     kavita.enable = true;
@@ -148,7 +148,7 @@ in
         {
           Adguard = {
             icon = "adguard-home.png";
-            href = "http://adguard.${vars.baseDomain}";
+            href = "http://${vars.services.adguard.domain}";
           };
         }
       ];

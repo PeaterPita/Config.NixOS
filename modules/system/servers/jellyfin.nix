@@ -14,6 +14,7 @@ in
   options.homelab.services.jellyfin = {
     enable = lib.mkEnableOption "Enable the Jellyfin Media Streaming Service";
     port = lib.mkOption { default = 8096; };
+    domain = lib.mkOption { default = "jellyfin.${vars.baseDomain}"; };
   };
 
   config = lib.mkIf cfg.enable {
@@ -24,7 +25,7 @@ in
       {
         Jellyfin = {
           icon = "jellyfin.png";
-          href = "http://jellyfin.${config.homelab.baseDomain}";
+          href = "http://${cfg.domain}";
           description = "Movies & TV";
           ping = "http://127.0.0.1:${builtins.toString cfg.port}";
         };
@@ -34,7 +35,7 @@ in
     homelab.services.authelia.rules = [
       {
         domain = [
-          "jellyfin.${vars.baseDomain}"
+          cfg.domain
         ];
         policy = "one_factor";
         subject = [

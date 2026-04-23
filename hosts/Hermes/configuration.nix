@@ -71,7 +71,7 @@ in
       matchConfig.MACAddress = "02:00:00:00:01:01";
       networkConfig = {
         Address = "${cfg.ingressIP}/24";
-        Gateway = "192.168.0.1";
+        Gateway = cfg.gatewayIP;
         DNS = "127.0.0.1";
       };
     };
@@ -110,7 +110,7 @@ in
       environmentFile = "/run/host-secrets/traefik.env";
       services = {
         adguard = {
-          port = 3000;
+          port = services.adguard.port;
           middlewares = [ "internal-only" ];
           protected = true;
         };
@@ -118,18 +118,19 @@ in
         books = {
           host = cfg.coreIP;
           port = services.kavita.port;
-          protected = true;
+        };
+        meals = {
+          host = cfg.coreIP;
+          port = services.mealie.port;
         };
         home = {
           host = cfg.coreIP;
           port = services.homepage.port;
           protected = true;
-          middlewares = [ "internal-only" ];
         };
         jellyfin = {
           host = cfg.coreIP;
           port = services.jellyfin.port;
-          protected = true;
         };
         navidrome = {
           host = cfg.coreIP;

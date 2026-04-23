@@ -14,6 +14,7 @@ in
   options.homelab.services.kavita = {
     enable = lib.mkEnableOption "Enable the kavita reading platform";
     port = lib.mkOption { default = 5000; };
+    domain = lib.mkOption { default = "books.${vars.baseDomain}"; };
   };
 
   config = lib.mkIf cfg.enable {
@@ -43,7 +44,7 @@ in
       {
         Kavita = {
           icon = "kavita.png";
-          href = "http://books.${vars.baseDomain}";
+          href = "http://${cfg.domain}";
           description = "Book Reading";
           ping = "http://127.0.0.1:${builtins.toString cfg.port}";
         };
@@ -54,7 +55,7 @@ in
       rules = [
         {
           domain = [
-            "books.${vars.baseDomain}"
+            cfg.domain
           ];
           policy = "one_factor";
           subject = [
@@ -72,8 +73,8 @@ in
           public = false;
           authorization_policy = "one_factor";
           redirect_uris = [
-            "https://books.${vars.baseDomain}/signin-oidc"
-            "https://books.${vars.baseDomain}/signout-callback-oidc"
+            "https://${cfg.domain}/signin-oidc"
+            "https://${cfg.domain}/signout-callback-oidc"
           ];
           scopes = [
             "openid"

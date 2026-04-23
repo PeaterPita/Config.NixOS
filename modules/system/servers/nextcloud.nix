@@ -15,6 +15,7 @@ in
   options.homelab.services.nextcloud = {
     enable = lib.mkEnableOption "Enable the Nextcloud file storage service";
     port = lib.mkOption { default = 80; };
+    domain = lib.mkOption { default = "files.${vars.baseDomain}"; };
   };
 
   imports = [
@@ -47,9 +48,8 @@ in
       {
         Nextcloud = {
           icon = "nextcloud.png";
-          href = "http://nextcloud.${vars.baseDomain}";
+          href = "http://${cfg.domain}";
           description = "Personal Cloud Storage";
-          ping = "http://nextcloud.${vars.baseDomain}";
         };
       }
     ];
@@ -66,7 +66,7 @@ in
         dbtype = "pgsql";
         dbname = "nextcloud";
         dbuser = "nextcloud";
-        adminpassFile = "/home/peaterpita/nixos/secrets/nextcloud-admin-pass";
+        # adminpassFile = "/home/peaterpita/nixos/secrets/nextcloud-admin-pass";
       };
     };
   };

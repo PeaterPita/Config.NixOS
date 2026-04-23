@@ -13,6 +13,7 @@ in
   options.homelab.services.navidrome = {
     enable = lib.mkEnableOption "Enable the Jellyfin Media Streaming Service";
     port = lib.mkOption { default = 4533; };
+    domain = lib.mkOption { default = "music.${vars.baseDomain}"; };
   };
 
   config = lib.mkIf cfg.enable {
@@ -24,7 +25,7 @@ in
       {
         Navidrome = {
           icon = "navidrome.png";
-          href = "http://navidrome.${vars.baseDomain}";
+          href = "http://${cfg.domain}";
           description = "Music Streaming";
           ping = "http://127.0.0.1:${builtins.toString cfg.port}";
         };
@@ -34,7 +35,7 @@ in
     homelab.services.authelia.rules = [
       {
         domain = [
-          "navidrome.${vars.baseDomain}"
+          cfg.domain
         ];
         policy = "one_factor";
         subject = [

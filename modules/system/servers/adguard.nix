@@ -13,6 +13,8 @@ in
 {
   options.homelab.services.adguard = {
     enable = lib.mkEnableOption "Enable the AdGuard Home DNS service";
+    port = lib.mkOption { default = 3000; };
+    domain = lib.mkOption { default = "adguard.${vars.baseDomain}"; };
 
     rewrites = lib.mkOption {
       type = lib.types.listOf (
@@ -31,14 +33,14 @@ in
   config = lib.mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [
       53
-      3000
+      cfg.port
     ];
     networking.firewall.allowedUDPPorts = [ 53 ];
 
     homelab.services.authelia.rules = [
       {
         domain = [
-          "adguard.${vars.baseDomain}"
+          cfg.domain
         ];
         policy = "two_factor";
         subject = [ "group:admin" ];
@@ -66,7 +68,7 @@ in
 
         http = {
           address = "0.0.0.0";
-          port = 3000;
+          port = cfg.port;
         };
       };
     };

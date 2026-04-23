@@ -13,6 +13,7 @@ in
   options.homelab.services.speedtest-tracker = {
     enable = lib.mkEnableOption "Enable speedtest-tracker";
     port = lib.mkOption { default = 8765; };
+    domain = lib.mkOption { default = "speed.${vars.baseDomain}"; };
   };
 
   config = lib.mkIf cfg.enable {
@@ -45,7 +46,7 @@ in
           environment = {
             PUID = "1000";
             PGID = "1000";
-            APP_URL = "http://speed.${vars.baseDomain}";
+            APP_URL = "http://${cfg.domain}";
             DISPLAY_TIMEZONE = "Europe/London";
             SPEEDTEST_SCHEDULE = "0 */4 * * *";
 
@@ -59,7 +60,7 @@ in
       {
         Speedtest-Tracker = {
           icon = "speedtest-tracker.png";
-          href = "http://speed.${vars.baseDomain}";
+          href = "http://${cfg.domain}";
           ping = "http://127.0.0.1:${builtins.toString cfg.port}";
         };
       }
@@ -68,7 +69,7 @@ in
     homelab.services.authelia.rules = [
       {
         domain = [
-          "speed.${vars.baseDomain}"
+          cfg.domain
         ];
         policy = "two_factor";
         subject = [
