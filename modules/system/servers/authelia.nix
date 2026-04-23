@@ -18,6 +18,11 @@ in
       type = lib.types.listOf lib.types.attrs;
       default = [ ];
     };
+
+    oidc = lib.mkOption {
+      type = lib.types.listOf lib.types.attrs;
+      default = [ ];
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -25,18 +30,34 @@ in
     sops.secrets."authelia/jwt_secret" = {
       sopsFile = ../../../secrets/services.yaml;
       mode = "0444";
+      owner = "authelia-main";
     };
     sops.secrets."authelia/storage_key" = {
       sopsFile = ../../../secrets/services.yaml;
       mode = "0444";
+      owner = "authelia-main";
     };
     sops.secrets."authelia/session_secret" = {
       sopsFile = ../../../secrets/services.yaml;
       mode = "0444";
+      owner = "authelia-main";
     };
     sops.secrets."authelia/ldap_password" = {
       sopsFile = ../../../secrets/services.yaml;
       mode = "0444";
+      owner = "authelia-main";
+    };
+
+    sops.secrets."authelia/hmac_secret" = {
+      sopsFile = ../../../secrets/services.yaml;
+      mode = "0444";
+      owner = "authelia-main";
+    };
+
+    sops.secrets."authelia/issuer_key" = {
+      sopsFile = ../../../secrets/services.yaml;
+      mode = "0444";
+      owner = "authelia-main";
     };
 
     homelab.services.homepage.groups."Infrastructure" = [
@@ -60,6 +81,9 @@ in
         jwtSecretFile = config.sops.secrets."authelia/jwt_secret".path;
         storageEncryptionKeyFile = config.sops.secrets."authelia/storage_key".path;
         sessionSecretFile = config.sops.secrets."authelia/session_secret".path;
+
+        oidcHmacSecretFile = config.sops.secrets."authelia/hmac_secret".path;
+        oidcIssuerPrivateKeyFile = config.sops.secrets."authelia/issuer_key".path;
       };
 
       environmentVariables = {
@@ -86,6 +110,11 @@ in
           users_filter = "(&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))";
 
           groups_filter = "(member={dn})";
+        };
+
+        identity_providers.oidc = {
+          clients = [ ] ++ cfg.oidc;
+
         };
 
         session = {
@@ -149,6 +178,7 @@ in
         };
 
         server.address = "tcp://0.0.0.0:${toString cfg.port}";
+        server.buffers.read = 8192;
 
       };
     };
