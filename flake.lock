@@ -9,16 +9,15 @@
       "locked": {
         "lastModified": 1776772855,
         "narHash": "sha256-yXzyorO1Bxw+yMjiPndYxb4TgCmXRx8njK2ruagrJJU=",
-        "ref": "master",
+        "owner": "PeaterPita",
+        "repo": "astro-site",
         "rev": "76fb6827e2137966fbd25490c6e8611ae019038e",
-        "revCount": 3,
-        "type": "git",
-        "url": "ssh://git@github.com/PeaterPita/astro-site.git"
+        "type": "github"
       },
       "original": {
-        "ref": "master",
-        "type": "git",
-        "url": "ssh://git@github.com/PeaterPita/astro-site.git"
+        "owner": "PeaterPita",
+        "repo": "astro-site",
+        "type": "github"
       }
     },
     "disko": {

@@ -65,7 +65,7 @@
     };
 
     astro-site = {
-      url = "git+ssh://git@github.com/PeaterPita/astro-site.git?ref=master";
+      url = "github:PeaterPita/astro-site";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
