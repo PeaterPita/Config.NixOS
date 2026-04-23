@@ -132,7 +132,7 @@ in
           host = cfg.coreIP;
           port = services.jellyfin.port;
         };
-        navidrome = {
+        music = {
           host = cfg.coreIP;
           port = services.navidrome.port;
           protected = true;

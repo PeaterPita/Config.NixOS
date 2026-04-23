@@ -34,6 +34,11 @@ in
 
     homelab.services.authelia.rules = [
       {
+        domain = [ cfg.domain ];
+        policy = "bypass";
+        resources = [ "^/share(/.*)?$" ];
+      }
+      {
         domain = [
           cfg.domain
         ];
@@ -54,6 +59,8 @@ in
         MusicFolder = "/mnt/media/music";
         Address = "0.0.0.0";
         Port = cfg.port;
+        EnableSharing = true;
+        ExtAuth.TrustedSources = "${vars.ingressIP}/32";
       };
     };
   };
