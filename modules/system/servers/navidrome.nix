@@ -36,7 +36,19 @@ in
       {
         domain = [ cfg.domain ];
         policy = "bypass";
-        resources = [ "^/share(/.*)?$" ];
+
+        ############################################################
+        #  Fixes to aalow external players to still authenticate   #
+        #      https://github.com/jeffvli/feishin/issues/1976      #
+        ############################################################
+
+        resources = [
+          "^/share(/.*)?$"
+
+          "^/auth/.*$"
+          "^/rest/.*$"
+          "^/api/.*$"
+        ];
       }
       {
         domain = [

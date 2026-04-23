@@ -30,19 +30,20 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Fail2Ban**          | Hermes    | ⚫ Planned    |
 | &nbsp;                |           |               |
 | **Homepage**          | Olympus   | 🟡 In-Progress|
-| **Gitea**             | Olympus   | ⚫ Planned    |
 | **LLDAP**             | Olympus   | 🟢 Functional |
 | **Umami**             | Olympus   | ⚫ Planned    |
 | **Kavita**            | Olympus   | 🟢 Functional |
 | **Mealie**            | Olympus   | 🟢 Functional |
 | **Immich**            | Olympus   | ⚫ Planned    |
+| **Grafana**           | Olympus   | ⚫ Planned    |
 | **Authelia**          | Olympus   | 🟢 Functional |
 | **Jellyfin**          | Olympus   | 🔴 redundant  |
 | **Nextcloud**         | Olympus   | ⚫ Planned    |
 | **Navidrome**         | Olympus   | 🟢 Functional |
 | **Openreads**         | Olympus   | ⚫ Planned    |
 | **Tailscale**         | Olympus   | 🟢 Functional |
-| **drafft-ink**        | Olympus   | ⚫ Planned    |
+| **Drafft-ink**        | Olympus   | ⚫ Planned    |
+| **Prometheus**        | Olympus   | ⚫ Planned    |
 | **Vaultwarden**       | Olympus   | ⚫ Planned    |
 | **Uptime Kuma**       | Olympus   | ⚫ Planned    |
 | **Paperless-ngx**     | Olympus   | ⚫ Planned    |
@@ -74,7 +75,7 @@ Github SSH keys: [docs.github.com](https://docs.github.com/en/authentication/con
 
 
 
-### OIDC Client Secerts
+### OIDC Client Secrets
 - Generate random string
 - `authelia crypto hash generate pbkdf2 --variant sha512`
 
