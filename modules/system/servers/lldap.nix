@@ -4,6 +4,11 @@
   ...
 }:
 
+########################################################################
+#                        Maybe good examples:                          #
+# https://github.com/lldap/lldap/blob/main/example_configs/jellyfin.md #
+########################################################################
+
 let
   cfg = config.homelab.services.lldap;
   vars = config.homelab;

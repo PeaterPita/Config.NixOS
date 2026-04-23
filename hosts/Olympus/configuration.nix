@@ -106,7 +106,6 @@ in
   ];
 
   homelab.services = {
-    # authentik.enable = true;
     jellyfin.enable = true;
     navidrome.enable = true;
     # mealie.enable = true;
