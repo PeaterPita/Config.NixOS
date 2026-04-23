@@ -30,11 +30,12 @@ This repo should also not be used for inspiration for your own configs; I would 
 | &nbsp;                |           |               |
 | **Homepage**          | Olympus   | 🟡 In-Progress|
 | **Gitea**             | Olympus   | ⚫ Planned    |
+| **LLDAP**             | Olympus   | 🟡 In-Progress|
 | **Umami**             | Olympus   | ⚫ Planned    |
 | **Kavita**            | Olympus   | 🟡 In-Progress|
 | **Mealie**            | Olympus   | ⚫ Planned    |
 | **Immich**            | Olympus   | ⚫ Planned    |
-| **Authelia**         | Olympus   | ⚫ Planned    |
+| **Authelia**          | Olympus   | 🟡 In-Progress|
 | **Jellyfin**          | Olympus   | 🔴 redundant  |
 | **Nextcloud**         | Olympus   | ⚫ Planned    |
 | **Navidrome**         | Olympus   | 🟢 Functional |

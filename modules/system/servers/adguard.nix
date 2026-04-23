@@ -35,6 +35,16 @@ in
     ];
     networking.firewall.allowedUDPPorts = [ 53 ];
 
+    homelab.services.authelia.rules = [
+      {
+        domain = [
+          "adguard.${vars.baseDomain}"
+        ];
+        policy = "two_factor";
+        subject = [ "group:admin" ];
+      }
+    ];
+
     services.adguardhome = {
       enable = true;
       mutableSettings = false;

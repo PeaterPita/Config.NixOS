@@ -38,6 +38,16 @@ in
       }
     ];
 
+    homelab.services.authelia.rules = [
+      {
+        domain = [
+          "lldap.${vars.baseDomain}"
+        ];
+        policy = "two_factor";
+        subject = [ "group:admin" ];
+      }
+    ];
+
     networking.firewall.allowedTCPPorts = [
       cfg.port
       cfg.webport

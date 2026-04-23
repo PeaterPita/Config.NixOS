@@ -34,7 +34,7 @@ let
       protected = lib.mkOption {
         type = lib.types.bool;
         default = false;
-        description = "Require Authentik SSO to access this service";
+        description = "Require Authelia SSO to access this service";
       };
     };
   };
@@ -44,7 +44,7 @@ let
     service = name;
     entryPoints = [ "websecure" ];
     tls.certResolver = "letsencrypt";
-    middlewares = value.middlewares ++ lib.optional value.protected "authentik";
+    middlewares = value.middlewares ++ lib.optional value.protected "authelia";
   };
 
   mkPublicRouter = name: value: {
@@ -52,7 +52,7 @@ let
     service = "public-${name}";
     entryPoints = [ "websecure" ];
     tls.certResolver = "letsencrypt";
-    middlewares = value.middlewares ++ lib.optional value.protected "authentik";
+    middlewares = value.middlewares ++ lib.optional value.protected "authelia";
   };
 
   mkService = name: value: {
@@ -145,7 +145,17 @@ in
               service = "api@internal";
               entryPoints = [ "websecure" ];
               tls.certResolver = "letsencrypt";
-              middlewares = [ "internal-only" ];
+              middlewares = [
+                "internal-only"
+                "authelia"
+              ];
+            };
+
+            authelia = {
+              rule = "Host(`auth.${vars.baseDomain}`)";
+              entryPoints = [ "websecure" ];
+              service = "authelia";
+              tls.certResolver = "letsencrypt";
             };
 
             portfolio = {
@@ -172,33 +182,33 @@ in
 
           {
             portfolio-backend.loadBalancer.servers = [ { url = "http://${vars.coreIP}:3005"; } ];
+
+            authelia.loadBalancer.servers = [
+              { url = "http://${vars.coreIP}:${toString config.homelab.services.authelia.port}"; }
+            ];
           }
+
         ];
 
         middlewares = {
           internal-only.ipWhiteList.sourceRange = [
             "127.0.0.1/32"
             "192.168.0.0/24"
-            "100.64.0.0/10"
+            "100.78.0.0/10"
+
           ];
 
-          authentik.forwardAuth = {
-            address = "http://${vars.coreIP}:${toString vars.services.authentik.port}/outpost.goauthentik.io/auth/traefik";
+          authelia.forwardAuth = {
+            address = "http://${vars.coreIP}:${toString config.homelab.services.authelia.port}/api/authz/forward-auth";
             trustForwardHeader = true;
             authResponseHeaders = [
-              "X-authentik-username"
-              "X-authentik-groups"
-              "X-authentik-email"
-              "X-authentik-name"
-              "X-authentik-uid"
-              "X-authentik-jwt"
-              "X-authentik-meta-jwks"
-              "X-authentik-meta-outpost"
-              "X-authentik-meta-provider"
-              "X-authentik-meta-app"
-              "X-authentik-meta-version"
+              "Remote-User"
+              "Remote-Groups"
+              "Remote-Name"
+              "Remote-Email"
             ];
           };
+
         };
 
       };

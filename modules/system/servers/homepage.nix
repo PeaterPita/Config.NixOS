@@ -42,6 +42,17 @@ in
 
     networking.firewall.allowedTCPPorts = [ cfg.port ];
 
+    homelab.services.authelia.rules = [
+      {
+        domain = [
+          "home.${vars.baseDomain}"
+        ];
+        policy = "two_factor";
+        subject = [
+          "group:admin"
+        ];
+      }
+    ];
     services.homepage-dashboard = {
       enable = true;
 

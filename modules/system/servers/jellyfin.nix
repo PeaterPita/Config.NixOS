@@ -6,7 +6,8 @@
 }:
 
 let
-  cfg = config.homelab.services.jellyfin;
+  vars = config.homelab;
+  cfg = vars.services.jellyfin;
 in
 
 {
@@ -27,6 +28,19 @@ in
           description = "Movies & TV";
           ping = "http://127.0.0.1:${builtins.toString cfg.port}";
         };
+      }
+    ];
+
+    homelab.services.authelia.rules = [
+      {
+        domain = [
+          "jellyfin.${vars.baseDomain}"
+        ];
+        policy = "one_factor";
+        subject = [
+          "group:family"
+          "group:admin"
+        ];
       }
     ];
 

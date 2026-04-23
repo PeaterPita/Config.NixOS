@@ -31,6 +31,19 @@ in
       }
     ];
 
+    homelab.services.authelia.rules = [
+      {
+        domain = [
+          "navidrome.${vars.baseDomain}"
+        ];
+        policy = "one_factor";
+        subject = [
+          "group:family"
+          "group:admin"
+        ];
+      }
+    ];
+
     networking.firewall.allowedTCPPorts = [ cfg.port ];
 
     services.navidrome = {
