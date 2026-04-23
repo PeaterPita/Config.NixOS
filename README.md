@@ -1,4 +1,5 @@
 # Personal NixOS System Configuration
+
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 [![NixOS](https://img.shields.io/badge/NixOS-25.11-blue?style=flat&logo=nixos&logoColor=white)](https://nixos.org)
 
@@ -51,6 +52,38 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Arr Stack**         | Apollo    | ⚫ Planned    |
 
 
+
+
+## Setup
+As much as I disdain imperative configuration; some processes cannot be declared as of right right. Hopefully as time goes on this section will get shorter and shorter.
+
+
+<details>
+<summary>Common</summary>
+
+Github SSH keys: [docs.github.com](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
+
+</details>
+
+<details>
+<summary>Olympus</summary>
+
++ ??
++ Manual OIDC secret generation
+
+
+
+### OIDC Client Secerts
+- Generate random string
+- `authelia crypto hash generate pbkdf2 --variant sha512`
+
++ ??
+
+
+
+
+</details>
 
 
 ## References / Resources
