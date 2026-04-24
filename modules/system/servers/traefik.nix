@@ -115,7 +115,10 @@ in
               scheme = "https";
             };
           };
-          websecure.address = ":443";
+          websecure = {
+            address = ":443";
+            http.tls.certResolver = "letsencrypt";
+          };
         };
 
         certificatesResolvers.letsencrypt.acme = {
@@ -158,6 +161,14 @@ in
               tls.certResolver = "letsencrypt";
             };
 
+            git = {
+              rule = "Host(`git.${vars.baseDomain}`)";
+              service = "noop@internal";
+              entryPoints = [ "websecure" ];
+              tls.certResolver = "letsencrypt";
+              middlewares = [ "git-redirect" ];
+            };
+
             portfolio = {
               rule = "Host(`${vars.baseDomain}`)";
               service = "portfolio-backend";
@@ -195,8 +206,13 @@ in
             "127.0.0.1/32"
             "192.168.0.0/24"
             "100.78.0.0/10"
-
           ];
+
+          git-redirect.redirectRegex = {
+            regex = ".*";
+            replacement = "https://github.com/PeaterPita";
+            permanent = true;
+          };
 
           authelia.forwardAuth = {
             address = "http://${vars.coreIP}:${toString config.homelab.services.authelia.port}/api/authz/forward-auth";
