@@ -37,18 +37,16 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Immich**            | Olympus   | ⚫ Planned    |
 | **Grafana**           | Olympus   | ⚫ Planned    |
 | **Authelia**          | Olympus   | 🟢 Functional |
-| **Jellyfin**          | Olympus   | 🔴 redundant  |
-| **Nextcloud**         | Olympus   | ⚫ Planned    |
+| **Jellyfin**          | Olympus   | 🔴 Redundant  |
 | **Navidrome**         | Olympus   | 🟢 Functional |
-| **Openreads**         | Olympus   | ⚫ Planned    |
 | **Tailscale**         | Olympus   | 🟢 Functional |
 | **Drafft-ink**        | Olympus   | ⚫ Planned    |
 | **Prometheus**        | Olympus   | ⚫ Planned    |
-| **Vaultwarden**       | Olympus   | ⚫ Planned    |
 | **Uptime Kuma**       | Olympus   | ⚫ Planned    |
 | **Paperless-ngx**     | Olympus   | ⚫ Planned    |
 | **Personal Sites**    | Olympus   | 🔴 WIP        |
 | **Speedtest Tracker** | Olympus   | 🟢 Functional |
+| **filebrowser-quantum**         | Olympus   | ⚫ Planned    |
 | &nbsp;                |           |               |
 | **Arr Stack**         | Apollo    | ⚫ Planned    |
 
