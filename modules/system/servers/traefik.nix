@@ -44,7 +44,7 @@ let
     service = name;
     entryPoints = [ "websecure" ];
     tls.certResolver = "letsencrypt";
-    middlewares = value.middlewares ++ lib.optional value.protected "authelia";
+    middlewares = value.middlewares ++ lib.optional value.protected "protected-chain";
   };
 
   mkService = name: value: {
@@ -179,6 +179,17 @@ in
             "127.0.0.1/32"
             "192.168.0.0/24"
             "100.78.0.0/10"
+          ];
+
+          rate-limit.rateLimit = {
+            average = 100;
+            burst = 50;
+            period = "1ms";
+          };
+
+          protected-chain.chain.middlewares = [
+            "rate-limit"
+            "authelia"
           ];
 
           git-redirect.redirectRegex = {
