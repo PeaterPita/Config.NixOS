@@ -33,6 +33,11 @@ in
       default = { };
     };
 
+    bookmarks = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.listOf lib.types.attrs);
+      default = { };
+    };
+
     disks = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [ ];
@@ -292,22 +297,8 @@ in
       ]
       ++ lib.mapAttrsToList (name: items: { "${name}" = items; }) cfg.groups;
 
-      bookmarks =
+      bookmarks = lib.mapAttrsToList (name: items: { "${name}" = items; }) cfg.bookmarks;
 
-        [
-          {
-            Personal = [
-              {
-                Portfolio = [
-                  {
-                    abbr = "PO";
-                    href = "https://${vars.baseDomain}";
-                  }
-                ];
-              }
-            ];
-          }
-        ];
     };
 
   };

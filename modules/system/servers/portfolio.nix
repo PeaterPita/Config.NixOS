@@ -24,14 +24,15 @@ in
       port = cfg.port;
     };
 
-    homelab.services.homepage.groups."Personal" = [
+    homelab.services.homepage.bookmarks."Personal" = [
       {
-        Portfolio = {
-          icon = "globe";
-          href = "https://${cfg.domain}";
-          description = "Personal Portfolio";
-          ping = "http://127.0.0.1:${builtins.toString cfg.port}";
-        };
+        Portfolio = [
+          {
+            abbr = "PO";
+            href = "https://${vars.baseDomain}";
+            icon = "mdi-web-#4B006e";
+          }
+        ];
       }
     ];
   };
