@@ -109,17 +109,14 @@ in
     jellyfin.enable = true;
     navidrome.enable = true;
     mealie.enable = true;
-    # nextcloud.enable = true;
     glances.enable = true;
     kavita.enable = true;
     lldap.enable = true;
     authelia.enable = true;
     speedtest-tracker.enable = true;
 
-    static-sites.sites.astro-site = {
-      package = inputs.astro-site.packages.x86_64-linux.default;
-      port = 3005;
-    };
+    portfolio.enable = true;
+    it-tools.enable = true;
 
     samba = {
       enable = true;

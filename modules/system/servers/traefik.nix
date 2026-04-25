@@ -47,14 +47,6 @@ let
     middlewares = value.middlewares ++ lib.optional value.protected "authelia";
   };
 
-  mkPublicRouter = name: value: {
-    rule = "Host(`${name}.${vars.baseDomain}`)";
-    service = "public-${name}";
-    entryPoints = [ "websecure" ];
-    tls.certResolver = "letsencrypt";
-    middlewares = value.middlewares ++ lib.optional value.protected "authelia";
-  };
-
   mkService = name: value: {
     loadBalancer.servers = [ { url = "http://${value.host}:${toString value.port}"; } ];
   };
@@ -68,13 +60,7 @@ in
     services = lib.mkOption {
       type = lib.types.attrsOf serviceSubmodule;
       default = { };
-      description = "Internal services routed by baseDomain";
-    };
-
-    publicServices = lib.mkOption {
-      type = lib.types.attrsOf serviceSubmodule;
-      default = { };
-      description = "Public services routed by publicDomain";
+      description = "Services routed by baseDomain";
     };
 
     environmentFile = lib.mkOption {
@@ -138,10 +124,6 @@ in
         routers = lib.mkMerge [
           (builtins.mapAttrs mkRouter cfg.services)
 
-          (lib.mapAttrs' (
-            name: value: lib.nameValuePair "public-${name}" (mkPublicRouter name value)
-          ) cfg.publicServices)
-
           {
             api = {
               rule = "Host(`traefik.${vars.baseDomain}`)";
@@ -170,15 +152,8 @@ in
             };
 
             portfolio = {
-              rule = "Host(`${vars.baseDomain}`)";
-              service = "portfolio-backend";
-              entryPoints = [ "websecure" ];
-              tls.certResolver = "letsencrypt";
-            };
-
-            portfolio-www = {
-              rule = "Host(`www.${vars.baseDomain}`)";
-              service = "portfolio-backend";
+              rule = "Host(`${vars.baseDomain}`) || Host(`www.${vars.baseDomain}`)";
+              service = "root-domain";
               entryPoints = [ "websecure" ];
               tls.certResolver = "letsencrypt";
             };
@@ -187,18 +162,16 @@ in
 
         services = lib.mkMerge [
           (builtins.mapAttrs mkService cfg.services)
-          (lib.mapAttrs' (
-            name: value: lib.nameValuePair "public-${name}" (mkService name value)
-          ) cfg.publicServices)
 
           {
-            portfolio-backend.loadBalancer.servers = [ { url = "http://${vars.coreIP}:3005"; } ];
-
             authelia.loadBalancer.servers = [
               { url = "http://${vars.coreIP}:${toString config.homelab.services.authelia.port}"; }
             ];
-          }
 
+            root-domain.loadBalancer.servers = [
+              { url = "http://${vars.coreIP}:${toString vars.services.portfolio.port}"; }
+            ];
+          }
         ];
 
         middlewares = {
