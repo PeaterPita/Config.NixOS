@@ -122,6 +122,13 @@ in
           host = cfg.coreIP;
           port = services.mealie.port;
         };
+
+        files = {
+          host = cfg.coreIP;
+          port = services.filebrowser-quantum.port;
+          protected = true;
+        };
+
         home = {
           host = cfg.coreIP;
           port = services.homepage.port;

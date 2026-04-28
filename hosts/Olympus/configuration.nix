@@ -115,6 +115,42 @@ in
     authelia.enable = true;
     speedtest-tracker.enable = true;
 
+    filebrowser-quantum = {
+
+      enable = true;
+      settings = {
+        server = {
+          port = vars.services.filebrowser-quantum.port;
+
+          sources = [
+            {
+              path = "/srv/files";
+              name = "files";
+            }
+          ];
+        };
+
+        auth = {
+          adminUsername = "admin";
+          adminPassword = "@admin-pass@";
+          methods = {
+            password = {
+              enabled = true;
+              signup = false;
+            };
+          };
+        };
+
+        integrations.media.ffmpegPath = "${pkgs.ffmpeg-full}/bin";
+
+        frontend = {
+          name = "QuantumFiles";
+
+        };
+      };
+
+    };
+
     portfolio.enable = true;
     it-tools.enable = true;
 

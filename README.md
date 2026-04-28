@@ -25,30 +25,29 @@ This repo should also not be used for inspiration for your own configs; I would 
 
 | Service | Host | Status |
 | :--- | :--- | :--- |
-| **Traefik**           | Hermes    | 🟢 Functional |
-| **AdGuard**           | Hermes    | 🟢 Functional |
-| **Fail2Ban**          | Hermes    | ⚫ Planned    |
-| &nbsp;                |           |               |
-| **Homepage**          | Olympus   | 🟡 In-Progress|
-| **LLDAP**             | Olympus   | 🟢 Functional |
-| **Umami**             | Olympus   | ⚫ Planned    |
-| **Kavita**            | Olympus   | 🟢 Functional |
-| **Mealie**            | Olympus   | 🟢 Functional |
-| **Immich**            | Olympus   | ⚫ Planned    |
-| **Grafana**           | Olympus   | ⚫ Planned    |
-| **Authelia**          | Olympus   | 🟢 Functional |
-| **Jellyfin**          | Olympus   | 🔴 Redundant  |
-| **Navidrome**         | Olympus   | 🟢 Functional |
-| **Tailscale**         | Olympus   | 🟢 Functional |
-| **Drafft-ink**        | Olympus   | ⚫ Planned    |
-| **Prometheus**        | Olympus   | ⚫ Planned    |
-| **Uptime Kuma**       | Olympus   | ⚫ Planned    |
-| **Paperless-ngx**     | Olympus   | ⚫ Planned    |
-| **Personal Sites**    | Olympus   | 🔴 WIP        |
-| **Speedtest Tracker** | Olympus   | 🟢 Functional |
-| **filebrowser-quantum**         | Olympus   | ⚫ Planned    |
-| &nbsp;                |           |               |
-| **Arr Stack**         | Apollo    | ⚫ Planned    |
+| **Traefik**             | Hermes    | 🟢 Functional  |
+| **AdGuard**             | Hermes    | 🟢 Functional  |
+| **Fail2Ban**            | Hermes    | ⚫ Planned     |
+| &nbsp;                  |           |                |
+| **Homepage**            | Olympus   | 🟡 In-Progress |
+| **LLDAP**               | Olympus   | 🟢 Functional  |
+| **Umami**               | Olympus   | ⚫ Planned     |
+| **Kavita**              | Olympus   | 🟢 Functional  |
+| **Mealie**              | Olympus   | 🟢 Functional  |
+| **Immich**              | Olympus   | ⚫ Planned     |
+| **Grafana**             | Olympus   | ⚫ Planned     |
+| **Authelia**            | Olympus   | 🟢 Functional  |
+| **Jellyfin**            | Olympus   | 🔴 Redundant   |
+| **Navidrome**           | Olympus   | 🟢 Functional  |
+| **Tailscale**           | Olympus   | 🟢 Functional  |
+| **Drafft-ink**          | Olympus   | ⚫ Planned     |
+| **Prometheus**          | Olympus   | ⚫ Planned     |
+| **Paperless-ngx**       | Olympus   | ⚫ Planned     |
+| **Personal Sites**      | Olympus   | 🔴 WIP         |
+| **Speedtest Tracker**   | Olympus   | 🟢 Functional  |
+| **filebrowser-quantum** | Olympus   | 🟡 In-Progress |
+| &nbsp;                  |           |                |
+| **Arr Stack**           | Apollo    | ⚫ Planned     |
 
 
 
