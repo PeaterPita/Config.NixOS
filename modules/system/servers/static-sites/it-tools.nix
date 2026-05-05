@@ -25,7 +25,7 @@ in
       port = cfg.port;
     };
 
-    homelab.services.homepage.groups."Tools" = [
+    homelab.services.homepage.groups."Apps" = [
       {
         "IT-Tools" = {
           icon = "it-tools.png";

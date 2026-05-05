@@ -21,7 +21,7 @@ in
 
     homelab.services.homepage.disks = [ "/mnt/media/movies" ];
 
-    homelab.services.homepage.groups."Media" = [
+    homelab.services.homepage.groups."Apps" = [
       {
         Jellyfin = {
           icon = "jellyfin.png";

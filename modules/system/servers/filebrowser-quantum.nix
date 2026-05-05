@@ -86,7 +86,7 @@ in
 
     users.groups.filebrowser-quantum = { };
 
-    homelab.services.homepage.groups."Media" = [
+    homelab.services.homepage.groups."Apps" = [
       {
         Filebrowser-quantum = {
           icon = "filebrowser-quantum.png";

@@ -40,7 +40,7 @@ in
     ];
 
     users.users.kavita.extraGroups = [ "media" ];
-    homelab.services.homepage.groups."Media" = [
+    homelab.services.homepage.groups."Apps" = [
       {
         Kavita = {
           icon = "kavita.png";

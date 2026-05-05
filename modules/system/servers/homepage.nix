@@ -196,37 +196,17 @@ in
         title = "PeaterPita Home";
         theme = "dark";
         color = "slate";
+
         bookmarksStyle = "icons";
         headerStyle = "boxedWidgets";
 
         layout = [
+
           {
-            "Media" = {
+            "Apps" = {
               tab = "Apps";
               style = "row";
               columns = 4;
-            };
-          }
-
-          {
-            "Tools" = {
-              tab = "Apps";
-              style = "row";
-            };
-          }
-
-          {
-            "Personal" = {
-              tab = "Links";
-              style = "row";
-              iconsOnly = true;
-            };
-          }
-
-          {
-            "???" = {
-              tab = "Media";
-              header = false;
             };
           }
 
@@ -294,6 +274,7 @@ in
 
           ];
         }
+
       ]
       ++ lib.mapAttrsToList (name: items: { "${name}" = items; }) cfg.groups;
 

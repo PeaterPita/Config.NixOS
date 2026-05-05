@@ -151,12 +151,6 @@ in
           protected = true;
         };
 
-        # files = {
-        #   host = cfg.coreIP;
-        #   port = services.nextcloud.port;
-        #   protected = true;
-        # };
-
         speed = {
           host = cfg.coreIP;
           port = services.speedtest-tracker.port;

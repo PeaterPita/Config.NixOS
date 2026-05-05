@@ -56,7 +56,7 @@ in
       };
     };
 
-    homelab.services.homepage.groups."Tools" = [
+    homelab.services.homepage.groups."Apps" = [
       {
         Speedtest-Tracker = {
           icon = "speedtest-tracker.png";

@@ -18,7 +18,7 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    homelab.services.homepage.groups."Media" = [
+    homelab.services.homepage.groups."Apps" = [
       {
         Mealie = {
           icon = "mealie.png";

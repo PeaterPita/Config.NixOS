@@ -43,7 +43,6 @@ let
     rule = "Host(`${name}.${vars.baseDomain}`)";
     service = name;
     entryPoints = [ "websecure" ];
-    tls.certResolver = "letsencrypt";
     middlewares = value.middlewares ++ lib.optional value.protected "protected-chain";
   };
 
@@ -175,7 +174,7 @@ in
         ];
 
         middlewares = {
-          internal-only.ipWhiteList.sourceRange = [
+          internal-only.ipAllowList.sourceRange = [
             "127.0.0.1/32"
             "192.168.0.0/24"
             "100.78.0.0/10"
@@ -184,7 +183,7 @@ in
           rate-limit.rateLimit = {
             average = 100;
             burst = 50;
-            period = "1ms";
+            period = "1s";
           };
 
           protected-chain.chain.middlewares = [
