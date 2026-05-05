@@ -189,7 +189,7 @@ in
   };
 
   networking.hostId = "35ab6c06";
-  boot.supportedFilesystems = [ "zfs" ];
+  # boot.supportedFilesystems = [ "zfs" ];
 
   services.zfs = {
     autoScrub.enable = true;

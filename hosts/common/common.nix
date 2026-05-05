@@ -7,7 +7,7 @@
 {
   imports = [ ./common-programs.nix ];
   services.journald.extraConfig = "SystemMaxUse=100M";
-  boot.kernelPackages = pkgs.linuxPackages_6_18;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.loader = {
     systemd-boot.enable = true;
