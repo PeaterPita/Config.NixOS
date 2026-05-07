@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   plugins = {
     nvim-autopairs = {
@@ -13,22 +15,10 @@
     luasnip = {
       enable = true;
       settings = {
-        enbale_autosnippets = true;
+        enable_autosnippets = true;
         store_selection_keys = "<Tab>";
       };
     };
-
-    fidget = {
-      enable = true;
-    };
-
-    undotree = {
-      enable = true;
-    };
-
-    # typst-vim = {
-    #   enable = true;
-    # };
 
     image = {
       enable = true;
@@ -40,14 +30,17 @@
             download_remote_images = true;
             filetypes = [ "markdown" ];
           };
+          typst.enabled = false;
         };
-        window_overlap_Clear_ft_ignore = [
+        window_overlap_clear_ft_ignore = [
           "cmp_menu"
           "find_files"
         ];
       };
     };
 
+    fidget.enable = true;
+    undotree.enable = true;
     trouble.enable = true;
     colorizer.enable = true;
 
@@ -61,6 +54,9 @@
     };
 
   };
+
+  extraPackages = with pkgs; [ imagemagick ];
+  extraLuaPackages = ps: [ ps.magick ];
 
   keymaps = [
     {

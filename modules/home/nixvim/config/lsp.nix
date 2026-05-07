@@ -11,37 +11,59 @@
       };
     }
 
+    {
+      event = [ "FileType"];
+      pattern = "java";
+      callback.__raw = ''
+
+        function()
+
+            vim.keymap.set('n', '<leader>ji', function()
+                require('jdtls').organize_imports()
+            end, { buffer = true })
+
+            vim.keymap.set('n', '<leader>jv', function()
+                require('jdtls').extract_variable()
+            end, {buffer = true})
+
+
+
+        end
+      '';
+    }
+
   ];
+
+  plugins.jdtls = {
+    enable = true;
+    settings = {
+            cmd = ["jdtls"];
+            root_dir.__raw = ''
+                vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw', 'pom.xml'}, {upward = true})[1])
+            '';
+
+
+handlers.__raw = ''
+      {
+        ["window/logMessage"] = function(err, result, ctx, config)
+          -- only show errors, suppress info/debug spam
+          if result and result.type <= 1 then
+            vim.lsp.handlers["window/logMessage"](err, result, ctx, config)
+          end
+        end,
+      }
+    '';
+
+        };
+  };
+
   lsp = {
     inlayHints.enable = true;
     servers = {
 
       ########
-      # Java #
-      ########
-      jdtls = {
-        enable = true;
-        config = {
-
-          keymaps = [
-            {
-              key = "<leader>ji";
-              action = "require('jdtls').organize_imports";
-
-            }
-
-          ];
-          root_markers = [
-            "pom.xml"
-            "gradle.build"
-          ];
-
-        };
-      };
-      ########
       # Rust #
       ########
-
       rust_analyzer.enable = true;
 
       #########
@@ -99,6 +121,7 @@
       yamlls.enable = true;
       tombi.enable = true;
       marksman.enable = true;
+      sqruff.enable = true;
 
       tinymist = {
         enable = true;
