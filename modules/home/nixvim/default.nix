@@ -22,8 +22,8 @@ in
   config = lib.mkIf cfg.enable {
 
     home.packages = with pkgs; [
-      # nixd
       nixfmt-rfc-style
+      fd
     ];
 
     programs.ripgrep.enable = true;

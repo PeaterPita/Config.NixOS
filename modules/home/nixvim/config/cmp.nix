@@ -6,11 +6,11 @@
     settings = {
       sources = [
         { name = "nvim_lsp"; }
-        { name = "path"; }
-        { name = "buffer"; }
         { name = "luasnip"; }
+        { name = "path"; }
         { name = "git"; }
         { name = "vimtex"; }
+        { name = "buffer"; }
       ];
 
       mapping = {
