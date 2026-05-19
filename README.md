@@ -73,6 +73,12 @@ Github SSH keys: [docs.github.com](https://docs.github.com/en/authentication/con
 </details>
 
 
+
+## TODO
+- [ ] Mouse Button Side Buttons (Logitech G502)
+- [ ] ffmpeg ++ camera tool  (DSLR)
+
+
 ## References / Resources
 - [NixOS Wiki](https://wiki.nixos.org/wiki/NixOS_Wiki)
 - [NixOS manual](https://nixos.org/manual/nix/stable)
