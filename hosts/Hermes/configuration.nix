@@ -151,6 +151,12 @@ in
           protected = true;
         };
 
+        analytics = {
+          host = cfg.coreIP;
+          port = services.umami.port;
+          protected = true;
+        };
+
         speed = {
           host = cfg.coreIP;
           port = services.speedtest-tracker.port;

@@ -27,16 +27,16 @@ This repo should also not be used for inspiration for your own configs; I would 
 | :--- | :--- | :--- |
 | **Traefik**             | Hermes    | 🟢 Functional  |
 | **AdGuard**             | Hermes    | 🟢 Functional  |
-| **Fail2Ban**            | Hermes    | ⚫ Planned     |
+| **Crowdsec**            | Hermes    | ⚫ Planned     |
 | &nbsp;                  |           |                |
 | **Homepage**            | Olympus   | 🟡 In-Progress |
 | **LLDAP**               | Olympus   | 🟢 Functional  |
-| **Umami**               | Olympus   | ⚫ Planned     |
+| **Umami**               | Olympus   | 🟡 In-Progress |
 | **Kavita**              | Olympus   | 🟢 Functional  |
 | **Mealie**              | Olympus   | 🟢 Functional  |
 | **Immich**              | Olympus   | ⚫ Planned     |
 | **Grafana**             | Olympus   | ⚫ Planned     |
-| **Authelia**            | Olympus   | 🟢 Functional  |
+| **Authelia**            | Olympus   | 🟡 In-Progress |
 | **Jellyfin**            | Olympus   | 🔴 Redundant   |
 | **Navidrome**           | Olympus   | 🟢 Functional  |
 | **Tailscale**           | Olympus   | 🟢 Functional  |
@@ -70,17 +70,6 @@ Github SSH keys: [docs.github.com](https://docs.github.com/en/authentication/con
 + ??
 + Manual OIDC secret generation
 
-
-
-### OIDC Client Secrets
-- Generate random string
-- `authelia crypto hash generate pbkdf2 --variant sha512`
-
-+ ??
-
-
-
-
 </details>
 
 
@@ -90,12 +79,4 @@ Github SSH keys: [docs.github.com](https://docs.github.com/en/authentication/con
 - [Home-manager docs](https://nix-community.github.io/home-manager/index.html#ch-nix-flakes)
 - [NixVim docs](https://github.com/nix-community/nixvim
 )
-
 - [Misterio77 Config](https://github.com/Misterio77/nix-config)
-
-
-
-
-
-
-
