@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   inputs,
   self,
@@ -78,15 +79,15 @@ in
     ACME_EMAIL=${config.sops.placeholder."personal/email"}
   '';
 
-  services.tailscale = {
-    enable = true;
-    useRoutingFeatures = "server";
-    authKeyFile = config.sops.secrets."tailscale/auth_key".path;
-    extraUpFlags = [
-      "--advertise-routes=192.168.0.0/24"
-      "--advertise-exit-node"
-    ];
-  };
+  # services.tailscale = {
+  #   enable = true;
+  #   useRoutingFeatures = "server";
+  #   authKeyFile = config.sops.secrets."tailscale/auth_key".path;
+  #   extraUpFlags = [
+  #     "--advertise-routes=192.168.0.0/24"
+  #     "--advertise-exit-node"
+  #   ];
+  # };
 
   services.logind.settings.Login = {
     HandleLidSwitch = "ignore";
@@ -114,6 +115,7 @@ in
     lldap.enable = true;
     authelia.enable = true;
     speedtest-tracker.enable = true;
+    umami.enable = true;
 
     filebrowser-quantum = {
 

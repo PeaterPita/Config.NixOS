@@ -17,6 +17,8 @@ in
       environment.defaultPackages = [ ]; # Remove all preinstalled packages
       modules.networking.enable = true;
 
+      programs.nano.enable = false;
+
     }
 
     (lib.mkIf cfg {
@@ -33,13 +35,17 @@ in
       services.mullvad-vpn.enable = true;
       services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
-      services.xserver.enable = true;
+      services.xserver = {
+        enable = true;
+        excludePackages = [ pkgs.xterm ];
+      };
 
       environment.systemPackages = with pkgs; [
         kdePackages.ark
+        vim
         unrar
         swww
-        feh
+        qimgv
         ncdu
         xdg-utils
         nixfmt-tree
