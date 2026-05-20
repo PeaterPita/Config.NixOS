@@ -55,7 +55,7 @@ in
           bind_hosts = [ "0.0.0.0" ];
           port = 53;
           bootstrap_dns = [ "1.1.1.1" ];
-          upstream_dns = [ "1.1.1.1" ];
+          upstream_dns = [ "https://cloudflare-dns.com/dns-query" ];
 
         };
 

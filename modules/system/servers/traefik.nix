@@ -43,7 +43,11 @@ let
     rule = "Host(`${name}.${vars.baseDomain}`)";
     service = name;
     entryPoints = [ "websecure" ];
-    middlewares = value.middlewares ++ lib.optional value.protected "protected-chain";
+    middlewares = [
+      "rate-limit"
+    ]
+    ++ value.middlewares
+    ++ lib.optional value.protected "authelia";
   };
 
   mkService = name: value: {
@@ -185,11 +189,6 @@ in
             burst = 50;
             period = "1s";
           };
-
-          protected-chain.chain.middlewares = [
-            "rate-limit"
-            "authelia"
-          ];
 
           git-redirect.redirectRegex = {
             regex = ".*";

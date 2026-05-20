@@ -35,18 +35,6 @@ in
       }
     ];
 
-    homelab.services.authelia.rules = [
-      {
-        domain = [
-          cfg.domain
-        ];
-        policy = "one_factor";
-        subject = [
-          "group:admin"
-        ];
-      }
-    ];
-
     networking.firewall.allowedTCPPorts = [ cfg.port ];
 
     services.umami = {

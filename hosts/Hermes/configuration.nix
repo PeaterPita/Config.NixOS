@@ -76,10 +76,10 @@ in
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ4UunpG+zwcD8K6yKG0Tl9DOG4fbl+tb0MjIVIOGNyp"
     ];
   };
-  services.resolved.extraConfig = ''
-    DNS=1.1.1.1
-    DNSStubListener=no
-  '';
+  # services.resolved.extraConfig = ''
+  #   DNS=1.1.1.1
+  #   DNSStubListener=no
+  # '';
 
   homelab.services = {
     glances.enable = true;
@@ -154,7 +154,6 @@ in
         analytics = {
           host = cfg.coreIP;
           port = services.umami.port;
-          protected = true;
         };
 
         speed = {
