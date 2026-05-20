@@ -26,11 +26,5 @@
       description = "Default gateway";
     };
 
-    upstreamDNS = lib.mkOption {
-      type = lib.types.str;
-      default = "1.1.1.1";
-      description = "Upstream DNS (cloudflares)";
-    };
-
   };
 }

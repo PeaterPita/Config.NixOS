@@ -116,7 +116,7 @@ in
           dnsChallenge = {
             provider = "cloudflare";
             resolvers = [
-              "${vars.upstreamDNS}:53"
+              "1.1.1.1:53"
               "8.8.8.8:53"
             ];
           };
