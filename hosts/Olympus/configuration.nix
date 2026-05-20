@@ -28,25 +28,60 @@ in
   ];
 
   networking.useDHCP = false;
-  networking.bridges.br0.interfaces = [ "enp1s0" ];
-  networking.interfaces.br0 = {
-    useDHCP = false;
-    ipv4.addresses = [
-      {
-        address = config.homelab.coreIP;
-        prefixLength = 24;
-      }
-    ];
-  };
-  networking.defaultGateway = vars.gatewayIP;
-  networking.nameservers = [
-    config.homelab.ingressIP
-    "1.1.1.1"
-  ];
+  networking.useNetworkd = true;
 
-  services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="net", KERNEL=="vm-hermes", RUN+="${pkgs.iproute2}/bin/ip link set vm-hermes master br0"
-  '';
+  systemd.network = {
+    enable = true;
+
+    netdevs."10-br0" = {
+      netdevConfig = {
+        Name = "br0";
+        Kind = "bridge";
+      };
+    };
+
+    networks = {
+      "10-enp1s0" = {
+        matchConfig.Name = "enp1s0";
+        networkConfig.Bridge = "br0";
+      };
+      "10-br0" = {
+        matchConfig.Name = "br0";
+        networkConfig = {
+          Address = "${vars.coreIP}/24";
+          Gateway = vars.gatewayIP;
+          DNS = vars.ingressIP;
+        };
+      };
+
+      "20-vm" = {
+        matchConfig.Name = "vm-*";
+        networkConfig.Bridge = "br0";
+      };
+
+    };
+
+  };
+
+  # networking.bridges.br0.interfaces = [ "enp1s0" ];
+  # networking.interfaces.br0 = {
+  #   useDHCP = false;
+  #   ipv4.addresses = [
+  #     {
+  #       address = config.homelab.coreIP;
+  #       prefixLength = 24;
+  #     }
+  #   ];
+  # };
+  # networking.defaultGateway = vars.gatewayIP;
+  # networking.nameservers = [
+  #   config.homelab.ingressIP
+  #   "1.1.1.1"
+  # ];
+
+  # services.udev.extraRules = ''
+  #   ACTION=="add", SUBSYSTEM=="net", KERNEL=="vm-hermes", RUN+="${pkgs.iproute2}/bin/ip link set vm-hermes master br0"
+  # '';
 
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1;

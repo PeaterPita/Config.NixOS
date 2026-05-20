@@ -16,7 +16,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Atlas**     | Main workhorse & Gaming   | 🟢 Functional | Running an NVIDIA GPU | 
 | **Icarus**    | University laptop         | 🟢 Functional | Semi-light weight     |
 | &nbsp;        |                           |               | |
-| **Olympus**   | Core homelab server       | 🔴 WIP        | In testing! Dell r730 -> Acer Laptop during this time |
+| **Olympus**   | Core homelab server       | 🟡 In-Progress| In testing! Dell r730 -> Acer Laptop during this time |
 | **Hermes**    | Ingress node              | 🟡 In-Progress| Virtualised on **Olympus** through microVM |
 | **Apollo**    | *Arr Stack                | ⚫ Planned    | |
 
@@ -35,12 +35,12 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Kavita**              | Olympus   | 🟢 Functional  |
 | **Mealie**              | Olympus   | 🟢 Functional  |
 | **Immich**              | Olympus   | ⚫ Planned     |
+| **Forgejo**              | Olympus   | ⚫ Planned     |
 | **Grafana**             | Olympus   | ⚫ Planned     |
 | **Authelia**            | Olympus   | 🟡 In-Progress |
 | **Jellyfin**            | Olympus   | 🔴 Redundant   |
 | **Navidrome**           | Olympus   | 🟢 Functional  |
 | **Tailscale**           | Olympus   | 🟢 Functional  |
-| **Drafft-ink**          | Olympus   | ⚫ Planned     |
 | **Prometheus**          | Olympus   | ⚫ Planned     |
 | **Paperless-ngx**       | Olympus   | ⚫ Planned     |
 | **Personal Sites**      | Olympus   | 🔴 WIP         |
