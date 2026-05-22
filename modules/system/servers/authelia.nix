@@ -150,13 +150,18 @@ in
             }
 
             {
-              domain = [
-                "traefik.${vars.baseDomain}"
-                "adguard.${vars.baseDomain}"
-              ];
+              domain = [ "traefik.${vars.baseDomain}" ];
               policy = "two_factor";
               subject = [ "group:admin" ];
             }
+
+            {
+
+              domain = [ "adguard.${vars.baseDomain}" ];
+              policy = "one_factor";
+              subject = [ "group:admin" ];
+            }
+
           ]
           ++ cfg.rules;
 
