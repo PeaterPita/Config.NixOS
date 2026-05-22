@@ -18,7 +18,6 @@ This repo should also not be used for inspiration for your own configs; I would 
 | &nbsp;        |                           |               | |
 | **Olympus**   | Core homelab server       | 🟡 In-Progress| In testing! Dell r730 -> Acer Laptop during this time |
 | **Hermes**    | Ingress node              | 🟡 In-Progress| Virtualised on **Olympus** through microVM |
-| **Apollo**    | *Arr Stack                | ⚫ Planned    | |
 
 
 ## Homelab Services
@@ -35,10 +34,11 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Kavita**              | Olympus   | 🟢 Functional  |
 | **Mealie**              | Olympus   | 🟢 Functional  |
 | **Immich**              | Olympus   | ⚫ Planned     |
-| **Forgejo**              | Olympus   | ⚫ Planned     |
+| **Forgejo**             | Olympus   | ⚫ Planned     |
 | **Grafana**             | Olympus   | ⚫ Planned     |
 | **Authelia**            | Olympus   | 🟡 In-Progress |
-| **Jellyfin**            | Olympus   | 🔴 Redundant   |
+| **Jellyfin**            | Olympus   | 🟡 In-Progress |
+| **Jellyseerr**          | Olympus   | 🟡 In-Progress |
 | **Navidrome**           | Olympus   | 🟢 Functional  |
 | **Tailscale**           | Olympus   | 🟢 Functional  |
 | **Prometheus**          | Olympus   | ⚫ Planned     |
@@ -46,8 +46,6 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Personal Sites**      | Olympus   | 🔴 WIP         |
 | **Speedtest Tracker**   | Olympus   | 🟢 Functional  |
 | **filebrowser-quantum** | Olympus   | 🟡 In-Progress |
-| &nbsp;                  |           |                |
-| **Arr Stack**           | Apollo    | ⚫ Planned     |
 
 
 
