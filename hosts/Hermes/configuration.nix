@@ -138,13 +138,11 @@ in
         jellyfin = {
           host = cfg.coreIP;
           port = services.jellyfin.port;
-          protected = true;
         };
 
         jellyseerr = {
           host = cfg.coreIP;
           port = services.jellyseerr.port;
-          protected = true;
         };
 
         music = {
