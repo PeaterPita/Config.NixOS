@@ -63,26 +63,6 @@ in
 
   };
 
-  # networking.bridges.br0.interfaces = [ "enp1s0" ];
-  # networking.interfaces.br0 = {
-  #   useDHCP = false;
-  #   ipv4.addresses = [
-  #     {
-  #       address = config.homelab.coreIP;
-  #       prefixLength = 24;
-  #     }
-  #   ];
-  # };
-  # networking.defaultGateway = vars.gatewayIP;
-  # networking.nameservers = [
-  #   config.homelab.ingressIP
-  #   "1.1.1.1"
-  # ];
-
-  # services.udev.extraRules = ''
-  #   ACTION=="add", SUBSYSTEM=="net", KERNEL=="vm-hermes", RUN+="${pkgs.iproute2}/bin/ip link set vm-hermes master br0"
-  # '';
-
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1;
     "net.ipv6.conf.all.forwarding" = 1;
@@ -163,6 +143,11 @@ in
             {
               path = "/srv/files";
               name = "files";
+              config = {
+                defaultEnabled = true;
+                defaultUserScope = "/";
+                createUserDir = true;
+              };
             }
           ];
         };
@@ -175,6 +160,22 @@ in
               enabled = true;
               signup = false;
             };
+
+            oidc = {
+              enabled = true;
+              clientId = "filebrowser-quantum";
+              clientSecret = "@oidc_secret@";
+              issuerUrl = "https://auth.${vars.baseDomain}";
+              scopes = "openid email profile groups";
+              userIdentifier = "preferred_username";
+              adminGroup = "admin";
+              createUser = true;
+              # userGroups = [
+              #   "family"
+              #   "admin"
+              # ];
+              groupsClaim = "groups";
+            };
           };
         };
 
@@ -182,7 +183,6 @@ in
 
         frontend = {
           name = "QuantumFiles";
-
         };
       };
 

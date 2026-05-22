@@ -160,21 +160,6 @@ in
           ]
           ++ cfg.rules;
 
-          # rules = [
-          #
-          #
-          #   {
-          #     domain = "files.${vars.baseDomain}";
-          #     policy = "one_factor";
-          #     subject = [
-          #       "group:friends"
-          #       "group:family"
-          #       "group:admin"
-          #     ];
-          #   }
-          #
-          #
-          # ];
         };
 
         server.address = "tcp://0.0.0.0:${toString cfg.port}";
