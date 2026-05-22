@@ -12,7 +12,7 @@ in
 
 {
   options.homelab.services.umami = {
-    enable = lib.mkEnableOption "Enable the Umami Media Streaming Service";
+    enable = lib.mkEnableOption "Enable Umami";
     port = lib.mkOption { default = 3010; };
     domain = lib.mkOption { default = "analytics.${vars.baseDomain}"; };
   };
