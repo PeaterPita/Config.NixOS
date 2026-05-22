@@ -144,7 +144,7 @@ in
           protected = true;
         };
 
-        lldap = {
+        account = {
           host = cfg.coreIP;
           port = services.lldap.webport;
           middlewares = [ "internal-only" ];

@@ -91,7 +91,7 @@ in
 
         OIDC_AUTO_REDIRECT = "false";
 
-        OIDC_GROUPS_CLIAM = "groups";
+        OIDC_GROUPS_CLAIM = "groups";
         OIDC_ADMIN_GROUP = "admin";
         OIDC_USER_GROUP = "family";
 
