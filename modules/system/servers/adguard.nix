@@ -42,7 +42,7 @@ in
         domain = [
           cfg.domain
         ];
-        policy = "two_factor";
+        policy = "one_factor";
         subject = [ "group:admin" ];
       }
     ];

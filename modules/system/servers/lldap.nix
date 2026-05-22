@@ -76,5 +76,15 @@ in
       };
     };
   };
-
 }
+
+##########
+# Groups #
+##########
+# admin
+# media  #
+# music
+# books
+# meals
+# files
+# home

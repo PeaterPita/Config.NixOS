@@ -40,10 +40,6 @@ in
       {
         domain = [ cfg.domain ];
         policy = "one_factor";
-        subject = [
-          "group:family"
-          "group:admin"
-        ];
       }
     ];
   };

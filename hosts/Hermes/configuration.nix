@@ -134,10 +134,19 @@ in
           port = services.homepage.port;
           protected = true;
         };
+
         jellyfin = {
           host = cfg.coreIP;
           port = services.jellyfin.port;
+          protected = true;
         };
+
+        jellyseerr = {
+          host = cfg.coreIP;
+          port = services.jellyseerr.port;
+          protected = true;
+        };
+
         music = {
           host = cfg.coreIP;
           port = services.navidrome.port;
@@ -161,6 +170,7 @@ in
           port = services.speedtest-tracker.port;
           protected = true;
         };
+
       };
     };
   };

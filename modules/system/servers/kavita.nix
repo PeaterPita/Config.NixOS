@@ -59,8 +59,8 @@ in
           ];
           policy = "one_factor";
           subject = [
-            "group:family"
             "group:admin"
+            "group:books"
           ];
         }
       ];

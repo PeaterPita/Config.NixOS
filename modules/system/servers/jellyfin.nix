@@ -39,13 +39,15 @@ in
         ];
         policy = "one_factor";
         subject = [
-          "group:family"
           "group:admin"
+          "group:media"
         ];
       }
     ];
 
-    networking.firewall.allowedTCPPorts = [ cfg.port ];
+    networking.firewall.allowedTCPPorts = [
+      cfg.port
+    ];
 
     environment.systemPackages = with pkgs; [
       jellyfin
@@ -53,9 +55,7 @@ in
       jellyfin-ffmpeg
     ];
 
-    services.jellyfin = {
-      enable = true;
-    };
-  };
+    services.jellyfin.enable = true;
 
+  };
 }
