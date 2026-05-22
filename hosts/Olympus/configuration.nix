@@ -133,61 +133,7 @@ in
     speedtest-tracker.enable = true;
     umami.enable = true;
 
-    filebrowser-quantum = {
-
-      enable = true;
-      settings = {
-        server = {
-          port = vars.services.filebrowser-quantum.port;
-
-          sources = [
-            {
-              path = "/srv/files";
-              name = "files";
-              config = {
-                defaultEnabled = true;
-                defaultUserScope = "/";
-                createUserDir = true;
-              };
-            }
-          ];
-        };
-
-        auth = {
-          adminUsername = "admin";
-          adminPassword = "@admin-pass@";
-          methods = {
-            password = {
-              enabled = true;
-              signup = false;
-            };
-
-            oidc = {
-              enabled = true;
-              clientId = "filebrowser-quantum";
-              clientSecret = "@oidc_secret@";
-              issuerUrl = "https://auth.${vars.baseDomain}";
-              scopes = "openid email profile groups";
-              userIdentifier = "preferred_username";
-              adminGroup = "admin";
-              createUser = true;
-              # userGroups = [
-              #   "family"
-              #   "admin"
-              # ];
-              groupsClaim = "groups";
-            };
-          };
-        };
-
-        integrations.media.ffmpegPath = "${pkgs.ffmpeg-full}/bin";
-
-        frontend = {
-          name = "QuantumFiles";
-        };
-      };
-
-    };
+    filebrowser-quantum.enable = true;
 
     portfolio.enable = true;
     it-tools.enable = true;

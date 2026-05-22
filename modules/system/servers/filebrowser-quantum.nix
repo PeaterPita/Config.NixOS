@@ -45,7 +45,7 @@ in
     };
 
     systemd.tmpfiles.rules = [
-      "d /srv/files 0755 filebrowser-quantum filebrowser-quantum -"
+      "d /mnt/files 0755 filebrowser-quantum filebrowser-quantum -"
     ];
     systemd.services.filebrowser-quantum = {
       description = "Filebrowser Quantum";
@@ -74,9 +74,8 @@ in
         PrivateTmp = true;
         NoNewPrivileges = true;
         ReadWritePaths = [
-          "/var/lib/filebrowser-quantum"
-          "/srv/files"
           cfg.dataDir
+          "/mnt/files"
         ];
       };
 
@@ -145,5 +144,64 @@ in
     ];
 
     networking.firewall.allowedTCPPorts = [ cfg.port ];
+
+    homelab.services.filebrowser-quantum = {
+      settings = {
+        server = {
+          port = cfg.port;
+          sources = [
+            {
+              path = "/mnt/files";
+              name = "files";
+              config = {
+                defaultEnabled = true;
+                # defaultUserScope = "/";
+                createUserDir = true;
+              };
+            }
+          ];
+        };
+
+        userDefaults = {
+          permissions = {
+            modify = true;
+            share = true;
+            delete = true;
+            create = true;
+          };
+        };
+
+        auth = {
+          adminUsername = "admin";
+          adminPassword = "@admin-pass@";
+          methods = {
+            password = {
+              enabled = true;
+              signup = false;
+            };
+
+            oidc = {
+              enabled = true;
+              clientId = "filebrowser-quantum";
+              clientSecret = "@oidc_secret@";
+              issuerUrl = "https://auth.${vars.baseDomain}";
+              scopes = "openid email profile groups";
+              userIdentifier = "preferred_username";
+              adminGroup = "admin";
+              createUser = true;
+              groupsClaim = "groups";
+            };
+          };
+        };
+
+        integrations.media.ffmpegPath = "${pkgs.ffmpeg-full}/bin";
+
+        frontend = {
+          name = "QuantumFiles";
+        };
+      };
+
+    };
+
   };
 }
