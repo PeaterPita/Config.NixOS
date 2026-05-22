@@ -39,6 +39,11 @@ in
       sopsFile = ../../../secrets/services.yaml;
     };
 
+    sops.secrets."filebrowser-quantum/oidc_secret" = {
+      owner = "filebrowser-quantum";
+      sopsFile = ../../../secrets/services.yaml;
+    };
+
     systemd.tmpfiles.rules = [
       "d /srv/files 0755 filebrowser-quantum filebrowser-quantum -"
     ];
@@ -59,7 +64,10 @@ in
         Group = "filebrowser-quantum";
         Restart = "on-failure";
 
-        LoadCredential = [ "admin-pass:${config.sops.secrets."filebrowser-quantum/admin-pass".path}" ];
+        LoadCredential = [
+          "admin-pass:${config.sops.secrets."filebrowser-quantum/admin-pass".path}"
+          "oidc_secret:${config.sops.secrets."filebrowser-quantum/oidc_secret".path}"
+        ];
 
         ProtectHome = true;
         ProtectSystem = "strict";
@@ -75,6 +83,7 @@ in
       preStart = ''
         cp --no-preserve=mode ${configFile} ${cfg.dataDir}/config.yaml
         ${pkgs.replace-secret}/bin/replace-secret '@admin-pass@' "$CREDENTIALS_DIRECTORY/admin-pass" ${cfg.dataDir}/config.yaml
+        ${pkgs.replace-secret}/bin/replace-secret '@oidc_secret@' "$CREDENTIALS_DIRECTORY/oidc_secret" ${cfg.dataDir}/config.yaml
       '';
 
     };
@@ -114,6 +123,24 @@ in
           "group:family"
           "group:admin"
         ];
+      }
+    ];
+
+    homelab.services.authelia.oidc = [
+      {
+        client_id = "filebrowser-quantum";
+        client_name = "filebrowser-quantum";
+        client_secret = "$pbkdf2-sha512$310000$M0aB6kr6zH6rGGXQjH1Zhg$CsivwUa/1vCxSR9HvSa9Q2rX.vEHgJrcCZdtOCjv/ng2MOi95DqM32JBFFdoBZqzJps5Z7soNFnF9.OqRALfIQ";
+        public = false;
+        authorization_policy = "one_factor";
+        redirect_uris = [ "https://${cfg.domain}/api/auth/oidc/callback" ];
+        scopes = [
+          "openid"
+          "profile"
+          "email"
+          "groups"
+        ];
+        token_endpoint_auth_method = "client_secret_basic";
       }
     ];
 
