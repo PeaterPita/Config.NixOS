@@ -93,7 +93,7 @@ in
 
         OIDC_GROUPS_CLAIM = "groups";
         OIDC_ADMIN_GROUP = "admin";
-        OIDC_USER_GROUP = "family";
+        OIDC_USER_GROUP = "meals";
 
         ALLOW_SIGNUP = "false";
         ALLOW_PASSWORD_LOGIN = "false";

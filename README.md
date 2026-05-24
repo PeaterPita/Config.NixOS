@@ -33,7 +33,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Umami**               | Olympus   | 🟡 In-Progress |
 | **Kavita**              | Olympus   | 🟢 Functional  |
 | **Mealie**              | Olympus   | 🟢 Functional  |
-| **Immich**              | Olympus   | ⚫ Planned     |
+| **Immich**              | Olympus   | 🟡 In-Progress |
 | **Forgejo**             | Olympus   | ⚫ Planned     |
 | **Grafana**             | Olympus   | ⚫ Planned     |
 | **Authelia**            | Olympus   | 🟡 In-Progress |
