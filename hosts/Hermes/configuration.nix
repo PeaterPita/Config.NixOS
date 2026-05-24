@@ -154,7 +154,7 @@ in
         account = {
           host = cfg.coreIP;
           port = services.lldap.webport;
-          middlewares = [ "internal-only" ];
+          # middlewares = [ "internal-only" ];
           protected = true;
         };
 

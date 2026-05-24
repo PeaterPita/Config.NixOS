@@ -169,6 +169,7 @@ in
             delete = true;
             create = true;
           };
+          preview.popup = false;
         };
 
         auth = {

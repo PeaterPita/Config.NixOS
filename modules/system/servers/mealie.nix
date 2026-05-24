@@ -95,6 +95,9 @@ in
         OIDC_ADMIN_GROUP = "admin";
         OIDC_USER_GROUP = "family";
 
+        ALLOW_SIGNUP = "false";
+        ALLOW_PASSWORD_LOGIN = "false";
+
         OIDC_PROVIDER_NAME = "Authelia";
         OIDC_REMEMBER_ME = "true";
         OIDC_SIGNING_ALGORITHM = "RS256";

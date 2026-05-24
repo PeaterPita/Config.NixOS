@@ -127,7 +127,7 @@ in
     navidrome.enable = true;
     mealie.enable = true;
     glances.enable = true;
-    kavita.enable = true;
+    # kavita.enable = true;
     lldap.enable = true;
     authelia.enable = true;
     speedtest-tracker.enable = true;
