@@ -163,6 +163,11 @@ in
           port = services.umami.port;
         };
 
+        photos = {
+          host = cfg.coreIP;
+          port = services.immich.port;
+        };
+
         speed = {
           host = cfg.coreIP;
           port = services.speedtest-tracker.port;

@@ -132,6 +132,7 @@ in
     authelia.enable = true;
     speedtest-tracker.enable = true;
     umami.enable = true;
+    immich.enable = true;
 
     filebrowser-quantum.enable = true;
 
