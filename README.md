@@ -51,7 +51,8 @@ This repo should also not be used for inspiration for your own configs; I would 
 
 
 ## Setup
-As much as I disdain imperative configuration; some processes cannot be declared as of right right. Hopefully as time goes on this section will get shorter and shorter.
+As much as I disdain imperative configuration; some processes cannot be declared as of right right. Hopefully as time goes on this section will get shorter. 
+This section also is just servicing as a running checklist and reminder to myself.
 
 
 <details>
@@ -60,21 +61,56 @@ As much as I disdain imperative configuration; some processes cannot be declared
 Github SSH keys: [docs.github.com](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
 
+Sops keys: 
+`sudo age-keygen -o ~/.config/sops/age/keys.txt`
+
+
 </details>
 
 <details>
 <summary>Olympus</summary>
 
-+ ??
-+ Manual OIDC secret generation
 
+### Account Creations
+- [ ] Authelia LLDAP Service Account 
+        password from sops `ldap_password`
+        under group `lldap_password_manager`
+
+- [ ] User LLDAP Account creation
+- [ ] Navidrome Admin Account Creation
+    Required direct `IP:PORT` access
+
+
+### Credential Changes
+- [ ] Umami - https://docs.umami.is/docs/login
+- [ ] SpeedtestTracker - https://docs.speedtest-tracker.dev/security/authentication
+
+
+
+### Imperative Configuration
+- Jellyfin LDAP Plugin Setup
+    LDAP Server: `127.0.0.1`
+    LDAP Port: `3890`
+
+    Secure LDAP: `false`
+
+    LDAP Bind User: `uid=jellyfin,ou=people,dc=..`
+    LDAP Base DN for Searches: `ou=people,dc=..`
+    LDAP Search Filter: `(|(memberOf=cn=media,ou=groups,dc=..)(memberOf=cn=admin,ou=groups,dc=..))`
+    LDAP Search Attributes: `uid,cn,mail`
+
+    LDAP Admin Filter: `(memberOf=CN=admin,ou=groups,dc=peaterpita,dc=com)`
+
+- Jellyseerr Setup
+
+- SAMBA account
+    `sudo smbpasswd -a <account name>`
 </details>
-
-
 
 ## TODO
 - [ ] Mouse Button Side Buttons (Logitech G502)
 - [ ] ffmpeg ++ camera tool  (DSLR)
+- [ ] Olympus SMTP setup (authelia TOTP registration)
 
 
 ## References / Resources
@@ -84,3 +120,4 @@ Github SSH keys: [docs.github.com](https://docs.github.com/en/authentication/con
 - [NixVim docs](https://github.com/nix-community/nixvim
 )
 - [Misterio77 Config](https://github.com/Misterio77/nix-config)
+- [Notthebe Config](https://git.notthebe.ee/notthebee/nix-config)
