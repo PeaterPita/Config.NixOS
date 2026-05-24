@@ -23,6 +23,11 @@ in
       type = lib.types.listOf lib.types.attrs;
       default = [ ];
     };
+
+    policies = lib.mkOption {
+      type = lib.types.attrsOf lib.types.attrs;
+      default = { };
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -99,6 +104,11 @@ in
 
         totp.issuer = "${vars.baseDomain}";
 
+        # identity_validation.elevated_session = {
+        #   require_second_factor = false;
+        #   skip_second_factor = true;
+        # };
+
         authentication_backend.ldap = {
           implementation = "lldap";
 
@@ -114,6 +124,7 @@ in
 
         identity_providers.oidc = {
           clients = [ ] ++ cfg.oidc;
+          authorization_policies = cfg.policies;
 
         };
 
