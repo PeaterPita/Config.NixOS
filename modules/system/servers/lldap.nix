@@ -17,7 +17,7 @@ in
 {
   options.homelab.services.lldap = {
     enable = lib.mkEnableOption "Enable lldap";
-    domain = lib.mkOption { default = "account.${vars.baseDomain}"; };
+    domain = lib.mkOption { default = "lldap.${vars.baseDomain}"; };
     port = lib.mkOption { default = 3890; };
     webport = lib.mkOption { default = 17170; };
   };
@@ -50,6 +50,7 @@ in
           cfg.domain
         ];
         policy = "one_factor";
+        subject = [ "group:admin" ];
       }
     ];
 
