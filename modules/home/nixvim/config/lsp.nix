@@ -12,7 +12,7 @@
     }
 
     {
-      event = [ "FileType"];
+      event = [ "FileType" ];
       pattern = "java";
       callback.__raw = ''
 
@@ -37,24 +37,22 @@
   plugins.jdtls = {
     enable = true;
     settings = {
-            cmd = ["jdtls"];
-            root_dir.__raw = ''
-                vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw', 'pom.xml'}, {upward = true})[1])
-            '';
+      cmd = [ "jdtls" ];
+      root_dir.__raw = ''
+        vim.fs.dirname(vim.fs.find({'gradle.properties', 'gradlew', '.git', 'mvnw', 'pom.xml'}, {upward = true})[1])
+      '';
 
+      handlers.__raw = ''
+        {
+          ["window/logMessage"] = function(err, result, ctx, config)
+            if result and result.type <= 1 then
+              vim.lsp.handlers["window/logMessage"](err, result, ctx, config)
+            end
+          end,
+        }
+      '';
 
-handlers.__raw = ''
-      {
-        ["window/logMessage"] = function(err, result, ctx, config)
-          -- only show errors, suppress info/debug spam
-          if result and result.type <= 1 then
-            vim.lsp.handlers["window/logMessage"](err, result, ctx, config)
-          end
-        end,
-      }
-    '';
-
-        };
+    };
   };
 
   lsp = {
@@ -239,7 +237,7 @@ handlers.__raw = ''
       }
 
       {
-        key = "leader>ih";
+        key = "<leader>ih";
         action = lib.nixvim.mkRaw "function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end";
       }
     ];
