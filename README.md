@@ -29,6 +29,8 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Crowdsec**            | Hermes    | ⚫ Planned     |
 | &nbsp;                  |           |                |
 | **Homepage**            | Olympus   | 🟡 In-Progress |
+| **Loki**                | Olympus   | ⚫ Planned     |
+| **Ntfy**                | Olympus   | ⚫ Planned     |
 | **LLDAP**               | Olympus   | 🟢 Functional  |
 | **Umami**               | Olympus   | 🟡 In-Progress |
 | **Kavita**              | Olympus   | 🟢 Functional  |
@@ -38,9 +40,9 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Grafana**             | Olympus   | ⚫ Planned     |
 | **Authelia**            | Olympus   | 🟡 In-Progress |
 | **Jellyfin**            | Olympus   | 🟡 In-Progress |
-| **Jellyseerr**          | Olympus   | 🟡 In-Progress |
 | **Navidrome**           | Olympus   | 🟢 Functional  |
 | **Tailscale**           | Olympus   | 🟢 Functional  |
+| **Jellyseerr**          | Olympus   | 🟡 In-Progress |
 | **Prometheus**          | Olympus   | ⚫ Planned     |
 | **Paperless-ngx**       | Olympus   | ⚫ Planned     |
 | **Personal Sites**      | Olympus   | 🔴 WIP         |
