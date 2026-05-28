@@ -133,6 +133,7 @@ in
     speedtest-tracker.enable = true;
     umami.enable = true;
     immich.enable = true;
+    wakapi.enable = true;
 
     filebrowser-quantum.enable = true;
 

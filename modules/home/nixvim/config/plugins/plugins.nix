@@ -39,6 +39,10 @@
       };
     };
 
+    wakatime = {
+      enable = true;
+    };
+
     fidget.enable = true;
     undotree.enable = true;
     trouble.enable = true;

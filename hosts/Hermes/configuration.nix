@@ -163,6 +163,11 @@ in
           port = services.umami.port;
         };
 
+        wakapi = {
+          host = cfg.coreIP;
+          port = services.wakapi.port;
+        };
+
         photos = {
           host = cfg.coreIP;
           port = services.immich.port;
