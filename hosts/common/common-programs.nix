@@ -44,6 +44,7 @@ in
         kdePackages.ark
         vim
         unrar
+        brightnessctl
         swww
         qimgv
         ncdu

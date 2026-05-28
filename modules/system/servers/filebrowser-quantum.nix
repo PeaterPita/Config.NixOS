@@ -52,7 +52,12 @@ in
 
       path = [ pkgs.ffmpeg-full ];
 
-      after = [ "network.target" ];
+      after = [
+        "network-online.target"
+        "authelia-main.service"
+      ];
+      wants = [ "network-online.target" ];
+      requires = [ "authelia-main.service" ];
       wantedBy = [ "multi-user.target" ];
 
       serviceConfig = {
