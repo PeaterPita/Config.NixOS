@@ -31,11 +31,14 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Homepage**            | Olympus   | 🟡 In-Progress |
 | **Loki**                | Olympus   | ⚫ Planned     |
 | **Ntfy**                | Olympus   | ⚫ Planned     |
+| **Alloy**               | Olympus   | ⚫ Planned     |
 | **LLDAP**               | Olympus   | 🟢 Functional  |
 | **Umami**               | Olympus   | 🟡 In-Progress |
+| **Immich**              | Olympus   | 🟡 In-Progress |
 | **Kavita**              | Olympus   | 🟢 Functional  |
 | **Mealie**              | Olympus   | 🟢 Functional  |
-| **Immich**              | Olympus   | 🟡 In-Progress |
+| **Restic**              | Olympus   | ⚫ Planned     |
+| **Wakapi**              | Olympus   | 🟢 Functional  |
 | **Forgejo**             | Olympus   | ⚫ Planned     |
 | **Grafana**             | Olympus   | ⚫ Planned     |
 | **Authelia**            | Olympus   | 🟡 In-Progress |
@@ -44,6 +47,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Tailscale**           | Olympus   | 🟢 Functional  |
 | **Jellyseerr**          | Olympus   | 🟡 In-Progress |
 | **Prometheus**          | Olympus   | ⚫ Planned     |
+| **Uptime Kuma**         | Olympus   | ⚫ Planned     |
 | **Paperless-ngx**       | Olympus   | ⚫ Planned     |
 | **Personal Sites**      | Olympus   | 🔴 WIP         |
 | **Speedtest Tracker**   | Olympus   | 🟢 Functional  |
@@ -65,6 +69,10 @@ Github SSH keys: [docs.github.com](https://docs.github.com/en/authentication/con
 
 Sops keys: 
 `sudo age-keygen -o ~/.config/sops/age/keys.txt`
+
+
+### Wakatime
+`~/.wakatime.cfg` needs to be imperatively edited to point to my self hosted wakapi instance.
 
 
 </details>
