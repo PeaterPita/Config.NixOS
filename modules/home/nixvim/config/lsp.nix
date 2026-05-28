@@ -195,32 +195,6 @@
     keymaps = [
 
       {
-        key = "gd";
-        action = lib.nixvim.mkRaw "require('telescope.builtin').lsp_definitions";
-      }
-
-      {
-        key = "gi";
-        lspBufAction = "implementation";
-      }
-
-      {
-        key = "gi";
-        lspBufAction = "type_definition";
-      }
-
-      {
-        key = "gr";
-        lspBufAction = "references";
-      }
-
-      {
-        key = "gD";
-        lspBufAction = "declaration";
-
-      }
-
-      {
         key = "<leader>rn";
         lspBufAction = "rename";
       }

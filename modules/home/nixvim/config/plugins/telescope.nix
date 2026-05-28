@@ -6,6 +6,14 @@
     enable = true;
 
     keymaps = {
+
+      "<leader>h" = {
+        action = "keymaps";
+        options = {
+          desc = "List keymaps";
+        };
+      };
+
       "<leader>pf" = {
         action = "find_files";
         options = {
@@ -31,6 +39,33 @@
       "<leader>gc".action = "git_commits";
       "<leader>gb".action = "git_branches";
 
+      "<leader>gd" = {
+        action = "lsp_definitions";
+        options = {
+          desc = "Definitions";
+        };
+      };
+
+      "<leader>gi" = {
+        action = "lsp_implementations";
+        options = {
+          desc = "Implementations";
+        };
+      };
+
+      "<leader>gr" = {
+        action = "lsp_references";
+        options = {
+          desc = "References";
+        };
+      };
+
+      "<leader>ws" = {
+        action = "lsp_dynamic_workspace_symbols";
+        options = {
+          desc = "Workspace Symbols";
+        };
+      };
     };
 
   };
