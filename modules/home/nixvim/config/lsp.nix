@@ -52,6 +52,32 @@
         }
       '';
 
+      ############################################################################################################################
+      #                         Not sure if this is actually doing anything. But something to look into                          #
+      # https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request #
+      ############################################################################################################################
+      settings.java = {
+        signatureHelp.enabled = true;
+        cleanup = {
+          actionsOnSave = [
+            "invertEquals"
+          ];
+        };
+
+        compiler.problemSeverity = {
+          "unusedLocal" = "warning";
+          "unusedParam" = "info";
+          "unusedPrivateMember" = "warning";
+          "redundantSuperinterface" = "warning";
+          "possibleAccidentalBooleanAssignment" = "warning";
+          "unnecessaryElse" = "warning";
+          "unnecessaryTypeCheck" = "warning";
+          "compareWithNull" = "warning";
+          "redundantNullCheck" = "warning";
+          "missingOverrideAnnotation" = "warning";
+          "missingDeprecatedAnnotation" = "warning";
+        };
+      };
     };
   };
 
