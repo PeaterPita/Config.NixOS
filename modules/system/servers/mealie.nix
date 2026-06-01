@@ -22,7 +22,7 @@ in
       {
         Mealie = {
           icon = "mealie.png";
-          href = "http://${cfg.domain}";
+          href = "https://${cfg.domain}";
           description = "Recipes & Meals";
           ping = "http://127.0.0.1:${builtins.toString cfg.port}";
         };

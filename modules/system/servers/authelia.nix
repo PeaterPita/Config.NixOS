@@ -69,7 +69,7 @@ in
       {
         authelia = {
           icon = "authelia.png";
-          href = "http://auth.${vars.baseDomain}";
+          href = "https://auth.${vars.baseDomain}";
           description = "User Authentication";
         };
       }

@@ -28,7 +28,7 @@ in
       {
         Umami = {
           icon = "umami.png";
-          href = "http://${cfg.domain}";
+          href = "https://${cfg.domain}";
           description = "Website Analytics";
           ping = "http://127.0.0.1:${builtins.toString cfg.port}";
         };

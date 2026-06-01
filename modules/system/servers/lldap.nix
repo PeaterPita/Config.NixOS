@@ -38,7 +38,7 @@ in
       {
         lldap = {
           icon = "lldap.png";
-          href = "http://${cfg.domain}";
+          href = "https://${cfg.domain}";
           description = "User management";
         };
       }

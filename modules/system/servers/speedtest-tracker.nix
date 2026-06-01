@@ -46,7 +46,7 @@ in
           environment = {
             PUID = "1000";
             PGID = "1000";
-            APP_URL = "http://${cfg.domain}";
+            APP_URL = "https://${cfg.domain}";
             DISPLAY_TIMEZONE = "Europe/London";
             SPEEDTEST_SCHEDULE = "0 */4 * * *";
 
@@ -60,7 +60,7 @@ in
       {
         Speedtest-Tracker = {
           icon = "speedtest-tracker.png";
-          href = "http://${cfg.domain}";
+          href = "https://${cfg.domain}";
           ping = "http://127.0.0.1:${builtins.toString cfg.port}";
         };
       }

@@ -161,13 +161,13 @@ in
         {
           Traefik = {
             icon = "traefik.png";
-            href = "http://traefik.${vars.baseDomain}";
+            href = "https://traefik.${vars.baseDomain}";
           };
         }
         {
           Adguard = {
             icon = "adguard-home.png";
-            href = "http://${vars.services.adguard.domain}";
+            href = "https://${vars.services.adguard.domain}";
           };
         }
       ];

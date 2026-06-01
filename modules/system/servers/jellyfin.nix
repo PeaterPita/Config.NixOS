@@ -25,9 +25,9 @@ in
       {
         Jellyfin = {
           icon = "jellyfin.png";
-          href = "http://${cfg.domain}";
+          href = "https://${cfg.domain}";
           description = "Movies & TV";
-          ping = "http://127.0.0.1:${builtins.toString cfg.port}";
+          ping = "https://127.0.0.1:${builtins.toString cfg.port}";
         };
       }
     ];

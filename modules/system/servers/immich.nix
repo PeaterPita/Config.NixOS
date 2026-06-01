@@ -30,7 +30,7 @@ in
       {
         Immich = {
           icon = "immich.png";
-          href = "http://${cfg.domain}";
+          href = "https://${cfg.domain}";
           description = "Photo Storage & Backup";
           ping = "https://${cfg.domain}";
         };

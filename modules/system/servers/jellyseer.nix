@@ -23,7 +23,7 @@ in
       {
         Jellyseerr = {
           icon = "seerr.png";
-          href = "http://${cfg.domain}";
+          href = "https://${cfg.domain}";
           description = "Requests";
           ping = "http://127.0.0.1:${builtins.toString cfg.port}";
         };
