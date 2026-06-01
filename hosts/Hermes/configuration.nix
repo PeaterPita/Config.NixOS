@@ -82,6 +82,7 @@ in
       "127.0.0.1"
       "1.1.1.1"
     ];
+    DNSStubListener = "no";
   };
 
   # services.resolved.extraConfig = ''
@@ -118,7 +119,7 @@ in
 
         adguard = {
           port = services.adguard.port;
-          middlewares = [ "internal-only" ];
+          # middlewares = [ "internal-only" ];
           protected = true;
         };
 

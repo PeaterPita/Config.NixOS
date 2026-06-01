@@ -19,6 +19,7 @@ in
 
       programs.nano.enable = false;
 
+      environment.systemPackages = with pkgs; [ kitty.terminfo ];
     }
 
     (lib.mkIf cfg {
