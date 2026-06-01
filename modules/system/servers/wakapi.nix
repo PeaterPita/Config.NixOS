@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }:
 
@@ -12,10 +11,6 @@ let
 in
 
 {
-
-  disabledModules = [ "services/web-apps/wakapi.nix" ];
-
-  imports = [ "${inputs.nixpkgs-unstable}/nixos/modules/services/web-apps/wakapi.nix" ];
 
   options.homelab.services.wakapi = {
     enable = lib.mkEnableOption "Enabble Wakapi for code stats ";
@@ -29,7 +24,7 @@ in
       {
         Wakapi = {
           icon = "wakapi.png";
-          href = "http://${cfg.domain}";
+          href = "https://${cfg.domain}";
           description = "Code Stats";
           ping = "https://${cfg.domain}";
         };
@@ -69,7 +64,7 @@ in
           "profile"
           "email"
         ];
-        token_endpoint_auth_method = "client_secret_basic";
+        token_endpoint_auth_method = "client_secret_post";
       }
     ];
 
