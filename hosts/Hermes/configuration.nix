@@ -76,10 +76,18 @@ in
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ4UunpG+zwcD8K6yKG0Tl9DOG4fbl+tb0MjIVIOGNyp"
     ];
   };
-  services.resolved.extraConfig = ''
-    DNS=1.1.1.1
-    DNSStubListener=no
-  '';
+
+  services.resolved.settings.Resolve = {
+    DNS = [
+      "127.0.0.1"
+      "1.1.1.1"
+    ];
+  };
+
+  # services.resolved.extraConfig = ''
+  #   DNS=1.1.1.1
+  #   DNSStubListener=no
+  # '';
 
   homelab.services = {
     glances.enable = true;
@@ -140,9 +148,9 @@ in
           port = services.jellyfin.port;
         };
 
-        jellyseerr = {
+        seerr = {
           host = cfg.coreIP;
-          port = services.jellyseerr.port;
+          port = services.seerr.port;
         };
 
         music = {
@@ -154,7 +162,7 @@ in
         lldap = {
           host = cfg.coreIP;
           port = services.lldap.webport;
-          middlewares = [ "internal-only" ];
+          # middlewares = [ "internal-only" ];
           protected = true;
         };
 

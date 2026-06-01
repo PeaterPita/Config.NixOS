@@ -30,6 +30,7 @@ in
       gwenview
       kate
       okular
+      qrca
     ];
   };
 }

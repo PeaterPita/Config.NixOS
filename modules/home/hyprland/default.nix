@@ -59,12 +59,13 @@ in
     };
     wayland.windowManager.hyprland = {
       enable = true;
+      configType = "lua";
       settings = {
         "$mod" = "SUPER";
         exec-once = [
           "udiskie"
           "qs"
-          "swww-daemon"
+          "awww-daemon"
         ];
 
         general = {

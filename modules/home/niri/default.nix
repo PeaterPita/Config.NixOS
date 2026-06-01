@@ -226,7 +226,7 @@ in
 
 
         spawn-at-startup "qs"
-        spawn-at-startup "swww-daemon"
+        spawn-at-startup "awww-daemon"
         spawn-at-startup "obsidian"
         spawn-at-startup "firefox"
 

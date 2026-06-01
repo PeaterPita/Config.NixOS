@@ -45,7 +45,7 @@ in
         vim
         unrar
         brightnessctl
-        swww
+        awww
         qimgv
         ncdu
         xdg-utils

@@ -33,7 +33,7 @@ in
 
     services.blueman.enable = true;
 
-    environment.systemPackages = with pkgs; [ helvum ];
+    environment.systemPackages = with pkgs; [ crosspipe ];
   };
 
 }

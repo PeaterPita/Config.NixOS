@@ -7,14 +7,14 @@
 
 let
   vars = config.homelab;
-  cfg = vars.services.jellyseerr;
+  cfg = vars.services.seerr;
 in
 
 {
-  options.homelab.services.jellyseerr = {
-    enable = lib.mkEnableOption "Enable the jellyseerr requestment platform";
+  options.homelab.services.seerr = {
+    enable = lib.mkEnableOption "Enable the seerr requestment platform";
     port = lib.mkOption { default = 5055; };
-    domain = lib.mkOption { default = "jellyseerr.${vars.baseDomain}"; };
+    domain = lib.mkOption { default = "seerr.${vars.baseDomain}"; };
   };
 
   config = lib.mkIf cfg.enable {
@@ -22,7 +22,7 @@ in
     homelab.services.homepage.groups."Apps" = [
       {
         Jellyseerr = {
-          icon = "jellyseerr.png";
+          icon = "seerr.png";
           href = "http://${cfg.domain}";
           description = "Requests";
           ping = "http://127.0.0.1:${builtins.toString cfg.port}";
@@ -34,7 +34,7 @@ in
       cfg.port
     ];
 
-    services.jellyseerr.enable = true;
+    services.seerr.enable = true;
 
   };
 

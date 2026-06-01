@@ -123,7 +123,7 @@ in
 
   homelab.services = {
     jellyfin.enable = true;
-    jellyseerr.enable = true;
+    seerr.enable = true;
     navidrome.enable = true;
     mealie.enable = true;
     glances.enable = true;
