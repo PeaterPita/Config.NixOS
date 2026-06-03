@@ -39,9 +39,7 @@
       };
     };
 
-    wakatime = {
-      enable = true;
-    };
+    wakatime.enable = true;
 
     fidget.enable = true;
     undotree.enable = true;

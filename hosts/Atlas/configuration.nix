@@ -12,6 +12,7 @@
   environment.systemPackages = with pkgs; [
     quickshell
     parsec-bin
+    typescript
   ];
 
   qt.enable = true;

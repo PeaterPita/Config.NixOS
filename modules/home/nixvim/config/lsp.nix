@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   plugins.lspconfig.enable = true;
 
@@ -138,6 +138,18 @@
       cssls.enable = true;
       html.enable = true;
       jsonls.enable = true;
+      astro = {
+        enable = true;
+        config = {
+          cmd = [
+            "${pkgs.coreutils}/bin/env"
+            "NODE_PATH=${pkgs.typescript}/lib/node_modules"
+            "astro-ls"
+            "--stdio"
+          ];
+          init_options.typescript.tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
+        };
+      };
 
       ########
       # Misc #
