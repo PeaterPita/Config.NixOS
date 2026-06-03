@@ -1,7 +1,7 @@
 # Personal NixOS System Configuration
 
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
-[![NixOS](https://img.shields.io/badge/NixOS-25.11-blue?style=flat&logo=nixos&logoColor=white)](https://nixos.org)
+[![NixOS](https://img.shields.io/badge/NixOS-26.05-blue?style=flat&logo=nixos&logoColor=white)](https://nixos.org)
 
 ## Foreword
 This is my **personal** flake-based, multi-machine configuration. It is not intended to be used or ran by anyone else but me, therefore I cannot promise these configurations will work for anyone else. 
