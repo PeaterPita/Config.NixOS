@@ -33,8 +33,8 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Ntfy**                | Olympus   | ⚫ Planned     |
 | **Alloy**               | Olympus   | ⚫ Planned     |
 | **LLDAP**               | Olympus   | 🟢 Functional  |
-| **Umami**               | Olympus   | 🟡 In-Progress |
-| **Immich**              | Olympus   | 🟡 In-Progress |
+| **Umami**               | Olympus   | 🟢 Functional  |
+| **Immich**              | Olympus   | 🟢 Functional  |
 | **Kavita**              | Olympus   | 🟢 Functional  |
 | **Mealie**              | Olympus   | 🟢 Functional  |
 | **Restic**              | Olympus   | ⚫ Planned     |
@@ -42,16 +42,16 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Forgejo**             | Olympus   | ⚫ Planned     |
 | **Grafana**             | Olympus   | ⚫ Planned     |
 | **Authelia**            | Olympus   | 🟡 In-Progress |
-| **Jellyfin**            | Olympus   | 🟡 In-Progress |
+| **Jellyfin**            | Olympus   | 🟢 Functional  |
 | **Navidrome**           | Olympus   | 🟢 Functional  |
-| **Tailscale**           | Olympus   | 🟢 Functional  |
-| **Jellyseerr**          | Olympus   | 🟡 In-Progress |
+| **Tailscale**           | Olympus   | 🔴 Broken      |
+| **Jellyseerr**          | Olympus   | 🟢 Functional  |
 | **Prometheus**          | Olympus   | 🟡 In-Progress |
 | **Uptime Kuma**         | Olympus   | ⚫ Planned     |
 | **Paperless-ngx**       | Olympus   | ⚫ Planned     |
 | **Personal Sites**      | Olympus   | 🔴 WIP         |
 | **Speedtest Tracker**   | Olympus   | 🟢 Functional  |
-| **filebrowser-quantum** | Olympus   | 🟡 In-Progress |
+| **filebrowser-quantum** | Olympus   | 🟢 Functional  |
 
 
 
