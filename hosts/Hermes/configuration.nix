@@ -77,6 +77,8 @@ in
     ];
   };
 
+  security.sudo.wheelNeedsPassword = false;
+
   services.resolved.settings.Resolve = {
     DNS = [
       "127.0.0.1"
@@ -154,11 +156,11 @@ in
           port = services.seerr.port;
         };
 
-        music = {
-          host = cfg.coreIP;
-          port = services.navidrome.port;
-          protected = true;
-        };
+        # music = {
+        #   host = cfg.coreIP;
+        #   port = services.navidrome.port;
+        #   protected = true;
+        # };
 
         lldap = {
           host = cfg.coreIP;

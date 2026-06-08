@@ -3,6 +3,10 @@
   port = 4533;
   domain = "music";
 
+  routing = {
+    protected = true;
+  };
+
   homepage = {
     group = "Apps";
     description = "Music Streaming";
