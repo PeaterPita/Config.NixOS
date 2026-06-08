@@ -19,7 +19,6 @@
     obsidian.enable = true;
     office.enable = true;
     spotify.enable = true;
-    quickshell.enable = true;
 
     zsh.enable = true;
     nixvim.enable = true;

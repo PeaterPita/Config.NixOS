@@ -5,5 +5,4 @@
 
   filesFromDirRec =
     dir: builtins.filter (path: lib.hasSuffix ".nix" path) (lib.filesystem.listFilesRecursive dir);
-
 }

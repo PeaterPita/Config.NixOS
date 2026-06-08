@@ -18,7 +18,6 @@ in
     environment.systemPackages = with pkgs; [
       udiskie
       libnotify
-      brightnessctl
       wl-clipboard
     ];
     services.udisks2.enable = true;

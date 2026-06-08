@@ -10,7 +10,6 @@
   boot.kernelModules = [ "ntsync" ];
 
   environment.systemPackages = with pkgs; [
-    quickshell
     parsec-bin
     typescript
   ];

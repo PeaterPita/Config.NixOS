@@ -26,7 +26,6 @@
     obsidian.enable = true;
     office.enable = true;
     scrcpy.enable = true;
-    quickshell.enable = true;
 
     gaming = {
       enable = true;

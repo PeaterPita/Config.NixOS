@@ -15,24 +15,24 @@ in
     gtk = {
       enable = true;
       theme = {
-        name    = "adw-gtk3-dark";
+        name = "adw-gtk3-dark";
         package = pkgs.adw-gtk3;
       };
       iconTheme = {
-        name    = "Papirus-Dark";
+        name = "Papirus-Dark";
         package = pkgs.papirus-icon-theme;
       };
       cursorTheme = {
-        name    = "Bibata-Modern-Classic";
+        name = "Bibata-Modern-Classic";
         package = pkgs.bibata-cursors;
-        size    = 24;
+        size = 24;
       };
     };
 
     home.pointerCursor = {
-      name    = "Bibata-Modern-Classic";
+      name = "Bibata-Modern-Classic";
       package = pkgs.bibata-cursors;
-      size    = 24;
+      size = 24;
       gtk.enable = true;
       x11.enable = true;
     };
@@ -41,7 +41,7 @@ in
       enable = true;
       platformTheme.name = "adwaita";
       style = {
-        name    = "adwaita-dark";
+        name = "adwaita-dark";
         package = pkgs.adwaita-qt;
       };
     };

@@ -35,7 +35,7 @@
     ++ builtins.filter (
       path:
       let
-        bn = builtins.baseNameOf path;
+        bn = baseNameOf path;
       in
       bn == "default.nix" || bn == "${hostname}.nix"
     ) (utils.filesFromDirRec ../modules/home)
