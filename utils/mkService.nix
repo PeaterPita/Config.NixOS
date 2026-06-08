@@ -35,6 +35,7 @@ in
     routing = {
       enable = lib.mkOption { default = true; };
       host = lib.mkOption { default = vars.coreIP; };
+      port = lib.mkOption { default = routing.port or port; };
       protected = lib.mkOption { default = routing.protected or false; };
       middlewares = lib.mkOption { default = routing.middlewares or [ ]; };
     };

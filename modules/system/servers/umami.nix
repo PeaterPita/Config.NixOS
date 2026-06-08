@@ -3,6 +3,8 @@
   port = 3010;
   domain = "analytics";
 
+  routing.protected = false;
+
   homepage = {
     group = "Apps";
     description = "Website Analytics";

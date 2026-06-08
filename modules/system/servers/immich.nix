@@ -3,6 +3,8 @@
   port = 2283;
   domain = "photos";
 
+  routing.protected = false;
+
   homepage = {
     group = "Apps";
     description = "Photo Storage & Backup";

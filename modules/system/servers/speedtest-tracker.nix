@@ -3,6 +3,8 @@
   port = 8765;
   domain = "speed";
 
+  routing.protected = true;
+
   homepage = {
     group = "Apps";
     description = "Internet Speed Testing";

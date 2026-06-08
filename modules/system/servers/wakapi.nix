@@ -2,6 +2,8 @@
   name = "wakapi";
   port = 7598;
 
+  routing.protected = false;
+
   homepage = {
     group = "Apps";
     description = "Code Stats";

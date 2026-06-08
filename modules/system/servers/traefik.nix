@@ -55,7 +55,9 @@ let
   };
 
   mkServiceAuto = name: service: {
-    loadBalancer.servers = [ { url = "http://${service.routing.host}:${toString service.port}"; } ];
+    loadBalancer.servers = [
+      { url = "http://${service.routing.host}:${toString service.routing.port}"; }
+    ];
   };
 
   mkRouterAuto = name: service: {
@@ -166,6 +168,14 @@ in
               tls.certResolver = "letsencrypt";
             };
 
+            adguard = {
+              rule = "Host(`adguard.${vars.baseDomain}`)";
+              entryPoints = [ "websecure" ];
+              service = "adguard";
+              tls.certResolver = "letsencrypt";
+              middlewares = [ "authelia" ];
+            };
+
             git = {
               rule = "Host(`git.${vars.baseDomain}`)";
               service = "noop@internal";
@@ -188,6 +198,10 @@ in
           (builtins.mapAttrs mkServiceAuto autoRouteServices)
 
           {
+            adguard.loadBalancer.servers = [
+              { url = "http://${vars.ingressIP}:${toString config.homelab.services.adguard.port}"; }
+            ];
+
             authelia.loadBalancer.servers = [
               { url = "http://${vars.coreIP}:${toString config.homelab.services.authelia.port}"; }
             ];

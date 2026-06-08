@@ -3,6 +3,8 @@
   port = 9004;
   domain = "meals";
 
+  routing.protected = false;
+
   homepage = {
     group = "Apps";
     description = "Recipes & Meals";

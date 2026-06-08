@@ -23,6 +23,12 @@
       webport = lib.mkOption { default = 17170; };
     };
 
+  routing = {
+    protected = true;
+    port = 17170;
+    # middlewares = [ "internal-only" ];
+  };
+
   homepage = {
     group = "Infrastructure";
     description = "User Management";

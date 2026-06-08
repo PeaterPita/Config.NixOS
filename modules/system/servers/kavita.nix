@@ -3,6 +3,8 @@
   port = 5000;
   domain = "books";
 
+  routing.protected = false;
+
   homepage = {
     group = "Apps";
     description = "Book reading";

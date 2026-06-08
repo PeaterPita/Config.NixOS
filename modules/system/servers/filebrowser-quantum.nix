@@ -19,6 +19,8 @@
 
     };
 
+  routing.protected = true;
+
   homepage = {
     group = "Apps";
     description = "File Sharing";

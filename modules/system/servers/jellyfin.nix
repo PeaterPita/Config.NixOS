@@ -2,6 +2,8 @@
   name = "jellyfin";
   port = 8096;
 
+  routing.protected = false;
+
   homepage = {
     group = "Apps";
     description = "Movies & TV";
