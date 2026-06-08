@@ -17,50 +17,13 @@ let
     name: service: service ? routing && service.routing.enable
   ) vars.services;
 
-  serviceSubmodule = lib.types.submodule {
-    options = {
-      host = lib.mkOption {
-        type = lib.types.str;
-        default = "127.0.0.1";
-        description = "IP address of the backend service";
-      };
-
-      port = lib.mkOption {
-        type = lib.types.port;
-        description = "Port of the backend service";
-      };
-
-      middlewares = lib.mkOption {
-        type = lib.types.listOf lib.types.str;
-        default = [ ];
-      };
-
-      protected = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Require Authelia SSO to access this service";
-      };
-    };
-  };
-
-  mkRouter = name: value: {
-    rule = "Host(`${name}.${vars.baseDomain}`)";
-    service = name;
-    entryPoints = [ "websecure" ];
-    middlewares = [
-      "rate-limit"
-    ]
-    ++ value.middlewares
-    ++ lib.optional value.protected "authelia";
-  };
-
-  mkServiceAuto = name: service: {
+  mkService = name: service: {
     loadBalancer.servers = [
       { url = "http://${service.routing.host}:${toString service.routing.port}"; }
     ];
   };
 
-  mkRouterAuto = name: service: {
+  mkRouter = name: service: {
     rule = "Host(`${service.domain}.${vars.baseDomain}`)";
     service = name;
     entryPoints = [ "websecure" ];
@@ -71,21 +34,11 @@ let
     ++ lib.optional service.routing.protected "authelia";
   };
 
-  mkService = name: value: {
-    loadBalancer.servers = [ { url = "http://${value.host}:${toString value.port}"; } ];
-  };
-
 in
 
 {
   options.homelab.services.traefik = {
     enable = lib.mkEnableOption "Enable the Traefik reverse proxy";
-
-    services = lib.mkOption {
-      type = lib.types.attrsOf serviceSubmodule;
-      default = { };
-      description = "Services routed by baseDomain";
-    };
 
     environmentFile = lib.mkOption {
       type = lib.types.nullOr lib.types.path;
@@ -94,7 +47,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-
     networking.firewall.allowedTCPPorts = [
       80
       443
@@ -146,8 +98,7 @@ in
 
       dynamicConfigOptions.http = {
         routers = lib.mkMerge [
-          (builtins.mapAttrs mkRouter cfg.services)
-          (builtins.mapAttrs mkRouterAuto autoRouteServices)
+          (builtins.mapAttrs mkRouter autoRouteServices)
 
           {
             api = {
@@ -194,16 +145,15 @@ in
         ];
 
         services = lib.mkMerge [
-          (builtins.mapAttrs mkService cfg.services)
-          (builtins.mapAttrs mkServiceAuto autoRouteServices)
+          (builtins.mapAttrs mkService autoRouteServices)
 
           {
             adguard.loadBalancer.servers = [
-              { url = "http://${vars.ingressIP}:${toString config.homelab.services.adguard.port}"; }
+              { url = "http://${vars.ingressIP}:${toString vars.services.adguard.port}"; }
             ];
 
             authelia.loadBalancer.servers = [
-              { url = "http://${vars.coreIP}:${toString config.homelab.services.authelia.port}"; }
+              { url = "http://${vars.coreIP}:${toString vars.services.authelia.port}"; }
             ];
 
             root-domain.loadBalancer.servers = [
@@ -241,11 +191,8 @@ in
               "Remote-Email"
             ];
           };
-
         };
-
       };
     };
-
   };
 }
