@@ -133,7 +133,9 @@ in
     speedtest-tracker.enable = true;
     umami.enable = true;
     immich.enable = true;
+    node-exporter.enable = true;
     wakapi.enable = true;
+    prometheus.enable = true;
 
     filebrowser-quantum.enable = true;
 
@@ -161,12 +163,14 @@ in
         {
           Traefik = {
             icon = "traefik.png";
+            description = "Reverse Proxy";
             href = "https://traefik.${vars.baseDomain}";
           };
         }
         {
           Adguard = {
             icon = "adguard-home.png";
+            description = "DNS Blocking";
             href = "https://${vars.services.adguard.domain}";
           };
         }

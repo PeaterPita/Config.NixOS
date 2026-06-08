@@ -94,6 +94,7 @@ in
 
   homelab.services = {
     glances.enable = true;
+    node-exporter.enable = true;
     adguard = {
       enable = true;
       rewrites = [

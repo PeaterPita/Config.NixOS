@@ -84,9 +84,17 @@
 
             {
               "Apps" = {
-                tab = "Apps";
+                tab = "Home";
                 style = "row";
                 columns = 4;
+              };
+            }
+
+            {
+              "Personal" = {
+                tab = "Home";
+                style = "row";
+                columns = 8;
               };
             }
 
@@ -104,6 +112,13 @@
                 tab = "System";
               };
             }
+
+            {
+              "Logging" = {
+                tab = "System";
+              };
+            }
+
           ];
         };
 

@@ -46,7 +46,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Navidrome**           | Olympus   | 🟢 Functional  |
 | **Tailscale**           | Olympus   | 🟢 Functional  |
 | **Jellyseerr**          | Olympus   | 🟡 In-Progress |
-| **Prometheus**          | Olympus   | ⚫ Planned     |
+| **Prometheus**          | Olympus   | 🟡 In-Progress |
 | **Uptime Kuma**         | Olympus   | ⚫ Planned     |
 | **Paperless-ngx**       | Olympus   | ⚫ Planned     |
 | **Personal Sites**      | Olympus   | 🔴 WIP         |
