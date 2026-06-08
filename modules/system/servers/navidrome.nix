@@ -1,80 +1,75 @@
-{
-  config,
-  lib,
-  ...
-}:
+(import ../../../utils/mkService.nix) {
+  name = "navidrome";
+  port = 4533;
+  domain = "music";
 
-let
-  cfg = config.homelab.services.navidrome;
-  vars = config.homelab;
-in
-
-{
-  options.homelab.services.navidrome = {
-    enable = lib.mkEnableOption "Enable the Jellyfin Media Streaming Service";
-    port = lib.mkOption { default = 4533; };
-    domain = lib.mkOption { default = "music.${vars.baseDomain}"; };
+  homepage = {
+    group = "Apps";
+    description = "Music Streaming";
   };
 
-  config = lib.mkIf cfg.enable {
+  extraConfig =
+    {
+      vars,
+      pkgs,
+      cfg,
+      ...
+    }:
+    {
 
-    homelab.services.homepage.disks = [ "/mnt/media/music" ];
+      homelab.services.homepage.disks = [ "/mnt/media/music" ];
+      users.users.navidrome.extraGroups = [ "media" ];
+      homelab.services.authelia.rules = [
+        {
+          domain = [ "${cfg.domain}.${vars.baseDomain}" ];
+          policy = "bypass";
+          ############################################################
+          #  Fixes to allow external players to still authenticate   #
+          #      https://github.com/jeffvli/feishin/issues/1976      #
+          ############################################################
+          resources = [
+            "^/share(/.*)?$"
+            "^/auth/.*$"
+            "^/rest/.*$"
+            "^/api/.*$"
+          ];
+        }
+        {
+          domain = [
+            "${cfg.domain}.${vars.baseDomain}"
+          ];
+          policy = "one_factor";
+          subject = [
+            "group:admin"
+            "group:music"
+          ];
+        }
+      ];
 
-    users.users.navidrome.extraGroups = [ "media" ];
-    homelab.services.homepage.groups."Apps" = [
-      {
-        Navidrome = {
-          icon = "navidrome.png";
-          href = "https://${cfg.domain}";
-          description = "Music Streaming";
-          ping = "http://127.0.0.1:${builtins.toString cfg.port}";
+      ################################################################################
+      #                      https://github.com/LumePart/Explo                       #
+      # https://chhs1.github.io/blog/2026/01/22/self-hosted-discovery-playlists.html #
+      ################################################################################
+
+      services.navidrome = {
+        enable = true;
+        openFirewall = true;
+        plugins = with pkgs.navidromePlugins; [
+          listenbrainz-daily-playlist
+        ];
+        settings = {
+          MusicFolder = "/mnt/media/music";
+          Address = "0.0.0.0";
+          Port = cfg.port;
+          EnableSharing = true;
+
+          Plugins = {
+            Enabled = true;
+          };
+          ExtAuth.TrustedSources = "${vars.ingressIP}/32";
+          ExtAuth.LogoutURL = "https://auth.${vars.baseDomain}/logout";
         };
-      }
-    ];
-
-    homelab.services.authelia.rules = [
-      {
-        domain = [ cfg.domain ];
-        policy = "bypass";
-
-        ############################################################
-        #  Fixes to aalow external players to still authenticate   #
-        #      https://github.com/jeffvli/feishin/issues/1976      #
-        ############################################################
-
-        resources = [
-          "^/share(/.*)?$"
-
-          "^/auth/.*$"
-          "^/rest/.*$"
-          "^/api/.*$"
-        ];
-      }
-      {
-        domain = [
-          cfg.domain
-        ];
-        policy = "one_factor";
-        subject = [
-          "group:admin"
-          "group:music"
-        ];
-      }
-    ];
-
-    networking.firewall.allowedTCPPorts = [ cfg.port ];
-
-    services.navidrome = {
-      enable = true;
-      openFirewall = true;
-      settings = {
-        MusicFolder = "/mnt/media/music";
-        Address = "0.0.0.0";
-        Port = cfg.port;
-        EnableSharing = true;
-        ExtAuth.TrustedSources = "${vars.ingressIP}/32";
       };
-    };
-  };
 
+    };
 }

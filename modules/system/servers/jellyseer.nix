@@ -1,41 +1,19 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+(import ../../../utils/mkService.nix) {
+  name = "seerr";
+  port = 5055;
 
-let
-  vars = config.homelab;
-  cfg = vars.services.seerr;
-in
-
-{
-  options.homelab.services.seerr = {
-    enable = lib.mkEnableOption "Enable the seerr requestment platform";
-    port = lib.mkOption { default = 5055; };
-    domain = lib.mkOption { default = "seerr.${vars.baseDomain}"; };
+  homepage = {
+    group = "Apps";
+    description = "Media Requests";
   };
 
-  config = lib.mkIf cfg.enable {
-
-    homelab.services.homepage.groups."Apps" = [
-      {
-        Jellyseerr = {
-          icon = "seerr.png";
-          href = "https://${cfg.domain}";
-          description = "Requests";
-          ping = "http://127.0.0.1:${builtins.toString cfg.port}";
-        };
-      }
-    ];
-
-    networking.firewall.allowedTCPPorts = [
-      cfg.port
-    ];
-
-    services.seerr.enable = true;
-
-  };
+  extraConfig =
+    { cfg, ... }:
+    {
+      services.seerr = {
+        enable = true;
+        port = cfg.port;
+      };
+    };
 
 }

@@ -1,48 +1,23 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+(import ../../../utils/mkService.nix) {
+  name = "jellyfin";
+  port = 8096;
 
-let
-  vars = config.homelab;
-  cfg = vars.services.jellyfin;
-in
-
-{
-  options.homelab.services.jellyfin = {
-    enable = lib.mkEnableOption "Enable the Jellyfin Media Streaming Service";
-    port = lib.mkOption { default = 8096; };
-    domain = lib.mkOption { default = "jellyfin.${vars.baseDomain}"; };
+  homepage = {
+    group = "Apps";
+    description = "Movies & TV";
   };
 
-  config = lib.mkIf cfg.enable {
+  extraConfig =
+    { pkgs, ... }:
+    {
+      homelab.services.homepage.disks = [ "/mnt/media/movies" ];
 
-    homelab.services.homepage.disks = [ "/mnt/media/movies" ];
+      environment.systemPackages = with pkgs; [
+        jellyfin
+        jellyfin-web
+        jellyfin-ffmpeg
+      ];
 
-    homelab.services.homepage.groups."Apps" = [
-      {
-        Jellyfin = {
-          icon = "jellyfin.png";
-          href = "https://${cfg.domain}";
-          description = "Movies & TV";
-          ping = "https://127.0.0.1:${builtins.toString cfg.port}";
-        };
-      }
-    ];
-
-    networking.firewall.allowedTCPPorts = [
-      cfg.port
-    ];
-
-    environment.systemPackages = with pkgs; [
-      jellyfin
-      jellyfin-web
-      jellyfin-ffmpeg
-    ];
-
-    services.jellyfin.enable = true;
-
-  };
+      services.jellyfin.enable = true;
+    };
 }
