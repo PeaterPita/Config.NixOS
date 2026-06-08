@@ -13,6 +13,10 @@ let
   cfg = config.homelab.services.traefik;
   vars = config.homelab;
 
+  autoRouteServices = lib.filterAttrs (
+    name: service: service ? routing && service.routing.enable
+  ) vars.services;
+
   serviceSubmodule = lib.types.submodule {
     options = {
       host = lib.mkOption {
@@ -48,6 +52,21 @@ let
     ]
     ++ value.middlewares
     ++ lib.optional value.protected "authelia";
+  };
+
+  mkServiceAuto = name: service: {
+    loadBalancer.servers = [ { url = "http://${service.routing.host}:${toString service.port}"; } ];
+  };
+
+  mkRouterAuto = name: service: {
+    rule = "Host(`${service.domain}.${vars.baseDomain}`)";
+    service = name;
+    entryPoints = [ "websecure" ];
+    middlewares = [
+      "rate-limit"
+    ]
+    ++ service.routing.middlewares
+    ++ lib.optional service.routing.protected "authelia";
   };
 
   mkService = name: value: {
@@ -126,6 +145,7 @@ in
       dynamicConfigOptions.http = {
         routers = lib.mkMerge [
           (builtins.mapAttrs mkRouter cfg.services)
+          (builtins.mapAttrs mkRouterAuto autoRouteServices)
 
           {
             api = {
@@ -134,7 +154,7 @@ in
               entryPoints = [ "websecure" ];
               tls.certResolver = "letsencrypt";
               middlewares = [
-                "internal-only"
+                # "internal-only"
                 "authelia"
               ];
             };
@@ -165,6 +185,7 @@ in
 
         services = lib.mkMerge [
           (builtins.mapAttrs mkService cfg.services)
+          (builtins.mapAttrs mkServiceAuto autoRouteServices)
 
           {
             authelia.loadBalancer.servers = [

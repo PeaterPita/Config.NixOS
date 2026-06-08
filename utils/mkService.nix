@@ -4,6 +4,7 @@
   domain ? name,
 
   homepage ? null,
+  routing ? null,
 
   extraOptions ? (_: { }),
   extraConfig,
@@ -30,6 +31,15 @@ in
     port = lib.mkOption { default = port; };
     domain = lib.mkOption { default = domain; };
   }
+  // (lib.optionalAttrs (routing != null) {
+    routing = {
+      enable = lib.mkOption { default = true; };
+      host = lib.mkOption { default = vars.coreIP; };
+      protected = lib.mkOption { default = routing.protected or false; };
+      middlewares = lib.mkOption { default = routing.middlewares or [ ]; };
+    };
+
+  })
   // (extraOptions { inherit lib pkgs; });
 
   config = lib.mkIf cfg.enable (
