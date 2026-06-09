@@ -11,12 +11,17 @@
   };
 
   extraConfig =
-    { pkgs, cfg, ... }:
+    {
+      pkgs,
+      cfg,
+      vars,
+      ...
+    }:
     {
 
       homelab.services.authelia.rules = [
         {
-          domain = [ cfg.domain ];
+          domain = [ "${cfg.domain}.${vars.baseDomain}" ];
           policy = "one_factor";
         }
       ];
