@@ -2,10 +2,12 @@
 
 let
   vars = config.homelab;
-  cfg = vars.services.prometheus;
+  cfg = vars.services.monitoring.prometheus;
+
+    exporter-port = vars.services.monitoring.node-exporter.port;
 in
 {
-  options.homelab.services.prometheus = {
+  options.homelab.services.monitoring.prometheus = {
     enable = lib.mkEnableOption "Enable Prometheus Metric Logging";
     port = lib.mkOption { default = 9090; };
   };
@@ -28,7 +30,7 @@ in
           job_name = "Olympus";
           static_configs = [
             {
-              targets = [ "${vars.coreIP}:${toString vars.services.node-exporter.port}" ];
+              targets = [ "${vars.coreIP}:${toString exporter-port}" ];
               labels = {
                 host = "olympus";
               };
@@ -40,7 +42,7 @@ in
           job_name = "Hermes";
           static_configs = [
             {
-              targets = [ "${vars.ingressIP}:${toString vars.services.node-exporter.port}" ];
+              targets = [ "${vars.ingressIP}:${toString exporter-port}" ];
               labels = {
                 host = "hermes";
               };

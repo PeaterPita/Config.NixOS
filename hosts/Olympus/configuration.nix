@@ -126,22 +126,24 @@ in
     seerr.enable = true;
     navidrome.enable = true;
     mealie.enable = true;
-    glances.enable = true;
+    monitoring = {
+      prometheus.enable = true;
+      node-exporter.enable = true;
+      loki.enable = true;
+      glances.enable = true;
+    };
     # kavita.enable = true;
     lldap.enable = true;
     authelia.enable = true;
     speedtest-tracker.enable = true;
     umami.enable = true;
     immich.enable = true;
-    node-exporter.enable = true;
     wakapi.enable = true;
-    prometheus.enable = true;
 
     filebrowser-quantum.enable = true;
 
     portfolio.enable = true;
     it-tools.enable = true;
-    loki.enable = true;
 
     samba = {
       enable = true;

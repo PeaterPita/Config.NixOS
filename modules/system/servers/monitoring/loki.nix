@@ -1,10 +1,10 @@
 { config, lib, ... }:
 let
-  cfg = config.homelab.services.loki;
+  cfg = config.homelab.services.monitoring.loki;
 in
 
 {
-  options.homelab.services.loki = {
+  options.homelab.services.monitoring.loki = {
     enable = lib.mkEnableOption "Enable Loki Log Aggreation";
     port = lib.mkOption { default = 3100; };
   };

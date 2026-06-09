@@ -39,7 +39,7 @@
         widget = {
           type = "glances";
           inherit metric;
-          url = "http://${host}:${toString vars.services.glances.port}";
+          url = "http://${host}:${toString vars.services.monitoring.glances.port}";
           version = 4;
         };
       };
@@ -122,10 +122,15 @@
           ];
         };
 
-        widgets = [
+
+
+        widgets = let 
+            glancesPort = toString vars.services.monitoring.glances.port;
+
+                in [
           {
             "glances" = {
-              url = "http://${vars.coreIP}:${toString vars.services.glances.port}";
+              url = "http://${vars.coreIP}:${glancesPort}";
               version = 4;
               cpu = true;
               mem = true;
@@ -136,7 +141,7 @@
 
           {
             "glances" = {
-              url = "http://${vars.coreIP}:${toString vars.services.glances.port}";
+              url = "http://${vars.coreIP}:${glancesPort}";
               version = 4;
               cpu = false;
               mem = false;
@@ -150,7 +155,7 @@
 
           {
             "glances" = {
-              url = "http://${vars.ingressIP}:${toString vars.services.glances.port}";
+              url = "http://${vars.ingressIP}:${glancesPort}";
               version = 4;
               cpu = true;
               mem = true;

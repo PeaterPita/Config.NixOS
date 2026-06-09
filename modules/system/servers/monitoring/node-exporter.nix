@@ -1,10 +1,10 @@
 { config, lib, ... }:
 
 let
-  cfg = config.homelab.services.node-exporter;
+  cfg = config.homelab.services.monitoring.node-exporter;
 in
 {
-  options.homelab.services.node-exporter = {
+  options.homelab.services.monitoring.node-exporter = {
     enable = lib.mkEnableOption "Enable Prometheus Node Exporter";
     port = lib.mkOption { default = 9100; };
   };

@@ -5,10 +5,10 @@
 }:
 
 let
-  cfg = config.homelab.services.glances;
+  cfg = config.homelab.services.monitoring.glances;
 in
 {
-  options.homelab.services.glances = {
+  options.homelab.services.monitoring.glances = {
     enable = lib.mkEnableOption "Enable Glances";
     port = lib.mkOption { default = 61208; };
   };
