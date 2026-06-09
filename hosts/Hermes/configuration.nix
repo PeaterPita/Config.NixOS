@@ -39,6 +39,14 @@ in
         tag = "ro-store";
         proto = "virtiofs";
       }
+
+      {
+        source = "/var/lib/GeoIP";
+        mountPoint = "/var/lib/GeoIP";
+        tag = "geoip";
+        proto = "virtiofs";
+      }
+
       {
         source = "/run/secrets/rendered";
         mountPoint = "/run/host-secrets";

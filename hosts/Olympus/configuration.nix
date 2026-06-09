@@ -1,7 +1,5 @@
 {
   config,
-  lib,
-  pkgs,
   inputs,
   self,
   ...
@@ -131,6 +129,7 @@ in
       node-exporter.enable = true;
       loki.enable = true;
       alloy.enable = true;
+      geoipupdate.enable = true;
       glances.enable = true;
     };
     # kavita.enable = true;
