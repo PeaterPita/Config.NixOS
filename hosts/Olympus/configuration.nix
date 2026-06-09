@@ -130,6 +130,7 @@ in
       prometheus.enable = true;
       node-exporter.enable = true;
       loki.enable = true;
+      alloy.enable = true;
       glances.enable = true;
     };
     # kavita.enable = true;
