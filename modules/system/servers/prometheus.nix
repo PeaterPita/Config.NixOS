@@ -64,6 +64,15 @@
             ];
           }
 
+          {
+            job_name = "Traefik";
+            static_configs = [
+              {
+                targets = [ "${vars.ingressIP}:8082" ];
+              }
+            ];
+          }
+
         ];
 
       };

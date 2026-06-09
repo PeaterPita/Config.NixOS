@@ -50,7 +50,10 @@ in
     networking.firewall.allowedTCPPorts = [
       80
       443
+      8082
     ];
+
+    systemd.tmpfiles.rules = [ "d /var/log/traefik 0755 traefik traefik - - " ];
 
     services.traefik = {
       enable = true;
@@ -60,14 +63,16 @@ in
       staticConfigOptions = {
         api.dashboard = true;
 
-        # accessLog = {
-        #   format = "json";
-        #   filePath = "/var/log/traefik/access.json";
-        #   fields.headers = {
-        #     defaultMode = "keep";
-        #     Authorization = "drop";
-        #   };
-        # };
+        accessLog = {
+          format = "json";
+          filePath = "/var/log/traefik/access.json";
+          fields.headers = {
+            defaultMode = "keep";
+
+          };
+
+          bufferingSize = 100;
+        };
 
         entryPoints = {
           web = {
@@ -81,6 +86,15 @@ in
             address = ":443";
             http.tls.certResolver = "letsencrypt";
           };
+
+          metrics.address = ":8082";
+
+        };
+
+        metrics.prometheus = {
+          entryPoint = "metrics";
+          addRoutersLabels = true;
+          addServicesLabels = true;
         };
 
         certificatesResolvers.letsencrypt.acme = {
