@@ -29,9 +29,9 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Crowdsec**            | Hermes    | ⚫ Planned     |
 | &nbsp;                  |           |                |
 | **Homepage**            | Olympus   | 🟡 In-Progress |
-| **Loki**                | Olympus   | ⚫ Planned     |
+| **Loki**                | Olympus   | 🟡 In-Progress |
 | **Ntfy**                | Olympus   | ⚫ Planned     |
-| **Alloy**               | Olympus   | ⚫ Planned     |
+| **Alloy**               | Olympus   | 🟡 In-Progress |
 | **LLDAP**               | Olympus   | 🟢 Functional  |
 | **Umami**               | Olympus   | 🟢 Functional  |
 | **Immich**              | Olympus   | 🟢 Functional  |
@@ -40,7 +40,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Restic**              | Olympus   | ⚫ Planned     |
 | **Wakapi**              | Olympus   | 🟢 Functional  |
 | **Forgejo**             | Olympus   | ⚫ Planned     |
-| **Grafana**             | Olympus   | ⚫ Planned     |
+| **Grafana**             | Olympus   | 🟡 In-Progress |
 | **Authelia**            | Olympus   | 🟡 In-Progress |
 | **Jellyfin**            | Olympus   | 🟢 Functional  |
 | **Navidrome**           | Olympus   | 🟢 Functional  |
@@ -48,7 +48,9 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Jellyseerr**          | Olympus   | 🟢 Functional  |
 | **Prometheus**          | Olympus   | 🟡 In-Progress |
 | **Uptime Kuma**         | Olympus   | ⚫ Planned     |
+| **Adventure Log**       | Olympus   | ⚫ Planned     |
 | **Paperless-ngx**       | Olympus   | ⚫ Planned     |
+| **Woodpecker CI**       | Olympus   | ⚫ Planned     |
 | **Personal Sites**      | Olympus   | 🔴 WIP         |
 | **Speedtest Tracker**   | Olympus   | 🟢 Functional  |
 | **filebrowser-quantum** | Olympus   | 🟢 Functional  |
