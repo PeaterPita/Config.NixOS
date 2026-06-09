@@ -9,7 +9,9 @@ in
     port = lib.mkOption { default = 3100; };
   };
 
-  config = {
+  config = lib.mkIf cfg.enable {
+
+    networking.firewall.allowedTCPPorts = [ cfg.port ];
 
     services.loki = {
       enable = true;

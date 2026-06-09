@@ -96,6 +96,7 @@ in
     monitoring = {
       glances.enable = true;
       node-exporter.enable = true;
+      alloy.enable = true;
     };
     adguard = {
       enable = true;

@@ -142,6 +142,7 @@ in
     wakapi.enable = true;
 
     filebrowser-quantum.enable = true;
+    grafana.enable = true;
 
     portfolio.enable = true;
     it-tools.enable = true;
