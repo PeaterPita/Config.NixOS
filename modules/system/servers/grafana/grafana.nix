@@ -62,6 +62,9 @@
               url = "http://127.0.0.1:${toString vars.services.monitoring.loki.port}";
             }
           ];
+
+          dashboards.path = ./dashboards;
+
         };
 
       };
