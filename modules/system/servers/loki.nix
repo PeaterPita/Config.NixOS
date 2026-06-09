@@ -1,0 +1,47 @@
+{ config, lib, ... }:
+let
+  cfg = config.homelab.services.loki;
+in
+
+{
+  options.homelab.services.loki = {
+    enable = lib.mkEnableOption "Enable Loki Log Aggreation";
+    port = lib.mkOption { default = 3100; };
+  };
+
+  config = {
+
+    services.loki = {
+      enable = true;
+      configuration = {
+        auth_enabled = false;
+        server.http_listen_port = cfg.port;
+
+        common = {
+          path_prefix = "/var/lib/loki";
+          replication_factor = 1;
+          ring = {
+            kvstore.store = "inmemory";
+            instance_addr = "0.0.0.0";
+          };
+
+        };
+
+        storage_config.filesystem.directory = "/var/lib/loki/chunks";
+
+        schema_config.configs = [
+          {
+            from = "2025-01-01";
+            store = "tsdb";
+            object_store = "filesystem";
+            schema = "v13";
+            index = {
+              prefix = "index_";
+              period = "24h";
+            };
+          }
+        ];
+      };
+    };
+  };
+}

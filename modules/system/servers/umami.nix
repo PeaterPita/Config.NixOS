@@ -6,7 +6,7 @@
   routing.protected = false;
 
   homepage = {
-    group = "Logging";
+    group = "Monitoring";
     description = "Website Analytics";
   };
 

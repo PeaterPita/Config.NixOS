@@ -99,7 +99,7 @@
             }
 
             {
-              "Monitoring" = {
+              "Graphs" = {
                 tab = "System";
                 style = "row";
                 columns = 4;
@@ -114,7 +114,7 @@
             }
 
             {
-              "Logging" = {
+              "Monitoring" = {
                 tab = "System";
               };
             }
@@ -160,7 +160,7 @@
 
         services = [
           {
-            "Monitoring" = [
+            "Graphs" = [
               { "CPU" = mkGlance vars.coreIP "cpu"; }
               { "TEMP" = mkGlance vars.coreIP "sensor:Package id 0"; }
               { "RAM" = mkGlance vars.coreIP "memory"; }

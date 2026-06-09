@@ -141,6 +141,7 @@ in
 
     portfolio.enable = true;
     it-tools.enable = true;
+    loki.enable = true;
 
     samba = {
       enable = true;
