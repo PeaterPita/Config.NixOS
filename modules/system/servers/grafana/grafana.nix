@@ -1,4 +1,4 @@
-(import ../../../utils/mkService.nix) {
+(import ../../../../utils/mkService.nix) {
   name = "grafana";
   port = 8675;
   domain = "dash";
@@ -20,7 +20,7 @@
     {
 
       sops.secrets."grafana/secret_key" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../../../secrets/services.yaml;
         owner = "grafana";
         group = "grafana";
       };
@@ -62,9 +62,12 @@
               url = "http://127.0.0.1:${toString vars.services.monitoring.loki.port}";
             }
           ];
-
-          dashboards.path = ./dashboards;
-
+          dashboards.settings.providers = [
+            {
+              name = "default";
+              options.path = ./dashboards;
+            }
+          ];
         };
 
       };

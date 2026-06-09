@@ -4,7 +4,7 @@ let
   vars = config.homelab;
   cfg = vars.services.monitoring.prometheus;
 
-    exporter-port = vars.services.monitoring.node-exporter.port;
+  exporter-port = vars.services.monitoring.node-exporter.port;
 in
 {
   options.homelab.services.monitoring.prometheus = {
