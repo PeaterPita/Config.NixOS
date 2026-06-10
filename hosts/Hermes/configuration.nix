@@ -139,6 +139,12 @@ in
                 db_type = "city"
               }
 
+              stage.geoip {
+                db      = "/var/lib/GeoIP/GeoLite2-ASN.mmdb"
+                source  = "client_ip"
+                db_type = "asn"
+              }
+
               stage.labels {
                 values = {
                   status_code     = "status",
@@ -146,6 +152,7 @@ in
                   service         = "",
                   geoip_country   = "geoip_country_name",
                   geoip_city      = "geoip_city_name",
+                  asn_org         = "geoip_autonomous_system_organization",
                 }
               }
 
@@ -159,6 +166,10 @@ in
                   referer         = "",
                   geoip_latitude  = "geoip_location_latitude",
                   geoip_longitude = "geoip_location_longitude",
+                  asn             = "geoip_autonomous_system_number",
+                  asn_org         = "geoip_autonomous_system_organization",
+                  duration        = "",
+                  size            = "",
                 }
               }
 

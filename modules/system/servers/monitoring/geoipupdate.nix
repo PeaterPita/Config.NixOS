@@ -22,7 +22,10 @@ in
         LicenseKey = {
           _secret = config.sops.secrets."geoip/license_key".path;
         };
-        EditionIDs = [ "GeoLite2-City" ];
+        EditionIDs = [
+          "GeoLite2-City"
+          "GeoLite2-ASN"
+        ];
 
       };
     };
