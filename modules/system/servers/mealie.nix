@@ -3,7 +3,10 @@
   port = 9004;
   domain = "meals";
 
-  routing.protected = false;
+  routing = {
+    protected = false;
+    healthPath = "/api/app/about";
+  };
 
   homepage = {
     group = "Apps";

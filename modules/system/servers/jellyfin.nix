@@ -2,7 +2,10 @@
   name = "jellyfin";
   port = 8096;
 
-  routing.protected = false;
+  routing = {
+    protected = false;
+    healthPath = "/health";
+  };
 
   homepage = {
     group = "Apps";

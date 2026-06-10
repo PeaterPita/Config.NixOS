@@ -26,6 +26,7 @@
   routing = {
     protected = true;
     port = 17170;
+    healthPath = "/";
     # middlewares = [ "internal-only" ];
   };
 

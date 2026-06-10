@@ -4,6 +4,7 @@
   domain = "home";
 
   routing.protected = true;
+  routing.healthPath = "/";
 
   extraOptions =
     { lib, ... }:
@@ -122,46 +123,46 @@
           ];
         };
 
-
-
-        widgets = let 
+        widgets =
+          let
             glancesPort = toString vars.services.monitoring.glances.port;
 
-                in [
-          {
-            "glances" = {
-              url = "http://${vars.coreIP}:${glancesPort}";
-              version = 4;
-              cpu = true;
-              mem = true;
-              cputemp = true;
-              uptime = true;
-            };
-          }
+          in
+          [
+            {
+              "glances" = {
+                url = "http://${vars.coreIP}:${glancesPort}";
+                version = 4;
+                cpu = true;
+                mem = true;
+                cputemp = true;
+                uptime = true;
+              };
+            }
 
-          {
-            "glances" = {
-              url = "http://${vars.coreIP}:${glancesPort}";
-              version = 4;
-              cpu = false;
-              mem = false;
-              disk = [
-                "/"
-              ]
+            {
+              "glances" = {
+                url = "http://${vars.coreIP}:${glancesPort}";
+                version = 4;
+                cpu = false;
+                mem = false;
+                disk = [
+                  "/"
+                ]
 
-              ++ cfg.disks;
-            };
-          }
+                ++ cfg.disks;
+              };
+            }
 
-          {
-            "glances" = {
-              url = "http://${vars.ingressIP}:${glancesPort}";
-              version = 4;
-              cpu = true;
-              mem = true;
-            };
-          }
-        ];
+            {
+              "glances" = {
+                url = "http://${vars.ingressIP}:${glancesPort}";
+                version = 4;
+                cpu = true;
+                mem = true;
+              };
+            }
+          ];
 
         services = [
           {

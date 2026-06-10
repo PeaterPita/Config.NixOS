@@ -18,9 +18,14 @@ let
   ) vars.services;
 
   mkService = name: service: {
-    loadBalancer.servers = [
-      { url = "http://${service.routing.host}:${toString service.routing.port}"; }
-    ];
+    loadBalancer = {
+      servers = [
+        { url = "http://${service.routing.host}:${toString service.routing.port}"; }
+      ];
+    }
+    // lib.optionalAttrs (service.routing.healthPath != null) {
+      healthCheck.path = service.routing.healthPath;
+    };
   };
 
   mkRouter = name: service: {

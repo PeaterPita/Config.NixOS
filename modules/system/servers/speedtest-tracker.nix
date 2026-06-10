@@ -3,7 +3,10 @@
   port = 8765;
   domain = "speed";
 
-  routing.protected = true;
+  routing = {
+    protected = true;
+    healthPath = "/api/healthcheck";
+  };
 
   homepage = {
     group = "Apps";

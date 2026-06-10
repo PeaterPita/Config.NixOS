@@ -3,7 +3,10 @@
   port = 2283;
   domain = "photos";
 
-  routing.protected = false;
+  routing = {
+    protected = false;
+    healthPath = "/api/server/ping";
+  };
 
   homepage = {
     group = "Apps";

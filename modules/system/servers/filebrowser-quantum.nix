@@ -19,7 +19,10 @@
 
     };
 
-  routing.protected = true;
+  routing = {
+    protected = true;
+    healthPath = "/health";
+  };
 
   homepage = {
     group = "Apps";

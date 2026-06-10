@@ -2,7 +2,10 @@
   name = "seerr";
   port = 5055;
 
-  routing.protected = false;
+  routing = {
+    protected = false;
+    healthPath = "/api/v1/settings/public";
+  };
 
   homepage = {
     group = "Apps";

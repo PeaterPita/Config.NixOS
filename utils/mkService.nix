@@ -38,6 +38,7 @@ in
       port = lib.mkOption { default = routing.port or port; };
       protected = lib.mkOption { default = routing.protected or false; };
       middlewares = lib.mkOption { default = routing.middlewares or [ ]; };
+      healthPath = lib.mkOption { default = routing.healthPath or null; };
     };
 
   })

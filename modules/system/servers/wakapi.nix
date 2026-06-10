@@ -2,7 +2,10 @@
   name = "wakapi";
   port = 7598;
 
-  routing.protected = false;
+  routing = {
+    protected = false;
+    healthPath = "/api/health";
+  };
 
   homepage = {
     group = "Apps";

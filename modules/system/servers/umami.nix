@@ -4,6 +4,7 @@
   domain = "analytics";
 
   routing.protected = false;
+  routing.healthPath = "/api/heartbeat";
 
   homepage = {
     group = "Monitoring";

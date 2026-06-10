@@ -5,6 +5,7 @@
 
   routing = {
     protected = true;
+    healthPath = "/";
   };
 
   homepage = {
