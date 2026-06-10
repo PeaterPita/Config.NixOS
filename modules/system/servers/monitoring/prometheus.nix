@@ -12,7 +12,7 @@ in
     port = lib.mkOption { default = 9090; };
   };
 
-  config = lib.mkIf {
+  config = lib.mkIf cfg.enable {
 
     services.prometheus = {
       enable = true;
