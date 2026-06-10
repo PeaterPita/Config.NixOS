@@ -11,10 +11,6 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    sops.secrets."geoip/account_id" = {
-      sopsFile = ../../../../secrets/services.yaml;
-    };
-
     sops.secrets."geoip/license_key" = {
       sopsFile = ../../../../secrets/services.yaml;
     };

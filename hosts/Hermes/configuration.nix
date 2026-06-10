@@ -104,7 +104,76 @@ in
     monitoring = {
       glances.enable = true;
       node-exporter.enable = true;
-      alloy.enable = true;
+      alloy = {
+        enable = true;
+        extraConfig = ''
+          local.file_match "traefik_access" {
+              path_targets = [{"__path__" = "/var/log/traefik/access.json"}]
+            }
+
+            loki.source.file "traefik_access" {
+              targets    = local.file_match.traefik_access.targets
+              forward_to = [loki.process.traefik.receiver]
+            }
+
+            loki.process "traefik" {
+              stage.json {
+                expressions = {
+                  client_ip    = "ClientHost",
+                  status       = "DownstreamStatus",
+                  method       = "RequestMethod",
+                  path         = "RequestPath",
+                  request_host = "RequestHost",
+                  service      = "ServiceName",
+                  router       = "RouterName",
+                  duration     = "Duration",
+                  size         = "DownstreamContentSize",
+                  user_agent   = "request_User-Agent",
+                  referer      = "request_Referer",
+                }
+              }
+
+              stage.geoip {
+                db      = "/var/lib/GeoIP/GeoLite2-City.mmdb"
+                source  = "client_ip"
+                db_type = "city"
+              }
+
+              stage.labels {
+                values = {
+                  status_code     = "status",
+                  method          = "",
+                  service         = "",
+                  geoip_country   = "geoip_country_name",
+                  geoip_city      = "geoip_city_name",
+                }
+              }
+
+              stage.structured_metadata {
+                values = {
+                  client_ip       = "",
+                  path            = "",
+                  request_host    = "",
+                  router          = "",
+                  user_agent      = "",
+                  referer         = "",
+                  geoip_latitude  = "geoip_location_latitude",
+                  geoip_longitude = "geoip_location_longitude",
+                }
+              }
+
+              stage.static_labels {
+                values = {
+                  job  = "traefik-access",
+                  host = "Hermes",
+                }
+              }
+
+              forward_to = [loki.write.default.receiver]
+            }
+
+        '';
+      };
     };
     adguard = {
       enable = true;
