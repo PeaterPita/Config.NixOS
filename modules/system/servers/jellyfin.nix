@@ -12,6 +12,10 @@
     description = "Movies & TV";
   };
 
+  #############################################################
+  #                       To look into                        #
+  # https://jellyfin-jellyfin.mintlify.app/api/users/sessions #
+  #############################################################
   extraConfig =
     { pkgs, ... }:
     {

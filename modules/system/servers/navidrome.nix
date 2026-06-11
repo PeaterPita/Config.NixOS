@@ -9,6 +9,7 @@
   };
 
   homepage = {
+    name = "Navidrome";
     group = "Apps";
     description = "Music Streaming";
   };

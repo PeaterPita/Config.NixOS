@@ -54,7 +54,7 @@ in
       (lib.optionalAttrs (homepage != null) {
         homelab.services.homepage.groups.${homepage.group} = [
           {
-            ${name} = {
+            ${homepage.name or name} = {
               icon = "${name}.png";
               href = "https://${cfg.domain}.${vars.baseDomain}";
               description = homepage.description;
