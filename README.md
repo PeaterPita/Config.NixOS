@@ -42,6 +42,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Grafana**             | Olympus   | 🟡 In-Progress |
 | **Authelia**            | Olympus   | 🟡 In-Progress |
 | **Jellyfin**            | Olympus   | 🟢 Functional  |
+| **Leantime**              | Olympus   | ⚫ Planned     |
 | **Navidrome**           | Olympus   | 🟢 Functional  |
 | **Tailscale**           | Olympus   | 🔴 Broken      |
 | **Jellyseerr**          | Olympus   | 🟢 Functional  |
@@ -110,6 +111,11 @@ Sops keys:
     LDAP Search Attributes: `uid,cn,mail`
 
     LDAP Admin Filter: `(memberOf=CN=admin,ou=groups,dc=peaterpita,dc=com)`
+
+
+- Jellyfin Prometheus Bridge
+    jellyfin API key created and stored in sops
+    Networking > Known proxies, add the ingress IP
 
 - Jellyseerr Setup
 

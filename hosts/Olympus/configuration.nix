@@ -127,6 +127,7 @@ in
     monitoring = {
       prometheus.enable = true;
       node-exporter.enable = true;
+      json-exporter.enable = true;
       loki.enable = true;
       alloy.enable = true;
       geoipupdate.enable = true;
