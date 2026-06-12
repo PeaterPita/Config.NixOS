@@ -2,7 +2,8 @@
 
 let
   vars = config.homelab;
-  cfg = vars.services.monitoring.prometheus;
+  monitoring = vars.services.monitoring;
+  cfg = monitoring.prometheus;
 
   exporter-port = vars.services.monitoring.node-exporter.port;
 in
@@ -58,6 +59,37 @@ in
             }
           ];
         }
+
+        {
+          job_name = "grafana";
+          static_configs = [
+            {
+              targets = [ "127.0.0.1:${toString vars.services.grafana.port}" ];
+              labels.host = "olympus";
+            }
+          ];
+        }
+
+        {
+          job_name = "prometheus";
+          static_configs = [
+            {
+              targets = [ "127.0.0.1:${toString cfg.port}" ];
+              labels.host = "olympus";
+            }
+          ];
+        }
+
+        {
+          job_name = "loki";
+          static_configs = [
+            {
+              targets = [ "127.0.0.1:${toString monitoring.loki.port}" ];
+              labels.host = "olympus";
+            }
+          ];
+        }
+
       ];
     };
   };
