@@ -11,13 +11,13 @@ This repo should also not be used for inspiration for your own configs; I would 
 
 ## Machines
 
-| Hostname | Role | Status | Notes |
-| :--- | :--- | :--- | :--- |
-| **Atlas**     | Main workhorse & Gaming   | 🟢 Functional | Running an NVIDIA GPU | 
-| **Icarus**    | University laptop         | 🟢 Functional | Semi-light weight     |
-| &nbsp;        |                           |               | |
-| **Olympus**   | Core homelab server       | 🟡 In-Progress| In testing! Dell r730 -> Acer Laptop during this time |
-| **Hermes**    | Ingress node              | 🟡 In-Progress| Virtualised on **Olympus** through microVM |
+| Hostname | Role | Status | Building | Notes |
+| :--- | :--- | :--- | :--- | :--- |
+| **Atlas**     | Main workhorse & Gaming   | 🟢 Functional | | Running an NVIDIA GPU | 
+| **Icarus**    | University laptop         | 🟢 Functional | | Semi-light weight     |
+| &nbsp;        |                           |               | | |
+| **Olympus**   | Core homelab server       | 🟡 In-Progress|[![build][olympus-badge]]| In testing! Dell r730 -> Acer Laptop during this time |
+| **Hermes**    | Ingress node              | 🟡 In-Progress| | Virtualised on **Olympus** through microVM |
 
 
 ## Homelab Services
@@ -151,3 +151,5 @@ Sops keys:
 )
 - [Misterio77 Config](https://github.com/Misterio77/nix-config)
 - [Notthebe Config](https://git.notthebe.ee/notthebee/nix-config)
+
+[olympus-badge]: https://ci.peaterpita.com/api/badges/2/status.svg?workflow=Olympus
