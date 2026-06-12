@@ -13,11 +13,11 @@ This repo should also not be used for inspiration for your own configs; I would 
 
 | Hostname | Role | Status | Building | Notes |
 | :--- | :--- | :--- | :--- | :--- |
-| **Atlas**     | Main workhorse & Gaming   | 🟢 Functional | | Running an NVIDIA GPU | 
-| **Icarus**    | University laptop         | 🟢 Functional | | Semi-light weight     |
-| &nbsp;        |                           |               | | |
-| **Olympus**   | Core homelab server       | 🟡 In-Progress|[![build][olympus-badge]]| In testing! Dell r730 -> Acer Laptop during this time |
-| **Hermes**    | Ingress node              | 🟡 In-Progress| | Virtualised on **Olympus** through microVM |
+| **Atlas**     | Main workhorse & Gaming   | 🟢 Functional | ![build][atlas-badge]   | Running an NVIDIA GPU | 
+| **Icarus**    | University laptop         | 🟢 Functional | ![build][icarus-badge]  | Semi-light weight     |
+| &nbsp;        |                           |               |                         | |
+| **Olympus**   | Core homelab server       | 🟡 In-Progress| ![build][olympus-badge] | In testing! Dell r730 -> Acer Laptop during this time |
+| **Hermes**    | Ingress node              | 🟡 In-Progress| ![build][hermes-badge]  | Virtualised on **Olympus** through microVM |
 
 
 ## Homelab Services
@@ -153,3 +153,6 @@ Sops keys:
 - [Notthebe Config](https://git.notthebe.ee/notthebee/nix-config)
 
 [olympus-badge]: https://ci.peaterpita.com/api/badges/2/status.svg?workflow=Olympus
+[hermes-badge]: https://ci.peaterpita.com/api/badges/2/status.svg?workflow=Hermes
+[atlas-badge]: https://ci.peaterpita.com/api/badges/2/status.svg?workflow=Atlas
+[icarus-badge]: https://ci.peaterpita.com/api/badges/2/status.svg?workflow=Icarus

@@ -1,25 +1,5 @@
 {
   "nodes": {
-    "astro-site": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1776772855,
-        "narHash": "sha256-yXzyorO1Bxw+yMjiPndYxb4TgCmXRx8njK2ruagrJJU=",
-        "owner": "PeaterPita",
-        "repo": "astro-site",
-        "rev": "76fb6827e2137966fbd25490c6e8611ae019038e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "PeaterPita",
-        "repo": "astro-site",
-        "type": "github"
-      }
-    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -161,7 +141,6 @@
     },
     "root": {
       "inputs": {
-        "astro-site": "astro-site",
         "disko": "disko",
         "home-manager": "home-manager",
         "microvm": "microvm",
