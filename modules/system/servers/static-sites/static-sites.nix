@@ -46,6 +46,11 @@ in
   };
 
   config = lib.mkIf (cfg.packageSites != { }) {
+
+    systemd.tmpfiles.rules = [
+      "d /var/www 2775 root woodpecker-deploy - - "
+    ];
+
     networking.firewall.allowedTCPPorts = allPorts;
 
     services.nginx = {

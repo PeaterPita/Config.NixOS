@@ -18,6 +18,8 @@
   extraConfig =
     {
       config,
+      lib,
+      pkgs,
       vars,
       cfg,
       ...
@@ -32,7 +34,10 @@
         {
           domain = [ "${cfg.domain}.${vars.baseDomain}" ];
           policy = "bypass";
-          resources = [ "^/api/badges/.*$" ];
+          resources = [
+            "^/api/badges/.*$"
+            "^/api/hook.*$"
+          ];
         }
         {
           domain = [
@@ -82,9 +87,24 @@
         WOODPECKER_AGENT_SECRET=${config.sops.placeholder."woodpecker/agent_secret"}
       '';
 
+      systemd.services.woodpecker-agent-local.serviceConfig = {
+        MemoryDenyWriteExecute = lib.mkForce false;
+        SystemCallFilter = lib.mkForce [ ];
+        ReadWritePaths = [ "/var/www" ];
+      };
+
+      users.groups.woodpecker-deploy = { };
+
       services.woodpecker-agents.agents.local = {
         enable = true;
         environmentFile = [ config.sops.templates."woodpecker-agent.env".path ];
+        extraGroups = [ "woodpecker-deploy" ];
+        path = with pkgs; [
+          git
+          git-lfs
+          nix
+          bash
+        ];
         environment = {
           WOODPECKER_SERVER = "localhost:${toString agentPort}";
           WOODPECKER_BACKEND = "local";
