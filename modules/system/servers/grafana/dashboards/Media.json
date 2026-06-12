@@ -25,20 +25,20 @@
             {
                 "kind": "AnnotationQuery",
                 "spec": {
-                    "query": {
-                        "kind": "DataQuery",
-                        "group": "grafana",
-                        "version": "v0",
-                        "datasource": {
-                            "name": "-- Grafana --"
-                        },
-                        "spec": {}
-                    },
+                    "builtIn": true,
                     "enable": true,
                     "hide": true,
                     "iconColor": "rgba(0, 211, 255, 1)",
                     "name": "Annotations & Alerts",
-                    "builtIn": true
+                    "query": {
+                        "datasource": {
+                            "name": "-- Grafana --"
+                        },
+                        "group": "grafana",
+                        "kind": "DataQuery",
+                        "spec": {},
+                        "version": "v0"
+                    }
                 }
             }
         ],
@@ -48,10 +48,6 @@
             "panel-1": {
                 "kind": "Panel",
                 "spec": {
-                    "id": 1,
-                    "title": "Active Jellyfin Sessions",
-                    "description": "",
-                    "links": [],
                     "data": {
                         "kind": "QueryGroup",
                         "spec": {
@@ -59,31 +55,58 @@
                                 {
                                     "kind": "PanelQuery",
                                     "spec": {
+                                        "hidden": false,
                                         "query": {
-                                            "kind": "DataQuery",
                                             "group": "",
-                                            "version": "v0",
+                                            "kind": "DataQuery",
                                             "spec": {
                                                 "editorMode": "code",
                                                 "expr": "count(jellyfin_sessions_active)",
                                                 "legendFormat": "__auto",
                                                 "range": true
-                                            }
+                                            },
+                                            "version": "v0"
                                         },
-                                        "refId": "A",
-                                        "hidden": false
+                                        "refId": "A"
                                     }
                                 }
                             ],
-                            "transformations": [],
-                            "queryOptions": {}
+                            "queryOptions": {},
+                            "transformations": []
                         }
                     },
+                    "description": "",
+                    "id": 1,
+                    "links": [],
+                    "title": "Active Jellyfin Sessions",
                     "vizConfig": {
-                        "kind": "VizConfig",
                         "group": "stat",
-                        "version": "13.0.1+security-01",
+                        "kind": "VizConfig",
                         "spec": {
+                            "fieldConfig": {
+                                "defaults": {
+                                    "color": {
+                                        "fixedColor": "light-purple",
+                                        "mode": "fixed"
+                                    },
+                                    "min": 0,
+                                    "noValue": "Zero Users",
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "color": "green",
+                                                "value": 0
+                                            },
+                                            {
+                                                "color": "red",
+                                                "value": 80
+                                            }
+                                        ]
+                                    }
+                                },
+                                "overrides": []
+                            },
                             "options": {
                                 "colorMode": "value",
                                 "graphMode": "area",
@@ -100,42 +123,15 @@
                                 "showPercentChange": false,
                                 "textMode": "auto",
                                 "wideLayout": true
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "min": 0,
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": 0,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "fixed",
-                                        "fixedColor": "light-purple"
-                                    },
-                                    "noValue": "Zero Users"
-                                },
-                                "overrides": []
                             }
-                        }
+                        },
+                        "version": "13.0.1+security-01"
                     }
                 }
             },
             "panel-10": {
                 "kind": "Panel",
                 "spec": {
-                    "id": 10,
-                    "title": "Now Playing",
-                    "description": "",
-                    "links": [],
                     "data": {
                         "kind": "QueryGroup",
                         "spec": {
@@ -143,13 +139,13 @@
                                 {
                                     "kind": "PanelQuery",
                                     "spec": {
+                                        "hidden": false,
                                         "query": {
-                                            "kind": "DataQuery",
-                                            "group": "prometheus",
-                                            "version": "v0",
                                             "datasource": {
                                                 "name": "PBFA97CFB590B2093"
                                             },
+                                            "group": "prometheus",
+                                            "kind": "DataQuery",
                                             "spec": {
                                                 "editorMode": "code",
                                                 "exemplar": false,
@@ -158,22 +154,59 @@
                                                 "instant": true,
                                                 "legendFormat": "__auto",
                                                 "range": false
-                                            }
+                                            },
+                                            "version": "v0"
                                         },
-                                        "refId": "A",
-                                        "hidden": false
+                                        "refId": "A"
                                     }
                                 }
                             ],
-                            "transformations": [],
-                            "queryOptions": {}
+                            "queryOptions": {},
+                            "transformations": []
                         }
                     },
+                    "description": "",
+                    "id": 10,
+                    "links": [],
+                    "title": "Now Playing",
                     "vizConfig": {
-                        "kind": "VizConfig",
                         "group": "state-timeline",
-                        "version": "13.0.1+security-01",
+                        "kind": "VizConfig",
                         "spec": {
+                            "fieldConfig": {
+                                "defaults": {
+                                    "color": {
+                                        "mode": "thresholds"
+                                    },
+                                    "custom": {
+                                        "axisPlacement": "auto",
+                                        "fillOpacity": 70,
+                                        "hideFrom": {
+                                            "legend": false,
+                                            "tooltip": false,
+                                            "viz": false
+                                        },
+                                        "insertNulls": false,
+                                        "lineWidth": 0,
+                                        "spanNulls": false
+                                    },
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "color": "green",
+                                                "value": 0
+                                            },
+                                            {
+                                                "color": "red",
+                                                "value": 80
+                                            }
+                                        ]
+                                    },
+                                    "unit": "percent"
+                                },
+                                "overrides": []
+                            },
                             "options": {
                                 "alignValue": "left",
                                 "annotations": {
@@ -193,52 +226,15 @@
                                     "mode": "single",
                                     "sort": "none"
                                 }
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "unit": "percent",
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": 0,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "thresholds"
-                                    },
-                                    "custom": {
-                                        "axisPlacement": "auto",
-                                        "fillOpacity": 70,
-                                        "hideFrom": {
-                                            "legend": false,
-                                            "tooltip": false,
-                                            "viz": false
-                                        },
-                                        "insertNulls": false,
-                                        "lineWidth": 0,
-                                        "spanNulls": false
-                                    }
-                                },
-                                "overrides": []
                             }
-                        }
+                        },
+                        "version": "13.0.1+security-01"
                     }
                 }
             },
             "panel-11": {
                 "kind": "Panel",
                 "spec": {
-                    "id": 11,
-                    "title": "Active Sessions",
-                    "description": "",
-                    "links": [],
                     "data": {
                         "kind": "QueryGroup",
                         "spec": {
@@ -246,13 +242,13 @@
                                 {
                                     "kind": "PanelQuery",
                                     "spec": {
+                                        "hidden": false,
                                         "query": {
-                                            "kind": "DataQuery",
-                                            "group": "prometheus",
-                                            "version": "v0",
                                             "datasource": {
                                                 "name": "PBFA97CFB590B2093"
                                             },
+                                            "group": "prometheus",
+                                            "kind": "DataQuery",
                                             "spec": {
                                                 "editorMode": "code",
                                                 "exemplar": false,
@@ -261,17 +257,18 @@
                                                 "instant": false,
                                                 "legendFormat": "__auto",
                                                 "range": true
-                                            }
+                                            },
+                                            "version": "v0"
                                         },
-                                        "refId": "A",
-                                        "hidden": false
+                                        "refId": "A"
                                     }
                                 }
                             ],
+                            "queryOptions": {},
                             "transformations": [
                                 {
-                                    "kind": "Transformation",
                                     "group": "organize",
+                                    "kind": "Transformation",
                                     "spec": {
                                         "options": {
                                             "excludeByName": {
@@ -300,34 +297,19 @@
                                         }
                                     }
                                 }
-                            ],
-                            "queryOptions": {}
+                            ]
                         }
                     },
+                    "description": "",
+                    "id": 11,
+                    "links": [],
+                    "title": "Active Sessions",
                     "vizConfig": {
-                        "kind": "VizConfig",
                         "group": "table",
-                        "version": "13.0.1+security-01",
+                        "kind": "VizConfig",
                         "spec": {
-                            "options": {
-                                "cellHeight": "sm",
-                                "showHeader": true
-                            },
                             "fieldConfig": {
                                 "defaults": {
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": 0,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
                                     "color": {
                                         "mode": "thresholds"
                                     },
@@ -340,6 +322,19 @@
                                             "reducers": []
                                         },
                                         "inspect": false
+                                    },
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "color": "green",
+                                                "value": 0
+                                            },
+                                            {
+                                                "color": "red",
+                                                "value": 80
+                                            }
+                                        ]
                                     }
                                 },
                                 "overrides": [
@@ -380,18 +375,19 @@
                                         ]
                                     }
                                 ]
+                            },
+                            "options": {
+                                "cellHeight": "sm",
+                                "showHeader": true
                             }
-                        }
+                        },
+                        "version": "13.0.1+security-01"
                     }
                 }
             },
             "panel-12": {
                 "kind": "Panel",
                 "spec": {
-                    "id": 12,
-                    "title": "Users",
-                    "description": "",
-                    "links": [],
                     "data": {
                         "kind": "QueryGroup",
                         "spec": {
@@ -399,45 +395,31 @@
                                 {
                                     "kind": "PanelQuery",
                                     "spec": {
+                                        "hidden": false,
                                         "query": {
-                                            "kind": "DataQuery",
                                             "group": "",
-                                            "version": "v0",
-                                            "spec": {}
+                                            "kind": "DataQuery",
+                                            "spec": {},
+                                            "version": "v0"
                                         },
-                                        "refId": "A",
-                                        "hidden": false
+                                        "refId": "A"
                                     }
                                 }
                             ],
-                            "transformations": [],
-                            "queryOptions": {}
+                            "queryOptions": {},
+                            "transformations": []
                         }
                     },
+                    "description": "",
+                    "id": 12,
+                    "links": [],
+                    "title": "Users",
                     "vizConfig": {
-                        "kind": "VizConfig",
                         "group": "table",
-                        "version": "13.0.1+security-01",
+                        "kind": "VizConfig",
                         "spec": {
-                            "options": {
-                                "cellHeight": "sm",
-                                "showHeader": true
-                            },
                             "fieldConfig": {
                                 "defaults": {
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": 0,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
                                     "color": {
                                         "mode": "thresholds"
                                     },
@@ -450,21 +432,35 @@
                                             "reducers": []
                                         },
                                         "inspect": false
+                                    },
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "color": "green",
+                                                "value": 0
+                                            },
+                                            {
+                                                "color": "red",
+                                                "value": 80
+                                            }
+                                        ]
                                     }
                                 },
                                 "overrides": []
+                            },
+                            "options": {
+                                "cellHeight": "sm",
+                                "showHeader": true
                             }
-                        }
+                        },
+                        "version": "13.0.1+security-01"
                     }
                 }
             },
             "panel-13": {
                 "kind": "Panel",
                 "spec": {
-                    "id": 13,
-                    "title": "Top Jellyfin",
-                    "description": "",
-                    "links": [],
                     "data": {
                         "kind": "QueryGroup",
                         "spec": {
@@ -472,94 +468,245 @@
                                 {
                                     "kind": "PanelQuery",
                                     "spec": {
+                                        "hidden": false,
                                         "query": {
-                                            "kind": "DataQuery",
-                                            "group": "prometheus",
-                                            "version": "v0",
                                             "datasource": {
-                                                "name": "PBFA97CFB590B2093"
+                                                "name": "P8E80F9AEF21F6940"
                                             },
+                                            "group": "loki",
+                                            "kind": "DataQuery",
                                             "spec": {
+                                                "direction": "backward",
                                                 "editorMode": "code",
-                                                "exemplar": false,
-                                                "expr": "topk(10, sum by (item) (count_over_time(jellyfin_playing_runtime_ticks[$__range])) * 15)",
-                                                "format": "time_series",
-                                                "instant": true,
-                                                "legendFormat": "__auto",
-                                                "range": false
-                                            }
+                                                "expr": "{host=\"Olympus\", unit=\"authelia-main.service\"} | json | msg=~\"^Unsuccessful.*authentication.*\" | line_format \"{{.msg}}\" | regexp \"by user '(?P<auth_user>[^']+)'(?P<reason>.*)\"",
+                                                "queryType": "range"
+                                            },
+                                            "version": "v0"
                                         },
-                                        "refId": "A",
-                                        "hidden": false
+                                        "refId": "A"
                                     }
                                 }
                             ],
-                            "transformations": [],
-                            "queryOptions": {}
+                            "queryOptions": {},
+                            "transformations": [
+                                {
+                                    "group": "extractFields",
+                                    "kind": "Transformation",
+                                    "spec": {
+                                        "options": {
+                                            "delimiter": ",",
+                                            "source": "labels"
+                                        }
+                                    }
+                                },
+                                {
+                                    "group": "organize",
+                                    "kind": "Transformation",
+                                    "spec": {
+                                        "options": {
+                                            "excludeByName": {
+                                                "Line": true,
+                                                "detected_level": true,
+                                                "host": true,
+                                                "id": true,
+                                                "job": true,
+                                                "labelTypes": true,
+                                                "labels": true,
+                                                "level": true,
+                                                "method": true,
+                                                "msg": true,
+                                                "path": true,
+                                                "service_name": true,
+                                                "stack": true,
+                                                "time": true,
+                                                "tsNs": true,
+                                                "unit": true
+                                            },
+                                            "includeByName": {},
+                                            "indexByName": {
+                                                "Line": 6,
+                                                "Time": 0,
+                                                "auth_user": 2,
+                                                "detected_level": 15,
+                                                "error": 4,
+                                                "host": 16,
+                                                "id": 9,
+                                                "job": 17,
+                                                "labelTypes": 8,
+                                                "labels": 5,
+                                                "level": 10,
+                                                "method": 11,
+                                                "msg": 12,
+                                                "path": 13,
+                                                "reason": 3,
+                                                "remote_ip": 1,
+                                                "service_name": 18,
+                                                "time": 14,
+                                                "tsNs": 7,
+                                                "unit": 19
+                                            },
+                                            "renameByName": {
+                                                "Time": "TS",
+                                                "auth_user": "User",
+                                                "error": "Error",
+                                                "reason": "Reason",
+                                                "remote_ip": "Client"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
+                    "description": "",
+                    "id": 13,
+                    "links": [],
+                    "title": "Failed Login Details",
                     "vizConfig": {
+                        "group": "table",
                         "kind": "VizConfig",
-                        "group": "bargauge",
-                        "version": "13.0.1+security-01",
                         "spec": {
-                            "options": {
-                                "displayMode": "gradient",
-                                "legend": {
-                                    "calcs": [],
-                                    "displayMode": "list",
-                                    "placement": "bottom",
-                                    "showLegend": false
-                                },
-                                "maxVizHeight": 300,
-                                "minVizHeight": 16,
-                                "minVizWidth": 0,
-                                "namePlacement": "auto",
-                                "orientation": "vertical",
-                                "reduceOptions": {
-                                    "calcs": [
-                                        "lastNotNull"
-                                    ],
-                                    "fields": "",
-                                    "values": false
-                                },
-                                "showUnfilled": true,
-                                "sizing": "auto",
-                                "valueMode": "hidden"
-                            },
                             "fieldConfig": {
                                 "defaults": {
+                                    "color": {
+                                        "mode": "continuous-purples"
+                                    },
+                                    "custom": {
+                                        "align": "auto",
+                                        "cellOptions": {
+                                            "type": "auto"
+                                        },
+                                        "footer": {
+                                            "reducers": []
+                                        },
+                                        "inspect": false
+                                    },
+                                    "noValue": "Not Enough Data",
                                     "thresholds": {
                                         "mode": "absolute",
                                         "steps": [
                                             {
-                                                "value": 0,
-                                                "color": "green"
+                                                "color": "green",
+                                                "value": 0
                                             },
                                             {
-                                                "value": 80,
-                                                "color": "red"
+                                                "color": "red",
+                                                "value": 80
+                                            }
+                                        ]
+                                    }
+                                },
+                                "overrides": [
+                                    {
+                                        "matcher": {
+                                            "id": "byName",
+                                            "options": "msg"
+                                        },
+                                        "properties": [
+                                            {
+                                                "id": "custom.width",
+                                                "value": 501
                                             }
                                         ]
                                     },
-                                    "color": {
-                                        "mode": "continuous-purples"
+                                    {
+                                        "matcher": {
+                                            "id": "byName",
+                                            "options": "stack"
+                                        },
+                                        "properties": [
+                                            {
+                                                "id": "custom.width",
+                                                "value": 684
+                                            }
+                                        ]
                                     },
-                                    "noValue": "Not Enough Data"
-                                },
-                                "overrides": []
+                                    {
+                                        "matcher": {
+                                            "id": "byName",
+                                            "options": "remote_ip"
+                                        },
+                                        "properties": [
+                                            {
+                                                "id": "custom.width",
+                                                "value": 50
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "matcher": {
+                                            "id": "byName",
+                                            "options": "Time"
+                                        },
+                                        "properties": [
+                                            {
+                                                "id": "custom.width",
+                                                "value": 191
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "matcher": {
+                                            "id": "byName",
+                                            "options": "Client"
+                                        },
+                                        "properties": [
+                                            {
+                                                "id": "custom.width",
+                                                "value": 103
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "matcher": {
+                                            "id": "byName",
+                                            "options": "Line"
+                                        },
+                                        "properties": [
+                                            {
+                                                "id": "custom.width",
+                                                "value": 150
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "matcher": {
+                                            "id": "byName",
+                                            "options": "User"
+                                        },
+                                        "properties": [
+                                            {
+                                                "id": "custom.width",
+                                                "value": 92
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "matcher": {
+                                            "id": "byName",
+                                            "options": "Reason"
+                                        },
+                                        "properties": [
+                                            {
+                                                "id": "custom.width",
+                                                "value": 445
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "options": {
+                                "cellHeight": "sm",
+                                "showHeader": true
                             }
-                        }
+                        },
+                        "version": "13.0.1+security-01"
                     }
                 }
             },
             "panel-3": {
                 "kind": "Panel",
                 "spec": {
-                    "id": 3,
-                    "title": "Media Logs",
-                    "description": "",
-                    "links": [],
                     "data": {
                         "kind": "QueryGroup",
                         "spec": {
@@ -567,34 +714,41 @@
                                 {
                                     "kind": "PanelQuery",
                                     "spec": {
+                                        "hidden": false,
                                         "query": {
-                                            "kind": "DataQuery",
-                                            "group": "loki",
-                                            "version": "v0",
                                             "datasource": {
                                                 "name": "P8E80F9AEF21F6940"
                                             },
+                                            "group": "loki",
+                                            "kind": "DataQuery",
                                             "spec": {
                                                 "direction": "backward",
                                                 "editorMode": "code",
                                                 "expr": "{host=\"Olympus\", unit=~\"jellyfin.service|navidrome.service\"}",
                                                 "queryType": "range"
-                                            }
+                                            },
+                                            "version": "v0"
                                         },
-                                        "refId": "A",
-                                        "hidden": false
+                                        "refId": "A"
                                     }
                                 }
                             ],
-                            "transformations": [],
-                            "queryOptions": {}
+                            "queryOptions": {},
+                            "transformations": []
                         }
                     },
+                    "description": "",
+                    "id": 3,
+                    "links": [],
+                    "title": "Media Logs",
                     "vizConfig": {
-                        "kind": "VizConfig",
                         "group": "logs",
-                        "version": "13.0.1+security-01",
+                        "kind": "VizConfig",
                         "spec": {
+                            "fieldConfig": {
+                                "defaults": {},
+                                "overrides": []
+                            },
                             "options": {
                                 "dedupStrategy": "none",
                                 "enableInfiniteScrolling": false,
@@ -608,22 +762,15 @@
                                 "timestampResolution": "ms",
                                 "unwrappedColumns": false,
                                 "wrapLogMessage": false
-                            },
-                            "fieldConfig": {
-                                "defaults": {},
-                                "overrides": []
                             }
-                        }
+                        },
+                        "version": "13.0.1+security-01"
                     }
                 }
             },
             "panel-4": {
                 "kind": "Panel",
                 "spec": {
-                    "id": 4,
-                    "title": "Top services",
-                    "description": "",
-                    "links": [],
                     "data": {
                         "kind": "QueryGroup",
                         "spec": {
@@ -631,30 +778,31 @@
                                 {
                                     "kind": "PanelQuery",
                                     "spec": {
+                                        "hidden": false,
                                         "query": {
-                                            "kind": "DataQuery",
-                                            "group": "loki",
-                                            "version": "v0",
                                             "datasource": {
                                                 "name": "P8E80F9AEF21F6940"
                                             },
+                                            "group": "loki",
+                                            "kind": "DataQuery",
                                             "spec": {
                                                 "direction": "backward",
                                                 "editorMode": "code",
                                                 "expr": "",
                                                 "legendFormat": "{{service}}",
                                                 "queryType": "range"
-                                            }
+                                            },
+                                            "version": "v0"
                                         },
-                                        "refId": "A",
-                                        "hidden": false
+                                        "refId": "A"
                                     }
                                 }
                             ],
+                            "queryOptions": {},
                             "transformations": [
                                 {
-                                    "kind": "Transformation",
                                     "group": "renameByRegex",
+                                    "kind": "Transformation",
                                     "spec": {
                                         "options": {
                                             "regex": "(.+)@.+",
@@ -662,15 +810,47 @@
                                         }
                                     }
                                 }
-                            ],
-                            "queryOptions": {}
+                            ]
                         }
                     },
+                    "description": "",
+                    "id": 4,
+                    "links": [],
+                    "title": "Top services",
                     "vizConfig": {
-                        "kind": "VizConfig",
                         "group": "bargauge",
-                        "version": "13.0.1+security-01",
+                        "kind": "VizConfig",
                         "spec": {
+                            "fieldConfig": {
+                                "defaults": {
+                                    "color": {
+                                        "mode": "thresholds"
+                                    },
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "color": "green",
+                                                "value": 0
+                                            },
+                                            {
+                                                "color": "red",
+                                                "value": 80
+                                            }
+                                        ]
+                                    }
+                                },
+                                "overrides": [
+                                    {
+                                        "matcher": {
+                                            "id": "byName",
+                                            "options": "Value",
+                                            "scope": "series"
+                                        },
+                                        "properties": []
+                                    }
+                                ]
+                            },
                             "options": {
                                 "displayMode": "gradient",
                                 "legend": {
@@ -694,48 +874,15 @@
                                 "showUnfilled": true,
                                 "sizing": "auto",
                                 "valueMode": "text"
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": 0,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "thresholds"
-                                    }
-                                },
-                                "overrides": [
-                                    {
-                                        "matcher": {
-                                            "id": "byName",
-                                            "scope": "series",
-                                            "options": "Value"
-                                        },
-                                        "properties": []
-                                    }
-                                ]
                             }
-                        }
+                        },
+                        "version": "13.0.1+security-01"
                     }
                 }
             },
             "panel-5": {
                 "kind": "Panel",
                 "spec": {
-                    "id": 5,
-                    "title": "Storage Capacity by Media type",
-                    "description": "",
-                    "links": [],
                     "data": {
                         "kind": "QueryGroup",
                         "spec": {
@@ -743,26 +890,44 @@
                                 {
                                     "kind": "PanelQuery",
                                     "spec": {
+                                        "hidden": false,
                                         "query": {
-                                            "kind": "DataQuery",
                                             "group": "",
-                                            "version": "v0",
-                                            "spec": {}
+                                            "kind": "DataQuery",
+                                            "spec": {},
+                                            "version": "v0"
                                         },
-                                        "refId": "A",
-                                        "hidden": false
+                                        "refId": "A"
                                     }
                                 }
                             ],
-                            "transformations": [],
-                            "queryOptions": {}
+                            "queryOptions": {},
+                            "transformations": []
                         }
                     },
+                    "description": "",
+                    "id": 5,
+                    "links": [],
+                    "title": "Storage Capacity by Media type",
                     "vizConfig": {
-                        "kind": "VizConfig",
                         "group": "piechart",
-                        "version": "13.0.1+security-01",
+                        "kind": "VizConfig",
                         "spec": {
+                            "fieldConfig": {
+                                "defaults": {
+                                    "color": {
+                                        "mode": "palette-classic"
+                                    },
+                                    "custom": {
+                                        "hideFrom": {
+                                            "legend": false,
+                                            "tooltip": false,
+                                            "viz": false
+                                        }
+                                    }
+                                },
+                                "overrides": []
+                            },
                             "options": {
                                 "legend": {
                                     "displayMode": "list",
@@ -783,33 +948,15 @@
                                     "mode": "single",
                                     "sort": "none"
                                 }
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "color": {
-                                        "mode": "palette-classic"
-                                    },
-                                    "custom": {
-                                        "hideFrom": {
-                                            "legend": false,
-                                            "tooltip": false,
-                                            "viz": false
-                                        }
-                                    }
-                                },
-                                "overrides": []
                             }
-                        }
+                        },
+                        "version": "13.0.1+security-01"
                     }
                 }
             },
             "panel-6": {
                 "kind": "Panel",
                 "spec": {
-                    "id": 6,
-                    "title": "New Logins Today",
-                    "description": "",
-                    "links": [],
                     "data": {
                         "kind": "QueryGroup",
                         "spec": {
@@ -817,34 +964,59 @@
                                 {
                                     "kind": "PanelQuery",
                                     "spec": {
+                                        "hidden": false,
                                         "query": {
-                                            "kind": "DataQuery",
-                                            "group": "loki",
-                                            "version": "v0",
                                             "datasource": {
                                                 "name": "P8E80F9AEF21F6940"
                                             },
+                                            "group": "loki",
+                                            "kind": "DataQuery",
                                             "spec": {
                                                 "direction": "backward",
                                                 "editorMode": "code",
                                                 "expr": "sum(count_over_time({host=\"Olympus\", unit=\"authelia-main.service\"} | json | msg=~\"^Successful.*authentication.*\" [24h]))",
                                                 "queryType": "range"
-                                            }
+                                            },
+                                            "version": "v0"
                                         },
-                                        "refId": "A",
-                                        "hidden": false
+                                        "refId": "A"
                                     }
                                 }
                             ],
-                            "transformations": [],
-                            "queryOptions": {}
+                            "queryOptions": {},
+                            "transformations": []
                         }
                     },
+                    "description": "",
+                    "id": 6,
+                    "links": [],
+                    "title": "New Logins Today",
                     "vizConfig": {
-                        "kind": "VizConfig",
                         "group": "stat",
-                        "version": "13.0.1+security-01",
+                        "kind": "VizConfig",
                         "spec": {
+                            "fieldConfig": {
+                                "defaults": {
+                                    "color": {
+                                        "mode": "thresholds"
+                                    },
+                                    "noValue": "Zero",
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "color": "green",
+                                                "value": 0
+                                            },
+                                            {
+                                                "color": "red",
+                                                "value": 80
+                                            }
+                                        ]
+                                    }
+                                },
+                                "overrides": []
+                            },
                             "options": {
                                 "colorMode": "value",
                                 "graphMode": "area",
@@ -864,40 +1036,15 @@
                                 },
                                 "textMode": "auto",
                                 "wideLayout": true
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": 0,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "thresholds"
-                                    },
-                                    "noValue": "Zero"
-                                },
-                                "overrides": []
                             }
-                        }
+                        },
+                        "version": "13.0.1+security-01"
                     }
                 }
             },
             "panel-7": {
                 "kind": "Panel",
                 "spec": {
-                    "id": 7,
-                    "title": "Failed Logins",
-                    "description": "",
-                    "links": [],
                     "data": {
                         "kind": "QueryGroup",
                         "spec": {
@@ -905,34 +1052,59 @@
                                 {
                                     "kind": "PanelQuery",
                                     "spec": {
+                                        "hidden": false,
                                         "query": {
-                                            "kind": "DataQuery",
-                                            "group": "loki",
-                                            "version": "v0",
                                             "datasource": {
                                                 "name": "P8E80F9AEF21F6940"
                                             },
+                                            "group": "loki",
+                                            "kind": "DataQuery",
                                             "spec": {
                                                 "direction": "backward",
                                                 "editorMode": "code",
                                                 "expr": "sum(count_over_time({host=\"Olympus\", unit=\"authelia-main.service\"} | json | msg=~\"^Unsuccessful.*authentication.*\" [24h]))",
                                                 "queryType": "range"
-                                            }
+                                            },
+                                            "version": "v0"
                                         },
-                                        "refId": "A",
-                                        "hidden": false
+                                        "refId": "A"
                                     }
                                 }
                             ],
-                            "transformations": [],
-                            "queryOptions": {}
+                            "queryOptions": {},
+                            "transformations": []
                         }
                     },
+                    "description": "",
+                    "id": 7,
+                    "links": [],
+                    "title": "Failed Logins",
                     "vizConfig": {
-                        "kind": "VizConfig",
                         "group": "stat",
-                        "version": "13.0.1+security-01",
+                        "kind": "VizConfig",
                         "spec": {
+                            "fieldConfig": {
+                                "defaults": {
+                                    "color": {
+                                        "fixedColor": "dark-red",
+                                        "mode": "shades"
+                                    },
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "color": "green",
+                                                "value": 0
+                                            },
+                                            {
+                                                "color": "red",
+                                                "value": 80
+                                            }
+                                        ]
+                                    }
+                                },
+                                "overrides": []
+                            },
                             "options": {
                                 "colorMode": "value",
                                 "graphMode": "area",
@@ -952,40 +1124,15 @@
                                 },
                                 "textMode": "auto",
                                 "wideLayout": true
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": 0,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "shades",
-                                        "fixedColor": "dark-red"
-                                    }
-                                },
-                                "overrides": []
                             }
-                        }
+                        },
+                        "version": "13.0.1+security-01"
                     }
                 }
             },
             "panel-8": {
                 "kind": "Panel",
                 "spec": {
-                    "id": 8,
-                    "title": "Access Denied",
-                    "description": "",
-                    "links": [],
                     "data": {
                         "kind": "QueryGroup",
                         "spec": {
@@ -993,34 +1140,59 @@
                                 {
                                     "kind": "PanelQuery",
                                     "spec": {
+                                        "hidden": false,
                                         "query": {
-                                            "kind": "DataQuery",
-                                            "group": "loki",
-                                            "version": "v0",
                                             "datasource": {
                                                 "name": "P8E80F9AEF21F6940"
                                             },
+                                            "group": "loki",
+                                            "kind": "DataQuery",
                                             "spec": {
                                                 "direction": "backward",
                                                 "editorMode": "code",
                                                 "expr": "sum(count_over_time({job=\"traefik-access\", status_code=\"403\"} [$__range]))",
                                                 "queryType": "range"
-                                            }
+                                            },
+                                            "version": "v0"
                                         },
-                                        "refId": "A",
-                                        "hidden": false
+                                        "refId": "A"
                                     }
                                 }
                             ],
-                            "transformations": [],
-                            "queryOptions": {}
+                            "queryOptions": {},
+                            "transformations": []
                         }
                     },
+                    "description": "",
+                    "id": 8,
+                    "links": [],
+                    "title": "Access Denied",
                     "vizConfig": {
-                        "kind": "VizConfig",
                         "group": "stat",
-                        "version": "13.0.1+security-01",
+                        "kind": "VizConfig",
                         "spec": {
+                            "fieldConfig": {
+                                "defaults": {
+                                    "color": {
+                                        "fixedColor": "semi-dark-red",
+                                        "mode": "shades"
+                                    },
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "color": "green",
+                                                "value": 0
+                                            },
+                                            {
+                                                "color": "red",
+                                                "value": 80
+                                            }
+                                        ]
+                                    }
+                                },
+                                "overrides": []
+                            },
                             "options": {
                                 "colorMode": "value",
                                 "graphMode": "area",
@@ -1040,40 +1212,15 @@
                                 },
                                 "textMode": "auto",
                                 "wideLayout": true
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": 0,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "shades",
-                                        "fixedColor": "semi-dark-red"
-                                    }
-                                },
-                                "overrides": []
                             }
-                        }
+                        },
+                        "version": "13.0.1+security-01"
                     }
                 }
             },
             "panel-9": {
                 "kind": "Panel",
                 "spec": {
-                    "id": 9,
-                    "title": "Auth Logs",
-                    "description": "",
-                    "links": [],
                     "data": {
                         "kind": "QueryGroup",
                         "spec": {
@@ -1081,34 +1228,41 @@
                                 {
                                     "kind": "PanelQuery",
                                     "spec": {
+                                        "hidden": false,
                                         "query": {
-                                            "kind": "DataQuery",
-                                            "group": "loki",
-                                            "version": "v0",
                                             "datasource": {
                                                 "name": "P8E80F9AEF21F6940"
                                             },
+                                            "group": "loki",
+                                            "kind": "DataQuery",
                                             "spec": {
                                                 "direction": "backward",
                                                 "editorMode": "code",
                                                 "expr": "{host=\"Olympus\", unit=~\"authelia-main.service|lldap.service\"}",
                                                 "queryType": "range"
-                                            }
+                                            },
+                                            "version": "v0"
                                         },
-                                        "refId": "A",
-                                        "hidden": false
+                                        "refId": "A"
                                     }
                                 }
                             ],
-                            "transformations": [],
-                            "queryOptions": {}
+                            "queryOptions": {},
+                            "transformations": []
                         }
                     },
+                    "description": "",
+                    "id": 9,
+                    "links": [],
+                    "title": "Auth Logs",
                     "vizConfig": {
-                        "kind": "VizConfig",
                         "group": "logs",
-                        "version": "13.0.1+security-01",
+                        "kind": "VizConfig",
                         "spec": {
+                            "fieldConfig": {
+                                "defaults": {},
+                                "overrides": []
+                            },
                             "options": {
                                 "dedupStrategy": "none",
                                 "enableInfiniteScrolling": false,
@@ -1122,12 +1276,9 @@
                                 "timestampResolution": "ms",
                                 "unwrappedColumns": false,
                                 "wrapLogMessage": false
-                            },
-                            "fieldConfig": {
-                                "defaults": {},
-                                "overrides": []
                             }
-                        }
+                        },
+                        "version": "13.0.1+security-01"
                     }
                 }
             }
@@ -1139,157 +1290,157 @@
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 0,
-                            "y": 0,
-                            "width": 4,
-                            "height": 3,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-1"
-                            }
+                            },
+                            "height": 3,
+                            "width": 4,
+                            "x": 0,
+                            "y": 0
                         }
                     },
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 4,
-                            "y": 0,
-                            "width": 4,
-                            "height": 3,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-6"
-                            }
+                            },
+                            "height": 3,
+                            "width": 4,
+                            "x": 4,
+                            "y": 0
                         }
                     },
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 8,
-                            "y": 0,
-                            "width": 4,
-                            "height": 3,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-7"
-                            }
+                            },
+                            "height": 3,
+                            "width": 4,
+                            "x": 8,
+                            "y": 0
                         }
                     },
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 12,
-                            "y": 0,
-                            "width": 4,
-                            "height": 3,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-8"
-                            }
+                            },
+                            "height": 3,
+                            "width": 4,
+                            "x": 12,
+                            "y": 0
                         }
                     },
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 16,
-                            "y": 0,
-                            "width": 8,
-                            "height": 11,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-11"
-                            }
+                            },
+                            "height": 11,
+                            "width": 8,
+                            "x": 16,
+                            "y": 0
                         }
                     },
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 0,
-                            "y": 3,
-                            "width": 8,
-                            "height": 10,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-10"
-                            }
+                            },
+                            "height": 10,
+                            "width": 8,
+                            "x": 0,
+                            "y": 3
                         }
                     },
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 8,
-                            "y": 3,
-                            "width": 8,
-                            "height": 9,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-13"
-                            }
+                            },
+                            "height": 9,
+                            "width": 8,
+                            "x": 8,
+                            "y": 3
                         }
                     },
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 16,
-                            "y": 11,
-                            "width": 8,
-                            "height": 9,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-12"
-                            }
+                            },
+                            "height": 9,
+                            "width": 8,
+                            "x": 16,
+                            "y": 11
                         }
                     },
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 8,
-                            "y": 12,
-                            "width": 4,
-                            "height": 8,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-5"
-                            }
+                            },
+                            "height": 8,
+                            "width": 4,
+                            "x": 8,
+                            "y": 12
                         }
                     },
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 0,
-                            "y": 13,
-                            "width": 8,
-                            "height": 7,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-4"
-                            }
+                            },
+                            "height": 7,
+                            "width": 8,
+                            "x": 0,
+                            "y": 13
                         }
                     },
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 0,
-                            "y": 20,
-                            "width": 12,
-                            "height": 11,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-3"
-                            }
+                            },
+                            "height": 11,
+                            "width": 12,
+                            "x": 0,
+                            "y": 20
                         }
                     },
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 12,
-                            "y": 20,
-                            "width": 12,
-                            "height": 11,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-9"
-                            }
+                            },
+                            "height": 11,
+                            "width": 12,
+                            "x": 12,
+                            "y": 20
                         }
                     }
                 ]
@@ -1297,12 +1448,17 @@
         },
         "links": [],
         "liveNow": false,
+        "preferences": {
+            "layout": {
+                "kind": "GridLayout",
+                "spec": {
+                    "items": []
+                }
+            }
+        },
         "preload": false,
         "tags": [],
         "timeSettings": {
-            "timezone": "browser",
-            "from": "now-24h",
-            "to": "now",
             "autoRefresh": "",
             "autoRefreshIntervals": [
                 "5s",
@@ -1316,18 +1472,13 @@
                 "2h",
                 "1d"
             ],
+            "fiscalYearStartMonth": 0,
+            "from": "now-24h",
             "hideTimepicker": false,
-            "fiscalYearStartMonth": 0
+            "timezone": "browser",
+            "to": "now"
         },
         "title": "Media & Access",
-        "variables": [],
-        "preferences": {
-            "layout": {
-                "kind": "GridLayout",
-                "spec": {
-                    "items": []
-                }
-            }
-        }
+        "variables": []
     }
 }
