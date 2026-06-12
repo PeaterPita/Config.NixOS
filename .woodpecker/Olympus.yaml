@@ -1,0 +1,9 @@
+when:
+  - event: push
+    branch: master
+
+steps:
+  - name: deploy
+    image: bash
+    commands:
+      - nix build .#Olympus
