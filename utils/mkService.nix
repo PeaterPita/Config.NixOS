@@ -55,7 +55,7 @@ in
         homelab.services.homepage.groups.${homepage.group} = [
           {
             ${homepage.name or name} = {
-              icon = "${name}.png";
+              icon = "${homepage.icon or name}.png";
               href = "https://${cfg.domain}.${vars.baseDomain}";
               description = homepage.description;
 

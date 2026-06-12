@@ -1,0 +1,97 @@
+(import ../../../utils/mkService.nix) {
+  name = "woodpecker";
+  port = 3007;
+  domain = "ci";
+
+  routing = {
+    protected = true;
+
+  };
+
+  homepage = {
+    icon = "woodpecker-ci";
+    group = "Apps";
+    description = "CI/CD";
+
+  };
+
+  extraConfig =
+    {
+      config,
+      vars,
+      cfg,
+      ...
+    }:
+
+    let
+      agentPort = 34582;
+    in
+    {
+
+      homelab.services.authelia.rules = [
+        {
+          domain = [ "${cfg.domain}.${vars.baseDomain}" ];
+          policy = "bypass";
+          resources = [ "^/api/badges/.*$" ];
+        }
+        {
+          domain = [
+            "${cfg.domain}.${vars.baseDomain}"
+          ];
+          policy = "one_factor";
+          subject = [ "group:admin" ];
+        }
+      ];
+
+      sops.secrets."woodpecker/github_client" = {
+        sopsFile = ../../../secrets/services.yaml;
+      };
+
+      sops.secrets."woodpecker/github_secret" = {
+        sopsFile = ../../../secrets/services.yaml;
+      };
+
+      sops.secrets."woodpecker/agent_secret" = {
+        sopsFile = ../../../secrets/services.yaml;
+      };
+
+      sops.secrets."woodpecker/grpc_secret" = {
+        sopsFile = ../../../secrets/services.yaml;
+      };
+
+      sops.templates."woodpecker-server.env".content = ''
+        WOODPECKER_GITHUB_CLIENT=${config.sops.placeholder."woodpecker/github_client"}
+        WOODPECKER_GITHUB_SECRET=${config.sops.placeholder."woodpecker/github_secret"}
+        WOODPECKER_AGENT_SECRET=${config.sops.placeholder."woodpecker/agent_secret"}
+        WOODPECKER_GRPC_SECRET=${config.sops.placeholder."woodpecker/grpc_secret"}
+      '';
+
+      services.woodpecker-server = {
+        enable = true;
+        environmentFile = [ config.sops.templates."woodpecker-server.env".path ];
+        environment = {
+          WOODPECKER_OPEN = "true";
+          WOODPECKER_HOST = "https://${cfg.domain}.${vars.baseDomain}";
+          WOODPECKER_SERVER_ADDR = ":${toString cfg.port}";
+          WOODPECKER_GRPC_ADDR = ":${toString agentPort}";
+          WOODPECKER_GITHUB = "true";
+        };
+      };
+
+      sops.templates."woodpecker-agent.env".content = ''
+        WOODPECKER_AGENT_SECRET=${config.sops.placeholder."woodpecker/agent_secret"}
+      '';
+
+      services.woodpecker-agents.agents.local = {
+        enable = true;
+        environmentFile = [ config.sops.templates."woodpecker-agent.env".path ];
+        environment = {
+          WOODPECKER_SERVER = "localhost:${toString agentPort}";
+          WOODPECKER_BACKEND = "local";
+        };
+
+      };
+
+    };
+
+}

@@ -49,7 +49,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Prometheus**          | Olympus   | 🟡 In-Progress |
 | **Adventure Log**       | Olympus   | ⚫ Planned     |
 | **Paperless-ngx**       | Olympus   | 🟢 Functional  |
-| **Woodpecker CI**       | Olympus   | ⚫ Planned     |
+| **Woodpecker CI**       | Olympus   | 🟢 Functional  |
 | **Personal Sites**      | Olympus   | 🔴 WIP         |
 | **Speedtest Tracker**   | Olympus   | 🟢 Functional  |
 | **Filebrowser-quantum** | Olympus   | 🟢 Functional  |
