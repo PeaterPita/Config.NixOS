@@ -140,6 +140,8 @@ in
     umami.enable = true;
     immich.enable = true;
     wakapi.enable = true;
+    paperless-ngx.enable = true;
+    woodpecker.enable = true;
 
     filebrowser-quantum.enable = true;
     grafana.enable = true;
@@ -193,38 +195,9 @@ in
   };
 
   # disko.devices = {
-  #   disk = {
-  #     os-drive = {
-  #       type = "disk";
-  #       device = "";
-  #       content = {
-  #         type = "gpt";
-  #         partitions = {
-  #           ESP = {
-  #             size = "1G";
-  #             type = "EF00";
-  #             content = {
-  #               type = "filesystem";
-  #               format = "vfat";
-  #               mountpoint = "/boot";
-  #               mountOptions = [ "umask=0077" ];
-  #             };
-  #           };
-  #           root = {
-  #             size = "100%";
-  #             content = {
-  #               type = "filesystem";
-  #               format = "ext4";
-  #               mountpoint = "/";
-  #             };
-  #           };
-  #         };
-  #       };
-  #     };
-  #   }
-  #   // builtins.listToAttrs (
+  #   disk = builtins.listToAttrs (
   #     map (device: {
-  #       name = builtins.baseNameOf device;
+  #       name = baseNameOf device;
   #       value = {
   #         type = "disk";
   #         inherit device;
@@ -255,20 +228,6 @@ in
   #         compression = "lz4";
   #         acltype = "posixacl";
   #         xattr = "sa";
-  #       };
-  #       datasets = {
-  #         "media/movies" = {
-  #           type = "zfs_fs";
-  #           mountpoint = "/mnt/media/movies";
-  #         };
-  #         "media/music" = {
-  #           type = "zfs_fs";
-  #           mountpoint = "/mnt/media/music";
-  #         };
-  #         "immich" = {
-  #           type = "zfs_fs";
-  #           mountpoint = "/mnt/immich";
-  #         };
   #       };
   #     };
   #   };
