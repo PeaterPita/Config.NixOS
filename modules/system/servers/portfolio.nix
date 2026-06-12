@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  inputs,
   ...
 }:
 
@@ -19,8 +18,7 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    homelab.services.static-sites.packageSites.portfolio = {
-      package = inputs.astro-site.packages.x86_64-linux.default;
+    homelab.services.static-sites.ciSites.portfolio = {
       port = cfg.port;
     };
 
