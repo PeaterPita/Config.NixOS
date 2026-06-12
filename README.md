@@ -48,7 +48,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Jellyseerr**          | Olympus   | 🟢 Functional  |
 | **Prometheus**          | Olympus   | 🟡 In-Progress |
 | **Adventure Log**       | Olympus   | ⚫ Planned     |
-| **Paperless-ngx**       | Olympus   | ⚫ Planned     |
+| **Paperless-ngx**       | Olympus   | 🟢 Functional  |
 | **Woodpecker CI**       | Olympus   | ⚫ Planned     |
 | **Personal Sites**      | Olympus   | 🔴 WIP         |
 | **Speedtest Tracker**   | Olympus   | 🟢 Functional  |
@@ -97,8 +97,7 @@ Sops keys:
 - [ ] SpeedtestTracker - https://docs.speedtest-tracker.dev/security/authentication
 
 
-
-### Imperative Configuration
+### Jellyfin
 - Jellyfin LDAP Plugin Setup
     LDAP Server: `127.0.0.1`
     LDAP Port: `3890`
@@ -119,8 +118,23 @@ Sops keys:
 
 - Jellyseerr Setup
 
+### Misc
+- Paperless Default Group
+    name: `default`
+
+    Document: `All`
+    Tag: `All`
+    Correspondent: `All`
+    DocumentType: `All`
+    StoragePath: `View`
+    SavedView: `All`
+    PaperlessTask: `All`
+    UISettings: `All`
+    Note: `All`
+
 - SAMBA account
     `sudo smbpasswd -a <account name>`
+
 </details>
 
 ## TODO

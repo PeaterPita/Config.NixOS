@@ -7,12 +7,13 @@
 # Groups #
 ##########
 # admin
-# media  #
+# media
 # music
 # books
 # meals
 # files
 # home
+# documents
 (import ../../../utils/mkService.nix) {
   name = "lldap";
   port = 3890;
