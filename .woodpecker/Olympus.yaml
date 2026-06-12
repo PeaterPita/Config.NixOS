@@ -6,4 +6,4 @@ steps:
   - name: deploy
     image: bash
     commands:
-      - nix build .#Olympus
+      - nixos-rebuild build --flake .#Olympus
