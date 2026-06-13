@@ -478,7 +478,7 @@
                                             "spec": {
                                                 "direction": "backward",
                                                 "editorMode": "code",
-                                                "expr": "{host=\"Olympus\", unit=\"authelia-main.service\"} | json | msg=~\"^Unsuccessful.*authentication.*\" | line_format \"{{.msg}}\" | regexp \"by user '(?P<auth_user>[^']+)'(?P<reason>.*)\"",
+                                                "expr": "{host=\"Olympus\", unit=\"authelia-main.service\"} | json | msg=~\"^(Successful|Unsuccessful).*authentication.*\" | line_format \"{{.msg}}\" | regexp \"^(?P<status>Successful|Unsuccessful).*user '(?P<auth_user>[^']+)'(?P<reason>.*)\"",
                                                 "queryType": "range"
                                             },
                                             "version": "v0"
@@ -526,9 +526,8 @@
                                             "indexByName": {
                                                 "Line": 6,
                                                 "Time": 0,
-                                                "auth_user": 2,
+                                                "auth_user": 1,
                                                 "detected_level": 15,
-                                                "error": 4,
                                                 "host": 16,
                                                 "id": 9,
                                                 "job": 17,
@@ -538,9 +537,10 @@
                                                 "method": 11,
                                                 "msg": 12,
                                                 "path": 13,
-                                                "reason": 3,
-                                                "remote_ip": 1,
+                                                "reason": 4,
+                                                "remote_ip": 2,
                                                 "service_name": 18,
+                                                "status": 3,
                                                 "time": 14,
                                                 "tsNs": 7,
                                                 "unit": 19
@@ -550,7 +550,8 @@
                                                 "auth_user": "User",
                                                 "error": "Error",
                                                 "reason": "Reason",
-                                                "remote_ip": "Client"
+                                                "remote_ip": "Client",
+                                                "status": "Result"
                                             }
                                         }
                                     }
@@ -581,6 +582,21 @@
                                         },
                                         "inspect": false
                                     },
+                                    "mappings": [
+                                        {
+                                            "options": {
+                                                "Successful": {
+                                                    "color": "green",
+                                                    "index": 0
+                                                },
+                                                "Unsuccessful": {
+                                                    "color": "red",
+                                                    "index": 1
+                                                }
+                                            },
+                                            "type": "value"
+                                        }
+                                    ],
                                     "noValue": "Not Enough Data",
                                     "thresholds": {
                                         "mode": "absolute",
@@ -677,7 +693,7 @@
                                         "properties": [
                                             {
                                                 "id": "custom.width",
-                                                "value": 92
+                                                "value": 103
                                             }
                                         ]
                                     },
@@ -690,6 +706,36 @@
                                             {
                                                 "id": "custom.width",
                                                 "value": 445
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "matcher": {
+                                            "id": "byName",
+                                            "options": "TS"
+                                        },
+                                        "properties": [
+                                            {
+                                                "id": "custom.width",
+                                                "value": 155
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "matcher": {
+                                            "id": "byName",
+                                            "options": "status"
+                                        },
+                                        "properties": [
+                                            {
+                                                "id": "custom.width",
+                                                "value": 106
+                                            },
+                                            {
+                                                "id": "custom.cellOptions",
+                                                "value": {
+                                                    "type": "color-background"
+                                                }
                                             }
                                         ]
                                     }
@@ -1295,7 +1341,7 @@
                                 "name": "panel-1"
                             },
                             "height": 3,
-                            "width": 4,
+                            "width": 3,
                             "x": 0,
                             "y": 0
                         }
@@ -1308,8 +1354,8 @@
                                 "name": "panel-6"
                             },
                             "height": 3,
-                            "width": 4,
-                            "x": 4,
+                            "width": 3,
+                            "x": 3,
                             "y": 0
                         }
                     },
@@ -1321,8 +1367,8 @@
                                 "name": "panel-7"
                             },
                             "height": 3,
-                            "width": 4,
-                            "x": 8,
+                            "width": 3,
+                            "x": 6,
                             "y": 0
                         }
                     },
@@ -1334,8 +1380,8 @@
                                 "name": "panel-8"
                             },
                             "height": 3,
-                            "width": 4,
-                            "x": 12,
+                            "width": 3,
+                            "x": 9,
                             "y": 0
                         }
                     },
@@ -1347,8 +1393,8 @@
                                 "name": "panel-11"
                             },
                             "height": 11,
-                            "width": 8,
-                            "x": 16,
+                            "width": 6,
+                            "x": 18,
                             "y": 0
                         }
                     },
@@ -1373,7 +1419,7 @@
                                 "name": "panel-13"
                             },
                             "height": 9,
-                            "width": 8,
+                            "width": 10,
                             "x": 8,
                             "y": 3
                         }
@@ -1386,8 +1432,8 @@
                                 "name": "panel-12"
                             },
                             "height": 9,
-                            "width": 8,
-                            "x": 16,
+                            "width": 6,
+                            "x": 18,
                             "y": 11
                         }
                     },
