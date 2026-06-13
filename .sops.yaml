@@ -17,3 +17,11 @@ creation_rules:
       - age:
           - *Atlas
           - *Olympus
+
+  - path_regex: secrets/cache.yaml$
+    key_groups:
+      - age:
+          - *Atlas
+          - *Icarus
+          - *Hermes
+          - *Olympus

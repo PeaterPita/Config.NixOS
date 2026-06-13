@@ -2,6 +2,7 @@
 
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 [![NixOS](https://img.shields.io/badge/NixOS-26.05-blue?style=flat&logo=nixos&logoColor=white)](https://nixos.org)
+
 Since 28th may:
 ![Dev Time](https://img.shields.io/endpoint?url=https%3A%2F%2Fwakapi.peaterpita.com%2Fapi%2Fcompat%2Fshields%2Fv1%2Fd467d029-0079-4dd8-8b00-46b340ebe1bf%2Finterval%3Aall_time%2Fproject%3Anixos&style=for-the-badge&label=Dev%20Time&color=blueviolet)
 
@@ -43,7 +44,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Wakapi**              | Olympus   | 🟢 Functional  |
 | **Grafana**             | Olympus   | 🟡 In-Progress |
 | **Authelia**            | Olympus   | 🟡 In-Progress |
-| **Harmonia**            | Olympus   | ⚫ Planned     |
+| **Harmonia**            | Olympus   | 🟢 Functional  |
 | **Jellyfin**            | Olympus   | 🟢 Functional  |
 | **Navidrome**           | Olympus   | 🟢 Functional  |
 | **Tailscale**           | Olympus   | 🔴 Broken      |
@@ -136,6 +137,10 @@ Sops keys:
 
 - SAMBA account
     `sudo smbpasswd -a <account name>`
+
+- Harmonia Binary Cache keys
+    `nix-store --generate-binary-cache-key cache.peaterpita.com-1 /tmp/key.secret /tmp/key.pub`
+    Replace sops and common.nix values
 
 </details>
 

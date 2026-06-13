@@ -45,6 +45,12 @@
   };
 
   nix = {
+
+    settings = {
+      substituters = [ "https://cache.peaterpita.com" ];
+      trusted-public-keys = [ "cache.peaterpita.com-1:HFufcQT6KtSMSJKFu9UCDQ2cSD6k0LmjvAMxm4KFciU=" ];
+    };
+
     settings.trusted-users = [ "peaterpita" ];
     settings.auto-optimise-store = true;
     settings.experimental-features = [

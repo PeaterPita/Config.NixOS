@@ -28,7 +28,7 @@
     protected = true;
     port = 17170;
     healthPath = "/";
-    # middlewares = [ "internal-only" ];
+    middlewares = [ "internal-only" ];
   };
 
   homepage = {

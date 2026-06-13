@@ -142,6 +142,7 @@ in
     wakapi.enable = true;
     paperless-ngx.enable = true;
     woodpecker.enable = true;
+    cache.enable = true;
 
     filebrowser-quantum.enable = true;
     grafana.enable = true;
