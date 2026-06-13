@@ -77,7 +77,9 @@ in
     wants = [ "sops-nix.service" ];
   };
 
-  sops.secrets."tailscale/auth_key" = { };
+  sops.secrets."tailscale/auth_key" = {
+    sopsFile = ../../secrets/services.yaml;
+  };
 
   sops.secrets."cloudflare/api_token" = {
     sopsFile = ../../secrets/services.yaml;
@@ -92,15 +94,15 @@ in
     ACME_EMAIL=${config.sops.placeholder."personal/email"}
   '';
 
-  # services.tailscale = {
-  #   enable = true;
-  #   useRoutingFeatures = "server";
-  #   authKeyFile = config.sops.secrets."tailscale/auth_key".path;
-  #   extraUpFlags = [
-  #     "--advertise-routes=192.168.0.0/24"
-  #     "--advertise-exit-node"
-  #   ];
-  # };
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "server";
+    authKeyFile = config.sops.secrets."tailscale/auth_key".path;
+    extraUpFlags = [
+      "--advertise-routes=192.168.0.0/24"
+      "--advertise-exit-node"
+    ];
+  };
 
   services.logind.settings.Login = {
     HandleLidSwitch = "ignore";

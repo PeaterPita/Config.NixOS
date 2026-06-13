@@ -220,7 +220,6 @@ in
           internal-only.ipAllowList.sourceRange = [
             "127.0.0.1/32"
             "192.168.0.0/24"
-            "100.64.0.0/10"
           ];
 
           rate-limit.rateLimit = {
