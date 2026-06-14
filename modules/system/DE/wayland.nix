@@ -6,11 +6,11 @@
 }:
 
 let
-  cfg = config.modules.hyprland;
+  cfg = config.modules.wayland;
 in
 {
   options = {
-    modules.hyprland.enable = lib.mkEnableOption "hyprland";
+    modules.wayland.enable = lib.mkEnableOption "wayland";
   };
 
   config = lib.mkIf cfg.enable {
@@ -21,15 +21,9 @@ in
       wl-clipboard
     ];
     services.udisks2.enable = true;
-    programs = {
-      hyprland.enable = true;
-      hyprland.xwayland.enable = true;
-      hyprlock.enable = true;
-    };
     xdg.portal.enable = true;
     xdg.portal.extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
     ];
 
     services.greetd = {

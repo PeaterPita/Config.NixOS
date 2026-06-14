@@ -20,43 +20,12 @@ in
     modules.nemo.enable = true;
     services.network-manager-applet.enable = true;
 
-    modules = {
-      fuzzel.enable = true;
-      waybar.enable = true;
-      swaync.enable = true;
-    };
-
+    modules.noctalia.enable = true;
     home.packages = with pkgs; [
       ffmpeg
       grimblast
     ];
 
-    programs.wlogout = {
-      enable = true;
-      layout = [
-        {
-          label = "lock";
-          action = "hyprlock";
-          text = "Lock";
-        }
-        {
-          label = "logout";
-          action = "hyprctl dispatch exit";
-          text = "logout";
-        }
-        {
-          label = "shutdown";
-          action = "systemctl poweroff";
-          text = "Shutdown";
-        }
-        {
-          label = "reboot";
-          action = "systemctl reboot";
-          text = "reboot";
-        }
-
-      ];
-    };
     wayland.windowManager.hyprland = {
       enable = true;
       configType = "hyprlang";
@@ -66,6 +35,7 @@ in
           "udiskie"
           "qs"
           "awww-daemon"
+          "noctalia"
         ];
 
         general = {
@@ -94,11 +64,7 @@ in
         bind = [
           "$mod, W, killactive"
           "$mod, F, fullscreen"
-          "$mod, L, exec, hyprlock"
           "$mod SHIFT, F, togglefloating"
-
-          "$mod SHIFT, W, exec, pkill waybar || waybar "
-          "$mod, n, exec, swaync-client -t -sw"
 
           "$mod, Left, movefocus, l"
           "$mod, Right, movefocus, r"
@@ -110,11 +76,15 @@ in
           "$mod SHIFT, up,    resizeactive, 0 -100"
           "$mod SHIFT, down,  resizeactive, 0 100"
 
-          "$mod, Space, exec, fuzzel"
           "$mod, Q, exec, kitty"
           "$mod, E, exec, dolphin"
 
-          "$mod SHIFT, S, exec, grimblast --notify --freeze copysave area"
+          "$mod SHIFT, S, exec, noctalia msg screenshot-region"
+          "$mod, L, exec, noctalia msg session lock"
+          "$mod, Space, exec, noctalia msg panel-toggle launcher"
+          "$mod SHIFT, W, exec, pkill noctalia || noctalia "
+          "$mod, Plus, exec, noctalia msg bar-toggle"
+          "$mod, TAB, exec, noctalia msg window-switcher"
 
         ]
         ++ (builtins.concatLists (
