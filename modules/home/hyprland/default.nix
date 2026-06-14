@@ -33,7 +33,6 @@ in
         "$mod" = "SUPER";
         exec-once = [
           "udiskie"
-          "qs"
           "awww-daemon"
           "noctalia"
         ];

@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  osConfig,
   ...
 }:
 
@@ -27,7 +26,7 @@ in
 
         bar = {
 
-          main = {
+          default = {
             margin_edge = 0;
             margin_ends = 0;
             radius = 0;
