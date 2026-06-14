@@ -12,6 +12,7 @@
 
   modules = {
 
+    noctalia.enable = true;
     zsh.enable = true;
     nixvim.enable = true;
     kitty.enable = true;

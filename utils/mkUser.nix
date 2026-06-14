@@ -30,6 +30,7 @@
       ../users/${user} # Default user config. Applies to all machines that  user is present on
       (utils.importIfExists ../users/${user}/${hostname}.nix) # Per host user config. Only applies to that user on that host.
       inputs.nixvim.homeModules.nixvim
+      inputs.noctalia.homeModules.default
 
     ]
     ++ builtins.filter (

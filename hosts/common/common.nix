@@ -45,8 +45,14 @@
 
   nix = {
     settings = {
-      substituters = [ "https://cache.peaterpita.com" ];
-      trusted-public-keys = [ "cache.peaterpita.com-1:HFufcQT6KtSMSJKFu9UCDQ2cSD6k0LmjvAMxm4KFciU=" ];
+      substituters = [
+        "https://cache.peaterpita.com"
+        "https://noctalia.cachix.org"
+      ];
+      trusted-public-keys = [
+        "cache.peaterpita.com-1:HFufcQT6KtSMSJKFu9UCDQ2cSD6k0LmjvAMxm4KFciU="
+        "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+      ];
 
       trusted-users = [ "peaterpita" ];
       auto-optimise-store = true;
