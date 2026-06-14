@@ -59,7 +59,7 @@ in
     };
     wayland.windowManager.hyprland = {
       enable = true;
-      configType = "lua";
+      configType = "hyprlang";
       settings = {
         "$mod" = "SUPER";
         exec-once = [
