@@ -23,7 +23,6 @@
     zsh.enable = true;
     nixvim.enable = true;
     kitty.enable = true;
-    zellij.enable = true;
     direnv.enable = true;
   };
 }
