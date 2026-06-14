@@ -23,13 +23,6 @@ in
         ll = "ls -l";
         open = "xdg-open";
       };
-
-      oh-my-zsh = {
-        enable = true;
-        plugins = [ "git" ];
-        theme = "arrow";
-      };
-
     };
   };
 }
