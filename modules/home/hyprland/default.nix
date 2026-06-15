@@ -17,15 +17,19 @@ in
   config = lib.mkIf cfg.enable {
     home.sessionVariables.NIXOS_OZONE_WL = "1";
 
-    modules.nemo.enable = true;
-
-    modules.noctalia.enable = true;
+    modules = {
+      noctalia.enable = true;
+      kitty.enable = true;
+    };
     home.packages = with pkgs; [
       ffmpeg
+      kdePackages.dolphin
+      kdePackages.dolphin-plugins
     ];
 
     wayland.windowManager.hyprland = {
       enable = true;
+      xwayland.enable = true;
       configType = "hyprlang";
       settings = {
         "$mod" = "SUPER";
@@ -51,7 +55,9 @@ in
             let
               idx = i + 1;
             in
-            "${toString idx}, monitor:${primary.name}" + (if idx == 1 then ",default:true" else "")
+            "${toString idx}, monitor:${primary.name}"
+            + (if idx == 1 then ",default:true" else "")
+            + (if idx <= 3 then ",persistent:true" else "")
           ) 9
           ++ (map (
             monitor: "name:${monitor.name}, monitor:${monitor.name}, default:true, persistent:true"
@@ -106,8 +112,6 @@ in
 
           "$mod, Q, exec, kitty"
           "$mod, E, exec, dolphin"
-
-          "$mod, Z, exec, hyprctl keyword cursor:zoom_factor \"$(hyprctl getoption cursor:zoom_factor | awk '/float/ {print ($2 == 1 ? 3 : 1)}')\""
 
           "$mod SHIFT, S, exec, noctalia msg screenshot-region"
           "$mod, L, exec, noctalia msg session lock"
