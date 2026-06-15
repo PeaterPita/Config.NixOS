@@ -24,7 +24,6 @@ in
       (lib.mkIf cfg.wireless.enable {
 
         sops.secrets."networks/eduroam" = { };
-        programs.nm-applet.enable = true;
 
         networking.networkmanager.ensureProfiles = {
           environmentFiles = [ config.sops.secrets."networks/eduroam".path ];

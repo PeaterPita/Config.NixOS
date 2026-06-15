@@ -18,12 +18,10 @@ in
     home.sessionVariables.NIXOS_OZONE_WL = "1";
 
     modules.nemo.enable = true;
-    services.network-manager-applet.enable = true;
 
     modules.noctalia.enable = true;
     home.packages = with pkgs; [
       ffmpeg
-      grimblast
     ];
 
     wayland.windowManager.hyprland = {
@@ -77,6 +75,8 @@ in
 
           "$mod, Q, exec, kitty"
           "$mod, E, exec, dolphin"
+
+          "$mod, Z, exec, hyprctl keyword cursor:zoom_factor \"$(hyprctl getoption cursor:zoom_factor | awk '/float/ {print ($2 == 1 ? 3 : 1)}')\""
 
           "$mod SHIFT, S, exec, noctalia msg screenshot-region"
           "$mod, L, exec, noctalia msg session lock"

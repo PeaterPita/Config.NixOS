@@ -55,9 +55,16 @@ in
 
         shell = {
           font_family = "monocraft";
+
+          screenshot = {
+            copy_to_clipboard = true;
+          };
+
           panel = {
             transparency_mode = "glass";
-            launcher_placement = "attached";
+            launcher_placement = "centered";
+            # control_center_placement = "attached";
+            launcher_categories = false;
           };
         };
 
