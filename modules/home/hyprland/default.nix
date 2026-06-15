@@ -40,6 +40,23 @@ in
           gaps_in = 0;
         };
 
+        workspace =
+          let
+            primary = builtins.head (builtins.filter (monitor: monitor.primary) osConfig.monitors);
+            nonPrimary = builtins.filter (monitor: !monitor.primary) osConfig.monitors;
+          in
+
+          builtins.genList (
+            i:
+            let
+              idx = i + 1;
+            in
+            "${toString idx}, monitor:${primary.name}" + (if idx == 1 then ",default:true" else "")
+          ) 9
+          ++ (map (
+            monitor: "name:${monitor.name}, monitor:${monitor.name}, default:true, persistent:true"
+          ) nonPrimary);
+
         monitor = [
           ", preferred, auto, 1"
         ]
@@ -56,6 +73,20 @@ in
         bindm = [
           "$mod, mouse:272, movewindow"
           "$mod, mouse:273, resizewindow"
+        ];
+
+        binde = [
+          " ,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+          " ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+          " ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          " ,XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+
+          " ,XF86AudioPlay, exec, playerctl play-pause"
+          " ,XF86AudioNext, exec, playerctl next"
+          " ,XF86AudioPrev, exec, playerctl previous"
+
+          " ,XF86MonBrightnessUp, exec,  brightnessctl s 5%+"
+          " ,XF86MonBrightnessDown, exec, brightnessctl s 5%-"
         ];
 
         bind = [

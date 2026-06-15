@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  osConfig,
   ...
 }:
 
@@ -25,7 +26,6 @@ in
       settings = {
 
         bar = {
-
           default = {
             margin_edge = 0;
             margin_ends = 0;
@@ -48,6 +48,15 @@ in
               "volume"
               "battery"
             ];
+            monitor = builtins.listToAttrs (
+              map (monitor: {
+                name = monitor.name;
+                value = {
+                  match = monitor.name;
+                  enabled = false;
+                };
+              }) (builtins.filter (monitor: !monitor.primary) osConfig.monitors)
+            );
 
           };
 
