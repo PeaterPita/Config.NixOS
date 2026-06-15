@@ -28,7 +28,6 @@ in
       modules = {
         tailscale.enable = true;
         sound.enable = true;
-        yazi.enable = true;
         fonts.enable = true;
       };
 
@@ -46,11 +45,9 @@ in
         vim
         unrar
         brightnessctl
-        awww
         qimgv
         ncdu
         xdg-utils
-        nixfmt-tree
       ];
     })
   ];
