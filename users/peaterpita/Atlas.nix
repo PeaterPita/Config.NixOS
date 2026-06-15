@@ -26,6 +26,7 @@
     obsidian.enable = true;
     office.enable = true;
     scrcpy.enable = true;
+    hyprland.enable = true;
 
     gaming = {
       enable = true;

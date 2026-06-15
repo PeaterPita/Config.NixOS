@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 
@@ -26,6 +27,7 @@
     obs.enable = true;
     wireshark.enable = true;
     plasma.enable = true;
+    hyprland.enable = true;
     steam.enable = true;
     nvidia.enable = true;
     hardware = {
@@ -36,16 +38,19 @@
   };
   virtualisation.docker.enable = true;
 
+  services.displayManager.sddm.enable = lib.mkForce false;
+
   monitors = [
     {
       name = "DP-1";
       width = 2560;
       height = 1440;
+      position = "0x0";
       primary = true;
       refreshRate = 120;
     }
     {
-      name = "HDMI-1";
+      name = "HDMI-A-1";
       width = 1920;
       height = 1080;
       position = "2560x0";
