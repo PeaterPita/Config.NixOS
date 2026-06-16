@@ -25,6 +25,7 @@ in
       };
       shellIntegration.enableZshIntegration = true;
       themeFile = "VibrantInk";
+      extraConfig = "include themes/noctalia.conf";
       keybindings = {
         "ctrl+c" = "copy_or_interrupt";
 

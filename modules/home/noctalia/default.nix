@@ -37,7 +37,7 @@ in
           taskbar = {
             group_by_workspace = true;
             workspace_label_placement = "inside";
-            show_Active_indicator = false;
+            show_active_indicator = false;
           };
         };
 
@@ -55,23 +55,19 @@ in
 
           templates = {
             enable_builtin_templates = true;
-            builtins_ids = [
+            builtin_ids = [
               "hyprland"
               "gtk4"
-              "qt"
+              "gtk3"
               "kitty"
-              "starship"
               "kcolorscheme"
             ];
 
             enable_community_templates = true;
             community_ids = [
-              "zathura"
-              "obsidian"
               "vesktop"
               "discord"
               "neovim"
-              "steam"
             ];
           };
         };
@@ -83,6 +79,7 @@ in
 
         shell = {
           font_family = "monocraft";
+          launch_apps_as_systemd_services = true;
 
           screenshot = {
             copy_to_clipboard = true;
@@ -91,7 +88,6 @@ in
           panel = {
             transparency_mode = "glass";
             launcher_placement = "centered";
-            # control_center_placement = "attached";
             launcher_categories = false;
           };
         };
