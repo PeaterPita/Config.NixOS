@@ -12,7 +12,9 @@
 
   modules = {
 
-    noctalia.enable = true;
+    # noctalia.enable = true;
+    # hyprland.enable = true;
+
     zsh.enable = true;
     nixvim.enable = true;
     kitty.enable = true;
@@ -26,7 +28,6 @@
     obsidian.enable = true;
     office.enable = true;
     scrcpy.enable = true;
-    hyprland.enable = true;
 
     gaming = {
       enable = true;
