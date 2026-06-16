@@ -16,11 +16,11 @@ in
   config = lib.mkIf cfg.enable {
     modules.wayland.enable = true;
 
-    programs = {
-      hyprland.enable = true;
-      hyprland.xwayland.enable = true;
-      hyprlock.enable = true;
+    programs.hyprland = {
+      enable = true;
+      xwayland.enable = true;
     };
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
     xdg.portal.extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
     ];

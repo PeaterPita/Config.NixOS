@@ -8,6 +8,7 @@
 
 let
   cfg = config.modules.hyprland;
+  primary = builtins.head (builtins.filter (monitor: monitor.primary) osConfig.monitors);
 in
 {
   options = {
@@ -15,8 +16,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.sessionVariables.NIXOS_OZONE_WL = "1";
-
     modules = {
       noctalia.enable = true;
       kitty.enable = true;
@@ -30,14 +29,20 @@ in
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
+      # systemd.enable = false;
       configType = "hyprlang";
       settings = {
         "$mod" = "SUPER";
+
         exec-once = [
+          "hyprctl dispatch focusmonitor ${primary.name}"
+          "xrandr --output ${primary.name} --primary"
           "udiskie"
           "awww-daemon"
           "noctalia"
         ];
+
+        source = [ "~/.config/hypr/noctalia.conf" ];
 
         general = {
           gaps_out = 0;
@@ -46,7 +51,6 @@ in
 
         workspace =
           let
-            primary = builtins.head (builtins.filter (monitor: monitor.primary) osConfig.monitors);
             nonPrimary = builtins.filter (monitor: !monitor.primary) osConfig.monitors;
           in
 
