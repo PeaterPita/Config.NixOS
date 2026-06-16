@@ -40,6 +40,12 @@ in
         excludePackages = [ pkgs.xterm ];
       };
 
+      qt = {
+        enable = true;
+        platformTheme = "kde";
+        style = "breeze";
+      };
+
       environment.systemPackages = with pkgs; [
         kdePackages.ark
         vim

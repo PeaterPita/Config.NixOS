@@ -15,7 +15,6 @@
     typescript
   ];
 
-  qt.enable = true;
   system.isDesktop = true;
 
   services.flatpak.enable = true;
