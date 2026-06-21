@@ -132,6 +132,7 @@ in
       json-exporter.enable = true;
       loki.enable = true;
       alloy.enable = true;
+
       geoipupdate.enable = true;
       glances.enable = true;
     };
