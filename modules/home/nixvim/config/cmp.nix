@@ -1,29 +1,44 @@
 {
 
-  plugins.cmp = {
+  plugins.blink-cmp = {
     enable = true;
-    autoEnableSources = true;
     settings = {
-      sources = [
-        { name = "nvim_lsp"; }
-        { name = "luasnip"; }
-        { name = "path"; }
-        { name = "git"; }
-        { name = "vimtex"; }
-        { name = "buffer"; }
-      ];
+      keymap.preset = "enter";
 
-      mapping = {
-        "<Up>" = "cmp.mapping.select_prev_item()";
-        "<Down>" = "cmp.mapping.select_next_item()";
-        "<esc>" = "cmp.mapping.abort()";
-        "<CR>" = "cmp.mapping.confirm({ select = true })";
-        "<S-Tab>" = "cmp.mapping.select_prev_item()";
-        "<Tab>" = "cmp.mapping.select_next_item()";
+      completion = {
+        documentation.auto_show = true;
+        ghost_text.enabled = true;
 
+        menu = {
+          auto_show = true;
+          draw.columns = [
+            {
+              __unkeyed-1 = "label";
+              __unkeyed-2 = "label_description";
+              gap = 1;
+            }
+
+            {
+              __unkeyed-1 = "kind_icon";
+              __unkeyed-2 = "kind";
+            }
+          ];
+        };
+      };
+      snippets.preset = "luasnip";
+      signature.enabled = true;
+
+      fuzzy = {
+        implementation = "rust";
+        prebuilt_binaries.download = false;
       };
 
+      sources.default = [
+        "lsp"
+        "path"
+        "snippets"
+        "buffer"
+      ];
     };
   };
-
 }
