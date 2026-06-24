@@ -18,7 +18,7 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    homelab.services.static-sites.ciSites.portfolio = {
+    homelab.services.static-sites.ciSites.Mnemosyne = {
       port = cfg.port;
     };
 
