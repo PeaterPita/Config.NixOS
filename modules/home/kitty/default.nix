@@ -50,6 +50,8 @@ in
       );
       settings = {
 
+        scrollback_lines = "-1";
+
         remember_window_size = "yes";
         inactive_text_alpha = "-0.4";
 

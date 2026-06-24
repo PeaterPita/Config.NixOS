@@ -159,7 +159,7 @@ Sops keys:
 - [Misterio77 Config](https://github.com/Misterio77/nix-config)
 - [Notthebe Config](https://git.notthebe.ee/notthebee/nix-config)
 
-[olympus-badge]: https://ci.peaterpita.com/api/badges/2/status.svg?workflow=Olympus
-[hermes-badge]: https://ci.peaterpita.com/api/badges/2/status.svg?workflow=Hermes
-[atlas-badge]: https://ci.peaterpita.com/api/badges/2/status.svg?workflow=Atlas
-[icarus-badge]: https://ci.peaterpita.com/api/badges/2/status.svg?workflow=Icarus
+[olympus-badge]: https://ci.peaterpita.com/api/badges/PeaterPita/Config.NixOS/status.svg?workflow=Olympus
+[hermes-badge]: https://ci.peaterpita.com/api/badges/PeaterPita/Config.NixOS/status.svg?workflow=Hermes
+[atlas-badge]: https://ci.peaterpita.com/api/badges/PeaterPita/Config.NixOS/status.svg?workflow=Atlas
+[icarus-badge]: https://ci.peaterpita.com/api/badges/PeaterPita/Config.NixOS/status.svg?workflow=Icarus
