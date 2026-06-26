@@ -4,16 +4,6 @@
   extraPlugins = [ pkgs.vimPlugins.base16-nvim ];
 
   extraConfigLua = ''
-    local function transparent()
-      for _, group in ipairs({
-        "Normal", "NormalNC", "NormalFloat", "FloatBorder",
-        "SignColumn", "LineNr", "FoldColumn", "EndOfBuffer", "MsgArea",
-        "TelescopeNormal", "TelescopeBorder",
-        "TelescopePromptNormal", "TelescopePromptBorder",
-      }) do
-        vim.api.nvim_set_hl(0, group, { bg = "none" })
-      end
-    end
 
     local function loop_override_colors() 
       local c = require("base16-colorscheme").colors
@@ -42,7 +32,6 @@
         if ok and matugen and matugen.setup then
             matugen.setup()
         end
-        transparent()
         loop_override_colors()
     end
 
