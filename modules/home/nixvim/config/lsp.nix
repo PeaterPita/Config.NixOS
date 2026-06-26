@@ -88,7 +88,12 @@
       ########
       # Rust #
       ########
-      rust_analyzer.enable = true;
+      rust_analyzer = {
+        enable = true;
+        config.settings."rust-analyzer" = {
+          check.command = "clippy";
+        };
+      };
 
       #########
       # C/C++ #
