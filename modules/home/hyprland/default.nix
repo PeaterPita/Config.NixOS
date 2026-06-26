@@ -23,7 +23,6 @@ in
     home.packages = with pkgs; [
       ffmpeg
       kdePackages.dolphin
-      kdePackages.dolphin-plugins
     ];
 
     wayland.windowManager.hyprland = {
@@ -38,7 +37,6 @@ in
           "hyprctl dispatch focusmonitor ${primary.name}"
           "xrandr --output ${primary.name} --primary"
           "udiskie"
-          "awww-daemon"
           "noctalia"
         ];
 
@@ -47,6 +45,18 @@ in
         general = {
           gaps_out = 0;
           gaps_in = 0;
+        };
+
+        animation = [ "global, 0" ];
+
+        windowrule = [
+          "match:class ^(pavucontrol|org.kde.polkit-kde-authentication-agent-1)$, float yes"
+          "match:title ^(Open File|Save File)$, float yes"
+        ];
+
+        input = {
+          kb_layout = "us";
+          accel_profile = "flat";
         };
 
         workspace =
