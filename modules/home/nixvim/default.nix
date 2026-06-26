@@ -13,6 +13,9 @@
 
 let
   cfg = config.modules.nixvim;
+  noctaliaEnabled = config.modules.noctalia.enable;
+
+  noctaliaTheme = ./config/plugins/noctalia.nix;
 in
 {
   options = {
@@ -29,9 +32,13 @@ in
     programs.ripgrep.enable = true;
 
     programs.nixvim = {
-      imports = builtins.filter (path: lib.hasSuffix ".nix" path) (
-        lib.filesystem.listFilesRecursive ./config
-      );
+      imports =
+        (builtins.filter (path: lib.hasSuffix ".nix" path && baseNameOf path != "noctalia.nix") (
+          lib.filesystem.listFilesRecursive ./config
+        ))
+        ++ lib.optional noctaliaEnabled noctaliaTheme;
+
+      colorschemes.catppuccin.enable = !noctaliaEnabled;
 
       enable = true;
       vimAlias = true;

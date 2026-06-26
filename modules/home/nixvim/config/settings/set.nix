@@ -1,10 +1,5 @@
 {
 
-  colorschemes = {
-    catppuccin = {
-      enable = true;
-    };
-  };
   # Key binds map leader
   # globalOpts = { mapleader = " "; };
 
@@ -60,6 +55,9 @@
     spell = true;
 
     # cmdheight = 0;
+
+    # Remove fillchars at the end of buffers
+    fillchars.eob = " ";
 
     cursorline = true;
     ignorecase = true;
