@@ -2,6 +2,8 @@
   config,
   pkgs,
   lib,
+  inputs,
+  osConfig,
   ...
 }:
 #########################################################################
@@ -32,6 +34,8 @@ in
     programs.ripgrep.enable = true;
 
     programs.nixvim = {
+      _module.args = { inherit inputs osConfig; };
+
       imports =
         (builtins.filter (path: lib.hasSuffix ".nix" path && baseNameOf path != "noctalia.nix") (
           lib.filesystem.listFilesRecursive ./config

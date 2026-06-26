@@ -1,4 +1,10 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  osConfig,
+  ...
+}:
 {
   plugins.lspconfig.enable = true;
 
@@ -15,9 +21,7 @@
       event = [ "FileType" ];
       pattern = "java";
       callback.__raw = ''
-
         function()
-
             vim.keymap.set('n', '<leader>ji', function()
                 require('jdtls').organize_imports()
             end, { buffer = true })
@@ -25,13 +29,9 @@
             vim.keymap.set('n', '<leader>jv', function()
                 require('jdtls').extract_variable()
             end, {buffer = true})
-
-
-
         end
       '';
     }
-
   ];
 
   plugins.jdtls = {
@@ -219,7 +219,21 @@
           '';
         };
       };
-      nixd.enable = true;
+      nixd =
+        let
+          flake = "${inputs.self}";
+          host = osConfig.networking.hostName;
+        in
+        {
+          enable = true;
+          config.settings.nixd = {
+            options = {
+              nixos.expr = ''(builtins.getFlake "${flake}").nixosConfigurations.${host}.options'';
+              home_manager.expr = ''(builtins.getFlake "${flake}").nixosConfigurations.${host}.options.home-manager.users.type.getSubOptions [ ]'';
+            };
+          };
+        };
+
       lua_ls = {
         enable = true;
         config = {
