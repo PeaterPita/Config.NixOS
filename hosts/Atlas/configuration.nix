@@ -26,7 +26,7 @@
     obs.enable = true;
     wireshark.enable = true;
     plasma.enable = true;
-    # hyprland.enable = true;
+    hyprland.enable = true;
     steam.enable = true;
     nvidia.enable = true;
     hardware = {
@@ -37,7 +37,7 @@
   };
   virtualisation.docker.enable = true;
 
-  # services.displayManager.sddm.enable = lib.mkForce false;
+  services.displayManager.sddm.enable = lib.mkForce false;
 
   monitors = [
     {

@@ -12,8 +12,8 @@
 
   modules = {
 
-    # noctalia.enable = true;
-    # hyprland.enable = true;
+    noctalia.enable = true;
+    hyprland.enable = true;
 
     zsh.enable = true;
     nixvim.enable = true;
