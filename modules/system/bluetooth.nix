@@ -16,7 +16,6 @@ in
   config = lib.mkIf cfg.enable {
 
     nixpkgs.config.pipewire = {
-      withLibcamera = false;
       withLibBluetooth = true;
     };
 
