@@ -1,8 +1,4 @@
 {
-
-  # Key binds map leader
-  # globalOpts = { mapleader = " "; };
-
   opts = {
 
     # Numbers
@@ -54,15 +50,11 @@
     # # Spell check
     spell = true;
 
-    # cmdheight = 0;
-
     # Remove fillchars at the end of buffers
     fillchars.eob = " ";
 
     cursorline = true;
     ignorecase = true;
     smartcase = true;
-
   };
-
 }

@@ -88,7 +88,7 @@
     # System Commands #
     ###################
     {
-      ## Yank to system ##
+      ## Yank to system
       mode = [
         "n"
         "v"
@@ -98,7 +98,7 @@
     }
 
     {
-      ## Paste from system ##
+      ## Paste from system
       mode = [
         "n"
         "v"
@@ -108,5 +108,4 @@
     }
 
   ];
-
 }
