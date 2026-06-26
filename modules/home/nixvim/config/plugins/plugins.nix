@@ -24,14 +24,18 @@
       enable = true;
       settings = {
         backend = "kitty";
+        processor = "magick_cli";
         integrations = {
           markdown = {
-            enable = true;
+            enabled = true;
+            clear_in_insert_mode = true;
             download_remote_images = true;
             filetypes = [ "markdown" ];
           };
           typst.enabled = false;
         };
+        max_width_window_percentage = 80;
+        window_overlap_clear_enabled = false;
         window_overlap_clear_ft_ignore = [
           "cmp_menu"
           "find_files"

@@ -6,7 +6,7 @@
     #   "md"
     # ];
     settings = {
-      anti_conceal.enabled = false;
+      anti_conceal.enabled = true;
     };
   };
 
