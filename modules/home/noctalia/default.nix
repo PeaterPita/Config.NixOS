@@ -17,6 +17,7 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       monocraft
+      satty
     ];
 
     programs.noctalia = {
@@ -82,7 +83,10 @@ in
           launch_apps_as_systemd_services = true;
 
           screenshot = {
+            directory = "~/Pictures/Screenshots";
             copy_to_clipboard = true;
+            pipe_to_command = true;
+            pipe_command = "satty --init-tool brush -f -";
           };
 
           panel = {
