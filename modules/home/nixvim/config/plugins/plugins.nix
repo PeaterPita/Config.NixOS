@@ -46,6 +46,21 @@
     trouble.enable = true;
     colorizer.enable = true;
 
+    toggleterm = {
+      enable = true;
+      settings = {
+        direction = "float";
+        float_opts = {
+          border = "curved";
+          width = 120;
+          height = 40;
+        };
+
+        open_mapping = "[[<A-f>]]";
+        start_in_insert = true;
+      };
+    };
+
     neogit = {
       enable = true;
       settings = {
