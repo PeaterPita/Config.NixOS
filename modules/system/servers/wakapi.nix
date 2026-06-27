@@ -72,6 +72,7 @@
         enable = true;
         package = pkgs.unstable.wakapi;
         environmentFiles = [ config.sops.templates."wakapi.env".path ];
+        database.createLocally = true;
         settings = {
           server = {
             listen_ipv4 = "0.0.0.0";
@@ -80,6 +81,16 @@
             port = cfg.port;
 
           };
+
+          db = {
+            dialect = "postgres";
+            host = "127.0.0.1";
+            port = 5432;
+            user = "wakapi";
+            name = "wakapi";
+
+          };
+
           security = {
             allow_signup = false;
             oidc_allow_signup = true;
