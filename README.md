@@ -48,7 +48,6 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Jellyfin**            | Olympus   | 🟢 Functional  |
 | **Navidrome**           | Olympus   | 🟢 Functional  |
 | **Tailscale**           | Olympus   | 🟢 Functional  |
-| **Jellyseerr**          | Olympus   | 🟢 Functional  |
 | **Prometheus**          | Olympus   | 🟡 In-Progress |
 | **Adventure Log**       | Olympus   | ⚫ Planned     |
 | **Paperless-ngx**       | Olympus   | 🟢 Functional  |
@@ -118,8 +117,6 @@ Sops keys:
 - Jellyfin Prometheus Bridge
     jellyfin API key created and stored in sops
     Networking > Known proxies, add the ingress IP
-
-- Jellyseerr Setup
 
 ### Misc
 - Paperless Default Group

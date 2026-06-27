@@ -125,7 +125,6 @@ in
     backup.enable = true;
 
     jellyfin.enable = true;
-    seerr.enable = true;
     navidrome.enable = true;
     mealie.enable = true;
     monitoring = {
