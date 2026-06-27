@@ -60,9 +60,11 @@
       services.mealie = {
         enable = true;
         port = cfg.port;
+        database.createLocally = true;
         settings = {
           TZ = "GMT";
           BASE_URL = "https://${cfg.domain}.${vars.baseDomain}";
+          DB_ENGINE = "postgres";
 
           OIDC_AUTH_ENABLED = "true";
           OIDC_CONFIGURATION_URL = "https://auth.${vars.baseDomain}/.well-known/openid-configuration";
