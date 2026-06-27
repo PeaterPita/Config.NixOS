@@ -54,7 +54,6 @@
 
       homelab.services.backup = {
         paths = [ "/var/lib/mealie/recipes" ];
-        dbFiles.mealie = "/var/lib/mealie/mealie.db";
       };
 
       services.mealie = {
