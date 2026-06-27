@@ -39,8 +39,8 @@ in
     services.postgresqlBackup = {
       enable = true;
       backupAll = true;
-      compression = "gzip";
-      compressionLevel = 9;
+      compression = "zstd";
+      compressionLevel = 19;
     };
 
     services.restic.backups.olympus = {
