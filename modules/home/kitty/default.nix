@@ -29,7 +29,7 @@ in
       keybindings = {
         "ctrl+c" = "copy_or_interrupt";
 
-        "ctrl+shift+n" = "launch --location=split --cwd=current";
+        "ctrl+shift+n" = "launch --location=vsplit --cwd=current";
 
         "ctrl+shift+t" = "launch --type=tab";
 
