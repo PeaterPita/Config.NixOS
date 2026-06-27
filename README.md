@@ -16,11 +16,12 @@ This repo should also not be used for inspiration for your own configs; I would 
 
 | Hostname | Role | Status | Building | Notes |
 | :--- | :--- | :--- | :--- | :--- |
-| **Atlas**     | Main workhorse & Gaming   | 🟢 Functional | ![build][atlas-badge]   | Running an NVIDIA GPU | 
-| **Icarus**    | University laptop         | 🟢 Functional | ![build][icarus-badge]  | Semi-light weight     |
-| &nbsp;        |                           |               |                         | |
-| **Olympus**   | Core homelab server       | 🟡 In-Progress| ![build][olympus-badge] | In testing! Dell r730 -> Acer Laptop during this time |
-| **Hermes**    | Ingress node              | 🟡 In-Progress| ![build][hermes-badge]  | Virtualised on **Olympus** through microVM |
+| **Atlas**     | Main workhorse & Gaming   | 🟢 Functional  | ![build][atlas-badge]   | Running an NVIDIA GPU | 
+| **Icarus**    | University laptop         | 🟢 Functional  | ![build][icarus-badge]  | Semi-light weight     |
+| &nbsp;        |                           |                |                         | |
+| **Olympus**   | Core homelab server       | 🟡 In-Progress | ![build][olympus-badge] | In testing! Dell r730 -> Acer Laptop during this time |
+| **Hermes**    | Ingress node              | 🟡 In-Progress | ![build][hermes-badge]  | Virtualised on **Olympus** through microVM |
+| **Elysium**   | Off-Site Backup           | ⚫ Planned     |                         | Restic REST server |
 
 
 ## Homelab Services
@@ -40,7 +41,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Immich**              | Olympus   | 🟢 Functional  |
 | **Kavita**              | Olympus   | 🟢 Functional  |
 | **Mealie**              | Olympus   | 🟢 Functional  |
-| **Restic**              | Olympus   | 🟡 In-Progress |
+| **Restic**              | Olympus   | 🟢 Functional  |
 | **Wakapi**              | Olympus   | 🟢 Functional  |
 | **Grafana**             | Olympus   | 🟡 In-Progress |
 | **Authelia**            | Olympus   | 🟡 In-Progress |
@@ -139,7 +140,14 @@ Sops keys:
     `nix-store --generate-binary-cache-key cache.peaterpita.com-1 /tmp/key.secret /tmp/key.pub`
     Replace sops and common.nix values
 
+
 </details>
+
+## Backup 
+`Olympus` now leverages restic for important file and database backups. Currently "backups" are just local snapshots however a off-site backup box (`Elysium`) would be a crucial next step.
+
+- `sudo systemctl start restic-backups-olympus.service` - Manually start the restic backup (does not call postgresBackup)
+- `sudo restic-olympus snapshots` - View current snapshots
 
 ## TODO
 - [ ] Mouse Button Side Buttons (Logitech G502)
