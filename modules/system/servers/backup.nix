@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 
@@ -42,15 +43,18 @@ in
       backupPrepareCommand = ''
         set -eu
         mkdir -p ${sqliteStagingDir}
+      ''
+      + lib.optionalString vars.services.mealie.enable ''
+        ${pkgs.sqlite}/bin/sqlite3 "/var/lib/mealie/mealie.db" ".backup '${sqliteStagingDir}/mealie.db'"
       '';
 
       paths = [
         "/var/backup/postgresql"
         sqliteStagingDir
       ]
-      ++ lib.optional vars.services.immich.enable "/mnt/immich"
+      ++ lib.optional vars.services.immich.enable "/mnt/immich/upload"
       ++ lib.optional vars.services.filebrowser-quantum.enable "/mnt/files"
-      ++ lib.optional vars.services.mealie.enable "/var/lib/mealie"
+      ++ lib.optional vars.services.mealie.enable "/var/lib/mealie/recipes"
       ++ lib.optional vars.services.paperless-ngx.enable "/var/lib/paperless";
 
       pruneOpts = [
@@ -63,8 +67,6 @@ in
         OnCalendar = "03:33";
         Persistent = true;
       };
-
     };
-
   };
 }
