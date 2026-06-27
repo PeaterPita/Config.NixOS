@@ -40,7 +40,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Immich**              | Olympus   | 🟢 Functional  |
 | **Kavita**              | Olympus   | 🟢 Functional  |
 | **Mealie**              | Olympus   | 🟢 Functional  |
-| **Restic**              | Olympus   | ⚫ Planned     |
+| **Restic**              | Olympus   | 🟡 In-Progress |
 | **Wakapi**              | Olympus   | 🟢 Functional  |
 | **Grafana**             | Olympus   | 🟡 In-Progress |
 | **Authelia**            | Olympus   | 🟡 In-Progress |

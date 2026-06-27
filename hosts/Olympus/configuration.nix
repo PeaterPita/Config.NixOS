@@ -122,6 +122,8 @@ in
   ];
 
   homelab.services = {
+    backup.enable = true;
+
     jellyfin.enable = true;
     seerr.enable = true;
     navidrome.enable = true;
