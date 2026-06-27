@@ -32,6 +32,8 @@
         "d ${mediaLoc} 0775 root immich - -"
       ];
 
+      homelab.services.backup.paths = [ "${mediaLoc}/upload" ];
+
       homelab.services.authelia.oidc = [
         {
           client_id = "immich";

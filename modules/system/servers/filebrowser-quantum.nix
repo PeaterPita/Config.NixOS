@@ -41,6 +41,9 @@
     let
       settingsFormat = pkgs.formats.yaml { };
       configFile = settingsFormat.generate "config.yaml" cfg.settings;
+
+      mediaDir = "/mnt/files";
+
     in
     {
 
@@ -55,7 +58,7 @@
       };
 
       systemd.tmpfiles.rules = [
-        "d /mnt/files 0755 filebrowser-quantum filebrowser-quantum -"
+        "d ${mediaDir} 0755 filebrowser-quantum filebrowser-quantum -"
       ];
       systemd.services.filebrowser-quantum = {
         description = "Filebrowser Quantum";
@@ -90,7 +93,7 @@
           NoNewPrivileges = true;
           ReadWritePaths = [
             cfg.dataDir
-            "/mnt/files"
+            mediaDir
           ];
         };
 
@@ -108,6 +111,8 @@
       };
 
       users.groups.filebrowser-quantum = { };
+
+      homelab.services.backup.paths = [ mediaDir ];
 
       homelab.services.authelia.rules = [
 
@@ -153,7 +158,7 @@
             port = cfg.port;
             sources = [
               {
-                path = "/mnt/files";
+                path = mediaDir;
                 name = "files";
                 config = {
                   defaultEnabled = true;

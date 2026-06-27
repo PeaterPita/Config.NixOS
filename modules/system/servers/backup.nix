@@ -10,12 +10,20 @@ let
   cfg = vars.services.backup;
 
   sqliteStagingDir = "/var/backup/sqlite";
-
 in
 
 {
   options.homelab.services.backup = {
     enable = lib.mkEnableOption "Enable automatic backups";
+
+    paths = lib.mkOption {
+      default = [ ];
+    };
+
+    dbFiles = lib.mkOption {
+      default = { };
+    };
+
   };
 
   config = lib.mkIf cfg.enable {
@@ -44,18 +52,17 @@ in
         set -eu
         mkdir -p ${sqliteStagingDir}
       ''
-      + lib.optionalString vars.services.mealie.enable ''
-        ${pkgs.sqlite}/bin/sqlite3 "/var/lib/mealie/mealie.db" ".backup '${sqliteStagingDir}/mealie.db'"
-      '';
+      + lib.concatStrings (
+        lib.mapAttrsToList (name: src: ''
+          ${pkgs.sqlite}/bin/sqlite3 "${src}" ".backup '${sqliteStagingDir}/${name}.db'"
+        '') cfg.dbFiles
+      );
 
       paths = [
         "/var/backup/postgresql"
         sqliteStagingDir
       ]
-      ++ lib.optional vars.services.immich.enable "/mnt/immich/upload"
-      ++ lib.optional vars.services.filebrowser-quantum.enable "/mnt/files"
-      ++ lib.optional vars.services.mealie.enable "/var/lib/mealie/recipes"
-      ++ lib.optional vars.services.paperless-ngx.enable "/var/lib/paperless";
+      ++ cfg.paths;
 
       pruneOpts = [
         "--keep-daily 7"

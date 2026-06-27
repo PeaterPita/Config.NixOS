@@ -34,6 +34,8 @@
         sopsFile = ../../../secrets/services.yaml;
       };
 
+      homelab.services.backup.paths = [ "/var/lib/paperless" ];
+
       homelab.services.authelia.oidc = [
         {
           client_id = "paperless";

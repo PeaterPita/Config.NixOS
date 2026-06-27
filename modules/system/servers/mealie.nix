@@ -52,6 +52,11 @@
         OIDC_CLIENT_SECRET=${config.sops.placeholder."mealie/oidc_secret"}
       '';
 
+      homelab.services.backup = {
+        paths = [ "/var/lib/mealie/recipes" ];
+        dbFiles.mealie = "/var/lib/mealie/mealie.db";
+      };
+
       services.mealie = {
         enable = true;
         port = cfg.port;
