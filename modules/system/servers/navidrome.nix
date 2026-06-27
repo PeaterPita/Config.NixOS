@@ -23,6 +23,8 @@
     }:
     {
 
+      homelab.services.backup.dbFiles.navidrome = "/var/lib/navidrome/navidrome.db";
+
       homelab.services.homepage.disks = [ "/mnt/media/music" ];
       users.users.navidrome.extraGroups = [ "media" ];
       homelab.services.authelia.rules = [

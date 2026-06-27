@@ -32,6 +32,11 @@
         owner = "json-exporter";
       };
       homelab.services = {
+        backup.paths = [
+          "/var/lib/jellyfin/config"
+          "/var/lib/jellyfin/data"
+        ];
+
         homepage.disks = [ "/mnt/media/movies" ];
 
         monitoring.json-exporter.modules.jellyfin = {
