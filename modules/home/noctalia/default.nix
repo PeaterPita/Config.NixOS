@@ -40,6 +40,11 @@ in
             workspace_label_placement = "inside";
             show_active_indicator = false;
           };
+
+          control-center = {
+            custom_image = ../../../assets/logos/NixOS-Standard.svg;
+            scale = 2;
+          };
         };
 
         control_center = {
@@ -66,8 +71,6 @@ in
 
             enable_community_templates = true;
             community_ids = [
-              "vesktop"
-              "discord"
               "neovim"
             ];
           };

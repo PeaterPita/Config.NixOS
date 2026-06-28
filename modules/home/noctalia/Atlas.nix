@@ -19,6 +19,7 @@
           "notifications"
         ];
         end = [
+          "privacy"
           "tray"
           "network"
           "battery"

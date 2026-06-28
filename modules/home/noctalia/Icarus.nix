@@ -14,6 +14,7 @@
           "taskbar"
         ];
         end = [
+          "privacy"
           "tray"
           "network"
           "bluetooth"

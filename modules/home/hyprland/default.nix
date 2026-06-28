@@ -52,6 +52,7 @@ in
         windowrule = [
           "match:class ^(pavucontrol|org.kde.polkit-kde-authentication-agent-1)$, float yes"
           "match:title ^(Open File|Save File)$, float yes"
+          "match:class ^(com.gabm.satty), float yes"
         ];
 
         input = {
