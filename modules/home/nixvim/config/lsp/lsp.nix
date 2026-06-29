@@ -102,13 +102,36 @@
       tombi.enable = true;
       marksman.enable = true;
       sqruff.enable = true;
+      kotlin_language_server.enable = true;
 
-      lua_ls = {
-        enable = true;
-        config = {
-          diagnostics.globals = [ "vim" ];
+      lua_ls =
+        let
+          cc-defs = pkgs.fetchFromGitHub {
+            owner = "nvim-computercraft";
+            repo = "lua-ls-cc-tweaked";
+            rev = "main";
+            hash = "sha256-tEePK0ilz57oiW0nsnUDB/hbcJqTYrY1FzQhfnc9694=";
+          };
+        in
+        {
+          enable = true;
+          config = {
+            settings.Lua = {
+              workspace.library = [
+                "${cc-defs}/library"
+              ];
+              diagnostic.globals = [
+                "vim"
+                "turtle"
+                "peripheral"
+                "renet"
+                "fs"
+                "os"
+              ];
+            };
+          };
         };
-      };
+
       qmlls = {
         enable = true;
         config = {
