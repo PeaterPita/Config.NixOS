@@ -5,8 +5,6 @@
 
 {
   home.packages = with pkgs; [
-    file
-    feishin
   ];
 
   modules = {

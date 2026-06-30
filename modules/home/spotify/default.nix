@@ -10,11 +10,12 @@ let
 in
 {
   options = {
-    modules.spotify.enable = lib.mkEnableOption "spotify";
+    modules.spotify.enable = lib.mkEnableOption "spotify (but actually feishin)";
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [ spotify ];
-
+    home.packages = with pkgs.unstable; [
+      feishin
+    ];
   };
 }

@@ -6,7 +6,6 @@
 {
 
   home.packages = with pkgs.unstable; [
-    feishin
     claude-code
   ];
 
