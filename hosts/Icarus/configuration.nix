@@ -24,6 +24,7 @@
     kdeConnect.enable = true;
     bluetooth.enable = true;
     hyprland.enable = true;
+    steam.enable = true;
     wireshark.enable = true;
     networking = {
       enable = true;

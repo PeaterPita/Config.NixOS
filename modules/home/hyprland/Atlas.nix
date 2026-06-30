@@ -12,6 +12,12 @@ in
       input = {
         sensitivity = 0.3;
       };
+
+      exec-once = [
+        "feishin"
+        "discord"
+      ];
+
     };
   };
 }
