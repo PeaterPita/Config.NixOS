@@ -36,7 +36,6 @@
   };
 
   time.timeZone = "Europe/London";
-  time.hardwareClockInLocalTime = true;
   i18n.defaultLocale = "en_GB.UTF-8";
 
   nixpkgs.config = {
