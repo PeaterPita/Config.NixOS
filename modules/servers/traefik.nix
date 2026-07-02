@@ -14,10 +14,10 @@ let
   vars = config.homelab;
 
   autoRouteServices = lib.filterAttrs (
-    name: service: service ? routing && service.routing.enable
+    _: service: service ? routing && service.routing.enable
   ) vars.services;
 
-  mkService = name: service: {
+  mkService = _: service: {
     loadBalancer = {
       servers = [
         { url = "http://${service.routing.host}:${toString service.routing.port}"; }

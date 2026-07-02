@@ -89,7 +89,7 @@ in
             else
               "disable"
           }"
-        ) (osConfig.monitors));
+        ) osConfig.monitors);
 
         bindm = [
           "$mod, mouse:272, movewindow"

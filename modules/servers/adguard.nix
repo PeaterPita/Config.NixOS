@@ -58,7 +58,7 @@ in
 
         http = {
           address = "0.0.0.0";
-          port = cfg.port;
+          inherit (cfg) port;
         };
       };
     };

@@ -1,13 +1,11 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 
 let
   cfg = config.homelab.services.samba;
-  vars = config.homelab;
 
   shareSubmodule = lib.types.submodule {
     options = {
@@ -36,42 +34,42 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.samba = {
-      enable = true;
-      smbd.enable = true;
-      openFirewall = true;
-      settings = {
-        global = {
-          workgroup = "WORKGROUP";
-          "server string" = "Olympus";
-          "netbios name" = "olympus";
-          security = "user";
-          "hosts allow" = "192.168.0.0/24 100.64.0.0/10 127.0.0.1";
-          "hosts deny" = "0.0.0.0/0";
-          "map to guest" = "never";
-        };
-      }
-      // lib.mapAttrs (name: shareCfg: {
-        "path" = shareCfg.path;
-        "read only" = if shareCfg.readOnly then "yes" else "no";
-        "browseable" = "yes";
-        "valid users" = lib.concatStringsSep " " shareCfg.validUsers;
-        "create mask" = "0664";
-        "directory mask" = "0775";
-      }) cfg.shares;
-    };
-
-    services.avahi = {
-      publish.enable = true;
-      publish.userServices = true;
-      nssmdns4 = true;
-      enable = true;
-      openFirewall = true;
-    };
-
-    services.samba-wsdd = {
-      enable = true;
-      openFirewall = true;
+    services = {
+      samba = {
+        enable = true;
+        smbd.enable = true;
+        openFirewall = true;
+        settings = {
+          global = {
+            workgroup = "WORKGROUP";
+            "server string" = "Olympus";
+            "netbios name" = "olympus";
+            security = "user";
+            "hosts allow" = "192.168.0.0/24 100.64.0.0/10 127.0.0.1";
+            "hosts deny" = "0.0.0.0/0";
+            "map to guest" = "never";
+          };
+        }
+        // lib.mapAttrs (_: shareCfg: {
+          "path" = shareCfg.path;
+          "read only" = if shareCfg.readOnly then "yes" else "no";
+          "browseable" = "yes";
+          "valid users" = lib.concatStringsSep " " shareCfg.validUsers;
+          "create mask" = "0664";
+          "directory mask" = "0775";
+        }) cfg.shares;
+      };
+      avahi = {
+        publish.enable = true;
+        publish.userServices = true;
+        nssmdns4 = true;
+        enable = true;
+        openFirewall = true;
+      };
+      samba-wsdd = {
+        enable = true;
+        openFirewall = true;
+      };
     };
   };
 }

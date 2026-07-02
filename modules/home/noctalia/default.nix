@@ -25,7 +25,7 @@ in
       settings = {
         bar.default.monitor = builtins.listToAttrs (
           map (monitor: {
-            name = monitor.name;
+            inherit (monitor) name;
             value = {
               match = monitor.name;
               enabled = false;

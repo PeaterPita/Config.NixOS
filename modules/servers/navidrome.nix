@@ -22,37 +22,39 @@
       ...
     }:
     {
-
-      homelab.services.backup.dbFiles.navidrome = "/var/lib/navidrome/navidrome.db";
-
-      homelab.services.homepage.disks = [ "/mnt/media/music" ];
       users.users.navidrome.extraGroups = [ "media" ];
-      homelab.services.authelia.rules = [
-        {
-          domain = [ "${cfg.domain}.${vars.baseDomain}" ];
-          policy = "bypass";
-          ############################################################
-          #  Fixes to allow external players to still authenticate   #
-          #      https://github.com/jeffvli/feishin/issues/1976      #
-          ############################################################
-          resources = [
-            "^/share(/.*)?$"
-            "^/auth/.*$"
-            "^/rest/.*$"
-            "^/api/.*$"
-          ];
-        }
-        {
-          domain = [
-            "${cfg.domain}.${vars.baseDomain}"
-          ];
-          policy = "one_factor";
-          subject = [
-            "group:admin"
-            "group:music"
-          ];
-        }
-      ];
+
+      homelab.services = {
+        backup.dbFiles.navidrome = "/var/lib/navidrome/navidrome.db";
+        homepage.disks = [ "/mnt/media/music" ];
+
+        authelia.rules = [
+          {
+            domain = [ "${cfg.domain}.${vars.baseDomain}" ];
+            policy = "bypass";
+            ############################################################
+            #  Fixes to allow external players to still authenticate   #
+            #      https://github.com/jeffvli/feishin/issues/1976      #
+            ############################################################
+            resources = [
+              "^/share(/.*)?$"
+              "^/auth/.*$"
+              "^/rest/.*$"
+              "^/api/.*$"
+            ];
+          }
+          {
+            domain = [
+              "${cfg.domain}.${vars.baseDomain}"
+            ];
+            policy = "one_factor";
+            subject = [
+              "group:admin"
+              "group:music"
+            ];
+          }
+        ];
+      };
 
       ################################################################################
       #                      https://github.com/LumePart/Explo                       #

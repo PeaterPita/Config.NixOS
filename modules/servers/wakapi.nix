@@ -22,18 +22,16 @@
     }:
     {
 
-      sops.secrets."wakapi/oidc_secret" = {
-        sopsFile = ../../secrets/services.yaml;
+      sops = {
+        secrets = {
+          "wakapi/oidc_secret" = { };
+          "wakapi/pass_salt" = { };
+        };
+        templates."wakapi.env".content = ''
+          WAKAPI_OIDC_PROVIDERS_0_CLIENT_SECRET=${config.sops.placeholder."wakapi/oidc_secret"}
+          WAKAPI_PASSWORD_SALT=${config.sops.placeholder."wakapi/pass_salt"}
+        '';
       };
-
-      sops.secrets."wakapi/pass_salt" = {
-        sopsFile = ../../secrets/services.yaml;
-      };
-
-      sops.templates."wakapi.env".content = ''
-        WAKAPI_OIDC_PROVIDERS_0_CLIENT_SECRET=${config.sops.placeholder."wakapi/oidc_secret"}
-        WAKAPI_PASSWORD_SALT=${config.sops.placeholder."wakapi/pass_salt"}
-      '';
 
       homelab.services.authelia.oidc = [
         {
@@ -78,8 +76,7 @@
             listen_ipv4 = "0.0.0.0";
             listen_ipv6 = "-";
             public_url = "https://${cfg.domain}.${vars.baseDomain}";
-            port = cfg.port;
-
+            inherit (cfg) port;
           };
 
           db = {

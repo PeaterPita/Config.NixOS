@@ -21,9 +21,7 @@
       ...
     }:
     {
-      sops.secrets."speedtest/app_key" = {
-        sopsFile = ../../secrets/services.yaml;
-      };
+      sops.secrets."speedtest/app_key" = { };
 
       systemd.tmpfiles.rules = [
         "d /var/lib/speedtest-tracker 0750 1000 1000 -"
@@ -32,10 +30,13 @@
         APP_KEY=${config.sops.placeholder."speedtest/app_key"}
       '';
 
-      virtualisation.containers.enable = true;
-      virtualisation.podman = {
-        enable = true;
-        dockerCompat = true;
+      virtualisation = {
+        containers.enable = true;
+        podman = {
+          enable = true;
+          dockerCompat = true;
+        };
+
       };
 
       homelab.services.authelia.rules = [

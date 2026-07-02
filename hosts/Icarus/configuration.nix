@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   powerManagement = {
     enable = true;

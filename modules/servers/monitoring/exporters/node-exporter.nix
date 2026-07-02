@@ -14,7 +14,7 @@ in
 
     services.prometheus.exporters.node = {
       enable = true;
-      port = cfg.port;
+      inherit (cfg) port;
       enabledCollectors = [ "systemd" ];
     };
   };

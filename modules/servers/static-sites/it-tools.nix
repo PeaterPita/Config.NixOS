@@ -29,7 +29,7 @@
       homelab.services.static-sites.packageSites.it-tools = {
         package = pkgs.it-tools;
         subfolder = "lib";
-        port = cfg.port;
+        inherit (cfg) port;
       };
 
     };

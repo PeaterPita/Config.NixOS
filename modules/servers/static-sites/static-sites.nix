@@ -34,10 +34,10 @@ let
     listen = [
       {
         addr = "0.0.0.0";
-        port = site.port;
+        inherit (site) port;
       }
     ];
-    root = root;
+    inherit root;
     locations."/".tryFiles = "$uri $uri/index.html $uri.html =404";
     extraConfig = "error_page 404 /404.html;";
   };

@@ -8,7 +8,7 @@
     {
       package = lib.mkPackageOption pkgs.unstable "filebrowser-quantum" { };
       settings = lib.mkOption {
-        type = (pkgs.formats.yaml { }).type;
+        inherit ((pkgs.formats.yaml { })) type;
         default = { };
       };
 
@@ -47,15 +47,9 @@
     in
     {
 
-      sops.secrets."filebrowser-quantum/admin-pass" = {
-        owner = "filebrowser-quantum";
-        sopsFile = ../../secrets/services.yaml;
-      };
+      sops.secrets."filebrowser-quantum/admin-pass".owner = "filebrowser-quantum";
 
-      sops.secrets."filebrowser-quantum/oidc_secret" = {
-        owner = "filebrowser-quantum";
-        sopsFile = ../../secrets/services.yaml;
-      };
+      sops.secrets."filebrowser-quantum/oidc_secret".owner = "filebrowser-quantum";
 
       systemd.tmpfiles.rules = [
         "d ${mediaDir} 0755 filebrowser-quantum filebrowser-quantum -"
@@ -112,50 +106,52 @@
 
       users.groups.filebrowser-quantum = { };
 
-      homelab.services.backup.paths = [ mediaDir ];
+      homelab.services = {
+        backup.paths = [ mediaDir ];
 
-      homelab.services.authelia.rules = [
+        authelia.rules = [
 
-        {
-          domain = "${cfg.domain}.${vars.baseDomain}";
-          resources = [ "^/public/.*$" ];
-          policy = "bypass";
-        }
+          {
+            domain = "${cfg.domain}.${vars.baseDomain}";
+            resources = [ "^/public/.*$" ];
+            policy = "bypass";
+          }
 
-        {
-          domain = [
-            "${cfg.domain}.${vars.baseDomain}"
-          ];
-          policy = "one_factor";
-          subject = [
-            "group:admin"
-            "group:files"
-          ];
-        }
-      ];
+          {
+            domain = [
+              "${cfg.domain}.${vars.baseDomain}"
+            ];
+            policy = "one_factor";
+            subject = [
+              "group:admin"
+              "group:files"
+            ];
+          }
+        ];
 
-      homelab.services.authelia.oidc = [
-        {
-          client_id = "filebrowser-quantum";
-          client_name = "filebrowser-quantum";
-          client_secret = "$pbkdf2-sha512$310000$M0aB6kr6zH6rGGXQjH1Zhg$CsivwUa/1vCxSR9HvSa9Q2rX.vEHgJrcCZdtOCjv/ng2MOi95DqM32JBFFdoBZqzJps5Z7soNFnF9.OqRALfIQ";
-          public = false;
-          authorization_policy = "one_factor";
-          redirect_uris = [ "https://${cfg.domain}.${vars.baseDomain}/api/auth/oidc/callback" ];
-          scopes = [
-            "openid"
-            "profile"
-            "email"
-            "groups"
-          ];
-          token_endpoint_auth_method = "client_secret_basic";
-        }
-      ];
+        authelia.oidc = [
+          {
+            client_id = "filebrowser-quantum";
+            client_name = "filebrowser-quantum";
+            client_secret = "$pbkdf2-sha512$310000$M0aB6kr6zH6rGGXQjH1Zhg$CsivwUa/1vCxSR9HvSa9Q2rX.vEHgJrcCZdtOCjv/ng2MOi95DqM32JBFFdoBZqzJps5Z7soNFnF9.OqRALfIQ";
+            public = false;
+            authorization_policy = "one_factor";
+            redirect_uris = [ "https://${cfg.domain}.${vars.baseDomain}/api/auth/oidc/callback" ];
+            scopes = [
+              "openid"
+              "profile"
+              "email"
+              "groups"
+            ];
+            token_endpoint_auth_method = "client_secret_basic";
+          }
+        ];
+      };
 
       homelab.services.filebrowser-quantum = {
         settings = {
           server = {
-            port = cfg.port;
+            inherit (cfg) port;
             sources = [
               {
                 path = mediaDir;

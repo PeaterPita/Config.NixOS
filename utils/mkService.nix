@@ -57,7 +57,7 @@ in
             ${homepage.name or name} = {
               icon = "${homepage.icon or name}.png";
               href = "https://${cfg.domain}.${vars.baseDomain}";
-              description = homepage.description;
+              inherit (homepage) description;
 
               ping = "http://127.0.0.1:${toString cfg.port}";
             };

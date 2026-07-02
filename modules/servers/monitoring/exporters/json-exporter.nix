@@ -26,8 +26,8 @@ in
 
     services.prometheus.exporters.json = {
       enable = true;
-      port = cfg.port;
-      configFile = yaml.generate "json-exporter.yaml" { modules = cfg.modules; };
+      inherit (cfg) port;
+      configFile = yaml.generate "json-exporter.yaml" { inherit (cfg) modules; };
 
     };
 

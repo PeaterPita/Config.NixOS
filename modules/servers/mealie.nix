@@ -44,9 +44,7 @@
         }
       ];
 
-      sops.secrets."mealie/oidc_secret" = {
-        sopsFile = ../../secrets/services.yaml;
-      };
+      sops.secrets."mealie/oidc_secret" = { };
 
       sops.templates."mealie.env".content = ''
         OIDC_CLIENT_SECRET=${config.sops.placeholder."mealie/oidc_secret"}
@@ -58,7 +56,7 @@
 
       services.mealie = {
         enable = true;
-        port = cfg.port;
+        inherit (cfg) port;
         database.createLocally = true;
         settings = {
           TZ = "GMT";

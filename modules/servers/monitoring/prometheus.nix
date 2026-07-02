@@ -17,7 +17,7 @@ in
 
     services.prometheus = {
       enable = true;
-      port = cfg.port;
+      inherit (cfg) port;
 
       retentionTime = "30d";
 

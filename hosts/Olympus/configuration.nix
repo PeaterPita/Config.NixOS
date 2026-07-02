@@ -28,40 +28,58 @@ in
   ]
   ++ utils.filesFromDirRec ../../modules/servers;
 
-  networking.useDHCP = false;
-  networking.useNetworkd = true;
+  sops.defaultSopsFile = ../../secrets/services.yaml;
+  networking = {
+    useDHCP = false;
+    useNetworkd = true;
+  };
 
-  systemd.network = {
-    enable = true;
+  systemd = {
 
-    netdevs."10-br0" = {
-      netdevConfig = {
-        Name = "br0";
-        Kind = "bridge";
-      };
+    tmpfiles.rules = [
+      "d /mnt/media 0775 root media - -"
+      "d /mnt/media/music 2775 root media - -"
+      "d /mnt/media/movies 2775 root media - -"
+      "d /mnt/media/landing 2775 root media - -"
+    ];
+
+    services."microvm@Hermes" = {
+      after = [ "sops-nix.service" ];
+      wants = [ "sops-nix.service" ];
     };
 
-    networks = {
-      "10-enp1s0" = {
-        matchConfig.Name = "enp1s0";
-        networkConfig.Bridge = "br0";
-      };
-      "10-br0" = {
-        matchConfig.Name = "br0";
-        networkConfig = {
-          Address = "${vars.coreIP}/24";
-          Gateway = vars.gatewayIP;
-          DNS = vars.ingressIP;
+    network = {
+      enable = true;
+
+      netdevs."10-br0" = {
+        netdevConfig = {
+          Name = "br0";
+          Kind = "bridge";
         };
       };
 
-      "20-vm" = {
-        matchConfig.Name = "vm-*";
-        networkConfig.Bridge = "br0";
+      networks = {
+        "10-enp1s0" = {
+          matchConfig.Name = "enp1s0";
+          networkConfig.Bridge = "br0";
+        };
+        "10-br0" = {
+          matchConfig.Name = "br0";
+          networkConfig = {
+            Address = "${vars.coreIP}/24";
+            Gateway = vars.gatewayIP;
+            DNS = vars.ingressIP;
+          };
+        };
+
+        "20-vm" = {
+          matchConfig.Name = "vm-*";
+          networkConfig.Bridge = "br0";
+        };
+
       };
 
     };
-
   };
 
   boot.kernel.sysctl = {
@@ -75,54 +93,49 @@ in
     restartIfChanged = true;
   };
 
-  systemd.services."microvm@Hermes" = {
-    after = [ "sops-nix.service" ];
-    wants = [ "sops-nix.service" ];
+  sops = {
+    secrets = {
+
+      "tailscale/auth_key" = {
+        sopsFile = ../../secrets/services.yaml;
+      };
+
+      "cloudflare/api_token" = {
+        sopsFile = ../../secrets/services.yaml;
+      };
+
+      "personal/email" = {
+        sopsFile = ../../secrets/services.yaml;
+      };
+    };
+
+    templates."traefik.env".content = ''
+      CF_DNS_API_TOKEN=${config.sops.placeholder."cloudflare/api_token"}
+      ACME_EMAIL=${config.sops.placeholder."personal/email"}
+    '';
   };
 
-  sops.secrets."tailscale/auth_key" = {
-    sopsFile = ../../secrets/services.yaml;
-  };
+  services = {
+    tailscale = {
+      enable = true;
+      useRoutingFeatures = "server";
+      authKeyFile = config.sops.secrets."tailscale/auth_key".path;
+      extraUpFlags = [
+        "--advertise-routes=192.168.0.0/24"
+        "--advertise-exit-node"
+      ];
+    };
 
-  sops.secrets."cloudflare/api_token" = {
-    sopsFile = ../../secrets/services.yaml;
-  };
-
-  sops.secrets."personal/email" = {
-    sopsFile = ../../secrets/services.yaml;
-  };
-
-  sops.templates."traefik.env".content = ''
-    CF_DNS_API_TOKEN=${config.sops.placeholder."cloudflare/api_token"}
-    ACME_EMAIL=${config.sops.placeholder."personal/email"}
-  '';
-
-  services.tailscale = {
-    enable = true;
-    useRoutingFeatures = "server";
-    authKeyFile = config.sops.secrets."tailscale/auth_key".path;
-    extraUpFlags = [
-      "--advertise-routes=192.168.0.0/24"
-      "--advertise-exit-node"
-    ];
-  };
-
-  services.logind.settings.Login = {
-    HandleLidSwitch = "ignore";
-    HandleLidSwitchExternalPower = "ignore";
-    HandleLidSwitchDocked = "ignore";
-    LidSwitchIgnoreInhibited = "no";
+    logind.settings.Login = {
+      HandleLidSwitch = "ignore";
+      HandleLidSwitchExternalPower = "ignore";
+      HandleLidSwitchDocked = "ignore";
+      LidSwitchIgnoreInhibited = "no";
+    };
   };
 
   users.groups.media = { };
   users.users.peaterpita.extraGroups = [ "media" ];
-
-  systemd.tmpfiles.rules = [
-    "d /mnt/media 0775 root media - -"
-    "d /mnt/media/music 2775 root media - -"
-    "d /mnt/media/movies 2775 root media - -"
-    "d /mnt/media/landing 2775 root media - -"
-  ];
 
   homelab.services = {
     backup.enable = true;

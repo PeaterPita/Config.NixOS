@@ -26,55 +26,55 @@
     in
 
     {
-
-      homelab.services.homepage.disks = [ mediaLoc ];
       systemd.tmpfiles.rules = [
         "d ${mediaLoc} 0775 root immich - -"
       ];
 
-      homelab.services.backup.paths = [ "${mediaLoc}/upload" ];
+      homelab.services = {
 
-      homelab.services.authelia.oidc = [
-        {
-          client_id = "immich";
-          client_name = "immich";
-          client_secret = "$pbkdf2-sha512$310000$l7sDDGfpmPLYHGAAo4tyzw$q1Qq84ZMp4ImubtnlK6uyhaDnU8r4EwQCeWvMkVUq4Ox1oeS6xyoRm7ZpP1krPumD5LXDocwU/oPkl.d1EGRCA";
-          public = false;
-          authorization_policy = "photo_access";
-          grant_types = [ "authorization_code" ];
-          redirect_uris = [
-            "https://${cfg.domain}.${vars.baseDomain}/auth/login"
-            "app.immich:///oauth-callback"
-          ];
-          scopes = [
-            "openid"
-            "profile"
-            "email"
-            "groups"
-          ];
-          token_endpoint_auth_method = "client_secret_post";
-        }
-      ];
+        homepage.disks = [ mediaLoc ];
+        backup.paths = [ "${mediaLoc}/upload" ];
 
-      homelab.services.authelia.policies.photo_access = {
-        default_policy = "deny";
-        rules = [
+        authelia.oidc = [
           {
-            policy = "two_factor";
-            subject = [
-              "group:photos"
-              "group:admin"
+            client_id = "immich";
+            client_name = "immich";
+            client_secret = "$pbkdf2-sha512$310000$l7sDDGfpmPLYHGAAo4tyzw$q1Qq84ZMp4ImubtnlK6uyhaDnU8r4EwQCeWvMkVUq4Ox1oeS6xyoRm7ZpP1krPumD5LXDocwU/oPkl.d1EGRCA";
+            public = false;
+            authorization_policy = "photo_access";
+            grant_types = [ "authorization_code" ];
+            redirect_uris = [
+              "https://${cfg.domain}.${vars.baseDomain}/auth/login"
+              "app.immich:///oauth-callback"
             ];
+            scopes = [
+              "openid"
+              "profile"
+              "email"
+              "groups"
+            ];
+            token_endpoint_auth_method = "client_secret_post";
           }
         ];
+
+        authelia.policies.photo_access = {
+          default_policy = "deny";
+          rules = [
+            {
+              policy = "two_factor";
+              subject = [
+                "group:photos"
+                "group:admin"
+              ];
+            }
+          ];
+        };
       };
 
-      sops.secrets."immich/oidc_secret" = {
-        sopsFile = ../../secrets/services.yaml;
-      };
+      sops.secrets."immich/oidc_secret" = { };
       services.immich = {
         enable = true;
-        port = cfg.port;
+        inherit (cfg) port;
         host = "0.0.0.0";
         openFirewall = true;
         database = {

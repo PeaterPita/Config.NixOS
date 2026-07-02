@@ -5,34 +5,43 @@
 
 {
   imports = [ ./common-programs.nix ];
-  services.journald.extraConfig = "SystemMaxUse=100M";
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  boot.loader = {
-    systemd-boot.enable = true;
-    systemd-boot.memtest86.enable = true;
-    efi.canTouchEfiVariables = true;
-    timeout = 0; # <- Make it so that the generation choice doesnt appear UNLESS key is held during boot sequence.
-  };
-
-  services.resolved.enable = true;
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = true;
-      KbdInteractiveAuthentication = true;
-    };
-  };
   boot = {
+
     kernel.sysctl."kernel.sysrq" = 1;
     consoleLogLevel = 3;
     initrd.verbose = false;
     initrd.systemd.enable = true;
+
+    kernelPackages = pkgs.linuxPackages_latest;
+
     kernelParams = [
       "quiet"
       "splash"
       "boot.shell_on_fail"
     ];
+
+    loader = {
+
+      systemd-boot.enable = true;
+      systemd-boot.memtest86.enable = true;
+      efi.canTouchEfiVariables = true;
+      timeout = 0; # <- Make it so that the generation choice doesnt appear UNLESS key is held during boot sequence.
+    };
+  };
+
+  services = {
+
+    journald.extraConfig = "SystemMaxUse=100M";
+
+    resolved.enable = true;
+    openssh = {
+      enable = true;
+      settings = {
+        PasswordAuthentication = true;
+        KbdInteractiveAuthentication = true;
+      };
+    };
+
   };
 
   time.timeZone = "Europe/London";

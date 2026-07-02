@@ -32,12 +32,18 @@ in
       };
 
       programs.zsh.enable = true;
-      services.mullvad-vpn.enable = true;
-      services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
-      services.xserver = {
-        enable = true;
-        excludePackages = [ pkgs.xterm ];
+      services = {
+
+        mullvad-vpn = {
+          enable = true;
+          package = pkgs.mullvad-vpn;
+        };
+
+        xserver = {
+          enable = true;
+          excludePackages = [ pkgs.xterm ];
+        };
       };
 
       qt = {
