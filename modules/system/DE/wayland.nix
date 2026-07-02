@@ -26,6 +26,7 @@ in
       xdg-desktop-portal-gtk
     ];
 
+    security.soteria.enable = true;
     services.greetd = {
       enable = true;
       settings = {
