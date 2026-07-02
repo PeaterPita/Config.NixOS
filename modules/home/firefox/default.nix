@@ -114,7 +114,7 @@ in
 
         ExtensionSettings =
           let
-            moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpl";
+            moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
           in
           {
             "*".installation_mode = "allowed";

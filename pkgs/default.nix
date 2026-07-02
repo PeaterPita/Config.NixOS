@@ -1,6 +1,4 @@
 final: prev: {
-  ciscoPacketTracer9 = prev.callPackage ./ciscoPacketTracer9 { };
-
   filebrowser-quantum = prev.unstable.filebrowser-quantum.overrideAttrs (old: rec {
     version = "1.3.3-stable";
     src = prev.fetchFromGitHub {

@@ -33,8 +33,8 @@ in
 
         "ctrl+shift+t" = "launch --type=tab";
 
-        "ctrl_shift+f" = "toggle_layout stack";
-        "ctrl_shift+r" = "start_resizing_window";
+        "ctrl+shift+f" = "toggle_layout stack";
+        "ctrl+shift+r" = "start_resizing_window";
 
         "ctrl+shift+left" = "neighboring_window left";
         "ctrl+shift+right" = "neighboring_window right";
