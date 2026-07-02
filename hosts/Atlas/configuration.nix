@@ -13,6 +13,8 @@
   environment.systemPackages = with pkgs; [
     parsec-bin
     typescript
+    postman
+    inkscape
   ];
 
   system.isDesktop = true;
