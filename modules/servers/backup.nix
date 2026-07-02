@@ -29,7 +29,7 @@ in
   config = lib.mkIf cfg.enable {
 
     sops.secrets."restic/password" = {
-      sopsFile = ../../../secrets/services.yaml;
+      sopsFile = ../../secrets/services.yaml;
     };
 
     systemd.tmpfiles.rules = [

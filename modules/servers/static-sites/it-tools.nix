@@ -1,4 +1,4 @@
-(import ../../../../utils/mkService.nix) {
+(import ../../../utils/mkService.nix) {
   name = "it-tools";
   port = 3006;
   domain = "tools";

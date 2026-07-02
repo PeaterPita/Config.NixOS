@@ -1,4 +1,4 @@
-(import ../../../utils/mkService.nix) {
+(import ../../utils/mkService.nix) {
   name = "cache";
   port = 21725;
 
@@ -16,7 +16,7 @@
     {
 
       sops.secrets."cache/private" = {
-        sopsFile = ../../../secrets/cache.yaml;
+        sopsFile = ../../secrets/cache.yaml;
       };
 
       services.harmonia.cache = {

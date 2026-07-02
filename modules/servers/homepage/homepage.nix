@@ -1,4 +1,4 @@
-(import ../../../../utils/mkService.nix) {
+(import ../../../utils/mkService.nix) {
   name = "homepage";
   port = 8082;
   domain = "home";

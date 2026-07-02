@@ -1,4 +1,4 @@
-(import ../../../utils/mkService.nix) {
+(import ../../utils/mkService.nix) {
   name = "speedtest-tracker";
   port = 8765;
   domain = "speed";
@@ -22,7 +22,7 @@
     }:
     {
       sops.secrets."speedtest/app_key" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
       };
 
       systemd.tmpfiles.rules = [

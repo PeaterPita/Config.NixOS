@@ -1,4 +1,4 @@
-(import ../../../utils/mkService.nix) {
+(import ../../utils/mkService.nix) {
   name = "mealie";
   port = 9004;
   domain = "meals";
@@ -45,7 +45,7 @@
       ];
 
       sops.secrets."mealie/oidc_secret" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
       };
 
       sops.templates."mealie.env".content = ''

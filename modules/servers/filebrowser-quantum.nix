@@ -1,4 +1,4 @@
-(import ../../../utils/mkService.nix) {
+(import ../../utils/mkService.nix) {
   name = "filebrowser-quantum";
   port = 9007;
   domain = "files";
@@ -49,12 +49,12 @@
 
       sops.secrets."filebrowser-quantum/admin-pass" = {
         owner = "filebrowser-quantum";
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
       };
 
       sops.secrets."filebrowser-quantum/oidc_secret" = {
         owner = "filebrowser-quantum";
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
       };
 
       systemd.tmpfiles.rules = [

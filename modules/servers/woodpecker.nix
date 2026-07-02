@@ -1,4 +1,4 @@
-(import ../../../utils/mkService.nix) {
+(import ../../utils/mkService.nix) {
   name = "woodpecker";
   port = 3007;
   domain = "ci";
@@ -49,19 +49,19 @@
       ];
 
       sops.secrets."woodpecker/github_client" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
       };
 
       sops.secrets."woodpecker/github_secret" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
       };
 
       sops.secrets."woodpecker/agent_secret" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
       };
 
       sops.secrets."woodpecker/grpc_secret" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
       };
 
       sops.templates."woodpecker-server.env".content = ''

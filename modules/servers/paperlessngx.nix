@@ -1,4 +1,4 @@
-(import ../../../utils/mkService.nix) {
+(import ../../utils/mkService.nix) {
   name = "paperless-ngx";
   port = 28981;
   domain = "documents";
@@ -23,15 +23,15 @@
     {
 
       sops.secrets."paperless/admin_pass" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
       };
 
       sops.secrets."paperless/secret_key" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
       };
 
       sops.secrets."paperless/oidc_secret" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
       };
 
       homelab.services.backup.paths = [ "/var/lib/paperless" ];

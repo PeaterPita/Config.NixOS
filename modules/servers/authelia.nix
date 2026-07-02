@@ -1,4 +1,4 @@
-(import ../../../utils/mkService.nix) {
+(import ../../utils/mkService.nix) {
   name = "authelia";
   port = 9091;
   domain = "auth";
@@ -36,34 +36,34 @@
     {
 
       sops.secrets."authelia/jwt_secret" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
         mode = "0444";
         owner = "authelia-main";
       };
       sops.secrets."authelia/storage_key" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
         mode = "0444";
         owner = "authelia-main";
       };
       sops.secrets."authelia/session_secret" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
         mode = "0444";
         owner = "authelia-main";
       };
       sops.secrets."authelia/ldap_password" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
         mode = "0444";
         owner = "authelia-main";
       };
 
       sops.secrets."authelia/hmac_secret" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
         mode = "0444";
         owner = "authelia-main";
       };
 
       sops.secrets."authelia/issuer_key" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
         mode = "0444";
         owner = "authelia-main";
       };

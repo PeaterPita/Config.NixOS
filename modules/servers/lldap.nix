@@ -14,7 +14,7 @@
 # files
 # home
 # documents
-(import ../../../utils/mkService.nix) {
+(import ../../utils/mkService.nix) {
   name = "lldap";
   port = 3890;
 
@@ -48,12 +48,12 @@
         cfg.webport
       ];
       sops.secrets."lldap/jwt_secret" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
         mode = "0444";
       };
 
       sops.secrets."lldap/admin_pass" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
         mode = "0444";
       };
 

@@ -1,4 +1,4 @@
-(import ../../../utils/mkService.nix) {
+(import ../../utils/mkService.nix) {
   name = "umami";
   port = 3010;
   domain = "analytics";
@@ -20,7 +20,7 @@
     {
 
       sops.secrets."umami/app_secret" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
       };
 
       services.umami = {

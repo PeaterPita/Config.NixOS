@@ -1,4 +1,4 @@
-(import ../../../../utils/mkService.nix) {
+(import ../../../utils/mkService.nix) {
   name = "grafana";
   port = 8675;
   domain = "dash";
@@ -20,7 +20,7 @@
     {
 
       sops.secrets."grafana/secret_key" = {
-        sopsFile = ../../../../secrets/services.yaml;
+        sopsFile = ../../../secrets/services.yaml;
         owner = "grafana";
         group = "grafana";
       };

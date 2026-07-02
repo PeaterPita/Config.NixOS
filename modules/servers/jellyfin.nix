@@ -1,4 +1,4 @@
-(import ../../../utils/mkService.nix) {
+(import ../../utils/mkService.nix) {
   name = "jellyfin";
   port = 8096;
 
@@ -28,7 +28,7 @@
     in
     {
       sops.secrets."jellyfin/api_key" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
         owner = "json-exporter";
       };
       homelab.services = {

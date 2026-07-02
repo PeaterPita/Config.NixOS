@@ -1,4 +1,4 @@
-(import ../../../utils/mkService.nix) {
+(import ../../utils/mkService.nix) {
   name = "immich";
   port = 2283;
   domain = "photos";
@@ -70,7 +70,7 @@
       };
 
       sops.secrets."immich/oidc_secret" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
       };
       services.immich = {
         enable = true;

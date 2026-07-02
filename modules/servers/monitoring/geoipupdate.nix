@@ -12,7 +12,7 @@ in
   config = lib.mkIf cfg.enable {
 
     sops.secrets."geoip/license_key" = {
-      sopsFile = ../../../../secrets/services.yaml;
+      sopsFile = ../../../secrets/services.yaml;
     };
 
     services.geoipupdate = {

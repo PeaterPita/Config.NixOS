@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  lib,
   ...
 }:
 
@@ -11,13 +12,15 @@
 
 let
   cfg = config.homelab;
-  services = cfg.services;
+
+  utils = import ../../utils/utils.nix { inherit lib; };
 in
 
 {
   imports = [
     inputs.microvm.nixosModules.microvm
-  ];
+  ]
+  ++ utils.filesFromDirRec ../../modules/servers;
 
   microvm = {
     hypervisor = "qemu";

@@ -1,4 +1,4 @@
-(import ../../../utils/mkService.nix) {
+(import ../../utils/mkService.nix) {
   name = "wakapi";
   port = 7598;
 
@@ -23,11 +23,11 @@
     {
 
       sops.secrets."wakapi/oidc_secret" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
       };
 
       sops.secrets."wakapi/pass_salt" = {
-        sopsFile = ../../../secrets/services.yaml;
+        sopsFile = ../../secrets/services.yaml;
       };
 
       sops.templates."wakapi.env".content = ''

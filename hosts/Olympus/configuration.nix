@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   inputs,
   self,
   ...
@@ -17,13 +18,15 @@ let
 
   vars = config.homelab;
 
+  utils = import ../../utils/utils.nix { inherit lib; };
+
 in
 
 {
   imports = [
     inputs.microvm.nixosModules.host
-    # inputs.disko.nixosModules.disko
-  ];
+  ]
+  ++ utils.filesFromDirRec ../../modules/servers;
 
   networking.useDHCP = false;
   networking.useNetworkd = true;
