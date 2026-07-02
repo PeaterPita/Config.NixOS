@@ -47,7 +47,7 @@ in
       enable = true;
       vimAlias = true;
 
-      performance.combinePlugins.enable = true;
+      # performance.combinePlugins.enable = true;
       diagnostic.settings = {
         virtual_text = true;
         signs = true;

@@ -66,7 +66,6 @@ in
         notify_on_cmd_finish = "unfocused";
 
         confirm_os_window_close = "0";
-        background_opacity = "1.0";
         enabled_layouts = "splits,stack";
       };
     };
