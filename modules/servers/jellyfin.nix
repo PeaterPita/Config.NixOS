@@ -27,10 +27,7 @@
       json_port = config.homelab.services.monitoring.json-exporter.port;
     in
     {
-      sops.secrets."jellyfin/api_key" = {
-        sopsFile = ../../secrets/services.yaml;
-        owner = "json-exporter";
-      };
+      sops.secrets."jellyfin/api_key".owner = "json-exporter";
       homelab.services = {
         backup.paths = [
           "/var/lib/jellyfin/config"

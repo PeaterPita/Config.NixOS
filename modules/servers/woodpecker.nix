@@ -48,28 +48,27 @@
         }
       ];
 
-      sops.secrets."woodpecker/github_client" = {
-        sopsFile = ../../secrets/services.yaml;
-      };
+      sops = {
+        secrets = {
+          "woodpecker/github_client" = { };
+          "woodpecker/github_secret" = { };
+          "woodpecker/agent_secret" = { };
+          "woodpecker/grpc_secret" = { };
+        };
+        templates = {
 
-      sops.secrets."woodpecker/github_secret" = {
-        sopsFile = ../../secrets/services.yaml;
-      };
+          "woodpecker-server.env".content = ''
+            WOODPECKER_GITHUB_CLIENT=${config.sops.placeholder."woodpecker/github_client"}
+            WOODPECKER_GITHUB_SECRET=${config.sops.placeholder."woodpecker/github_secret"}
+            WOODPECKER_AGENT_SECRET=${config.sops.placeholder."woodpecker/agent_secret"}
+            WOODPECKER_GRPC_SECRET=${config.sops.placeholder."woodpecker/grpc_secret"}
+          '';
 
-      sops.secrets."woodpecker/agent_secret" = {
-        sopsFile = ../../secrets/services.yaml;
+          "woodpecker-agent.env".content = ''
+            WOODPECKER_AGENT_SECRET=${config.sops.placeholder."woodpecker/agent_secret"}
+          '';
+        };
       };
-
-      sops.secrets."woodpecker/grpc_secret" = {
-        sopsFile = ../../secrets/services.yaml;
-      };
-
-      sops.templates."woodpecker-server.env".content = ''
-        WOODPECKER_GITHUB_CLIENT=${config.sops.placeholder."woodpecker/github_client"}
-        WOODPECKER_GITHUB_SECRET=${config.sops.placeholder."woodpecker/github_secret"}
-        WOODPECKER_AGENT_SECRET=${config.sops.placeholder."woodpecker/agent_secret"}
-        WOODPECKER_GRPC_SECRET=${config.sops.placeholder."woodpecker/grpc_secret"}
-      '';
 
       services.woodpecker-server = {
         enable = true;
@@ -82,10 +81,6 @@
           WOODPECKER_GITHUB = "true";
         };
       };
-
-      sops.templates."woodpecker-agent.env".content = ''
-        WOODPECKER_AGENT_SECRET=${config.sops.placeholder."woodpecker/agent_secret"}
-      '';
 
       systemd.services.woodpecker-agent-local.serviceConfig = {
         MemoryDenyWriteExecute = lib.mkForce false;

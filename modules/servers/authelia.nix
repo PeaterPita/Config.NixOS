@@ -35,38 +35,25 @@
     }:
     {
 
-      sops.secrets."authelia/jwt_secret" = {
-        sopsFile = ../../secrets/services.yaml;
-        mode = "0444";
-        owner = "authelia-main";
-      };
-      sops.secrets."authelia/storage_key" = {
-        sopsFile = ../../secrets/services.yaml;
-        mode = "0444";
-        owner = "authelia-main";
-      };
-      sops.secrets."authelia/session_secret" = {
-        sopsFile = ../../secrets/services.yaml;
-        mode = "0444";
-        owner = "authelia-main";
-      };
-      sops.secrets."authelia/ldap_password" = {
-        sopsFile = ../../secrets/services.yaml;
-        mode = "0444";
-        owner = "authelia-main";
-      };
+      sops.secrets = builtins.listToAttrs (
+        map
+          (secret: {
+            name = secret;
+            value = {
+              mode = "0444";
+              owner = "authelia-main";
+            };
 
-      sops.secrets."authelia/hmac_secret" = {
-        sopsFile = ../../secrets/services.yaml;
-        mode = "0444";
-        owner = "authelia-main";
-      };
-
-      sops.secrets."authelia/issuer_key" = {
-        sopsFile = ../../secrets/services.yaml;
-        mode = "0444";
-        owner = "authelia-main";
-      };
+          })
+          [
+            "authelia/jwt_secret"
+            "authelia/storage_key"
+            "authelia/session_secret"
+            "authelia/ldap_password"
+            "authelia/hmac_secret"
+            "authelia/issuer_key"
+          ]
+      );
 
       services.authelia.instances.main = {
         enable = true;
@@ -112,7 +99,7 @@
           };
 
           identity_providers.oidc = {
-            clients = [ ] ++ cfg.oidc;
+            clients = cfg.oidc;
             authorization_policies = cfg.policies;
 
           };

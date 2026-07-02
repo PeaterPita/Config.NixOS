@@ -21,6 +21,7 @@ in
     inputs.microvm.nixosModules.microvm
   ]
   ++ utils.filesFromDirRec ../../modules/servers;
+  sops.defaultSopsFile = ../../secrets/services.yaml;
 
   microvm = {
     hypervisor = "qemu";

@@ -10,7 +10,7 @@ let
   utils = import ../utils/utils.nix { inherit lib; };
   mkUser = import ../utils/mkUser.nix;
 
-  unstable-overlay = final: prev: {
+  unstable-overlay = _: _: {
     unstable = import inputs.nixpkgs-unstable {
       inherit system;
       config.allowUnfree = true;
@@ -49,22 +49,22 @@ inputs.nixpkgs.lib.nixosSystem {
     ../hosts/${hostname}/configuration.nix
 
     inputs.home-manager.nixosModules.home-manager
-    {
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = { inherit inputs; };
-
-      home-manager.backupFileExtension = "backup";
-    }
-
     inputs.sops-nix.nixosModules.sops
     {
-      sops.defaultSopsFile = ../secrets/secrets.yaml;
-      sops.defaultSopsFormat = "yaml";
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        extraSpecialArgs = { inherit inputs; };
 
-      sops.age.keyFile = "/home/peaterpita/.config/sops/age/keys.txt";
-
+        backupFileExtension = "backup";
+      };
+      sops = {
+        defaultSopsFile = lib.mkDefault ../secrets/secrets.yaml;
+        defaultSopsFormat = "yaml";
+        age.keyFile = "/home/peaterpita/.config/sops/age/keys.txt";
+      };
     }
+
   ]
   ++ userModules
   ++ utils.filesFromDirRec ../modules/system;

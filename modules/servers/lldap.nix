@@ -47,15 +47,9 @@
       networking.firewall.allowedTCPPorts = [
         cfg.webport
       ];
-      sops.secrets."lldap/jwt_secret" = {
-        sopsFile = ../../secrets/services.yaml;
-        mode = "0444";
-      };
+      sops.secrets."lldap/jwt_secret".mode = "0444";
 
-      sops.secrets."lldap/admin_pass" = {
-        sopsFile = ../../secrets/services.yaml;
-        mode = "0444";
-      };
+      sops.secrets."lldap/admin_pass".mode = "0444";
 
       homelab.services.authelia.rules = [
         {

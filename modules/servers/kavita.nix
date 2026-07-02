@@ -31,14 +31,12 @@
 
       users.users.kavita.extraGroups = [ "media" ];
       sops.secrets."kavita/token_key" = {
-        sopsFile = ../../secrets/services.yaml;
         owner = "kavita";
         group = "kavita";
         mode = "0400";
       };
 
       sops.secrets."kavita/oidc_secret" = {
-        sopsFile = ../../secrets/services.yaml;
         owner = "kavita";
         group = "kavita";
         mode = "0400";

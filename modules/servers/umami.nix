@@ -19,9 +19,7 @@
     }:
     {
 
-      sops.secrets."umami/app_secret" = {
-        sopsFile = ../../secrets/services.yaml;
-      };
+      sops.secrets."umami/app_secret" = { };
 
       services.umami = {
         enable = true;

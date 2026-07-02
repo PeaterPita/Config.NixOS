@@ -28,9 +28,7 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    sops.secrets."restic/password" = {
-      sopsFile = ../../secrets/services.yaml;
-    };
+    sops.secrets."restic/password" = { };
 
     systemd.tmpfiles.rules = [
       "d ${sqliteStagingDir} 0700 root root -"
