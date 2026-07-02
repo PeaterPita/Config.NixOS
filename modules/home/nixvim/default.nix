@@ -45,6 +45,7 @@ in
       colorschemes.catppuccin.enable = !noctaliaEnabled;
 
       enable = true;
+      nixpkgs.source = pkgs.path;
       vimAlias = true;
 
       # performance.combinePlugins.enable = true;
