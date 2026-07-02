@@ -25,7 +25,6 @@ let
     lib.imap0 (
       i: user:
       let
-        # color = builtins.elemAt userColors (builtins.mod i (builtins.length userColors));
         color = builtins.elemAt userColors i;
 
         userConfig = config.home-manager.users.${user};
@@ -36,7 +35,6 @@ let
       in
 
       "print_sidebar_row \"${user}\" \"${color}\" \"${toString userPkgsCount}\" \"${userPkgsStr}\""
-      # ${color}[${user}]${Reset} | ${color}${userPkgsStr}${Reset} | ${color}${toString userPkgsCount}${Reset}
 
     ) hmUsers
   );
@@ -95,16 +93,3 @@ in
     '';
   };
 }
-
-# TMP_TABLE=$(mktemp)
-#
-# echo -e "${Bold}SCOPE|ENABLED Packages | Count${Reset}" >> $TMP_TABLE
-# echo -e "-------------------|----------------|------" >> $TMP_TABLE
-#
-# echo -e " [SYSTEM] | ${sysPkgsStr}${Reset} | ${toString sysPkgsCount}${Reset} " >> $TMP_TABLE
-#
-# echo -e "${userRows}" >> $TMP_TABLE
-#
-# column -t -s '|' $TMP_TABLE
-#
-# rm $TMP_TABLE
