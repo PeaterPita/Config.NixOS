@@ -6,8 +6,23 @@
 {
 
   home.packages = with pkgs.unstable; [
-    claude-code
+    aseprite
   ];
+
+  programs.claude-code = {
+    enable = true;
+    enableMcpIntegration = true;
+    mcpServers = {
+      nixos = {
+        command = "nix";
+        args = [
+          "run"
+          "github:utensils/mcp-nixos"
+          "--"
+        ];
+      };
+    };
+  };
 
   modules = {
 
