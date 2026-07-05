@@ -12,11 +12,14 @@
       };
     };
 
+    friendly-snippets.enable = true;
     luasnip = {
       enable = true;
       settings = {
         enable_autosnippets = true;
         store_selection_keys = "<Tab>";
+        region_check_events = "CursorMoved, CursorMovedI";
+        delete_check_events = "TextChanged, InsertLeave";
       };
     };
 

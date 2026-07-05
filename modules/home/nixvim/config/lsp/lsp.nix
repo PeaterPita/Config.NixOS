@@ -120,11 +120,11 @@
               workspace.library = [
                 "${cc-defs}/library"
               ];
-              diagnostic.globals = [
+              diagnostics.globals = [
                 "vim"
                 "turtle"
                 "peripheral"
-                "renet"
+                "rednet"
                 "fs"
                 "os"
               ];
