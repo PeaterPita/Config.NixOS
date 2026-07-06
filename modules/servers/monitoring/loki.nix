@@ -31,6 +31,13 @@ in
 
         storage_config.filesystem.directory = "/var/lib/loki/chunks";
 
+        compactor = {
+          retention_enabled = true;
+          delete_request_store = "filesystem";
+        };
+
+        limits_config.retention_period = "30d";
+
         schema_config.configs = [
           {
             from = "2025-01-01";
