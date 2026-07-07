@@ -60,6 +60,17 @@ in
 
     systemd.tmpfiles.rules = [ "d /var/log/traefik 0755 traefik traefik - - " ];
 
+    services.logrotate = {
+      enable = true;
+      settings."/var/log/traefik/access.json" = {
+        frequency = "daily";
+        rotate = 2;
+        size = "100M";
+        compress = true;
+        copytruncate = true;
+      };
+    };
+
     services.traefik = {
       enable = true;
 

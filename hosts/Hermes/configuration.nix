@@ -63,7 +63,7 @@ in
       {
         mountPoint = "/var";
         image = "hermes-var.img";
-        size = 1000;
+        size = 4096;
       }
     ];
   };
