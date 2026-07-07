@@ -41,6 +41,7 @@ in
       "d /mnt/media/music 2775 root media - -"
       "d /mnt/media/movies 2775 root media - -"
       "d /mnt/media/landing 2775 root media - -"
+      "d /mnt/nas 0700 peaterpita users - -"
     ];
 
     services."microvm@Hermes" = {
@@ -138,7 +139,10 @@ in
   users.users.peaterpita.extraGroups = [ "media" ];
 
   homelab.services = {
-    backup.enable = true;
+    backup = {
+      enable = true;
+      paths = [ "/mnt/nas" ];
+    };
 
     jellyfin.enable = true;
     navidrome.enable = true;
@@ -180,8 +184,8 @@ in
         music = {
           path = "/mnt/media/music";
         };
-        books = {
-          path = "/mnt/media/books";
+        nas = {
+          path = "/mnt/nas";
         };
       };
     };

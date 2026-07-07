@@ -9,7 +9,6 @@
   imports = [ ./common-programs.nix ];
 
   config = lib.mkMerge [
-
     (lib.mkIf config.system.isDesktop {
       boot = {
         kernel.sysctl."kernel.sysrq" = 1;
@@ -32,6 +31,27 @@
           ];
         };
       };
+
+      sops.secrets."samba" = {
+        sopsFile = ../../secrets/secrets.yaml;
+      };
+
+      fileSystems."/mnt/Olympus" = {
+        device = "//192.168.0.200/nas";
+        fsType = "cifs";
+        options = [
+          "credentials=${config.sops.secrets."samba".path}"
+          "uid=peaterpita"
+          "gid=users"
+          "x-systemd.automount"
+          "noauto"
+          "x-systemd.idle-timeout=60"
+          "x-systemd.mount-timeout=5s"
+          "_netdev"
+          "nofail"
+        ];
+      };
+
     })
     {
 
