@@ -5,8 +5,8 @@
         "name": "adpjcn2",
         "namespace": "default",
         "uid": "e0887c21-9974-41dd-995b-2caeb81a629f",
-        "resourceVersion": "1783418656250980",
-        "generation": 15,
+        "resourceVersion": "1783433669871014",
+        "generation": 18,
         "creationTimestamp": "2026-07-06T18:37:44Z",
         "labels": {
             "grafana.app/deprecatedInternalID": "2545318654251008"
@@ -16,7 +16,7 @@
             "grafana.app/folder": "",
             "grafana.app/saved-from-ui": "Grafana v13.0.3 (NA)",
             "grafana.app/updatedBy": "user:efo4wn27fgmbkc",
-            "grafana.app/updatedTimestamp": "2026-07-07T10:04:16Z"
+            "grafana.app/updatedTimestamp": "2026-07-07T14:14:29Z"
         }
     },
     "spec": {
@@ -1093,7 +1093,7 @@
             "timezone": "browser",
             "from": "now-12h",
             "to": "now",
-            "autoRefresh": "",
+            "autoRefresh": "5m",
             "autoRefreshIntervals": [
                 "5s",
                 "10s",
