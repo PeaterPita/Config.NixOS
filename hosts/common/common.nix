@@ -19,6 +19,17 @@
           "splash"
         ];
         loader.systemd-boot.memtest86.enable = true;
+
+        plymouth = {
+          enable = true;
+          theme = "rings";
+          themePackages = with pkgs; [
+            (adi1090x-plymouth-themes.override {
+              selected_themes = [ "rings" ];
+            })
+          ];
+        };
+
       };
     })
     {
