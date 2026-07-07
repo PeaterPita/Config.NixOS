@@ -19,12 +19,12 @@
 ## Machines
 | Hostname | Role | Status | CI | Notes |
 | :--- | :--- | :--- | :--- | :--- |
-| **Atlas**     | Main workhorse & Gaming   | 🟢 Functional  | ![build][atlas-badge]   | Running an NVIDIA GPU | 
-| **Icarus**    | Laptop                    | 🟢 Functional  | ![build][icarus-badge]  | Semi-light weight     |
+| **[Atlas](docs/hosts/Atlas.md)**     | Main workhorse & Gaming   | 🟢 Functional  | ![build][atlas-badge]   | Running an NVIDIA GPU | 
+| **[Icarus](docs/hosts/Icarus.md)**    | Laptop                    | 🟢 Functional  | ![build][icarus-badge]  | Semi-light weight     |
 | &nbsp;        |                           |                |                         | |
-| **Olympus**   | Core homelab server       | 🟡 In-Progress | ![build][olympus-badge] | In testing! Dell r730 -> Acer Laptop during this time |
-| **Hermes**    | Ingress node              | 🟡 In-Progress | ![build][hermes-badge]  | Virtualised on **Olympus** through microVM |
-| **Elysium**   | Off-Site Backup           | ⚫ Planned     |                         | Restic REST server |
+| **[Olympus](/docs/hosts/Olympus.md)**   | Core homelab server       | 🟡 In-Progress | ![build][olympus-badge] | In testing! Dell r730 -> Acer Laptop during this time |
+| **[Hermes](/docs/hosts/Hermes.md)**    | Ingress node              | 🟡 In-Progress | ![build][hermes-badge]  | Virtualised on **Olympus** through microVM |
+| **[Elysium](/docs/hosts/Elysium.md)**   | Off-Site Backup           | ⚫ Planned     |                         | Restic REST server |
 
 
 
