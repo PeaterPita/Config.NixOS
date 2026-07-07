@@ -17,19 +17,20 @@
         kernelParams = [
           "quiet"
           "splash"
+          "rd.systemd.show_status=false"
+          "rd.udev.log_level=3"
         ];
         loader.systemd-boot.memtest86.enable = true;
 
         plymouth = {
           enable = true;
-          theme = "rings";
+          theme = "abstract_ring_alt";
           themePackages = with pkgs; [
             (adi1090x-plymouth-themes.override {
-              selected_themes = [ "rings" ];
+              selected_themes = [ "abstract_ring_alt" ];
             })
           ];
         };
-
       };
     })
     {
