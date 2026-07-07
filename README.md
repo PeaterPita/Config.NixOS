@@ -5,7 +5,7 @@
 
 <p align="center">
     <img src="https://builtwithnix.org/badge.svg" alt="Built with nix">
-    <img src="https://img.shields.io/badge/NixOS-26.05-blue-style=for-the-badge&logo=nixos&logoColor=white" alt="NixOS">
+    <img src="https://img.shields.io/badge/NixOS-26.05-blue?style=for-the-badge&logo=nixos&logoColor=white" alt="NixOS">
     <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fwakapi.peaterpita.com%2Fapi%2Fcompat%2Fshields%2Fv1%2Fd467d029-0079-4dd8-8b00-46b340ebe1bf%2Finterval%3Aall_time%2Fproject%3Anixos&style=for-the-badge&label=Dev%20Time%20(Since%2028th%20May)&color=blueviolet" alt="Dev Time">
 </p>
 
