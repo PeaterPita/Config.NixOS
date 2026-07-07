@@ -1,19 +1,22 @@
-# Personal NixOS System Configuration
+<div align="center">
+    <h1> Personal NixOS System Configurations</h1>
+    <p>Atlas, Icarus, Olympus, Hermes</p>
+</div>
 
-[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
-[![NixOS](https://img.shields.io/badge/NixOS-26.05-blue?style=flat&logo=nixos&logoColor=white)](https://nixos.org)
+<p align="center">
+    <img src="https://builtwithnix.org/badge.svg" alt="Built with nix">
+    <img src="https://img.shields.io/badge/NixOS-26.05-blue-style=for-the-badge&logo=nixos&logoColor=white" alt="NixOS">
+    <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fwakapi.peaterpita.com%2Fapi%2Fcompat%2Fshields%2Fv1%2Fd467d029-0079-4dd8-8b00-46b340ebe1bf%2Finterval%3Aall_time%2Fproject%3Anixos&style=for-the-badge&label=Dev%20Time%20(Since%2028th%20May)&color=blueviolet" alt="Dev Time">
+</p>
 
-![Dev Time](https://img.shields.io/endpoint?url=https%3A%2F%2Fwakapi.peaterpita.com%2Fapi%2Fcompat%2Fshields%2Fv1%2Fd467d029-0079-4dd8-8b00-46b340ebe1bf%2Finterval%3Aall_time%2Fproject%3Anixos&style=for-the-badge&label=Dev%20Time&color=blueviolet)
- (Since 28th may)
-
-## Foreword
-This is my **personal** flake-based, multi-machine configuration. It is not intended to be used or ran by anyone else but me, therefore I cannot promise these configurations will work for anyone else. 
-This repo should also not be used for inspiration for your own configs; I would still very much class myself as a novice. Many parts of this repo require significant refactorings and improvements. 
+> [!IMPORTANT] 
+> This is my **personal** flake-based, multi-machine configuration. It is not intended to be used or ran by anyone else but me, therefore I cannot promise these configurations will work for anyone else. 
+> This repo should also not be used for inspiration for your own configs; I would still very much class myself as a novice. Many parts of this repo require significant refactorings and improvements. 
 
 ---
 
-## Machines
 
+## Machines
 | Hostname | Role | Status | Building | Notes |
 | :--- | :--- | :--- | :--- | :--- |
 | **Atlas**     | Main workhorse & Gaming   | 🟢 Functional  | ![build][atlas-badge]   | Running an NVIDIA GPU | 
@@ -22,6 +25,7 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Olympus**   | Core homelab server       | 🟡 In-Progress | ![build][olympus-badge] | In testing! Dell r730 -> Acer Laptop during this time |
 | **Hermes**    | Ingress node              | 🟡 In-Progress | ![build][hermes-badge]  | Virtualised on **Olympus** through microVM |
 | **Elysium**   | Off-Site Backup           | ⚫ Planned     |                         | Restic REST server |
+
 
 
 ## Homelab Services
@@ -33,9 +37,9 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Crowdsec**            | Hermes    | ⚫ Planned     |
 | &nbsp;                  |           |                |
 | **Homepage**            | Olympus   | 🟡 In-Progress |
-| **Loki**                | Olympus   | 🟡 In-Progress |
+| **Loki**                | Olympus   | 🟢 Functional  |
 | **Ntfy**                | Olympus   | ⚫ Planned     |
-| **Alloy**               | Olympus   | 🟡 In-Progress |
+| **Alloy**               | Olympus   | 🟢 Functional  |
 | **LLDAP**               | Olympus   | 🟢 Functional  |
 | **Umami**               | Olympus   | 🟢 Functional  |
 | **Immich**              | Olympus   | 🟢 Functional  |
@@ -48,14 +52,13 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **Jellyfin**            | Olympus   | 🟢 Functional  |
 | **Navidrome**           | Olympus   | 🟢 Functional  |
 | **Tailscale**           | Olympus   | 🟢 Functional  |
-| **Prometheus**          | Olympus   | 🟡 In-Progress |
+| **Prometheus**          | Olympus   | 🟢 Functional  |
 | **Adventure Log**       | Olympus   | ⚫ Planned     |
 | **Paperless-ngx**       | Olympus   | 🟢 Functional  |
 | **Woodpecker CI**       | Olympus   | 🟢 Functional  |
-| **Personal Sites**      | Olympus   | 🔴 WIP         |
+| **Personal Sites**      | Olympus   | 🟡 In-Progress |
 | **Speedtest Tracker**   | Olympus   | 🟢 Functional  |
 | **Filebrowser-quantum** | Olympus   | 🟢 Functional  |
-
 
 
 
@@ -148,10 +151,6 @@ Sops keys:
 - `sudo systemctl start restic-backups-olympus.service` - Manually start the restic backup (does not call postgresBackup)
 - `sudo restic-olympus snapshots` - View current snapshots
 
-## TODO
-- [ ] Mouse Button Side Buttons (Logitech G502)
-- [ ] ffmpeg ++ camera tool  (DSLR)
-- [ ] Olympus SMTP setup (authelia TOTP registration)
 
 
 ## References / Resources
@@ -162,6 +161,8 @@ Sops keys:
 )
 - [Misterio77 Config](https://github.com/Misterio77/nix-config)
 - [Notthebe Config](https://git.notthebe.ee/notthebee/nix-config)
+
+All logos and images are credited: [Credits](assets/credits.md)
 
 [olympus-badge]: https://ci.peaterpita.com/api/badges/PeaterPita/Config.NixOS/status.svg?workflow=Olympus
 [hermes-badge]: https://ci.peaterpita.com/api/badges/PeaterPita/Config.NixOS/status.svg?workflow=Hermes
