@@ -10,6 +10,9 @@ let
   cfg = vars.services.backup;
 
   sqliteStagingDir = "/var/backup/sqlite";
+  repository = "/mnt/backup/olympus";
+
+  metricsPort = 15137;
 in
 
 {
@@ -34,43 +37,72 @@ in
       "d ${sqliteStagingDir} 0700 root root -"
     ];
 
-    services.postgresqlBackup = {
-      enable = true;
-      backupAll = true;
-      compression = "zstd";
-      compressionLevel = 19;
-    };
+    systemd.services.prometheus-restic-exporter.serviceConfig.DynamicUser = false;
 
-    services.restic.backups.olympus = {
-      initialize = true;
-      repository = "/mnt/backup/olympus";
-      passwordFile = config.sops.secrets."restic/password".path;
+    services = {
+      prometheus = {
+        exporters.restic = {
+          enable = true;
+          inherit repository;
+          port = metricsPort;
+          user = "root";
+          group = "root";
+          listenAddress = "127.0.0.1";
+          passwordFile = config.sops.secrets."restic/password".path;
+          refreshInterval = 60 * 60 * 60;
+        };
 
-      backupPrepareCommand = ''
-        set -eu
-        mkdir -p ${sqliteStagingDir}
-      ''
-      + lib.concatStrings (
-        lib.mapAttrsToList (name: src: ''
-          ${pkgs.sqlite}/bin/sqlite3 "${src}" ".backup '${sqliteStagingDir}/${name}.db'"
-        '') cfg.dbFiles
-      );
+        scrapeConfigs = [
+          {
+            job_name = "restic";
+            static_configs = [
+              {
+                targets = [ "127.0.0.1:${toString metricsPort}" ];
+                labels.host = "olympus";
+              }
+            ];
+          }
+        ];
+      };
 
-      paths = [
-        "/var/backup/postgresql"
-        sqliteStagingDir
-      ]
-      ++ cfg.paths;
+      postgresqlBackup = {
+        enable = true;
+        backupAll = true;
+        compression = "zstd";
+        compressionLevel = 19;
+      };
 
-      pruneOpts = [
-        "--keep-daily 7"
-        "--keep-weekly 4"
-        "--keep-monthly 6"
-      ];
+      restic.backups.olympus = {
+        initialize = true;
+        inherit repository;
+        passwordFile = config.sops.secrets."restic/password".path;
 
-      timerConfig = {
-        OnCalendar = "03:33";
-        Persistent = true;
+        backupPrepareCommand = ''
+          set -eu
+          mkdir -p ${sqliteStagingDir}
+        ''
+        + lib.concatStrings (
+          lib.mapAttrsToList (name: src: ''
+            ${pkgs.sqlite}/bin/sqlite3 "${src}" ".backup '${sqliteStagingDir}/${name}.db'"
+          '') cfg.dbFiles
+        );
+
+        paths = [
+          "/var/backup/postgresql"
+          sqliteStagingDir
+        ]
+        ++ cfg.paths;
+
+        pruneOpts = [
+          "--keep-daily 7"
+          "--keep-weekly 4"
+          "--keep-monthly 6"
+        ];
+
+        timerConfig = {
+          OnCalendar = "03:33";
+          Persistent = true;
+        };
       };
     };
   };

@@ -80,11 +80,6 @@
 
           totp.issuer = "${vars.baseDomain}";
 
-          # identity_validation.elevated_session = {
-          #   require_second_factor = false;
-          #   skip_second_factor = true;
-          # };
-
           authentication_backend.ldap = {
             implementation = "lldap";
 
@@ -151,8 +146,14 @@
 
           };
 
-          server.address = "tcp://0.0.0.0:${toString cfg.port}";
-          server.buffers.read = 8192;
+          telemetry.metrics = {
+            enabled = true;
+          };
+
+          server = {
+            address = "tcp://0.0.0.0:${toString cfg.port}";
+            buffers.read = 8192;
+          };
 
         };
       };
