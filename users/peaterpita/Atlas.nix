@@ -7,6 +7,10 @@
 
   home.packages = with pkgs.unstable; [
     aseprite
+    parsec-bin
+    typescript
+    postman
+    inkscape
   ];
 
   programs.claude-code = {

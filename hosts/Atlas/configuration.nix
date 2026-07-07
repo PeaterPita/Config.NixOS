@@ -8,10 +8,6 @@
   boot.kernelModules = [ "ntsync" ];
 
   environment.systemPackages = with pkgs; [
-    parsec-bin
-    typescript
-    postman
-    inkscape
   ];
 
   system.isDesktop = true;

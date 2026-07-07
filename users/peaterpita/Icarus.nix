@@ -1,11 +1,4 @@
 {
-  pkgs,
-  ...
-}:
-
-{
-  home.packages = with pkgs; [
-  ];
 
   modules = {
     hyprland.enable = true;
