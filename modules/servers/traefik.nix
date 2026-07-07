@@ -234,8 +234,8 @@ in
           ];
 
           rate-limit.rateLimit = {
-            average = 100;
-            burst = 50;
+            average = 40;
+            burst = 100;
             period = "1s";
           };
 

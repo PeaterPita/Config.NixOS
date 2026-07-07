@@ -99,11 +99,6 @@ in
     DNSStubListener = "no";
   };
 
-  # services.resolved.extraConfig = ''
-  #   DNS=1.1.1.1
-  #   DNSStubListener=no
-  # '';
-
   homelab.services = {
     monitoring = {
       glances.enable = true;

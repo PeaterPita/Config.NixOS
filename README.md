@@ -39,7 +39,6 @@ This repo should also not be used for inspiration for your own configs; I would 
 | **LLDAP**               | Olympus   | 🟢 Functional  |
 | **Umami**               | Olympus   | 🟢 Functional  |
 | **Immich**              | Olympus   | 🟢 Functional  |
-| **Kavita**              | Olympus   | 🟢 Functional  |
 | **Mealie**              | Olympus   | 🟢 Functional  |
 | **Restic**              | Olympus   | 🟢 Functional  |
 | **Wakapi**              | Olympus   | 🟢 Functional  |
