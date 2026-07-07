@@ -78,6 +78,19 @@
           theme = "dark";
           color = "slate";
 
+          background = {
+            image = "https://w.wallhaven.cc/full/3l/wallhaven-3lpymv.png";
+            blur = "sm";
+            saturate = 50;
+            brightness = 50;
+            opacity = 50;
+          };
+
+          cardBlur = "sm";
+          statusStyle = "dot";
+          useEqualHeights = true;
+          hideVersion = true;
+
           bookmarksStyle = "icons";
           headerStyle = "boxedWidgets";
 
