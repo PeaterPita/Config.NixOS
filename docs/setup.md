@@ -2,9 +2,8 @@
 As much as I disdain imperative configuration; some processes cannot be declared as of right right. Hopefully as time goes on this section will get shorter. 
 This section also is just servicing as a running checklist and reminder to myself.
 
-<details>
-<summary>Common</summary>
 
+## Common
 Github SSH keys: [docs.github.com](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
 
@@ -12,17 +11,15 @@ Sops keys:
 `sudo age-keygen -o ~/.config/sops/age/keys.txt`
 
 
-## Wakatime
+### Wakatime
 `~/.wakatime.cfg` needs to be imperatively edited to point to my self hosted wakapi instance.
 
 
-</details>
-
-<details>
-<summary>Olympus</summary>
 
 
-## Account Creations
+## Olympus
+
+### Account Creations
 - [ ] Authelia LLDAP Service Account 
         password from sops `ldap_password`
         under group `lldap_password_manager`
@@ -32,12 +29,12 @@ Sops keys:
     Required direct `IP:PORT` access
 
 
-## Credential Changes
+### Credential Changes
 - [ ] Umami - https://docs.umami.is/docs/login
 - [ ] SpeedtestTracker - https://docs.speedtest-tracker.dev/security/authentication
 
 
-## Jellyfin
+### Jellyfin
 - Jellyfin LDAP Plugin Setup
     LDAP Server: `127.0.0.1`
     LDAP Port: `3890`
@@ -56,14 +53,14 @@ Sops keys:
     jellyfin API key created and stored in sops
     Networking > Known proxies, add the ingress IP
 
-## Backups
+### Backups
 `Olympus` now leverages restic for important file and database backups. Currently "backups" are just local snapshots however a off-site backup box (`Elysium`) would be a crucial next step.
 
 - `sudo systemctl start restic-backups-olympus.service` - Manually start the restic backup (does not call postgresBackup)
 - `sudo restic-olympus snapshots` - View current snapshots
 
 
-## Misc
+### Misc
 - Paperless Default Group
     name: `default`
 
@@ -84,4 +81,3 @@ Sops keys:
     `nix-store --generate-binary-cache-key cache.peaterpita.com-1 /tmp/key.secret /tmp/key.pub`
     Replace sops and common.nix values
 
-</details>
