@@ -2,21 +2,21 @@
     "apiVersion": "dashboard.grafana.app/v2",
     "kind": "Dashboard",
     "metadata": {
-        "name": "adrdpxd",
+        "name": "addgs2f",
         "namespace": "default",
-        "uid": "e99bc034-7d8c-4984-a803-6fc566962ccd",
-        "resourceVersion": "1781217159835986",
-        "generation": 14,
-        "creationTimestamp": "2026-06-11T12:37:26Z",
+        "uid": "7f9d591f-10a9-4eb3-a17f-df12a16051b3",
+        "resourceVersion": "1783418721601984",
+        "generation": 25,
+        "creationTimestamp": "2026-07-06T15:02:16Z",
         "labels": {
-            "grafana.app/deprecatedInternalID": "2402146023018496"
+            "grafana.app/deprecatedInternalID": "2491094167851008"
         },
         "annotations": {
             "grafana.app/createdBy": "user:efo4wn27fgmbkc",
             "grafana.app/folder": "",
-            "grafana.app/saved-from-ui": "Grafana v13.0.1+security-01 (NA)",
+            "grafana.app/saved-from-ui": "Grafana v13.0.3 (NA)",
             "grafana.app/updatedBy": "user:efo4wn27fgmbkc",
-            "grafana.app/updatedTimestamp": "2026-06-11T22:32:39Z"
+            "grafana.app/updatedTimestamp": "2026-07-07T10:05:21Z"
         }
     },
     "spec": {
@@ -48,848 +48,7 @@
                 "kind": "Panel",
                 "spec": {
                     "id": 1,
-                    "title": "Requests / s",
-                    "description": "",
-                    "links": [],
-                    "data": {
-                        "kind": "QueryGroup",
-                        "spec": {
-                            "queries": [
-                                {
-                                    "kind": "PanelQuery",
-                                    "spec": {
-                                        "query": {
-                                            "kind": "DataQuery",
-                                            "group": "",
-                                            "version": "v0",
-                                            "spec": {
-                                                "editorMode": "code",
-                                                "expr": "sum(rate(traefik_entrypoint_requests_total{entrypoint=\"websecure\"}[$__rate_interval]))",
-                                                "legendFormat": "__auto",
-                                                "range": true
-                                            }
-                                        },
-                                        "refId": "A",
-                                        "hidden": false
-                                    }
-                                }
-                            ],
-                            "transformations": [],
-                            "queryOptions": {}
-                        }
-                    },
-                    "vizConfig": {
-                        "kind": "VizConfig",
-                        "group": "stat",
-                        "version": "13.0.1+security-01",
-                        "spec": {
-                            "options": {
-                                "colorMode": "value",
-                                "graphMode": "area",
-                                "justifyMode": "auto",
-                                "orientation": "auto",
-                                "percentChangeColorMode": "standard",
-                                "reduceOptions": {
-                                    "calcs": [
-                                        "lastNotNull"
-                                    ],
-                                    "fields": "",
-                                    "values": false
-                                },
-                                "showPercentChange": false,
-                                "text": {
-                                    "valueSize": 48
-                                },
-                                "textMode": "auto",
-                                "wideLayout": true
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": 0,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "thresholds"
-                                    }
-                                },
-                                "overrides": []
-                            }
-                        }
-                    }
-                }
-            },
-            "panel-10": {
-                "kind": "Panel",
-                "spec": {
-                    "id": 10,
-                    "title": "Crowdsec Decisions",
-                    "description": "",
-                    "links": [],
-                    "data": {
-                        "kind": "QueryGroup",
-                        "spec": {
-                            "queries": [
-                                {
-                                    "kind": "PanelQuery",
-                                    "spec": {
-                                        "query": {
-                                            "kind": "DataQuery",
-                                            "group": "",
-                                            "version": "v0",
-                                            "spec": {}
-                                        },
-                                        "refId": "A",
-                                        "hidden": false
-                                    }
-                                }
-                            ],
-                            "transformations": [],
-                            "queryOptions": {}
-                        }
-                    },
-                    "vizConfig": {
-                        "kind": "VizConfig",
-                        "group": "logs",
-                        "version": "13.0.1+security-01",
-                        "spec": {
-                            "options": {
-                                "dedupStrategy": "none",
-                                "enableInfiniteScrolling": false,
-                                "enableLogDetails": true,
-                                "prettifyLogMessage": true,
-                                "showControls": false,
-                                "showFieldSelector": false,
-                                "showLevel": true,
-                                "showTime": false,
-                                "sortOrder": "Descending",
-                                "timestampResolution": "ms",
-                                "unwrappedColumns": false,
-                                "wrapLogMessage": false
-                            },
-                            "fieldConfig": {
-                                "defaults": {},
-                                "overrides": []
-                            }
-                        }
-                    }
-                }
-            },
-            "panel-2": {
-                "kind": "Panel",
-                "spec": {
-                    "id": 2,
-                    "title": "Max p95 ",
-                    "description": "",
-                    "links": [],
-                    "data": {
-                        "kind": "QueryGroup",
-                        "spec": {
-                            "queries": [
-                                {
-                                    "kind": "PanelQuery",
-                                    "spec": {
-                                        "query": {
-                                            "kind": "DataQuery",
-                                            "group": "prometheus",
-                                            "version": "v0",
-                                            "datasource": {
-                                                "name": "PBFA97CFB590B2093"
-                                            },
-                                            "spec": {
-                                                "editorMode": "code",
-                                                "expr": "histogram_quantile(0.95, sum by (le) (rate(traefik_entrypoint_request_duration_seconds_bucket{entrypoint=\"websecure\"}[$__rate_interval])))",
-                                                "legendFormat": "__auto",
-                                                "range": true
-                                            }
-                                        },
-                                        "refId": "A",
-                                        "hidden": false
-                                    }
-                                }
-                            ],
-                            "transformations": [],
-                            "queryOptions": {}
-                        }
-                    },
-                    "vizConfig": {
-                        "kind": "VizConfig",
-                        "group": "stat",
-                        "version": "13.0.1+security-01",
-                        "spec": {
-                            "options": {
-                                "colorMode": "value",
-                                "graphMode": "area",
-                                "justifyMode": "auto",
-                                "orientation": "auto",
-                                "percentChangeColorMode": "standard",
-                                "reduceOptions": {
-                                    "calcs": [
-                                        "max"
-                                    ],
-                                    "fields": "",
-                                    "values": false
-                                },
-                                "showPercentChange": false,
-                                "text": {
-                                    "valueSize": 48
-                                },
-                                "textMode": "auto",
-                                "wideLayout": true
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "unit": "s",
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": 0,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "shades",
-                                        "fixedColor": "semi-dark-blue"
-                                    }
-                                },
-                                "overrides": []
-                            }
-                        }
-                    }
-                }
-            },
-            "panel-3": {
-                "kind": "Panel",
-                "spec": {
-                    "id": 3,
-                    "title": "4xx rate",
-                    "description": "",
-                    "links": [],
-                    "data": {
-                        "kind": "QueryGroup",
-                        "spec": {
-                            "queries": [
-                                {
-                                    "kind": "PanelQuery",
-                                    "spec": {
-                                        "query": {
-                                            "kind": "DataQuery",
-                                            "group": "prometheus",
-                                            "version": "v0",
-                                            "datasource": {
-                                                "name": "PBFA97CFB590B2093"
-                                            },
-                                            "spec": {
-                                                "editorMode": "code",
-                                                "expr": "100 * sum(rate(traefik_service_requests_total{code=~\"4..\"}[$__rate_interval])) / sum(rate(traefik_service_requests_total[$__rate_interval]))",
-                                                "legendFormat": "__auto",
-                                                "range": true
-                                            }
-                                        },
-                                        "refId": "A",
-                                        "hidden": false
-                                    }
-                                }
-                            ],
-                            "transformations": [],
-                            "queryOptions": {}
-                        }
-                    },
-                    "vizConfig": {
-                        "kind": "VizConfig",
-                        "group": "stat",
-                        "version": "13.0.1+security-01",
-                        "spec": {
-                            "options": {
-                                "colorMode": "value",
-                                "graphMode": "area",
-                                "justifyMode": "auto",
-                                "orientation": "auto",
-                                "percentChangeColorMode": "standard",
-                                "reduceOptions": {
-                                    "calcs": [
-                                        "lastNotNull"
-                                    ],
-                                    "fields": "",
-                                    "values": false
-                                },
-                                "showPercentChange": false,
-                                "text": {
-                                    "valueSize": 48
-                                },
-                                "textMode": "auto",
-                                "wideLayout": true
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "unit": "percent",
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": 0,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "shades",
-                                        "fixedColor": "dark-red"
-                                    }
-                                },
-                                "overrides": []
-                            }
-                        }
-                    }
-                }
-            },
-            "panel-4": {
-                "kind": "Panel",
-                "spec": {
-                    "id": 4,
-                    "title": "Crowdsec Bans",
-                    "description": "",
-                    "links": [],
-                    "data": {
-                        "kind": "QueryGroup",
-                        "spec": {
-                            "queries": [
-                                {
-                                    "kind": "PanelQuery",
-                                    "spec": {
-                                        "query": {
-                                            "kind": "DataQuery",
-                                            "group": "",
-                                            "version": "v0",
-                                            "spec": {}
-                                        },
-                                        "refId": "A",
-                                        "hidden": false
-                                    }
-                                }
-                            ],
-                            "transformations": [],
-                            "queryOptions": {}
-                        }
-                    },
-                    "vizConfig": {
-                        "kind": "VizConfig",
-                        "group": "stat",
-                        "version": "13.0.1+security-01",
-                        "spec": {
-                            "options": {
-                                "colorMode": "value",
-                                "graphMode": "area",
-                                "justifyMode": "auto",
-                                "orientation": "auto",
-                                "percentChangeColorMode": "standard",
-                                "reduceOptions": {
-                                    "calcs": [
-                                        "lastNotNull"
-                                    ],
-                                    "fields": "",
-                                    "values": false
-                                },
-                                "showPercentChange": false,
-                                "textMode": "auto",
-                                "wideLayout": true
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": 0,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "thresholds"
-                                    }
-                                },
-                                "overrides": []
-                            }
-                        }
-                    }
-                }
-            },
-            "panel-5": {
-                "kind": "Panel",
-                "spec": {
-                    "id": 5,
-                    "title": "Unique Vistors",
-                    "description": "",
-                    "links": [],
-                    "data": {
-                        "kind": "QueryGroup",
-                        "spec": {
-                            "queries": [
-                                {
-                                    "kind": "PanelQuery",
-                                    "spec": {
-                                        "query": {
-                                            "kind": "DataQuery",
-                                            "group": "loki",
-                                            "version": "v0",
-                                            "datasource": {
-                                                "name": "P8E80F9AEF21F6940"
-                                            },
-                                            "spec": {
-                                                "direction": "backward",
-                                                "editorMode": "code",
-                                                "expr": "count(sum by (client_ip) (count_over_time({job=\"traefik-access\"} [$__range])))",
-                                                "queryType": "instant"
-                                            }
-                                        },
-                                        "refId": "A",
-                                        "hidden": false
-                                    }
-                                }
-                            ],
-                            "transformations": [],
-                            "queryOptions": {}
-                        }
-                    },
-                    "vizConfig": {
-                        "kind": "VizConfig",
-                        "group": "stat",
-                        "version": "13.0.1+security-01",
-                        "spec": {
-                            "options": {
-                                "colorMode": "value",
-                                "graphMode": "area",
-                                "justifyMode": "auto",
-                                "orientation": "auto",
-                                "percentChangeColorMode": "standard",
-                                "reduceOptions": {
-                                    "calcs": [
-                                        "lastNotNull"
-                                    ],
-                                    "fields": "",
-                                    "values": false
-                                },
-                                "showPercentChange": false,
-                                "text": {
-                                    "valueSize": 48
-                                },
-                                "textMode": "auto",
-                                "wideLayout": true
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": 0,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "shades",
-                                        "fixedColor": "text"
-                                    }
-                                },
-                                "overrides": []
-                            }
-                        }
-                    }
-                }
-            },
-            "panel-6": {
-                "kind": "Panel",
-                "spec": {
-                    "id": 6,
-                    "title": "Latencies",
-                    "description": "",
-                    "links": [],
-                    "data": {
-                        "kind": "QueryGroup",
-                        "spec": {
-                            "queries": [
-                                {
-                                    "kind": "PanelQuery",
-                                    "spec": {
-                                        "query": {
-                                            "kind": "DataQuery",
-                                            "group": "prometheus",
-                                            "version": "v0",
-                                            "datasource": {
-                                                "name": "PBFA97CFB590B2093"
-                                            },
-                                            "spec": {
-                                                "editorMode": "code",
-                                                "expr": "histogram_quantile(0.50, sum by (le) (rate(traefik_entrypoint_request_duration_seconds_bucket{entrypoint=\"websecure\"}[$__rate_interval])))",
-                                                "legendFormat": "p50",
-                                                "range": true
-                                            }
-                                        },
-                                        "refId": "A",
-                                        "hidden": false
-                                    }
-                                },
-                                {
-                                    "kind": "PanelQuery",
-                                    "spec": {
-                                        "query": {
-                                            "kind": "DataQuery",
-                                            "group": "prometheus",
-                                            "version": "v0",
-                                            "datasource": {
-                                                "name": "PBFA97CFB590B2093"
-                                            },
-                                            "spec": {
-                                                "editorMode": "code",
-                                                "expr": "histogram_quantile(0.85, sum by (le) (rate(traefik_entrypoint_request_duration_seconds_bucket{entrypoint=\"websecure\"}[$__rate_interval])))",
-                                                "instant": false,
-                                                "legendFormat": "p85",
-                                                "range": true
-                                            }
-                                        },
-                                        "refId": "B",
-                                        "hidden": false
-                                    }
-                                },
-                                {
-                                    "kind": "PanelQuery",
-                                    "spec": {
-                                        "query": {
-                                            "kind": "DataQuery",
-                                            "group": "prometheus",
-                                            "version": "v0",
-                                            "datasource": {
-                                                "name": "PBFA97CFB590B2093"
-                                            },
-                                            "spec": {
-                                                "editorMode": "code",
-                                                "expr": "  histogram_quantile(0.95, sum by (le) (rate(traefik_entrypoint_request_duration_seconds_bucket{entrypoint=\"websecure\"}[$__rate_interval])))\n",
-                                                "instant": false,
-                                                "legendFormat": "p95",
-                                                "range": true
-                                            }
-                                        },
-                                        "refId": "C",
-                                        "hidden": false
-                                    }
-                                }
-                            ],
-                            "transformations": [],
-                            "queryOptions": {}
-                        }
-                    },
-                    "vizConfig": {
-                        "kind": "VizConfig",
-                        "group": "timeseries",
-                        "version": "13.0.1+security-01",
-                        "spec": {
-                            "options": {
-                                "annotations": {
-                                    "clustering": -1,
-                                    "multiLane": false
-                                },
-                                "legend": {
-                                    "calcs": [],
-                                    "displayMode": "list",
-                                    "placement": "bottom",
-                                    "showLegend": true
-                                },
-                                "tooltip": {
-                                    "hideZeros": false,
-                                    "mode": "single",
-                                    "sort": "none"
-                                }
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "unit": "s",
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": 0,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "palette-classic",
-                                        "fixedColor": "semi-dark-blue"
-                                    },
-                                    "custom": {
-                                        "axisBorderShow": false,
-                                        "axisCenteredZero": false,
-                                        "axisColorMode": "text",
-                                        "axisLabel": "",
-                                        "axisPlacement": "auto",
-                                        "barAlignment": 0,
-                                        "barWidthFactor": 0.6,
-                                        "drawStyle": "line",
-                                        "fillOpacity": 0,
-                                        "gradientMode": "none",
-                                        "hideFrom": {
-                                            "legend": false,
-                                            "tooltip": false,
-                                            "viz": false
-                                        },
-                                        "insertNulls": false,
-                                        "lineInterpolation": "smooth",
-                                        "lineStyle": {
-                                            "fill": "solid"
-                                        },
-                                        "lineWidth": 1,
-                                        "pointSize": 5,
-                                        "scaleDistribution": {
-                                            "type": "linear"
-                                        },
-                                        "showPoints": "auto",
-                                        "showValues": false,
-                                        "spanNulls": false,
-                                        "stacking": {
-                                            "group": "A",
-                                            "mode": "none"
-                                        },
-                                        "thresholdsStyle": {
-                                            "mode": "off"
-                                        }
-                                    }
-                                },
-                                "overrides": []
-                            }
-                        }
-                    }
-                }
-            },
-            "panel-7": {
-                "kind": "Panel",
-                "spec": {
-                    "id": 7,
-                    "title": "Top source IPs",
-                    "description": "",
-                    "links": [],
-                    "data": {
-                        "kind": "QueryGroup",
-                        "spec": {
-                            "queries": [
-                                {
-                                    "kind": "PanelQuery",
-                                    "spec": {
-                                        "query": {
-                                            "kind": "DataQuery",
-                                            "group": "loki",
-                                            "version": "v0",
-                                            "datasource": {
-                                                "name": "P8E80F9AEF21F6940"
-                                            },
-                                            "spec": {
-                                                "direction": "backward",
-                                                "editorMode": "code",
-                                                "expr": "topk(15, sum by (client_ip, geoip_country, asn_org) (count_over_time({job=\"traefik-access\"} [$__range])))",
-                                                "queryType": "instant"
-                                            }
-                                        },
-                                        "refId": "A",
-                                        "hidden": false
-                                    }
-                                }
-                            ],
-                            "transformations": [
-                                {
-                                    "kind": "Transformation",
-                                    "group": "labelsToFields",
-                                    "spec": {
-                                        "options": {}
-                                    }
-                                },
-                                {
-                                    "kind": "Transformation",
-                                    "group": "organize",
-                                    "spec": {
-                                        "options": {
-                                            "excludeByName": {
-                                                "Time": true,
-                                                "Value #A": false
-                                            },
-                                            "includeByName": {},
-                                            "indexByName": {
-                                                "Time": 0,
-                                                "Value #A": 4,
-                                                "asn_org": 2,
-                                                "client_ip": 1,
-                                                "geoip_country": 3
-                                            },
-                                            "renameByName": {
-                                                "Time": "TS",
-                                                "Value #A": "Reqs",
-                                                "asn_org": "ASN",
-                                                "client_ip": "Client",
-                                                "geoip_country": "Country"
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "kind": "Transformation",
-                                    "group": "sortBy",
-                                    "spec": {
-                                        "options": {
-                                            "fields": {},
-                                            "sort": [
-                                                {
-                                                    "desc": true,
-                                                    "field": "Reqs"
-                                                }
-                                            ]
-                                        }
-                                    }
-                                }
-                            ],
-                            "queryOptions": {}
-                        }
-                    },
-                    "vizConfig": {
-                        "kind": "VizConfig",
-                        "group": "table",
-                        "version": "13.0.1+security-01",
-                        "spec": {
-                            "options": {
-                                "cellHeight": "sm",
-                                "showHeader": true
-                            },
-                            "fieldConfig": {
-                                "defaults": {
-                                    "thresholds": {
-                                        "mode": "absolute",
-                                        "steps": [
-                                            {
-                                                "value": 0,
-                                                "color": "green"
-                                            },
-                                            {
-                                                "value": 80,
-                                                "color": "red"
-                                            }
-                                        ]
-                                    },
-                                    "color": {
-                                        "mode": "thresholds"
-                                    },
-                                    "custom": {
-                                        "align": "auto",
-                                        "cellOptions": {
-                                            "type": "auto"
-                                        },
-                                        "footer": {
-                                            "reducers": []
-                                        },
-                                        "inspect": false
-                                    }
-                                },
-                                "overrides": [
-                                    {
-                                        "matcher": {
-                                            "id": "byName",
-                                            "options": "Time"
-                                        },
-                                        "properties": [
-                                            {
-                                                "id": "custom.width",
-                                                "value": 193
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "matcher": {
-                                            "id": "byName",
-                                            "options": "asn_org"
-                                        },
-                                        "properties": [
-                                            {
-                                                "id": "custom.width",
-                                                "value": 165
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "matcher": {
-                                            "id": "byName",
-                                            "options": "Client"
-                                        },
-                                        "properties": [
-                                            {
-                                                "id": "custom.width",
-                                                "value": 302
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "matcher": {
-                                            "id": "byName",
-                                            "options": "Country"
-                                        },
-                                        "properties": [
-                                            {
-                                                "id": "custom.width",
-                                                "value": 143
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "matcher": {
-                                            "id": "byName",
-                                            "options": "Reqs"
-                                        },
-                                        "properties": [
-                                            {
-                                                "id": "custom.width",
-                                                "value": 126
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            },
-            "panel-8": {
-                "kind": "Panel",
-                "spec": {
-                    "id": 8,
-                    "title": "Requests by code",
+                    "title": "Uptime",
                     "description": "",
                     "links": [],
                     "data": {
@@ -909,11 +68,11 @@
                                             "spec": {
                                                 "editorMode": "code",
                                                 "exemplar": false,
-                                                "expr": "sum by (code_class) (label_replace(rate(traefik_service_requests_total[$__rate_interval]), \"code_class\", \"${1}xx\", \"code\", \"(.)..\"))",
-                                                "format": "time_series",
-                                                "instant": false,
-                                                "legendFormat": "{{code_class}}",
-                                                "range": true
+                                                "expr": "time() - node_boot_time_seconds{host=\"$host\"}",
+                                                "format": "table",
+                                                "instant": true,
+                                                "legendFormat": "__auto",
+                                                "range": false
                                             }
                                         },
                                         "refId": "A",
@@ -927,8 +86,111 @@
                     },
                     "vizConfig": {
                         "kind": "VizConfig",
+                        "group": "stat",
+                        "version": "13.0.3",
+                        "spec": {
+                            "options": {
+                                "colorMode": "value",
+                                "graphMode": "area",
+                                "justifyMode": "auto",
+                                "orientation": "auto",
+                                "percentChangeColorMode": "standard",
+                                "reduceOptions": {
+                                    "calcs": [
+                                        "lastNotNull"
+                                    ],
+                                    "fields": "",
+                                    "values": false
+                                },
+                                "showPercentChange": false,
+                                "textMode": "auto",
+                                "wideLayout": true
+                            },
+                            "fieldConfig": {
+                                "defaults": {
+                                    "unit": "dtdurations",
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "value": 0,
+                                                "color": "text"
+                                            }
+                                        ]
+                                    },
+                                    "color": {
+                                        "mode": "thresholds"
+                                    }
+                                },
+                                "overrides": []
+                            }
+                        }
+                    }
+                }
+            },
+            "panel-10": {
+                "kind": "Panel",
+                "spec": {
+                    "id": 10,
+                    "title": "Disk IO",
+                    "description": "",
+                    "links": [],
+                    "data": {
+                        "kind": "QueryGroup",
+                        "spec": {
+                            "queries": [
+                                {
+                                    "kind": "PanelQuery",
+                                    "spec": {
+                                        "query": {
+                                            "kind": "DataQuery",
+                                            "group": "prometheus",
+                                            "version": "v0",
+                                            "datasource": {
+                                                "name": "PBFA97CFB590B2093"
+                                            },
+                                            "spec": {
+                                                "editorMode": "code",
+                                                "expr": "sum by (device) (rate(node_disk_written_bytes_total{host=\"$host\", device!~\"loop.*|dm-.*\"}[$__rate_interval]))",
+                                                "legendFormat": "{{host}} {{device}} - write",
+                                                "range": true
+                                            }
+                                        },
+                                        "refId": "A",
+                                        "hidden": false
+                                    }
+                                },
+                                {
+                                    "kind": "PanelQuery",
+                                    "spec": {
+                                        "query": {
+                                            "kind": "DataQuery",
+                                            "group": "prometheus",
+                                            "version": "v0",
+                                            "datasource": {
+                                                "name": "PBFA97CFB590B2093"
+                                            },
+                                            "spec": {
+                                                "editorMode": "code",
+                                                "expr": "sum by ( device) (rate(node_disk_read_bytes_total{host=\"$host\", device!~\"loop.*|dm-.*\"}[$__rate_interval]))",
+                                                "instant": false,
+                                                "legendFormat": "{{host}} {{device}} - read",
+                                                "range": true
+                                            }
+                                        },
+                                        "refId": "B",
+                                        "hidden": false
+                                    }
+                                }
+                            ],
+                            "transformations": [],
+                            "queryOptions": {}
+                        }
+                    },
+                    "vizConfig": {
+                        "kind": "VizConfig",
                         "group": "timeseries",
-                        "version": "13.0.1+security-01",
+                        "version": "13.0.3",
                         "spec": {
                             "options": {
                                 "annotations": {
@@ -949,6 +211,7 @@
                             },
                             "fieldConfig": {
                                 "defaults": {
+                                    "unit": "binBps",
                                     "thresholds": {
                                         "mode": "absolute",
                                         "steps": [
@@ -1006,11 +269,11 @@
                     }
                 }
             },
-            "panel-9": {
+            "panel-11": {
                 "kind": "Panel",
                 "spec": {
-                    "id": 9,
-                    "title": "Top routes by traffic",
+                    "id": 11,
+                    "title": "Disk Usage",
                     "description": "",
                     "links": [],
                     "data": {
@@ -1030,11 +293,906 @@
                                             "spec": {
                                                 "editorMode": "code",
                                                 "exemplar": false,
-                                                "expr": "topk(10, sum by (service) (increase(traefik_service_requests_total[$__range])))",
+                                                "expr": "100 - ((node_filesystem_avail_bytes{host=\"$host\",fstype!~\"tmpfs|virtiofs\", mountpoint!~\"/boot.*\"} / node_filesystem_size_bytes{host=\"$host\",fstype!~\"tmpfs|virtiofs\", mountpoint!~\"/boot.*\"}) * 100)",
+                                                "format": "time_series",
+                                                "instant": false,
+                                                "legendFormat": "{{mountpoint}}",
+                                                "range": true
+                                            }
+                                        },
+                                        "refId": "A",
+                                        "hidden": false
+                                    }
+                                }
+                            ],
+                            "transformations": [],
+                            "queryOptions": {}
+                        }
+                    },
+                    "vizConfig": {
+                        "kind": "VizConfig",
+                        "group": "bargauge",
+                        "version": "13.0.3",
+                        "spec": {
+                            "options": {
+                                "displayMode": "gradient",
+                                "legend": {
+                                    "calcs": [],
+                                    "displayMode": "list",
+                                    "placement": "bottom",
+                                    "showLegend": false
+                                },
+                                "maxVizHeight": 300,
+                                "minVizHeight": 16,
+                                "minVizWidth": 8,
+                                "namePlacement": "auto",
+                                "orientation": "vertical",
+                                "reduceOptions": {
+                                    "calcs": [
+                                        "lastNotNull"
+                                    ],
+                                    "fields": "",
+                                    "values": false
+                                },
+                                "showUnfilled": true,
+                                "sizing": "auto",
+                                "valueMode": "color"
+                            },
+                            "fieldConfig": {
+                                "defaults": {
+                                    "unit": "percent",
+                                    "min": 0,
+                                    "max": 100,
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "value": 0,
+                                                "color": "green"
+                                            },
+                                            {
+                                                "value": 70,
+                                                "color": "orange"
+                                            },
+                                            {
+                                                "value": 90,
+                                                "color": "red"
+                                            }
+                                        ]
+                                    },
+                                    "color": {
+                                        "mode": "shades",
+                                        "fixedColor": "purple"
+                                    }
+                                },
+                                "overrides": []
+                            }
+                        }
+                    }
+                }
+            },
+            "panel-12": {
+                "kind": "Panel",
+                "spec": {
+                    "id": 12,
+                    "title": "Failed Units",
+                    "description": "",
+                    "links": [],
+                    "data": {
+                        "kind": "QueryGroup",
+                        "spec": {
+                            "queries": [
+                                {
+                                    "kind": "PanelQuery",
+                                    "spec": {
+                                        "query": {
+                                            "kind": "DataQuery",
+                                            "group": "prometheus",
+                                            "version": "v0",
+                                            "datasource": {
+                                                "name": "PBFA97CFB590B2093"
+                                            },
+                                            "spec": {
+                                                "editorMode": "code",
+                                                "exemplar": false,
+                                                "expr": "count(node_systemd_unit_state{host=\"$host\", state=\"failed\"} == 1) OR on() vector(0)",
                                                 "format": "table",
-                                                "instant": true,
-                                                "legendFormat": "Requests",
-                                                "range": false
+                                                "instant": false,
+                                                "legendFormat": "__auto",
+                                                "range": true
+                                            }
+                                        },
+                                        "refId": "A",
+                                        "hidden": false
+                                    }
+                                }
+                            ],
+                            "transformations": [],
+                            "queryOptions": {}
+                        }
+                    },
+                    "vizConfig": {
+                        "kind": "VizConfig",
+                        "group": "stat",
+                        "version": "13.0.3",
+                        "spec": {
+                            "options": {
+                                "colorMode": "value",
+                                "graphMode": "area",
+                                "justifyMode": "auto",
+                                "orientation": "auto",
+                                "percentChangeColorMode": "standard",
+                                "reduceOptions": {
+                                    "calcs": [
+                                        "lastNotNull"
+                                    ],
+                                    "fields": "",
+                                    "values": false
+                                },
+                                "showPercentChange": false,
+                                "textMode": "auto",
+                                "wideLayout": true
+                            },
+                            "fieldConfig": {
+                                "defaults": {
+                                    "unit": "short",
+                                    "mappings": [
+                                        {
+                                            "type": "value",
+                                            "options": {
+                                                "0": {
+                                                    "text": "No issues",
+                                                    "color": "green",
+                                                    "index": 0
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "value": 0,
+                                                "color": "green"
+                                            },
+                                            {
+                                                "value": 1,
+                                                "color": "dark-red"
+                                            }
+                                        ]
+                                    },
+                                    "color": {
+                                        "mode": "thresholds"
+                                    }
+                                },
+                                "overrides": []
+                            }
+                        }
+                    }
+                }
+            },
+            "panel-2": {
+                "kind": "Panel",
+                "spec": {
+                    "id": 2,
+                    "title": "CPU",
+                    "description": "",
+                    "links": [],
+                    "data": {
+                        "kind": "QueryGroup",
+                        "spec": {
+                            "queries": [
+                                {
+                                    "kind": "PanelQuery",
+                                    "spec": {
+                                        "query": {
+                                            "kind": "DataQuery",
+                                            "group": "prometheus",
+                                            "version": "v0",
+                                            "datasource": {
+                                                "name": "PBFA97CFB590B2093"
+                                            },
+                                            "spec": {
+                                                "editorMode": "code",
+                                                "expr": "100 - (avg(rate(node_cpu_seconds_total{host=\"$host\", mode=\"idle\"}[$__rate_interval])) * 100)",
+                                                "legendFormat": "__auto",
+                                                "range": true
+                                            }
+                                        },
+                                        "refId": "A",
+                                        "hidden": false
+                                    }
+                                }
+                            ],
+                            "transformations": [],
+                            "queryOptions": {}
+                        }
+                    },
+                    "vizConfig": {
+                        "kind": "VizConfig",
+                        "group": "stat",
+                        "version": "13.0.3",
+                        "spec": {
+                            "options": {
+                                "colorMode": "value",
+                                "graphMode": "area",
+                                "justifyMode": "auto",
+                                "orientation": "auto",
+                                "percentChangeColorMode": "standard",
+                                "reduceOptions": {
+                                    "calcs": [
+                                        "lastNotNull"
+                                    ],
+                                    "fields": "",
+                                    "values": false
+                                },
+                                "showPercentChange": false,
+                                "textMode": "auto",
+                                "wideLayout": true
+                            },
+                            "fieldConfig": {
+                                "defaults": {
+                                    "unit": "percent",
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "value": 0,
+                                                "color": "green"
+                                            },
+                                            {
+                                                "value": 70,
+                                                "color": "yellow"
+                                            },
+                                            {
+                                                "value": 80,
+                                                "color": "orange"
+                                            },
+                                            {
+                                                "value": 95,
+                                                "color": "dark-red"
+                                            }
+                                        ]
+                                    },
+                                    "color": {
+                                        "mode": "thresholds"
+                                    }
+                                },
+                                "overrides": []
+                            }
+                        }
+                    }
+                }
+            },
+            "panel-3": {
+                "kind": "Panel",
+                "spec": {
+                    "id": 3,
+                    "title": "RAM",
+                    "description": "",
+                    "links": [],
+                    "data": {
+                        "kind": "QueryGroup",
+                        "spec": {
+                            "queries": [
+                                {
+                                    "kind": "PanelQuery",
+                                    "spec": {
+                                        "query": {
+                                            "kind": "DataQuery",
+                                            "group": "prometheus",
+                                            "version": "v0",
+                                            "datasource": {
+                                                "name": "PBFA97CFB590B2093"
+                                            },
+                                            "spec": {
+                                                "editorMode": "code",
+                                                "expr": "100 - ((node_memory_MemAvailable_bytes{host=\"$host\"} / node_memory_MemTotal_bytes{host=\"$host\"}) * 100)",
+                                                "legendFormat": "__auto",
+                                                "range": true
+                                            }
+                                        },
+                                        "refId": "A",
+                                        "hidden": false
+                                    }
+                                }
+                            ],
+                            "transformations": [],
+                            "queryOptions": {}
+                        }
+                    },
+                    "vizConfig": {
+                        "kind": "VizConfig",
+                        "group": "stat",
+                        "version": "13.0.3",
+                        "spec": {
+                            "options": {
+                                "colorMode": "value",
+                                "graphMode": "area",
+                                "justifyMode": "auto",
+                                "orientation": "auto",
+                                "percentChangeColorMode": "standard",
+                                "reduceOptions": {
+                                    "calcs": [
+                                        "lastNotNull"
+                                    ],
+                                    "fields": "",
+                                    "values": false
+                                },
+                                "showPercentChange": false,
+                                "textMode": "auto",
+                                "wideLayout": true
+                            },
+                            "fieldConfig": {
+                                "defaults": {
+                                    "unit": "percent",
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "value": 0,
+                                                "color": "blue"
+                                            },
+                                            {
+                                                "value": 80,
+                                                "color": "orange"
+                                            },
+                                            {
+                                                "value": 95,
+                                                "color": "dark-red"
+                                            }
+                                        ]
+                                    },
+                                    "color": {
+                                        "mode": "thresholds"
+                                    }
+                                },
+                                "overrides": []
+                            }
+                        }
+                    }
+                }
+            },
+            "panel-4": {
+                "kind": "Panel",
+                "spec": {
+                    "id": 4,
+                    "title": "Storage Used",
+                    "description": "",
+                    "links": [],
+                    "data": {
+                        "kind": "QueryGroup",
+                        "spec": {
+                            "queries": [
+                                {
+                                    "kind": "PanelQuery",
+                                    "spec": {
+                                        "query": {
+                                            "kind": "DataQuery",
+                                            "group": "prometheus",
+                                            "version": "v0",
+                                            "datasource": {
+                                                "name": "PBFA97CFB590B2093"
+                                            },
+                                            "spec": {
+                                                "editorMode": "code",
+                                                "exemplar": false,
+                                                "expr": "max(100 - 100 * node_filesystem_avail_bytes{host=\"$host\", fstype!~\"tmpfs|virtiofs\", mountpoint!~\"/boot.*\"} / node_filesystem_size_bytes{host=\"$host\", fstype!~\"tmpfs|virtiofs\", mountpoint!~\"/boot.*\"})",
+                                                "format": "time_series",
+                                                "instant": false,
+                                                "legendFormat": "__auto",
+                                                "range": true
+                                            }
+                                        },
+                                        "refId": "A",
+                                        "hidden": false
+                                    }
+                                }
+                            ],
+                            "transformations": [],
+                            "queryOptions": {}
+                        }
+                    },
+                    "vizConfig": {
+                        "kind": "VizConfig",
+                        "group": "stat",
+                        "version": "13.0.3",
+                        "spec": {
+                            "options": {
+                                "colorMode": "value",
+                                "graphMode": "area",
+                                "justifyMode": "auto",
+                                "orientation": "auto",
+                                "percentChangeColorMode": "standard",
+                                "reduceOptions": {
+                                    "calcs": [
+                                        "lastNotNull"
+                                    ],
+                                    "fields": "",
+                                    "values": false
+                                },
+                                "showPercentChange": false,
+                                "textMode": "auto",
+                                "wideLayout": true
+                            },
+                            "fieldConfig": {
+                                "defaults": {
+                                    "unit": "percent",
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "value": 0,
+                                                "color": "green"
+                                            },
+                                            {
+                                                "value": 80,
+                                                "color": "orange"
+                                            },
+                                            {
+                                                "value": 90,
+                                                "color": "dark-red"
+                                            }
+                                        ]
+                                    },
+                                    "color": {
+                                        "mode": "thresholds"
+                                    }
+                                },
+                                "overrides": []
+                            }
+                        }
+                    }
+                }
+            },
+            "panel-5": {
+                "kind": "Panel",
+                "spec": {
+                    "id": 5,
+                    "title": "CPU Temp",
+                    "description": "",
+                    "links": [],
+                    "data": {
+                        "kind": "QueryGroup",
+                        "spec": {
+                            "queries": [
+                                {
+                                    "kind": "PanelQuery",
+                                    "spec": {
+                                        "query": {
+                                            "kind": "DataQuery",
+                                            "group": "prometheus",
+                                            "version": "v0",
+                                            "datasource": {
+                                                "name": "PBFA97CFB590B2093"
+                                            },
+                                            "spec": {
+                                                "editorMode": "code",
+                                                "exemplar": false,
+                                                "expr": "max(node_hwmon_temp_celsius{host=\"$host\"})",
+                                                "format": "table",
+                                                "instant": false,
+                                                "legendFormat": "__auto",
+                                                "range": true
+                                            }
+                                        },
+                                        "refId": "A",
+                                        "hidden": false
+                                    }
+                                }
+                            ],
+                            "transformations": [],
+                            "queryOptions": {}
+                        }
+                    },
+                    "vizConfig": {
+                        "kind": "VizConfig",
+                        "group": "stat",
+                        "version": "13.0.3",
+                        "spec": {
+                            "options": {
+                                "colorMode": "value",
+                                "graphMode": "area",
+                                "justifyMode": "auto",
+                                "orientation": "auto",
+                                "percentChangeColorMode": "standard",
+                                "reduceOptions": {
+                                    "calcs": [
+                                        "lastNotNull"
+                                    ],
+                                    "fields": "",
+                                    "values": false
+                                },
+                                "showPercentChange": false,
+                                "textMode": "auto",
+                                "wideLayout": true
+                            },
+                            "fieldConfig": {
+                                "defaults": {
+                                    "unit": "celsius",
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "value": 0,
+                                                "color": "green"
+                                            },
+                                            {
+                                                "value": 60,
+                                                "color": "yellow"
+                                            },
+                                            {
+                                                "value": 75,
+                                                "color": "orange"
+                                            },
+                                            {
+                                                "value": 90,
+                                                "color": "dark-red"
+                                            }
+                                        ]
+                                    },
+                                    "color": {
+                                        "mode": "thresholds"
+                                    }
+                                },
+                                "overrides": []
+                            }
+                        }
+                    }
+                }
+            },
+            "panel-6": {
+                "kind": "Panel",
+                "spec": {
+                    "id": 6,
+                    "title": "Battery Charge",
+                    "description": "",
+                    "links": [],
+                    "data": {
+                        "kind": "QueryGroup",
+                        "spec": {
+                            "queries": [
+                                {
+                                    "kind": "PanelQuery",
+                                    "spec": {
+                                        "query": {
+                                            "kind": "DataQuery",
+                                            "group": "prometheus",
+                                            "version": "v0",
+                                            "datasource": {
+                                                "name": "PBFA97CFB590B2093"
+                                            },
+                                            "spec": {
+                                                "editorMode": "code",
+                                                "expr": "node_power_supply_capacity",
+                                                "range": true
+                                            }
+                                        },
+                                        "refId": "A",
+                                        "hidden": false
+                                    }
+                                }
+                            ],
+                            "transformations": [],
+                            "queryOptions": {}
+                        }
+                    },
+                    "vizConfig": {
+                        "kind": "VizConfig",
+                        "group": "stat",
+                        "version": "13.0.3",
+                        "spec": {
+                            "options": {
+                                "colorMode": "value",
+                                "graphMode": "area",
+                                "justifyMode": "auto",
+                                "orientation": "vertical",
+                                "percentChangeColorMode": "standard",
+                                "reduceOptions": {
+                                    "calcs": [
+                                        "lastNotNull"
+                                    ],
+                                    "fields": "",
+                                    "values": false
+                                },
+                                "showPercentChange": false,
+                                "textMode": "value",
+                                "wideLayout": true
+                            },
+                            "fieldConfig": {
+                                "defaults": {
+                                    "unit": "percent",
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "value": 0,
+                                                "color": "dark-red"
+                                            },
+                                            {
+                                                "value": 90,
+                                                "color": "green"
+                                            }
+                                        ]
+                                    },
+                                    "color": {
+                                        "mode": "shades",
+                                        "fixedColor": "green"
+                                    }
+                                },
+                                "overrides": []
+                            }
+                        }
+                    }
+                }
+            },
+            "panel-7": {
+                "kind": "Panel",
+                "spec": {
+                    "id": 7,
+                    "title": "Per core CPU",
+                    "description": "",
+                    "links": [],
+                    "data": {
+                        "kind": "QueryGroup",
+                        "spec": {
+                            "queries": [
+                                {
+                                    "kind": "PanelQuery",
+                                    "spec": {
+                                        "query": {
+                                            "kind": "DataQuery",
+                                            "group": "prometheus",
+                                            "version": "v0",
+                                            "datasource": {
+                                                "name": "PBFA97CFB590B2093"
+                                            },
+                                            "spec": {
+                                                "editorMode": "code",
+                                                "expr": "100 - (rate(node_cpu_seconds_total{host=\"$host\", mode=\"idle\"}[$__rate_interval]) * 100)",
+                                                "legendFormat": "{{cpu}}",
+                                                "range": true
+                                            }
+                                        },
+                                        "refId": "A",
+                                        "hidden": false
+                                    }
+                                }
+                            ],
+                            "transformations": [],
+                            "queryOptions": {}
+                        }
+                    },
+                    "vizConfig": {
+                        "kind": "VizConfig",
+                        "group": "timeseries",
+                        "version": "13.0.3",
+                        "spec": {
+                            "options": {
+                                "annotations": {
+                                    "clustering": -1,
+                                    "multiLane": false
+                                },
+                                "legend": {
+                                    "calcs": [],
+                                    "displayMode": "list",
+                                    "placement": "bottom",
+                                    "showLegend": true
+                                },
+                                "tooltip": {
+                                    "hideZeros": false,
+                                    "mode": "single",
+                                    "sort": "none"
+                                }
+                            },
+                            "fieldConfig": {
+                                "defaults": {
+                                    "unit": "percent",
+                                    "min": 0,
+                                    "max": 100,
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "value": 0,
+                                                "color": "green"
+                                            },
+                                            {
+                                                "value": 80,
+                                                "color": "red"
+                                            }
+                                        ]
+                                    },
+                                    "color": {
+                                        "mode": "palette-classic"
+                                    },
+                                    "custom": {
+                                        "axisBorderShow": false,
+                                        "axisCenteredZero": false,
+                                        "axisColorMode": "text",
+                                        "axisLabel": "",
+                                        "axisPlacement": "auto",
+                                        "barAlignment": 0,
+                                        "barWidthFactor": 0.6,
+                                        "drawStyle": "line",
+                                        "fillOpacity": 0,
+                                        "gradientMode": "none",
+                                        "hideFrom": {
+                                            "legend": false,
+                                            "tooltip": false,
+                                            "viz": false
+                                        },
+                                        "insertNulls": false,
+                                        "lineInterpolation": "linear",
+                                        "lineWidth": 1,
+                                        "pointSize": 5,
+                                        "scaleDistribution": {
+                                            "type": "linear"
+                                        },
+                                        "showPoints": "auto",
+                                        "showValues": false,
+                                        "spanNulls": false,
+                                        "stacking": {
+                                            "group": "A",
+                                            "mode": "none"
+                                        },
+                                        "thresholdsStyle": {
+                                            "mode": "area"
+                                        }
+                                    }
+                                },
+                                "overrides": []
+                            }
+                        }
+                    }
+                }
+            },
+            "panel-8": {
+                "kind": "Panel",
+                "spec": {
+                    "id": 8,
+                    "title": "CPU - Mode",
+                    "description": "",
+                    "links": [],
+                    "data": {
+                        "kind": "QueryGroup",
+                        "spec": {
+                            "queries": [
+                                {
+                                    "kind": "PanelQuery",
+                                    "spec": {
+                                        "query": {
+                                            "kind": "DataQuery",
+                                            "group": "prometheus",
+                                            "version": "v0",
+                                            "datasource": {
+                                                "name": "PBFA97CFB590B2093"
+                                            },
+                                            "spec": {
+                                                "editorMode": "code",
+                                                "expr": "100 * sum by (mode) (rate(node_cpu_seconds_total{host=\"$host\", mode!=\"idle\"}[$__rate_interval])) / scalar(count(count by (cpu) (node_cpu_seconds_total{host=\"$host\"})))",
+                                                "legendFormat": "{{mode}}",
+                                                "range": true
+                                            }
+                                        },
+                                        "refId": "A",
+                                        "hidden": false
+                                    }
+                                }
+                            ],
+                            "transformations": [],
+                            "queryOptions": {}
+                        }
+                    },
+                    "vizConfig": {
+                        "kind": "VizConfig",
+                        "group": "timeseries",
+                        "version": "13.0.3",
+                        "spec": {
+                            "options": {
+                                "annotations": {
+                                    "clustering": -1,
+                                    "multiLane": false
+                                },
+                                "legend": {
+                                    "calcs": [],
+                                    "displayMode": "list",
+                                    "placement": "bottom",
+                                    "showLegend": true
+                                },
+                                "tooltip": {
+                                    "hideZeros": false,
+                                    "mode": "single",
+                                    "sort": "none"
+                                }
+                            },
+                            "fieldConfig": {
+                                "defaults": {
+                                    "unit": "percent",
+                                    "max": 100,
+                                    "thresholds": {
+                                        "mode": "percentage",
+                                        "steps": [
+                                            {
+                                                "value": 0,
+                                                "color": "green"
+                                            },
+                                            {
+                                                "value": 80,
+                                                "color": "red"
+                                            }
+                                        ]
+                                    },
+                                    "color": {
+                                        "mode": "palette-classic"
+                                    },
+                                    "custom": {
+                                        "axisBorderShow": false,
+                                        "axisCenteredZero": false,
+                                        "axisColorMode": "text",
+                                        "axisLabel": "",
+                                        "axisPlacement": "auto",
+                                        "barAlignment": 0,
+                                        "barWidthFactor": 0.6,
+                                        "drawStyle": "line",
+                                        "fillOpacity": 0,
+                                        "gradientMode": "none",
+                                        "hideFrom": {
+                                            "legend": false,
+                                            "tooltip": false,
+                                            "viz": false
+                                        },
+                                        "insertNulls": false,
+                                        "lineInterpolation": "linear",
+                                        "lineWidth": 1,
+                                        "pointSize": 5,
+                                        "scaleDistribution": {
+                                            "type": "linear"
+                                        },
+                                        "showPoints": "auto",
+                                        "showValues": false,
+                                        "spanNulls": false,
+                                        "stacking": {
+                                            "group": "A",
+                                            "mode": "normal"
+                                        },
+                                        "thresholdsStyle": {
+                                            "mode": "area"
+                                        }
+                                    }
+                                },
+                                "overrides": []
+                            }
+                        }
+                    }
+                }
+            },
+            "panel-9": {
+                "kind": "Panel",
+                "spec": {
+                    "id": 9,
+                    "title": "Network IO",
+                    "description": "",
+                    "links": [],
+                    "data": {
+                        "kind": "QueryGroup",
+                        "spec": {
+                            "queries": [
+                                {
+                                    "kind": "PanelQuery",
+                                    "spec": {
+                                        "query": {
+                                            "kind": "DataQuery",
+                                            "group": "prometheus",
+                                            "version": "v0",
+                                            "datasource": {
+                                                "name": "PBFA97CFB590B2093"
+                                            },
+                                            "spec": {
+                                                "editorMode": "code",
+                                                "expr": "sum by (device) (rate(node_network_receive_bytes_total{host=\"$host\", device!~\"lo|veth.*|tap.*|vm-.*\"}[$__rate_interval]))",
+                                                "legendFormat": "{{device}} - Rx",
+                                                "range": true
                                             }
                                         },
                                         "refId": "A",
@@ -1053,12 +1211,10 @@
                                             },
                                             "spec": {
                                                 "editorMode": "code",
-                                                "exemplar": false,
-                                                "expr": "topk(10, sum by (service) (increase(traefik_service_requests_bytes_total[$__range])))",
-                                                "format": "table",
-                                                "instant": true,
-                                                "legendFormat": "{{service}}",
-                                                "range": false
+                                                "expr": "-sum by (device) (rate(node_network_transmit_bytes_total{host=\"$host\", device!~\"lo|veth.*|tap.*|vm-.*\"}[$__rate_interval]))",
+                                                "instant": false,
+                                                "legendFormat": "{{device}} - Tx",
+                                                "range": true
                                             }
                                         },
                                         "refId": "B",
@@ -1072,37 +1228,29 @@
                     },
                     "vizConfig": {
                         "kind": "VizConfig",
-                        "group": "barchart",
-                        "version": "13.0.1+security-01",
+                        "group": "timeseries",
+                        "version": "13.0.3",
                         "spec": {
                             "options": {
-                                "barRadius": 0,
-                                "barWidth": 0.97,
-                                "colorByField": "service",
-                                "fullHighlight": false,
-                                "groupWidth": 1,
+                                "annotations": {
+                                    "clustering": -1,
+                                    "multiLane": false
+                                },
                                 "legend": {
-                                    "calcs": [
-                                        "lastNotNull"
-                                    ],
+                                    "calcs": [],
                                     "displayMode": "list",
                                     "placement": "bottom",
-                                    "showLegend": false
+                                    "showLegend": true
                                 },
-                                "orientation": "auto",
-                                "showValue": "auto",
-                                "stacking": "none",
                                 "tooltip": {
                                     "hideZeros": false,
                                     "mode": "single",
                                     "sort": "none"
-                                },
-                                "xField": "service",
-                                "xTickLabelRotation": 0,
-                                "xTickLabelSpacing": 0
+                                }
                             },
                             "fieldConfig": {
                                 "defaults": {
+                                    "unit": "binBps",
                                     "thresholds": {
                                         "mode": "absolute",
                                         "steps": [
@@ -1117,8 +1265,7 @@
                                         ]
                                     },
                                     "color": {
-                                        "mode": "palette-classic",
-                                        "fixedColor": "dark-blue"
+                                        "mode": "palette-classic"
                                     },
                                     "custom": {
                                         "axisBorderShow": false,
@@ -1126,52 +1273,36 @@
                                         "axisColorMode": "text",
                                         "axisLabel": "",
                                         "axisPlacement": "auto",
-                                        "fillOpacity": 80,
+                                        "barAlignment": 0,
+                                        "barWidthFactor": 0.6,
+                                        "drawStyle": "line",
+                                        "fillOpacity": 0,
                                         "gradientMode": "none",
                                         "hideFrom": {
                                             "legend": false,
                                             "tooltip": false,
                                             "viz": false
                                         },
+                                        "insertNulls": false,
+                                        "lineInterpolation": "linear",
                                         "lineWidth": 1,
+                                        "pointSize": 5,
                                         "scaleDistribution": {
                                             "type": "linear"
+                                        },
+                                        "showPoints": "auto",
+                                        "showValues": false,
+                                        "spanNulls": false,
+                                        "stacking": {
+                                            "group": "A",
+                                            "mode": "none"
                                         },
                                         "thresholdsStyle": {
                                             "mode": "off"
                                         }
                                     }
                                 },
-                                "overrides": [
-                                    {
-                                        "matcher": {
-                                            "id": "byFrameRefID",
-                                            "options": "B"
-                                        },
-                                        "properties": [
-                                            {
-                                                "id": "unit",
-                                                "value": "bytes"
-                                            },
-                                            {
-                                                "id": "custom.axisPlacement",
-                                                "value": "right"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "matcher": {
-                                            "id": "byFrameRefID",
-                                            "options": "A"
-                                        },
-                                        "properties": [
-                                            {
-                                                "id": "unit",
-                                                "value": "reqps"
-                                            }
-                                        ]
-                                    }
-                                ]
+                                "overrides": []
                             }
                         }
                     }
@@ -1188,20 +1319,7 @@
                             "x": 0,
                             "y": 0,
                             "width": 3,
-                            "height": 3,
-                            "element": {
-                                "kind": "ElementReference",
-                                "name": "panel-1"
-                            }
-                        }
-                    },
-                    {
-                        "kind": "GridLayoutItem",
-                        "spec": {
-                            "x": 3,
-                            "y": 0,
-                            "width": 3,
-                            "height": 3,
+                            "height": 4,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-2"
@@ -1211,10 +1329,10 @@
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 6,
+                            "x": 3,
                             "y": 0,
                             "width": 3,
-                            "height": 3,
+                            "height": 4,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-3"
@@ -1224,10 +1342,10 @@
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 9,
+                            "x": 6,
                             "y": 0,
                             "width": 3,
-                            "height": 3,
+                            "height": 4,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-4"
@@ -1237,10 +1355,10 @@
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 20,
+                            "x": 9,
                             "y": 0,
-                            "width": 4,
-                            "height": 5,
+                            "width": 3,
+                            "height": 4,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-5"
@@ -1250,10 +1368,23 @@
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 0,
-                            "y": 3,
-                            "width": 14,
-                            "height": 7,
+                            "x": 12,
+                            "y": 0,
+                            "width": 3,
+                            "height": 4,
+                            "element": {
+                                "kind": "ElementReference",
+                                "name": "panel-12"
+                            }
+                        }
+                    },
+                    {
+                        "kind": "GridLayoutItem",
+                        "spec": {
+                            "x": 18,
+                            "y": 0,
+                            "width": 3,
+                            "height": 4,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-6"
@@ -1263,10 +1394,36 @@
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 14,
-                            "y": 5,
-                            "width": 10,
-                            "height": 12,
+                            "x": 21,
+                            "y": 0,
+                            "width": 3,
+                            "height": 4,
+                            "element": {
+                                "kind": "ElementReference",
+                                "name": "panel-1"
+                            }
+                        }
+                    },
+                    {
+                        "kind": "GridLayoutItem",
+                        "spec": {
+                            "x": 0,
+                            "y": 4,
+                            "width": 12,
+                            "height": 8,
+                            "element": {
+                                "kind": "ElementReference",
+                                "name": "panel-8"
+                            }
+                        }
+                    },
+                    {
+                        "kind": "GridLayoutItem",
+                        "spec": {
+                            "x": 12,
+                            "y": 4,
+                            "width": 12,
+                            "height": 8,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-7"
@@ -1277,22 +1434,9 @@
                         "kind": "GridLayoutItem",
                         "spec": {
                             "x": 0,
-                            "y": 10,
-                            "width": 14,
-                            "height": 7,
-                            "element": {
-                                "kind": "ElementReference",
-                                "name": "panel-8"
-                            }
-                        }
-                    },
-                    {
-                        "kind": "GridLayoutItem",
-                        "spec": {
-                            "x": 0,
-                            "y": 17,
-                            "width": 14,
-                            "height": 8,
+                            "y": 12,
+                            "width": 12,
+                            "height": 9,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-9"
@@ -1302,13 +1446,26 @@
                     {
                         "kind": "GridLayoutItem",
                         "spec": {
-                            "x": 16,
-                            "y": 17,
-                            "width": 8,
-                            "height": 8,
+                            "x": 12,
+                            "y": 12,
+                            "width": 12,
+                            "height": 9,
                             "element": {
                                 "kind": "ElementReference",
                                 "name": "panel-10"
+                            }
+                        }
+                    },
+                    {
+                        "kind": "GridLayoutItem",
+                        "spec": {
+                            "x": 0,
+                            "y": 21,
+                            "width": 24,
+                            "height": 10,
+                            "element": {
+                                "kind": "ElementReference",
+                                "name": "panel-11"
                             }
                         }
                     }
@@ -1321,7 +1478,7 @@
         "tags": [],
         "timeSettings": {
             "timezone": "browser",
-            "from": "now-15m",
+            "from": "now-1h",
             "to": "now",
             "autoRefresh": "",
             "autoRefreshIntervals": [
@@ -1339,8 +1496,44 @@
             "hideTimepicker": false,
             "fiscalYearStartMonth": 0
         },
-        "title": "Access & Networking",
-        "variables": [],
+        "title": "Hosts",
+        "variables": [
+            {
+                "kind": "QueryVariable",
+                "spec": {
+                    "name": "host",
+                    "current": {
+                        "text": "olympus",
+                        "value": "olympus"
+                    },
+                    "label": "Host",
+                    "hide": "hideLabel",
+                    "refresh": "onDashboardLoad",
+                    "skipUrlSync": false,
+                    "query": {
+                        "kind": "DataQuery",
+                        "group": "prometheus",
+                        "version": "v0",
+                        "datasource": {
+                            "name": "PBFA97CFB590B2093"
+                        },
+                        "spec": {
+                            "qryType": 1,
+                            "query": "label_values(node_uname_info,host)",
+                            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+                        }
+                    },
+                    "regex": "",
+                    "regexApplyTo": "value",
+                    "sort": "disabled",
+                    "definition": "label_values(node_uname_info,host)",
+                    "options": [],
+                    "multi": false,
+                    "includeAll": false,
+                    "allowCustomValue": true
+                }
+            }
+        ],
         "preferences": {
             "layout": {
                 "kind": "GridLayout",

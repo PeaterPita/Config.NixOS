@@ -64,6 +64,7 @@
           dashboards.settings.providers = [
             {
               name = "default";
+              allowUiUpdates = true;
               options.path = ./dashboards;
             }
           ];
