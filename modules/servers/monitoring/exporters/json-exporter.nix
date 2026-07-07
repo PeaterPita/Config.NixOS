@@ -7,7 +7,6 @@
 let
   cfg = config.homelab.services.monitoring.json-exporter;
   yaml = pkgs.formats.yaml { };
-
 in
 {
   options.homelab.services.monitoring.json-exporter = {

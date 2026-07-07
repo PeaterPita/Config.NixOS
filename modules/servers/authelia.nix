@@ -146,10 +146,6 @@
 
           };
 
-          telemetry.metrics = {
-            enabled = true;
-          };
-
           server = {
             address = "tcp://0.0.0.0:${toString cfg.port}";
             buffers.read = 8192;
