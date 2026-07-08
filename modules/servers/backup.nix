@@ -49,7 +49,7 @@ in
           group = "root";
           listenAddress = "127.0.0.1";
           passwordFile = config.sops.secrets."restic/password".path;
-          refreshInterval = 60 * 60 * 60;
+          refreshInterval = 60 * 60 * 2;
         };
 
         scrapeConfigs = [
