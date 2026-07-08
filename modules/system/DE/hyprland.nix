@@ -15,6 +15,7 @@ in
 
   config = lib.mkIf cfg.enable {
     modules.wayland.enable = true;
+    modules.dolphin.enable = true;
 
     programs.hyprland = {
       enable = true;

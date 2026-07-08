@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   osConfig,
   ...
@@ -20,10 +19,6 @@ in
       noctalia.enable = true;
       kitty.enable = true;
     };
-    home.packages = with pkgs; [
-      ffmpeg
-      kdePackages.dolphin
-    ];
 
     wayland.windowManager.hyprland = {
       enable = true;
