@@ -31,7 +31,7 @@ in
       ++ lib.optional cfg.pcsx2.enable pcsx2
       ++ lib.optional cfg.ds.enable azahar
       ++ lib.optional cfg.vintagestory.enable vintagestory
-      ++ lib.optional cfg.moonlight.enable moonlight;
+      ++ lib.optional cfg.moonlight.enable moonlight-qt;
 
   };
 }
