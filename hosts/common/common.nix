@@ -43,12 +43,11 @@
           "credentials=${config.sops.secrets."samba".path}"
           "uid=peaterpita"
           "gid=users"
-          "x-systemd.automount"
-          "noauto"
-          "x-systemd.idle-timeout=60"
-          "x-systemd.mount-timeout=5s"
           "_netdev"
           "nofail"
+          "x-systemd.mount-timeout=15s"
+          "vers=3.0"
+          "serverino"
         ];
       };
 

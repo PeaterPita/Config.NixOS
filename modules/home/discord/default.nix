@@ -17,6 +17,11 @@ in
     # programs.vesktop.enable = true;
     home.packages = with pkgs; [
       unstable.discord
+
+      (pkgs.element-desktop.override {
+        commandLineArgs = [ "--password-store=basic" ];
+      })
+
     ];
   };
 }
