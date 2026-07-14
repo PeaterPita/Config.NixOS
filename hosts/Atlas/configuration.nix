@@ -1,18 +1,23 @@
 {
   pkgs,
-  lib,
   ...
 }:
 
 {
   boot.kernelModules = [ "ntsync" ];
 
-  environment.systemPackages = with pkgs; [
+  services.udev.packages = with pkgs; [
+    heimdall
   ];
 
   system.isDesktop = true;
 
   services.flatpak.enable = true;
+
+  services.greetd.settings.initial_session = {
+    command = "uwsm start -e -D Hyprland hyprland.desktop";
+    user = "peaterpita";
+  };
 
   modules = {
     kdeConnect.enable = true;
@@ -21,6 +26,7 @@
     obs.enable = true;
     hyprland.enable = true;
     steam.enable = true;
+    sunshine.enable = true;
     nvidia.enable = true;
     hardware = {
       g502.enable = true;

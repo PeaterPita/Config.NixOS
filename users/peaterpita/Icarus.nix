@@ -11,6 +11,8 @@
     office.enable = true;
     spotify.enable = true;
 
+    gaming.moonlight.enable = true;
+
     zsh.enable = true;
     nixvim.enable = true;
     kitty.enable = true;
