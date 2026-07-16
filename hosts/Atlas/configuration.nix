@@ -19,6 +19,8 @@
     user = "peaterpita";
   };
 
+  networking.interfaces.enp3s0.wakeOnLan.enable = true;
+
   modules = {
     kdeConnect.enable = true;
     # virt.enable = true;

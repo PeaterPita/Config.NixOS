@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   inputs,
   self,
@@ -27,6 +28,12 @@ in
     inputs.microvm.nixosModules.host
   ]
   ++ utils.filesFromDirRec ../../modules/servers;
+
+  environment.systemPackages = [
+    (pkgs.writeShellScriptBin "atlaswol" ''
+      ${pkgs.wakeonlan}/bin/wakeonlan 04:7c:16:e9:4f:d8
+    '')
+  ];
 
   sops.defaultSopsFile = ../../secrets/services.yaml;
   networking = {

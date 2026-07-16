@@ -37,17 +37,25 @@
       };
 
       fileSystems."/mnt/Olympus" = {
-        device = "//192.168.0.200/nas";
+        device = "//olympus/nas";
         fsType = "cifs";
         options = [
           "credentials=${config.sops.secrets."samba".path}"
           "uid=peaterpita"
           "gid=users"
+          "noauto"
+          "x-systemd.automount"
+          "x-systemd.idel-timeout=3m"
+          "x-systemd.mount-timeout=15s"
+          "x-systemd.after=tailscaled.service"
+          "nofail"
+          "soft"
           "_netdev"
           "nofail"
-          "x-systemd.mount-timeout=15s"
           "vers=3.0"
-          "serverino"
+          "serverinfo"
+          "mfsymlinks"
+          "noatime"
         ];
       };
 
