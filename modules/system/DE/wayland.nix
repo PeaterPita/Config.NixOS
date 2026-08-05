@@ -19,6 +19,7 @@ in
       udiskie
       libnotify
       wl-clipboard
+      networkmanagerapplet
     ];
     services.udisks2.enable = true;
     xdg.portal.enable = true;
