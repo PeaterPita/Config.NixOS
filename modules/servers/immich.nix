@@ -83,7 +83,7 @@
         };
         mediaLocation = mediaLoc;
         settings = {
-          passwordLogin.enabled = true;
+          passwordLogin.enabled = false;
           oauth = {
             buttonText = "Login With Authelia";
             issuerUrl = "https://auth.${vars.baseDomain}";
