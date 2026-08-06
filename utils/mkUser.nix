@@ -32,6 +32,7 @@
       inputs.nixvim.homeModules.nixvim
       inputs.noctalia.homeModules.default
 
+      inputs.zen-browser.homeModules.twilight-official
     ]
     ++ builtins.filter (
       path:

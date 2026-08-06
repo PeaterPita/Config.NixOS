@@ -43,6 +43,7 @@
     zathura.enable = true;
     mpv.enable = true;
     firefox.enable = true;
+    zen.enable = true;
     obsidian.enable = true;
     office.enable = true;
     scrcpy.enable = true;
