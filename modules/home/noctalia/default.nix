@@ -63,6 +63,7 @@ in
             enable_builtin_templates = true;
             builtin_ids = [
               "hyprland"
+              "niri"
               "gtk4"
               "gtk3"
               "kitty"

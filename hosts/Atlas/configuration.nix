@@ -26,7 +26,8 @@
     # virt.enable = true;
 
     obs.enable = true;
-    hyprland.enable = true;
+    # hyprland.enable = true;
+    niri.enable = true;
     steam.enable = true;
     sunshine.enable = true;
     nvidia.enable = true;
