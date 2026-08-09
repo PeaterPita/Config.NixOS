@@ -21,7 +21,5 @@ in
 
     environment.systemPackages = with pkgs; [ xwayland-satellite ];
 
-    environment.etc."xdg/menus/applications.menu".source =
-      "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
   };
 }
