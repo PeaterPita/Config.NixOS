@@ -5,10 +5,10 @@
   ...
 }:
 
-############################################################
-#                     Niri-Flake Docs:                     #
-# https://github.com/sodiboo/niri-flake/blob/main/kdl.nix  #
-############################################################
+#################################################################################################
+# Niri-Flake Docs:       https://github.com/sodiboo/niri-flake/blob/main/kdl.nix                #
+# Standard Niri Options: https://github.com/niri-wm/niri/blob/main/resources/default-config.kdl #
+#################################################################################################
 let
   cfg = config.modules.niri;
 in
