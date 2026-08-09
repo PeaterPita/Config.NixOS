@@ -16,6 +16,11 @@ let
         type = lib.types.bool;
         default = false;
       };
+      public = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+
+      };
       validUsers = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         default = [ "peaterpita" ];
@@ -47,17 +52,23 @@ in
             security = "user";
             "hosts allow" = "192.168.0.0/24 100.64.0.0/10 127.0.0.1";
             "hosts deny" = "0.0.0.0/0";
-            "map to guest" = "never";
+            "map to guest" = "Bad User";
           };
         }
-        // lib.mapAttrs (_: shareCfg: {
-          "path" = shareCfg.path;
-          "read only" = if shareCfg.readOnly then "yes" else "no";
-          "browseable" = "yes";
-          "valid users" = lib.concatStringsSep " " shareCfg.validUsers;
-          "create mask" = "0664";
-          "directory mask" = "0775";
-        }) cfg.shares;
+        // lib.mapAttrs (
+          _: shareCfg:
+          {
+            "path" = shareCfg.path;
+            "read only" = if shareCfg.readOnly then "yes" else "no";
+            "browseable" = "yes";
+            "guest ok" = if shareCfg.public then "yes" else "no";
+            "create mask" = "0664";
+            "directory mask" = "0775";
+          }
+          // lib.optionalAttrs (!shareCfg.public) {
+            "valid users" = lib.concatStringsSep " " shareCfg.validUsers;
+          }
+        ) cfg.shares;
       };
       avahi = {
         publish.enable = true;

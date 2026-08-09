@@ -47,8 +47,9 @@ in
       "d /mnt/media 0775 root media - -"
       "d /mnt/media/music 2775 root media - -"
       "d /mnt/media/movies 2775 root media - -"
-      "d /mnt/media/landing 2775 root media - -"
-      "d /mnt/nas 0700 peaterpita users - -"
+
+      "d /mnt/nas 0711 peaterpita users - -"
+      "d /mnt/nas/public 0777 nobody nobody - -"
     ];
 
     services."microvm@Hermes" = {
@@ -193,6 +194,10 @@ in
         };
         nas = {
           path = "/mnt/nas";
+        };
+        public-nas = {
+          path = "/mnt/nas/public";
+          public = true;
         };
       };
     };
