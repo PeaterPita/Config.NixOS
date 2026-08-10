@@ -32,7 +32,7 @@
 
     noctalia.enable = true;
     # hyprland.enable = true;
-    niri.enable = true;
+    mango.enable = true;
 
     zsh.enable = true;
     nixvim.enable = true;

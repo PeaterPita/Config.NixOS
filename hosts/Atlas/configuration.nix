@@ -27,7 +27,7 @@
 
     obs.enable = true;
     # hyprland.enable = true;
-    niri.enable = true;
+    mango.enable = true;
     steam.enable = true;
     sunshine.enable = true;
     nvidia.enable = true;

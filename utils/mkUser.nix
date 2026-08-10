@@ -31,7 +31,7 @@
       (utils.importIfExists ../users/${user}/${hostname}.nix) # Per host user config. Only applies to that user on that host.
       inputs.nixvim.homeModules.nixvim
       inputs.noctalia.homeModules.default
-
+      inputs.mango.hmModules.mango
       inputs.zen-browser.homeModules.twilight-official
     ]
     ++ builtins.filter (

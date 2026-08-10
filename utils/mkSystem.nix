@@ -51,6 +51,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.home-manager.nixosModules.home-manager
     inputs.sops-nix.nixosModules.sops
     inputs.niri.nixosModules.niri
+    inputs.mango.nixosModules.mango
     {
       home-manager = {
         useGlobalPkgs = true;
