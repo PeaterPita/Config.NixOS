@@ -31,6 +31,7 @@ in
           "udiskie"
           "noctalia"
         ];
+        syncobj_enable = 1;
 
         # Layout
         circle_layout = "tile,scroller";
@@ -62,7 +63,7 @@ in
         # Input
         mouse.accel = {
           profile = 1;
-          speed = 0.3;
+          speed = "1.0";
         };
 
         bind = [
@@ -78,6 +79,7 @@ in
 
           "SUPER+SHIFT,F,togglefloating"
           "SUPER,F,togglemaximizescreen"
+          "SUPER+ALT,F,togglefullscreen"
 
           "SUPER,C,centerwin"
 
