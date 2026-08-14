@@ -106,6 +106,7 @@ in
           enable_sounds = true;
         };
 
+        brightness.enable_ddcutil = true;
         calendar.enabled = false;
         weather.enabled = false;
 

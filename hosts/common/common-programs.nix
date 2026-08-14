@@ -32,6 +32,7 @@ in
       };
 
       programs.zsh.enable = true;
+      hardware.i2c.enable = true;
 
       services = {
 
@@ -57,6 +58,7 @@ in
         vim
         unrar
         brightnessctl
+        ddcutil
         qimgv
         ncdu
         xdg-utils

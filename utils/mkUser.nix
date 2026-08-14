@@ -12,6 +12,7 @@
     description = "${user} (mkUser)";
     extraGroups = [
       "wheel"
+      "i2c"
       "wireshark"
       "power"
       "networkManager"
