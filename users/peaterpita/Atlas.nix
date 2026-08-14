@@ -2,36 +2,15 @@
   pkgs,
   ...
 }:
-
 {
 
-  home.packages = with pkgs.unstable; [
-    aseprite
+  home.packages = with pkgs; [
     parsec-bin
     typescript
-    postman
-    inkscape
   ];
 
-  programs.claude-code = {
-    enable = true;
-    enableMcpIntegration = true;
-    mcpServers = {
-      nixos = {
-        command = "nix";
-        args = [
-          "run"
-          "github:utensils/mcp-nixos"
-          "--"
-        ];
-      };
-    };
-  };
-
   modules = {
-
     noctalia.enable = true;
-    # hyprland.enable = true;
     mango.enable = true;
 
     zsh.enable = true;
@@ -52,6 +31,11 @@
     gaming = {
       enable = true;
       prism.enable = true;
+    };
+
+    misc = {
+      videoediting.enable = true;
+      art.enable = true;
     };
   };
 }

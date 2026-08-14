@@ -20,7 +20,5 @@
     nixvim.enable = true;
     kitty.enable = true;
     direnv.enable = true;
-
-    misc.enable = true;
   };
 }
