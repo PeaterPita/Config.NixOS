@@ -36,6 +36,7 @@
     misc = {
       videoediting.enable = true;
       art.enable = true;
+      research.enable = true;
     };
   };
 }

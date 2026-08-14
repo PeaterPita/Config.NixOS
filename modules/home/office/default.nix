@@ -19,7 +19,6 @@ in
       hunspell
       hunspellDicts.en_GB-ise
       hyphenDicts.en_US
-      zotero
       openjdk25
     ];
 

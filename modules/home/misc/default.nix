@@ -13,6 +13,7 @@ in
     ripping.enable = lib.mkEnableOption "Tools for ripping and archiving physcial media";
     videoediting.enable = lib.mkEnableOption "Davinci resolve | kdenlive editors";
     art.enable = lib.mkEnableOption "Inkscape | Aseprite";
+    research.enable = lib.mkEnableOption "Zotero ";
   };
 
   config.home.packages =
@@ -30,5 +31,6 @@ in
     ++ lib.optionals cfg.art.enable [
       inkscape
       aseprite
-    ];
+    ]
+    ++ lib.optional cfg.research.enable zotero;
 }
