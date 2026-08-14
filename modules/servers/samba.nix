@@ -62,8 +62,14 @@ in
             "read only" = if shareCfg.readOnly then "yes" else "no";
             "browseable" = "yes";
             "guest ok" = if shareCfg.public then "yes" else "no";
-            "create mask" = "0664";
-            "directory mask" = "0775";
+            "create mask" = if shareCfg.public then "0666" else "0664";
+            "directory mask" = if shareCfg.public then "0777" else "0775";
+            "force create mode" = if shareCfg.public then "0666" else "0000";
+            "force directory mode" = if shareCfg.public then "0777" else "0000";
+          }
+          // lib.optionalAttrs shareCfg.public {
+            "force user" = "nobody";
+            "force group" = "nobody";
           }
           // lib.optionalAttrs (!shareCfg.public) {
             "valid users" = lib.concatStringsSep " " shareCfg.validUsers;
