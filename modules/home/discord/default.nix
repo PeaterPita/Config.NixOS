@@ -14,10 +14,16 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # programs.vesktop.enable = true;
-    home.packages = with pkgs; [
-      unstable.discord
+    # programs.vesktop = {
+    #   enable = true;
+    #   settings = {
+    #     hardwareAcceleration = true;
+    #     discordBranch = "stable";
+    #   };
+    # };
 
+    home.packages = with pkgs; [
+      discord
       (pkgs.element-desktop.override {
         commandLineArgs = [ "--password-store=basic" ];
       })

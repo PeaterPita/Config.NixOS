@@ -10,9 +10,7 @@
     {
       event = [ "BufWritePre" ];
       pattern = "*";
-      callback = {
-        __raw = "function() vim.lsp.buf.format({timeout_ms = 2000}) end";
-      };
+      command = "lua vim.lsp.buf.format({timeout_ms = 2000})";
     }
 
   ];

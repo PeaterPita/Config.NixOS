@@ -21,9 +21,9 @@ in
       };
     };
     hardware.steam-hardware.enable = true;
-    programs = {
-      steam.enable = true;
-      steam.extraCompatPackages = with pkgs; [ proton-ge-bin ];
+    programs.steam = {
+      enable = true;
+      extraCompatPackages = with pkgs; [ proton-ge-bin ];
     };
   };
 }

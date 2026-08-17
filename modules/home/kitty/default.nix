@@ -41,6 +41,10 @@ in
         "ctrl+shift+up" = "neighboring_window up";
         "ctrl+shift+down" = "neighboring_window down";
 
+        "ctrl+shift+equal" = "change_font_size current +2.0";
+        "ctrl+shift+minus" = "change_font_size current -2.0";
+        "ctrl+shift+backspace" = "change_font_size current 0";
+
       }
       // builtins.listToAttrs (
         map (num: {

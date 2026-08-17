@@ -4,7 +4,6 @@
   extraPlugins = [ pkgs.vimPlugins.base16-nvim ];
 
   extraConfigLua = ''
-
     local function loop_override_colors() 
       local c = require("base16-colorscheme").colors
 

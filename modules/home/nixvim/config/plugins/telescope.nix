@@ -6,7 +6,11 @@
     enable = true;
 
     settings.pickers.git_commits.git_command = [
-      "git" "log" "--pretty=oneline" "--format=%h %ar  %s" "--abbrev-commit"
+      "git"
+      "log"
+      "--pretty=oneline"
+      "--format=%h %ar  %s"
+      "--abbrev-commit"
     ];
 
     keymaps = {
