@@ -7,7 +7,7 @@
       settings.handle_leading_whitespace = true;
     };
 
-    plugins.none-ls = {
+    none-ls = {
       enable = true;
       sources = {
         diagnostics.statix.enable = true;

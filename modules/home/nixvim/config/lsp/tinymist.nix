@@ -1,6 +1,5 @@
 { lib, ... }:
 {
-
   lsp.servers.tinymist = {
     enable = true;
     config = {
