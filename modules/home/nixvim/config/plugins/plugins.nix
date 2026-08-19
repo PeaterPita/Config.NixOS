@@ -1,21 +1,19 @@
-{ pkgs, ... }:
-
 {
   plugins = {
-    nvim-autopairs = {
-      enable = true;
-      settings = {
-        disable_filetype = [
-          "TelescopePrompt"
-          "vim"
-        ];
-      };
-    };
-
     lazydev.enable = true;
+
     otter = {
       enable = true;
       settings.handle_leading_whitespace = true;
+    };
+
+    plugins.none-ls = {
+      enable = true;
+      sources = {
+        diagnostics.statix.enable = true;
+        code_actions.statix.enable = true;
+        diagnostics.deadnix.enable = true;
+      };
     };
 
     friendly-snippets.enable = true;
@@ -29,51 +27,6 @@
       };
     };
 
-    image = {
-      enable = true;
-      settings = {
-        backend = "kitty";
-        processor = "magick_cli";
-        integrations = {
-          markdown = {
-            enabled = true;
-            clear_in_insert_mode = true;
-            download_remote_images = true;
-            filetypes = [ "markdown" ];
-          };
-          typst.enabled = false;
-        };
-        max_width_window_percentage = 80;
-        window_overlap_clear_enabled = false;
-        window_overlap_clear_ft_ignore = [
-          "cmp_menu"
-          "find_files"
-        ];
-      };
-    };
-
-    wakatime.enable = true;
-
-    fidget.enable = true;
-    undotree.enable = true;
-    trouble.enable = true;
-    colorizer.enable = true;
-
-    toggleterm = {
-      enable = true;
-      settings = {
-        direction = "float";
-        float_opts = {
-          border = "curved";
-          width = 120;
-          height = 40;
-        };
-
-        open_mapping = "[[<A-f>]]";
-        start_in_insert = true;
-      };
-    };
-
     neogit = {
       enable = true;
       settings = {
@@ -83,10 +36,22 @@
       };
     };
 
-  };
+    render-markdown = {
+      enable = true;
+      settings = {
+        anti_conceal.enabled = true;
+        completions.lsp.enabled = true;
+      };
+    };
 
-  extraPackages = with pkgs; [ imagemagick ];
-  extraLuaPackages = ps: [ ps.magick ];
+    # Misc
+    wakatime.enable = true;
+    fidget.enable = true;
+    undotree.enable = true;
+    trouble.enable = true;
+    colorizer.enable = true;
+
+  };
 
   keymaps = [
     {

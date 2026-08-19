@@ -14,10 +14,6 @@
     enable = true;
     openOnSetup = true;
     settings = {
-      # Adding auto-resize causes a pause on nvim entry. Requiring a enter to continue.
-      # view = {
-      #   auto_resize = true;
-      # };
     };
 
   };

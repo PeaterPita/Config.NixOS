@@ -1,6 +1,8 @@
 {
   lib,
   pkgs,
+  inputs,
+  osConfig,
   ...
 }:
 {
@@ -18,6 +20,24 @@
   lsp = {
     inlayHints.enable = true;
     servers = {
+
+      #######
+      # Nix #
+      #######
+      nixd = {
+        enable = true;
+        config.settings.nixd = {
+          options =
+            let
+              flake = "${inputs.self}";
+              host = osConfig.networking.hostName;
+            in
+            {
+              nixos.expr = ''(builtins.getFlake "${flake}").nixosConfigurations.${host}.options'';
+              home_manager.expr = ''(builtins.getFlake "${flake}").nixosConfigurations.${host}.options.home-manager.users.type.getSubOptions [ ]'';
+            };
+        };
+      };
 
       ########
       # Rust #
@@ -69,9 +89,9 @@
         enable = true;
       };
 
-      ##########
+      #######
       # Web #
-      ##########
+      #######
       ts_ls.enable = true;
       svelte.enable = true;
       cssls.enable = true;
