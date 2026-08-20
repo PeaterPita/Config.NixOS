@@ -20,7 +20,10 @@
   };
 
   networking.interfaces.enp3s0.wakeOnLan.enable = true;
-
+  networking.firewall = {
+    allowedTCPPorts = [ 2307 ];
+    allowedUDPPorts = [ 2307 ];
+  };
   modules = {
     kdeConnect.enable = true;
     # virt.enable = true;

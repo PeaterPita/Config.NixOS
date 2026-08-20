@@ -30,6 +30,7 @@ in
     ]
     ++ lib.optionals cfg.art.enable [
       inkscape
+      gimp
       aseprite
     ]
     ++ lib.optional cfg.research.enable zotero;

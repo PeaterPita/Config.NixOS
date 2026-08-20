@@ -30,7 +30,7 @@ in
       ++ lib.optional cfg.xenia.enable xenia-canary
       ++ lib.optional cfg.pcsx2.enable pcsx2
       ++ lib.optional cfg.ds.enable azahar
-      ++ lib.optional cfg.vintagestory.enable vintagestory
+      ++ lib.optional cfg.vintagestory.enable unstable.vintagestory
       ++ lib.optional cfg.moonlight.enable moonlight-qt;
 
   };

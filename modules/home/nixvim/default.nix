@@ -36,6 +36,10 @@ in
     programs.nixvim = {
       _module.args = { inherit inputs osConfig; };
 
+      extraConfigLua = ''
+        vim.opt.rtp:append("/home/peaterpita/Coding/testing.nvim")
+      '';
+
       imports =
         (builtins.filter (path: lib.hasSuffix ".nix" path && baseNameOf path != "noctalia.nix") (
           lib.filesystem.listFilesRecursive ./config

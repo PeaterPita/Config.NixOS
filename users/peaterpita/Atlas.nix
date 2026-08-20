@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     parsec-bin
     typescript
+    jetbrains.idea
   ];
 
   modules = {
@@ -31,6 +32,8 @@
     gaming = {
       enable = true;
       prism.enable = true;
+
+      vintagestory.enable = true;
     };
 
     misc = {
