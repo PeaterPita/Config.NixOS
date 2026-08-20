@@ -33,7 +33,7 @@
       inputs.nixvim.homeModules.nixvim
       inputs.noctalia.homeModules.default
       inputs.mango.hmModules.mango
-      inputs.zen-browser.homeModules.twilight-official
+      inputs.zen-browser.homeModules.beta
     ]
     ++ builtins.filter (
       path:
