@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   plugins.web-devicons.enable = true;
 
@@ -16,9 +15,9 @@
     keymaps = {
 
       "<leader>h" = {
-        action = "keymaps";
+        action = "help_tags";
         options = {
-          desc = "List keymaps";
+          desc = "Help Tags";
         };
       };
 

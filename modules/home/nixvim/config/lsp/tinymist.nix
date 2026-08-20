@@ -15,7 +15,6 @@
       };
       on_attach = lib.nixvim.mkRaw ''
         function(client, bufnr)
-
             vim.api.nvim_create_user_command("OpenPdf", function()
                 local filepath = vim.api.nvim_buf_get_name(0)
                 if filepath:match("%.typ$") then
@@ -23,7 +22,10 @@
                     local filename = vim.fn.expand("%:t:r")
 
                     local pdf = dir .. "/build/".. filename .. ".pdf"
-                    vim.system({"xdg-open", pdf}) 
+                    local success, err = pcall(vim.ui.open, pdf)
+                    if not success then 
+                        vim.notify("Failed to open PDF: " .. tostring(err), vim.log.levels.ERROR)
+                    end 
                 end 
             end, {})
             
@@ -36,8 +38,6 @@
                 }, { bufnr = bufnr })
                 print("Pinned: " .. vim.g.typst_pinned)
             end, { desc = "[T]inymist [P]in", noremap = true })
-
-
 
             vim.keymap.set("n", "<leader>tu", function()
                 vim.g.typst_pinned = nil
