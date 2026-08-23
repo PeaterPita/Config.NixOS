@@ -15,15 +15,32 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    environment.systemPackages = with pkgs; [
-      udiskie
-      libnotify
-      wl-clipboard
-      networkmanagerapplet
-    ];
-
+    modules.dolphin.enable = true;
     programs.dconf.enable = true;
     services.udisks2.enable = true;
+
+    security.soteria.enable = true;
+    services.greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session";
+        };
+      };
+    };
+
+    environment = {
+      systemPackages = with pkgs; [
+        udiskie
+        libnotify
+        wl-clipboard
+        networkmanagerapplet
+      ];
+
+      etc."xdg/menus/applications.menu".source =
+        "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+    };
+
     xdg = {
       portal = {
         enable = true;
@@ -40,24 +57,21 @@ in
           "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
           "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
 
-          "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+          "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
           "org.freedesktop.impl.portal.AppChooser" = [ "kde" ];
         };
-      };
-    };
 
-    environment.etc."xdg/menus/applications.menu".source =
-      "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
-
-    security.soteria.enable = true;
-    services.greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session";
+        wlr = {
+          enable = true;
+          settings = {
+            screencast = {
+              chooser_type = "simple";
+              chooser_cmd = "${pkgs.slurp}/bin/slurp -f 'Monitor: %o' -or";
+            };
+          };
         };
       };
     };
-  };
 
+  };
 }

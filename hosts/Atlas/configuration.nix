@@ -6,18 +6,15 @@
 {
   boot.kernelModules = [ "ntsync" ];
 
-  services.udev.packages = with pkgs; [
-    heimdall
-  ];
+  services = {
+    udev.packages = with pkgs; [
+      heimdall
+    ];
+
+    flatpak.enable = true;
+  };
 
   system.isDesktop = true;
-
-  services.flatpak.enable = true;
-
-  services.greetd.settings.initial_session = {
-    command = "uwsm start -e -D Hyprland hyprland.desktop";
-    user = "peaterpita";
-  };
 
   networking.interfaces.enp3s0.wakeOnLan.enable = true;
   networking.firewall = {
@@ -31,6 +28,7 @@
     obs.enable = true;
     # hyprland.enable = true;
     mango.enable = true;
+    sway.enable = true;
     steam.enable = true;
     sunshine.enable = true;
     nvidia.enable = true;

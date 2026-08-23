@@ -32,7 +32,6 @@
     gaming = {
       enable = true;
       prism.enable = true;
-
       vintagestory.enable = true;
     };
 
