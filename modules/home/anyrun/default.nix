@@ -13,6 +13,9 @@ in
   options = {
     modules.anyrun.enable = lib.mkEnableOption "anyrun";
   };
+  ###############################################################################################
+  # Anyrun default config: https://github.com/anyrun-org/anyrun/blob/master/examples/config.ron #
+  ###############################################################################################
 
   config = lib.mkIf cfg.enable {
     programs.anyrun = {

@@ -50,7 +50,6 @@
     undotree.enable = true;
     trouble.enable = true;
     colorizer.enable = true;
-
   };
 
   keymaps = [

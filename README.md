@@ -17,14 +17,14 @@
 
 
 ## Machines
-| Hostname | Role | Status | CI | Notes |
-| :--- | :--- | :--- | :--- | :--- |
-| **[Atlas](docs/hosts/Atlas.md)**     | Main workhorse & Gaming   | 🟢 Functional  | ![build][atlas-badge]   | Running an NVIDIA GPU | 
-| **[Icarus](docs/hosts/Icarus.md)**    | Laptop                    | 🟢 Functional  | ![build][icarus-badge]  | Semi-light weight     |
-| &nbsp;        |                           |                |                         | |
-| **[Olympus](/docs/hosts/Olympus.md)**   | Core homelab server       | 🟡 In-Progress | ![build][olympus-badge] | In testing! Dell r730 -> Acer Laptop during this time |
-| **[Hermes](/docs/hosts/Hermes.md)**    | Ingress node              | 🟡 In-Progress | ![build][hermes-badge]  | Virtualised on **Olympus** through microVM |
-| **[Elysium](/docs/hosts/Elysium.md)**   | Off-Site Backup           | ⚫ Planned     |                         | Restic REST server |
+| Hostname      | Role                      | Status         |  Notes                                                 | CI                      | 
+| :---          | :---                      | :---           |  :---                                                  | :---:                  |
+| **Atlas**     | Main workhorse & Gaming   | 🟢 Functional  |  Running an NVIDIA GPU                                 | ![build][atlas-badge]   | 
+| **Icarus**    | Laptop                    | 🟢 Functional  |  Semi-light weight                                     | ![build][icarus-badge]  |
+| &nbsp;        |                           |                |                                                        |                         |
+| **Olympus**   | Core homelab server       | 🟡 In-Progress |  In testing! Dell r730 -> Acer Laptop during this time | ![build][olympus-badge] |
+| **Hermes**    | Ingress node              | 🟡 In-Progress |  Virtualised on **Olympus** through microVM            | ![build][hermes-badge]  |   
+| **Elysium**   | Off-Site Backup           | ⚫ Planned     |  Restic REST server                                    |                         |
 
 
 
@@ -59,7 +59,6 @@
 | **Personal Sites**      | Olympus   | 🟡 In-Progress |
 | **Speedtest Tracker**   | Olympus   | 🟢 Functional  |
 | **Filebrowser-quantum** | Olympus   | 🟢 Functional  |
-
 
 
 ## References / Resources
