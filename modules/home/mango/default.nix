@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   osConfig,
   ...
 }:
@@ -20,6 +21,7 @@ in
     modules = {
       noctalia.enable = true;
       kitty.enable = true;
+      anyrun.enable = true;
     };
 
     wayland.windowManager.mango = {
@@ -30,6 +32,9 @@ in
         exec-once = [
           "udiskie"
           "noctalia"
+          "anyrun daemon"
+          "wl-paste --type text --watch cliphist store"
+          "wl-paste --type image --watch cliphist store"
         ];
         syncobj_enable = 1;
 
@@ -66,70 +71,96 @@ in
           speed = "1.0";
         };
 
-        bind = [
-          # General
-          "SUPER,Q,spawn,kitty"
-          "SUPER,E,spawn,dolphin"
-          "SUPER,W,killclient"
-          "SUPER,R,reload_config"
+        bind =
+          let
+            # TODO: results are not actually showing immediately?
+            cmd = "anyrun --plugins libstdin.so --show-results-immediately true";
+            cliphist-anyrun = pkgs.writeShellApplication {
+              name = "cliphist-anyrun";
+              text = ''
+                export CLIPHIST_PREVIEW_WIDTH=500
 
-          "SUPER,L,spawn,noctalia msg session lock"
-          "SUPER,Space,spawn,noctalia msg panel-toggle launcher"
-          "SUPER+SHIFT,S,spawn,noctalia msg screenshot-region"
+                cliphist_list=$(cliphist list)
+                  if [ -z "$cliphist_list" ]; then
+                    echo "Clipboard Empty" | ${cmd}
+                    exit 0
+                  fi
+                  
+                  item=$(echo "$cliphist_list" | ${cmd})
+                  
+                  if [ -n "$item" ]; then
+                    echo "$item" | cliphist decode | wl-copy
+                  fi
+              '';
+            };
+          in
 
-          "SUPER+SHIFT,F,togglefloating"
-          "SUPER,F,togglemaximizescreen"
-          "SUPER+ALT,F,togglefullscreen"
+          [
+            # General
+            "SUPER,Q,spawn,kitty"
+            "SUPER,E,spawn,dolphin"
+            "SUPER,W,killclient"
+            "SUPER,R,reload_config"
 
-          "SUPER,C,centerwin"
+            "SUPER,L,spawn,noctalia msg session lock"
 
-          # Movement
-          "SUPER,Left,focusdir,left"
-          "SUPER,Right,focusdir,right"
-          "SUPER,Up,focusdir,up"
-          "SUPER,Down,focusdir,down"
+            "SUPER,Space,spawn,anyrun"
+            "SUPER,V,spawn,${cliphist-anyrun}/bin/cliphist-anyrun"
 
-          "SUPER+SHIFT,Left,exchange_client,left"
-          "SUPER+SHIFT,Right,exchange_client,right"
-          "SUPER+SHIFT,Up,exchange_client,up"
-          "SUPER+SHIFT,Down,exchange_client,down"
+            "SUPER+SHIFT,S,spawn,noctalia msg screenshot-region"
+            "SUPER+SHIFT,F,togglefloating"
+            "SUPER,F,togglemaximizescreen"
+            "SUPER+ALT,F,togglefullscreen"
 
-          "SUPER,Escape,switch_layout"
+            "SUPER,C,centerwin"
 
-          # Scratch Pads
-          "ALT,D,toggle_named_scratchpad,feishin,none,feishin"
-          "ALT,F,toggle_named_scratchpad,none,scratch-term,kitty -T scratch-term"
+            # Movement
+            "SUPER,Left,focusdir,left"
+            "SUPER,Right,focusdir,right"
+            "SUPER,Up,focusdir,up"
+            "SUPER,Down,focusdir,down"
 
-          "SUPER,I,minimized"
-          "SUPER+SHIFT,I,restore_minimized"
-          "SUPER,Tab,toggle_scratchpad"
+            "SUPER+SHIFT,Left,exchange_client,left"
+            "SUPER+SHIFT,Right,exchange_client,right"
+            "SUPER+SHIFT,Up,exchange_client,up"
+            "SUPER+SHIFT,Down,exchange_client,down"
 
-          # Audio / Special
-          "NONE,XF86AudioRaiseVolume,spawn,wpctl set-volume @DEFAULT_SINK@ 5%+"
-          "NONE,XF86AudioLowerVolume,spawn,wpctl set-volume @DEFAULT__SINK@ 5%-"
-          "NONE,XF86AudioMute,spawn,wpctl set-mute @DEFAULT_SINK@ toggle"
-          "NONE,XF86AudioMicMute, spawn, wpctl set-mute @DEFAULT_SOURCE@ toggle"
-          "NONE,XF86AudioPlay, spawn, playerctl play-pause"
-          "NONE,XF86AudioNext, spawn, playerctl next"
-          "NONE,XF86AudioPrev, spawn, playerctl previous"
-          "NONE,XF86MonBrightnessUp, spawn,  brightnessctl s 5%+"
-          "NONE,XF86MonBrightnessDown, spawn, brightnessctl s 5%-"
-        ]
-        ++ (builtins.concatLists (
-          builtins.genList (
-            i:
-            let
+            "SUPER,Escape,switch_layout"
 
-              primary = builtins.head (builtins.filter (monitor: monitor.primary) osConfig.monitors);
-              ws = i + 1;
-              ipc = "mmsg dispatch";
-            in
-            [
-              "SUPER,${toString ws},spawn_shell, ${ipc} focusmon,${primary.name} && ${ipc} view,${toString ws}"
-              "SUPER+SHIFT,${toString ws},spawn_shell, ${ipc} focusmon,${primary.name} && ${ipc} tag,${toString ws}"
-            ]
-          ) 9
-        ));
+            # Scratch Pads
+            "ALT,D,toggle_named_scratchpad,feishin,none,feishin"
+            "ALT,F,toggle_named_scratchpad,none,scratch-term,kitty -T scratch-term"
+
+            "SUPER,I,minimized"
+            "SUPER+SHIFT,I,restore_minimized"
+            "SUPER,Tab,toggle_scratchpad"
+
+            # Audio / Special
+            "NONE,XF86AudioRaiseVolume,spawn,wpctl set-volume @DEFAULT_SINK@ 5%+"
+            "NONE,XF86AudioLowerVolume,spawn,wpctl set-volume @DEFAULT__SINK@ 5%-"
+            "NONE,XF86AudioMute,spawn,wpctl set-mute @DEFAULT_SINK@ toggle"
+            "NONE,XF86AudioMicMute, spawn, wpctl set-mute @DEFAULT_SOURCE@ toggle"
+            "NONE,XF86AudioPlay, spawn, playerctl play-pause"
+            "NONE,XF86AudioNext, spawn, playerctl next"
+            "NONE,XF86AudioPrev, spawn, playerctl previous"
+            "NONE,XF86MonBrightnessUp, spawn,  brightnessctl s 5%+"
+            "NONE,XF86MonBrightnessDown, spawn, brightnessctl s 5%-"
+          ]
+          ++ (builtins.concatLists (
+            builtins.genList (
+              i:
+              let
+
+                primary = builtins.head (builtins.filter (monitor: monitor.primary) osConfig.monitors);
+                ws = i + 1;
+                ipc = "mmsg dispatch";
+              in
+              [
+                "SUPER,${toString ws},spawn_shell, ${ipc} focusmon,${primary.name} && ${ipc} view,${toString ws}"
+                "SUPER+SHIFT,${toString ws},spawn_shell, ${ipc} focusmon,${primary.name} && ${ipc} tag,${toString ws}"
+              ]
+            ) 9
+          ));
 
         mousebind = [
           "SUPER,btn_left,moveresize,curmove"

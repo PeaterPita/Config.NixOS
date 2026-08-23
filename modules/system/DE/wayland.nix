@@ -34,6 +34,7 @@ in
         udiskie
         libnotify
         wl-clipboard
+        cliphist
         networkmanagerapplet
       ];
 
