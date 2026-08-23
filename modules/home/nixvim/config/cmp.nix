@@ -1,5 +1,21 @@
 {
 
+  keymaps = [
+    {
+      mode = "i";
+      key = "<CR>";
+      action.__raw = ''
+        function()
+            return vim.fn.pumvisible() == 1 and '<C-y>' or '<CR>'
+        end
+      '';
+      options = {
+        expr = true;
+        replace_keycodes = true;
+      };
+    }
+  ];
+
   plugins.blink-cmp = {
     enable = true;
     settings = {
