@@ -173,8 +173,8 @@ in
           "SUPER+SHIFT,UP,viewtoleft_have_client"
           "SUPER+SHIFT,DOWN,viewtoright_have_client"
         ];
-        # Rules
 
+        # Rules
         tagrule = [
           "id:*,monitor_name:HDMI-A-1,layout_name:scroller"
         ];
@@ -182,6 +182,10 @@ in
         windowrule = [
           "isnamedscratchpad:1,isfloating:1,appid:feishin"
           "isnamedscratchpad:1,isfloating:1,title:scratch-term"
+          "title:^(Open File|Save File)$,isfloating:1"
+          "appid:^(com.gabm.satty),isfloating:1"
+          "appid:^(org.pulseaudio.pavucontrol|org.kde.polkit-kde-authentication-agent-1),isfloating:1"
+
         ];
 
         ## Outputs

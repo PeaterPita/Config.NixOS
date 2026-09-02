@@ -7,7 +7,6 @@
   home.packages = with pkgs; [
     parsec-bin
     typescript
-    jetbrains.idea
   ];
 
   modules = {
