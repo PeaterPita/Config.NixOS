@@ -51,6 +51,7 @@
 | **Navidrome**           | Olympus   | 🟢 Functional  |
 | **Tailscale**           | Olympus   | 🟢 Functional  |
 | **Woodpecker CI**       | Olympus   | 🟢 Functional  |
+| **Home Assistant**      | Olympus   | 🟡 In-Progress |
 | **Personal Sites**      | Olympus   | 🟡 In-Progress |
 | **Speedtest Tracker**   | Olympus   | 🟢 Functional  |
 | **Filebrowser-quantum** | Olympus   | 🟢 Functional  |

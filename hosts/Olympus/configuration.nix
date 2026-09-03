@@ -176,6 +176,7 @@ in
     cache.enable = true;
 
     umami.enable = false;
+    home-assistant.enable = true;
 
     filebrowser-quantum.enable = true;
     grafana.enable = true;
