@@ -37,11 +37,9 @@
 | **Crowdsec**            | Hermes    | ⚫ Planned     |
 | &nbsp;                  |           |                |
 | **Homepage**            | Olympus   | 🟡 In-Progress |
-| **Loki**                | Olympus   | 🟢 Functional  |
 | **Ntfy**                | Olympus   | ⚫ Planned     |
-| **Alloy**               | Olympus   | 🟢 Functional  |
 | **LLDAP**               | Olympus   | 🟢 Functional  |
-| **Umami**               | Olympus   | 🟢 Functional  |
+| **Umami**               | Olympus   | 🔴 Disabled    |
 | **Immich**              | Olympus   | 🟢 Functional  |
 | **Mealie**              | Olympus   | 🟢 Functional  |
 | **Restic**              | Olympus   | 🟢 Functional  |
@@ -52,15 +50,10 @@
 | **Jellyfin**            | Olympus   | 🟢 Functional  |
 | **Navidrome**           | Olympus   | 🟢 Functional  |
 | **Tailscale**           | Olympus   | 🟢 Functional  |
-| **Prometheus**          | Olympus   | 🟢 Functional  |
-| **Adventure Log**       | Olympus   | ⚫ Planned     |
-| **Paperless-ngx**       | Olympus   | 🟢 Functional  |
 | **Woodpecker CI**       | Olympus   | 🟢 Functional  |
 | **Personal Sites**      | Olympus   | 🟡 In-Progress |
 | **Speedtest Tracker**   | Olympus   | 🟢 Functional  |
 | **Filebrowser-quantum** | Olympus   | 🟢 Functional  |
-
-
 ## References / Resources
 - [NixOS Wiki](https://wiki.nixos.org/wiki/NixOS_Wiki)
 - [NixOS manual](https://nixos.org/manual/nix/stable)

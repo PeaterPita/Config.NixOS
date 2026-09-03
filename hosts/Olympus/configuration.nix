@@ -170,12 +170,12 @@ in
     lldap.enable = true;
     authelia.enable = true;
     speedtest-tracker.enable = true;
-    umami.enable = true;
     immich.enable = true;
     wakapi.enable = true;
-    paperless-ngx.enable = true;
     woodpecker.enable = true;
     cache.enable = true;
+
+    umami.enable = false;
 
     filebrowser-quantum.enable = true;
     grafana.enable = true;
