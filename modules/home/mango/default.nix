@@ -22,7 +22,14 @@ in
       noctalia.enable = true;
       foot.enable = true;
       anyrun.enable = true;
+      mako.enable = true;
     };
+
+    services.awww.enable = true;
+    home.packages = with pkgs; [
+      waypaper
+      matugen
+    ];
 
     wayland.windowManager.mango = {
       enable = true;
