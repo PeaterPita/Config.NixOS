@@ -12,7 +12,7 @@
     (lib.mkIf config.system.isDesktop {
       boot = {
         kernel.sysctl."kernel.sysrq" = 1;
-        kernelPackages = pkgs.linuxPackages_latest;
+        kernelPackages = pkgs.linuxPackages;
         kernelParams = [
           "quiet"
           "splash"
