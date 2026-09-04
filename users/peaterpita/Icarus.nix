@@ -18,7 +18,7 @@
 
     zsh.enable = true;
     nixvim.enable = true;
-    kitty.enable = true;
+    foot.enable = true;
     direnv.enable = true;
   };
 }

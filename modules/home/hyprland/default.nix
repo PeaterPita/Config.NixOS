@@ -17,7 +17,7 @@ in
   config = lib.mkIf cfg.enable {
     modules = {
       noctalia.enable = true;
-      kitty.enable = true;
+      foot.enable = true;
     };
 
     wayland.windowManager.hyprland = {
@@ -120,7 +120,7 @@ in
           "$mod SHIFT, up,    resizeactive, 0 -100"
           "$mod SHIFT, down,  resizeactive, 0 100"
 
-          "$mod, Q, exec, kitty"
+          "$mod, Q, exec, foot"
           "$mod, E, exec, dolphin"
 
           "$mod SHIFT, S, exec, noctalia msg screenshot-region"

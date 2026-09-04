@@ -20,7 +20,7 @@ in
   config = lib.mkIf cfg.enable {
     modules = {
       noctalia.enable = true;
-      kitty.enable = true;
+      foot.enable = true;
       anyrun.enable = true;
     };
 
@@ -37,6 +37,7 @@ in
           "wl-paste --type image --watch cliphist store"
         ];
         syncobj_enable = 1;
+        xwayland_persistence = 0;
 
         # Layout
         circle_layout = "tile,scroller";
@@ -97,7 +98,7 @@ in
 
           [
             # General
-            "SUPER,Q,spawn,kitty"
+            "SUPER,Q,spawn,foot"
             "SUPER,E,spawn,dolphin"
             "SUPER,W,killclient"
             "SUPER,R,reload_config"
@@ -129,7 +130,7 @@ in
 
             # Scratch Pads
             "ALT,D,toggle_named_scratchpad,feishin,none,feishin"
-            "ALT,F,toggle_named_scratchpad,none,scratch-term,kitty -T scratch-term"
+            "ALT,F,toggle_named_scratchpad,none,scratch-term,foot -T scratch-term"
 
             "SUPER,I,minimized"
             "SUPER+SHIFT,I,restore_minimized"
@@ -181,7 +182,7 @@ in
 
         windowrule = [
           "isnamedscratchpad:1,isfloating:1,appid:feishin"
-          "isnamedscratchpad:1,isfloating:1,title:scratch-term"
+          "isnamedscratchpad:1,isfloating:1,width:0.8,height:0.8,title:scratch-term"
           "title:^(Open File|Save File)$,isfloating:1"
           "appid:^(com.gabm.satty),isfloating:1"
           "appid:^(org.pulseaudio.pavucontrol|org.kde.polkit-kde-authentication-agent-1),isfloating:1"

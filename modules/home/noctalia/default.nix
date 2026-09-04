@@ -65,7 +65,7 @@ in
               "mango"
               "gtk4"
               "gtk3"
-              "kitty"
+              "foot"
               "kcolorscheme"
             ];
 
