@@ -23,6 +23,7 @@ in
       foot.enable = true;
       anyrun.enable = true;
       mako.enable = true;
+      ironbar.enable = true;
     };
 
     services.awww.enable = true;
@@ -159,13 +160,12 @@ in
               i:
               let
 
-                primary = builtins.head (builtins.filter (monitor: monitor.primary) osConfig.monitors);
                 ws = i + 1;
                 ipc = "mmsg dispatch";
               in
               [
-                "SUPER,${toString ws},spawn_shell, ${ipc} focusmon,${primary.name} && ${ipc} view,${toString ws}"
-                "SUPER+SHIFT,${toString ws},spawn_shell, ${ipc} focusmon,${primary.name} && ${ipc} tag,${toString ws}"
+                "SUPER,${toString ws},spawn_shell, ${ipc} focusmon,${osConfig.monitors.primary.name} && ${ipc} view,${toString ws}"
+                "SUPER+SHIFT,${toString ws},spawn_shell, ${ipc} focusmon,${osConfig.monitors.primary.name} && ${ipc} tag,${toString ws}"
               ]
             ) 9
           ));
@@ -206,7 +206,7 @@ in
             disable = if monitor.enabled then "0" else "1";
           in
           "name:^${monitor.name}$,width:${toString monitor.width},height:${toString monitor.height},refresh:${toString monitor.refreshRate},x:${x},y:${y},scale:${toString monitor.scale},disable:${disable}"
-        ) osConfig.monitors;
+        ) osConfig.monitors.all;
 
       };
     };
