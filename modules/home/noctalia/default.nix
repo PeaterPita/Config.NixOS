@@ -30,7 +30,7 @@ in
               match = monitor.name;
               enabled = false;
             };
-          }) (builtins.filter (monitor: !monitor.primary) osConfig.monitors)
+          }) (builtins.filter (monitor: !monitor.primary) osConfig.monitors.all)
         );
 
         widget = {

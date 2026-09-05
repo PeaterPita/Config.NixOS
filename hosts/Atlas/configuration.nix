@@ -38,7 +38,7 @@
   };
   virtualisation.docker.enable = true;
 
-  monitors = [
+  monitors.all = [
     {
       name = "DP-1";
       width = 2560;

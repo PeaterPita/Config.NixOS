@@ -7,7 +7,6 @@
 
 let
   cfg = config.modules.hyprland;
-  primary = builtins.head (builtins.filter (monitor: monitor.primary) osConfig.monitors);
 in
 {
   options = {
@@ -29,8 +28,8 @@ in
         "$mod" = "SUPER";
 
         exec-once = [
-          "hyprctl dispatch focusmonitor ${primary.name}"
-          "xrandr --output ${primary.name} --primary"
+          "hyprctl dispatch focusmonitor ${osConfig.monitors.primary.name}"
+          "xrandr --output ${osConfig.monitors.primary.name} --primary"
           "udiskie"
           "noctalia"
         ];
@@ -57,7 +56,7 @@ in
 
         workspace =
           let
-            nonPrimary = builtins.filter (monitor: !monitor.primary) osConfig.monitors;
+            nonPrimary = builtins.filter (monitor: !monitor.primary) osConfig.monitors.all;
           in
 
           builtins.genList (
@@ -65,7 +64,7 @@ in
             let
               idx = i + 1;
             in
-            "${toString idx}, monitor:${primary.name}"
+            "${toString idx}, monitor:${osConfig.monitors.primary.name}"
             + (if idx == 1 then ",default:true" else "")
             + (if idx <= 3 then ",persistent:true" else "")
           ) 9
@@ -84,7 +83,7 @@ in
             else
               "disable"
           }"
-        ) osConfig.monitors);
+        ) osConfig.monitors.all);
 
         bindm = [
           "$mod, mouse:272, movewindow"
