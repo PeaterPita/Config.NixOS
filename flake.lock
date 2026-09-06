@@ -125,6 +125,26 @@
         "type": "github"
       }
     },
+    "mangobar": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788498965,
+        "narHash": "sha256-XXkq/6sqsdlfusMiaQfurFslfViEcBs8L9mRf3dtTZw=",
+        "owner": "mangowm",
+        "repo": "mangobar",
+        "rev": "7d419573eb28de0944e859224d0c737d4bf3fd45",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mangowm",
+        "repo": "mangobar",
+        "type": "github"
+      }
+    },
     "microvm": {
       "inputs": {
         "nixpkgs": [
@@ -241,6 +261,7 @@
         "disko": "disko",
         "home-manager": "home-manager",
         "mango": "mango",
+        "mangobar": "mangobar",
         "microvm": "microvm",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",

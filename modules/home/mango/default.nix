@@ -23,7 +23,7 @@ in
       foot.enable = true;
       anyrun.enable = true;
       mako.enable = true;
-      ironbar.enable = true;
+      mangobar.enable = true;
     };
 
     services.awww.enable = true;
@@ -41,7 +41,7 @@ in
           "udiskie"
           "noctalia"
           "anyrun daemon"
-          "ironbar"
+          "mangobar"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
         ];

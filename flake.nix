@@ -73,6 +73,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    mangobar = {
+
+      url = "github:mangowm/mangobar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
