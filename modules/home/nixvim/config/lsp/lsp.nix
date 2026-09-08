@@ -120,7 +120,6 @@
       tombi.enable = true;
       marksman.enable = true;
       sqruff.enable = true;
-      kotlin_language_server.enable = true;
 
       lua_ls =
         let

@@ -33,7 +33,6 @@
     hardware = {
       g502.enable = true;
       qmkBoards.enable = true;
-      camera.enable = true;
     };
   };
   virtualisation.docker.enable = true;
