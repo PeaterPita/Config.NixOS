@@ -11,7 +11,6 @@
 #bar {
     padding-right: 8px;
     padding-left: 8px;
-    background-color: #191114;
 }
 
 
@@ -35,7 +34,7 @@
 }
 
 #tags:empty {
-    color: #665c54;
+    color: #665c54AF;
 }
 
 
@@ -48,6 +47,7 @@
 #clock {
     padding-right: 8px;
 }
+
 
 
 /* TODO: Things to look into 

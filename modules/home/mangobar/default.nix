@@ -55,6 +55,11 @@ in
             icon-size = 14;
           };
 
+          network = {
+            format = " {ifname}";
+            format-alt = "↓{down} ↑{up}";
+          };
+
           "custom/nix" = {
             format = " 󱄅 ";
             interval = 0;

@@ -30,6 +30,10 @@ in
     home.packages = with pkgs; [
       waypaper
       matugen
+
+      grim
+      slurp
+      satty
     ];
 
     wayland.windowManager.mango = {
@@ -103,6 +107,26 @@ in
                   fi
               '';
             };
+
+            screenshot-shell = pkgs.writeShellApplication {
+              name = "screenshot-shell";
+              runtimeInputs = with pkgs; [
+                grim
+                slurp
+                wl-clipboard
+                satty
+                libnotify
+              ];
+              text = ''
+                filename=$(date +%Y-%m-%d_%H%M%S)
+
+                mkdir -p ~/Pictures/Screenshots/
+                grim -g "$(slurp -d)" - | tee ~/Pictures/Screenshots/"$filename.png" >(wl-copy) | satty --init-tool brush --copy-command wl-copy -f -
+
+                notify-send Screenshot "Screenshot Saved at: ~/Pictures/Screenshots/$filename.png" 
+              '';
+            };
+
           in
 
           [
@@ -117,7 +141,8 @@ in
             "SUPER,Space,spawn,anyrun"
             "SUPER,V,spawn,${cliphist-anyrun}/bin/cliphist-anyrun"
 
-            "SUPER+SHIFT,S,spawn,noctalia msg screenshot-region"
+            "SUPER+SHIFT,S,spawn_shell, ${screenshot-shell}/bin/screenshot-shell"
+
             "SUPER+SHIFT,F,togglefloating"
             "SUPER,F,togglemaximizescreen"
             "SUPER+ALT,F,togglefullscreen"
