@@ -115,15 +115,29 @@ in
                 slurp
                 wl-clipboard
                 satty
+                wayfreeze
                 libnotify
               ];
               text = ''
                 filename=$(date +%Y-%m-%d_%H%M%S)
-
                 mkdir -p ~/Pictures/Screenshots/
-                grim -g "$(slurp -d)" - | tee ~/Pictures/Screenshots/"$filename.png" >(wl-copy) | satty --init-tool brush --copy-command wl-copy -f -
 
-                notify-send Screenshot "Screenshot Saved at: ~/Pictures/Screenshots/$filename.png" 
+                wayfreeze --hide-cursor &
+                pid=$!
+                sleep 0.1
+
+
+                if geom=$(slurp -d); then 
+                    grim -g "$geom" -t ppm - | tee ~/Pictures/Screenshots/"$filename.png" | wl-copy --type image/png
+
+                    kill "$pid"
+
+
+                    satty --filename ~/Pictures/Screenshots/"$filename.png" --init-tool brush --copy-command wl-copy
+                    notify-send Screenshot "Screenshot Saved at: ~/Pictures/Screenshots/$filename.png" 
+                fi
+
+                kill "$pid" 2>/dev/null || true
               '';
             };
 
