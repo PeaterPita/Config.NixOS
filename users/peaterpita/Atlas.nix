@@ -7,6 +7,8 @@
   home.packages = with pkgs; [
     parsec-bin
     typescript
+    jetbrains.idea
+    supersonic
   ];
 
   modules = {
@@ -17,7 +19,6 @@
     nixvim.enable = true;
     foot.enable = true;
     direnv.enable = true;
-    spotify.enable = true;
     syncthing.enable = true;
     discord.enable = true;
     zathura.enable = true;

@@ -1,4 +1,7 @@
+{ pkgs, ... }:
 {
+
+  home.packages = with pkgs; [ supersonic ];
 
   modules = {
     hyprland.enable = true;
@@ -9,7 +12,6 @@
     syncthing.enable = true;
     obsidian.enable = true;
     office.enable = true;
-    spotify.enable = true;
 
     gaming = {
       enable = true;
