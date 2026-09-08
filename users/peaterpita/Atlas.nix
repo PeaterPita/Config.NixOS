@@ -8,7 +8,7 @@
     parsec-bin
     typescript
     jetbrains.idea
-    supersonic
+    feishin
   ];
 
   modules = {

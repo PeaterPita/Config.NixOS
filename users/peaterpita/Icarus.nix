@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
 
-  home.packages = with pkgs; [ supersonic ];
+  home.packages = with pkgs; [ feishin ];
 
   modules = {
     hyprland.enable = true;

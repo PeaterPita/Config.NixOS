@@ -177,7 +177,7 @@ in
             "SUPER,Escape,switch_layout"
 
             # Scratch Pads
-            "ALT,D,toggle_named_scratchpad,supersonic,none,supersonic"
+            "ALT,D,toggle_named_scratchpad,feishin,none,feishin"
             "ALT,F,toggle_named_scratchpad,none,scratch-term,foot -T scratch-term"
 
             "SUPER,I,minimized"
@@ -228,7 +228,7 @@ in
         ];
 
         windowrule = [
-          "isnamedscratchpad:1,isfloating:1,appid:supersonic"
+          "isnamedscratchpad:1,isfloating:1,appid:feishin"
           "isnamedscratchpad:1,isfloating:1,width:0.8,height:0.8,title:scratch-term"
           "title:^(Open File|Save File)$,isfloating:1"
           "appid:^(com.gabm.satty),isfloating:1"
