@@ -18,6 +18,7 @@
       cfg,
       vars,
       config,
+      pkgs,
       ...
     }:
 
@@ -74,6 +75,7 @@
       sops.secrets."immich/oidc_secret" = { };
       services.immich = {
         enable = true;
+        package = pkgs.unstable.immich;
         inherit (cfg) port;
         host = "0.0.0.0";
         openFirewall = true;
