@@ -55,7 +55,6 @@ in
         # Layout
         circle_layout = "tile,scroller";
         drag_tile_to_tile = 1;
-
         edge_scroller_pointer_focus = 0;
 
         scratchpad = {
@@ -69,14 +68,37 @@ in
         blur_optimized = 0;
 
         border_radius = 6;
+        no_border_when_single = 1;
+
+        focused_opacity = 1.0;
+        unfocused_opacity = 0.9;
+
+        borderpx = 2;
+        gappih = 6;
+        gappiv = 6;
+
+        gappoh = 10;
+        gappov = 10;
+
+        shadows = 1;
+        shadows_position_y = 4;
+        shadowscolor = "0x0000000066";
 
         ## Animations
         animations = 1;
-
+        layer_animations = 1;
         tag_animation_direction = 0;
         animation_type = {
           open = "zoom";
           close = "fade";
+        };
+
+        animation_duration = {
+          open = 280;
+          close = 220;
+          move = 250;
+          tag = 300;
+          focus = 0;
         };
 
         # Input
@@ -156,6 +178,7 @@ in
             "SUPER,V,spawn,${cliphist-anyrun}/bin/cliphist-anyrun"
 
             "SUPER+SHIFT,S,spawn_shell, ${screenshot-shell}/bin/screenshot-shell"
+            "SUPER,P,spawn,waypaper"
 
             "SUPER+SHIFT,F,togglefloating"
             "SUPER,F,togglemaximizescreen"
@@ -233,6 +256,10 @@ in
           "title:^(Open File|Save File)$,isfloating:1"
           "appid:^(com.gabm.satty),isfloating:1"
           "appid:^(org.pulseaudio.pavucontrol|org.kde.polkit-kde-authentication-agent-1),isfloating:1"
+
+          "appid:waypaper,isfloating:1,isnoborder:1,isnoshadow:1,focused_opacity:0.9,unfocused_opacity:0.9"
+          "appid:slurp,noblur:1"
+          "appid:foot,focused_opacity:0.9,unfocused_opacity:0.9"
 
         ];
 

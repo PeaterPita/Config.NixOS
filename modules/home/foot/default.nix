@@ -27,7 +27,7 @@ in
         scrollback.lines = 99999;
         mouse.hide-when-typing = "yes";
 
-        colors-dark.alpha = 0.9;
+        # colors-dark.alpha = 0.9;
 
       };
 
