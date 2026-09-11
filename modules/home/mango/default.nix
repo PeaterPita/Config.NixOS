@@ -24,12 +24,30 @@ in
       anyrun.enable = true;
       mako.enable = true;
       mangobar.enable = true;
+
+      matugen = {
+        enable = true;
+        templates."mango" = {
+          outputPath = "~/.config/mango/matugen.conf";
+          reloadCmd = "mmsg dispatch reload_config";
+          text = ''
+            rootcolor={{colors.background.dark.hex_stripped}}ff
+            bordercolor={{colors.outline_variant.dark.hex_stripped}}ff
+            focuscolor={{colors.primary_container.dark.hex_stripped}}ff
+            maximizescreencolor={{colors.secondary.dark.hex_stripped}}ff
+            urgentcolor={{colors.error.dark.hex_stripped}}ff
+            scratchpadcolor={{colors.tertiary.dark.hex_stripped}}ff
+            globalcolor={{colors.secondary_container.dark.hex_stripped}}ff
+            overlaycolor={{colors.tertiary_container.dark.hex_stripped}}ff
+            jump_hit_fg_color={{colors.on_secondary_container.dark.hex_stripped}}ff
+            jump_hit_bg_color={{colors.on_surface.dark.hex_stripped}}ff
+            jump_hit_border_color={{colors.primary.dark.hex_stripped}}ff
+          '';
+        };
+      };
     };
 
-    services.awww.enable = true;
     home.packages = with pkgs; [
-      waypaper
-      matugen
 
       grim
       slurp
@@ -39,7 +57,8 @@ in
     wayland.windowManager.mango = {
       enable = true;
       settings = {
-        source-optional = "./noctalia.conf";
+        # source-optional = "./noctalia.conf";
+        source-optiona = "./matugen.conf";
 
         exec-once = [
           "udiskie"
