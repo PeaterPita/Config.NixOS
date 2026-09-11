@@ -57,7 +57,7 @@ in
     wayland.windowManager.mango = {
       enable = true;
       settings = {
-        source-optiona = "./matugen.conf";
+        source-optional = "./matugen.conf";
 
         exec-once = [
           "udiskie"
