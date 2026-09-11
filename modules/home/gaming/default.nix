@@ -19,19 +19,55 @@ in
     moonlight.enable = lib.mkEnableOption "Moonlight Streaming";
   };
 
-  config = lib.mkIf cfg.enable {
-    home.packages =
-      with pkgs;
-      lib.optionals cfg.prism.enable [
-        prismlauncher
-        openjdk25
-        cubiomes-viewer
-      ]
-      ++ lib.optional cfg.xenia.enable xenia-canary
-      ++ lib.optional cfg.pcsx2.enable pcsx2
-      ++ lib.optional cfg.ds.enable azahar
-      ++ lib.optional cfg.vintagestory.enable unstable.vintagestory
-      ++ lib.optional cfg.moonlight.enable moonlight-qt;
+  config = lib.mkIf cfg.enable (
+    lib.mkMerge [
+      {
 
-  };
+        home.packages =
+          with pkgs;
+          lib.optional cfg.vintagestory.enable unstable.vintagestory
+          ++ lib.optional cfg.xenia.enable xenia-canary
+          ++ lib.optional cfg.pcsx2.enable pcsx2
+          ++ lib.optional cfg.ds.enable azahar
+          ++ lib.optional cfg.moonlight.enable moonlight-qt;
+
+      }
+
+      (lib.mkIf cfg.prism.enable {
+
+        home.packages = with pkgs; [
+          prismlauncher
+          cubiomes-viewer
+          openjdk25
+        ];
+
+        modules.matugen.templates."prism" = {
+          outputPath = "~/.local/share/PrismLauncher/themes/Matugen/theme.json";
+          text = ''
+            {
+              "colors": {
+                "AlternateBase": "{{colors.surface.default.hex}}",
+                "Base": "{{colors.surface.default.hex}}",
+                "BrightText": "{{colors.secondary.default.hex}}",
+                "Button": "{{colors.surface_variant.default.hex}}",
+                "ButtonText": "{{colors.on_surface.default.hex}}",
+                "Highlight": "{{colors.primary.default.hex}}",
+                "HighlightedText": "{{colors.on_primary.default.hex}}",
+                "Link": "{{colors.primary.default.hex}}",
+                "Text": "{{colors.on_surface.default.hex}}",
+                "ToolTipBase": "{{colors.surface_variant.default.hex}}",
+                "ToolTipText": "{{colors.on_surface.default.hex}}",
+                "Window": "{{colors.surface.default.hex}}",
+                "WindowText": "{{colors.on_surface.default.hex}}",
+                "fadeAmount": 0.5,
+                "fadeColor": "{{colors.surface_variant.default.hex}}"
+              },
+              "name": "Matugen",
+              "widgets": "Fusion"
+            }
+          '';
+        };
+      })
+    ]
+  );
 }
