@@ -9,7 +9,7 @@ in
 {
   config = lib.mkIf mangoEnabled {
     wayland.windowManager.mango.settings = {
-      blur_optimized = 1;
+      blur = lib.mkForce 0;
     };
   };
 }

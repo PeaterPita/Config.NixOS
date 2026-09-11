@@ -57,7 +57,6 @@ in
     wayland.windowManager.mango = {
       enable = true;
       settings = {
-        # source-optional = "./noctalia.conf";
         source-optiona = "./matugen.conf";
 
         exec-once = [

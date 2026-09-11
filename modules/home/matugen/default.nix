@@ -25,7 +25,10 @@ in
             text = lib.mkOption { };
             source = lib.mkOption { };
             outputPath = lib.mkOption { };
-            reloadCmd = lib.mkOption { };
+            reloadCmd = lib.mkOption {
+              default = "";
+
+            };
           };
         }
       );
@@ -56,7 +59,7 @@ in
         show_hidden = False
         show_gifs_only = False
         zen_mode = True
-        post_command = matugen image $wallpaper
+        post_command = bash -c "${pkgs.matugen}/bin/matugen image \"$wallpaper\" --source-color-index 0 --type scheme-vibrant";
         number_of_columns = 3
         swww_transition_type = any
         swww_transition_step = 63
@@ -69,6 +72,9 @@ in
       "matugen/config.toml".text = ''
 
         [config]
+        prefer = "saturation"
+        fallback_color = "#ffbf9b"
+        source_color_index = 2
 
         ${lib.concatStringsSep "\n\n" (
           lib.mapAttrsToList (name: value: ''
@@ -76,7 +82,7 @@ in
             input_path = "${pkgs.writeText "matugen-${name}" value.text}"
             output_path = "${value.outputPath}"
 
-            ${lib.optionalString (value.reloadCmd != null) "post_hook = \"${value.reloadCmd}\""}
+            ${lib.optionalString (value.reloadCmd != "") "post_hook = \"${value.reloadCmd}\""}
           '') cfg.templates
         )}
       '';
