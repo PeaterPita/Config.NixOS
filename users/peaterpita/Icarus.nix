@@ -7,7 +7,7 @@
   ];
 
   modules = {
-    hyprland.enable = true;
+    mango.enable = true;
     discord.enable = true;
     zathura.enable = true;
     mpv.enable = true;

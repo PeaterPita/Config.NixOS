@@ -28,7 +28,7 @@
   modules = {
     kdeConnect.enable = true;
     bluetooth.enable = true;
-    hyprland.enable = true;
+    mango.enable = true;
     steam.enable = true;
     wireshark.enable = true;
     networking = {

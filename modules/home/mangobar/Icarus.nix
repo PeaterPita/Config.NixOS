@@ -6,7 +6,7 @@
 }:
 
 {
-  config = lib.mkIf config.modules.manogbar.enable {
+  config = lib.mkIf config.modules.mangobar.enable {
     services.mangobar = {
       settings = [
         {
