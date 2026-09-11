@@ -9,6 +9,7 @@
     typescript
     jetbrains.idea
     feishin
+    obsidian
   ];
 
   modules = {
@@ -25,7 +26,6 @@
     mpv.enable = true;
     firefox.enable = true;
     zen.enable = true;
-    obsidian.enable = true;
     office.enable = true;
     scrcpy.enable = true;
 
@@ -35,10 +35,10 @@
       vintagestory.enable = true;
     };
 
-    misc = {
-      videoediting.enable = true;
-      art.enable = true;
-      research.enable = true;
-    };
+    # misc = {
+    #   videoediting.enable = true;
+    #   art.enable = true;
+    #   research.enable = true;
+    # };
   };
 }

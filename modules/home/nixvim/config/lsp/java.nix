@@ -34,6 +34,7 @@
             "invertEquals"
           ];
         };
+        import.gradle.wrapper.enabled = false;
         format.enabled = true;
         # compiler.problemSeverity = {
         #   "unusedLocal" = "warning";

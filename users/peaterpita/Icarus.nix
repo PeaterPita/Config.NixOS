@@ -1,7 +1,10 @@
 { pkgs, ... }:
 {
 
-  home.packages = with pkgs; [ feishin ];
+  home.packages = with pkgs; [
+    feishin
+    obsidian
+  ];
 
   modules = {
     hyprland.enable = true;
@@ -10,7 +13,6 @@
     mpv.enable = true;
     firefox.enable = true;
     syncthing.enable = true;
-    obsidian.enable = true;
     office.enable = true;
 
     gaming = {

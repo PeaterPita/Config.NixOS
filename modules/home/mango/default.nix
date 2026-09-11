@@ -48,6 +48,8 @@ in
           "mangobar"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
+
+          "xrandr --output ${osConfig.monitors.primary.name} --primary"
         ];
         syncobj_enable = 1;
         xwayland_persistence = 0;
@@ -71,7 +73,7 @@ in
         no_border_when_single = 1;
 
         focused_opacity = 1.0;
-        unfocused_opacity = 0.9;
+        unfocused_opacity = 1.0;
 
         borderpx = 2;
         gappih = 6;
