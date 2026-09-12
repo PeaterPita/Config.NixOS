@@ -61,8 +61,8 @@ in
 
         exec-once = [
           "udiskie"
-          "noctalia"
           "anyrun daemon"
+          "waypaper --restore"
           "mangobar"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"

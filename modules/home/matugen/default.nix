@@ -59,7 +59,7 @@ in
         show_hidden = False
         show_gifs_only = False
         zen_mode = True
-        post_command = bash -c "${pkgs.matugen}/bin/matugen image \"$wallpaper\" --source-color-index 0 --type scheme-vibrant";
+        post_command = bash -c "${pkgs.matugen}/bin/matugen image \"$wallpaper\" --source-color-index 0 --type scheme-fidelity";
         number_of_columns = 3
         swww_transition_type = any
         swww_transition_step = 63

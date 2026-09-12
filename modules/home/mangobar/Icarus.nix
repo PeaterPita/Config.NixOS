@@ -14,7 +14,6 @@
           modules-right = lib.mkBefore [
             "battery"
           ];
-
         }
       ];
     };
