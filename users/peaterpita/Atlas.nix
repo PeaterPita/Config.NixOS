@@ -8,7 +8,6 @@
     parsec-bin
     typescript
     jetbrains.idea
-    feishin
     obsidian
   ];
 
@@ -19,6 +18,7 @@
     zsh.enable = true;
     nixvim.enable = true;
     foot.enable = true;
+    feishin.enable = true;
     direnv.enable = true;
     syncthing.enable = true;
     discord.enable = true;

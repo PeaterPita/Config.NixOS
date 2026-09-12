@@ -2,13 +2,13 @@
 {
 
   home.packages = with pkgs; [
-    feishin
     obsidian
   ];
 
   modules = {
     mango.enable = true;
     discord.enable = true;
+    feishin.enable = true;
     zathura.enable = true;
     mpv.enable = true;
     firefox.enable = true;
