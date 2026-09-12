@@ -59,7 +59,7 @@ in
         show_hidden = False
         show_gifs_only = False
         zen_mode = True
-        post_command = bash -c "${pkgs.matugen}/bin/matugen image \"$wallpaper\" --source-color-index 0 --type scheme-fidelity";
+        post_command = bash -c "${pkgs.matugen}/bin/matugen image \"$wallpaper\" --source-color-index 0 --type scheme-vibrant";
         number_of_columns = 3
         swww_transition_type = any
         swww_transition_step = 63
@@ -85,6 +85,172 @@ in
             ${lib.optionalString (value.reloadCmd != "") "post_hook = \"${value.reloadCmd}\""}
           '') cfg.templates
         )}
+      '';
+    }
+    // lib.genAttrs' [ "5" "6" ] (
+      name:
+      lib.nameValuePair "qt${name}ct/qt${name}ct.conf" {
+        text = ''
+          color_scheme_path=${config.home.homeDirectory}/.local/share/color-schemes/matugen.colors
+          custom_palette=true
+          icon_theme=breeze
+          style=Breeze
+        '';
+      }
+    );
+
+    modules.matugen.templates."qt" = {
+      outputPath = "~/.local/share/color-schemes/matugen.colors";
+      text = ''
+        [ColorEffects:Disabled]
+        Color={{colors.surface_dim.default.hex}}
+        ColorAmount=0
+        ColorEffect=0
+        ContrastAmount=0.65
+        ContrastEffect=1
+        IntensityAmount=0.1
+        IntensityEffect=2
+
+        [ColorEffects:Inactive]
+        ChangeSelectionColor=true
+        Color={{colors.surface_variant.default.hex}}
+        ColorAmount=0.025
+        ColorEffect=2
+        ContrastAmount=0.1
+        ContrastEffect=2
+        Enable=false
+        IntensityAmount=0
+        IntensityEffect=0
+
+        [Colors:Button]
+        BackgroundAlternate={{colors.surface_container_low.default.hex}}
+        BackgroundNormal={{colors.surface_container_high.default.hex}}
+        DecorationFocus={{colors.primary.default.hex}}
+        DecorationHover={{colors.primary.default.hex}}
+        ForegroundActive={{colors.primary.default.hex}}
+        ForegroundInactive={{colors.on_surface_variant.default.hex}}
+        ForegroundLink={{colors.secondary.default.hex}}
+        ForegroundNegative={{colors.error.default.hex}}
+        ForegroundNeutral={{colors.tertiary.default.hex}}
+        ForegroundNormal={{colors.on_surface.default.hex}}
+        ForegroundPositive={{colors.tertiary_fixed.default.hex}}
+        ForegroundVisited={{colors.on_secondary_container.default.hex}}
+
+        [Colors:Complementary]
+        BackgroundAlternate={{colors.surface_container_low.default.hex}}
+        BackgroundNormal={{colors.surface.default.hex}}
+        DecorationFocus={{colors.primary.default.hex}}
+        DecorationHover={{colors.primary.default.hex}}
+        ForegroundActive={{colors.primary.default.hex}}
+        ForegroundInactive={{colors.on_surface_variant.default.hex}}
+        ForegroundLink={{colors.secondary.default.hex}}
+        ForegroundNegative={{colors.error.default.hex}}
+        ForegroundNeutral={{colors.tertiary.default.hex}}
+        ForegroundNormal={{colors.on_primary_container.default.hex}}
+        ForegroundPositive={{colors.tertiary_fixed.default.hex}}
+        ForegroundVisited={{colors.on_secondary_container.default.hex}}
+
+        [Colors:Header]
+        BackgroundAlternate={{colors.surface.default.hex}}
+        BackgroundNormal={{colors.surface_container.default.hex}}
+        DecorationFocus={{colors.primary.default.hex}}
+        DecorationHover={{colors.primary.default.hex}}
+        ForegroundActive={{colors.primary.default.hex}}
+        ForegroundInactive={{colors.on_surface_variant.default.hex}}
+        ForegroundLink={{colors.secondary.default.hex}}
+        ForegroundNegative={{colors.error.default.hex}}
+        ForegroundNeutral={{colors.tertiary.default.hex}}
+        ForegroundNormal={{colors.on_surface.default.hex}}
+        ForegroundPositive={{colors.tertiary_fixed.default.hex}}
+        ForegroundVisited={{colors.on_secondary_container.default.hex}}
+
+        [Colors:Header][Inactive]
+        BackgroundAlternate={{colors.surface_container.default.hex}}
+        BackgroundNormal={{colors.surface_container.default.hex}}
+        DecorationFocus={{colors.primary.default.hex}}
+        DecorationHover={{colors.primary.default.hex}}
+        ForegroundActive={{colors.primary.default.hex}}
+        ForegroundInactive={{colors.on_surface_variant.default.hex}}
+        ForegroundLink={{colors.secondary.default.hex}}
+        ForegroundNegative={{colors.error.default.hex}}
+        ForegroundNeutral={{colors.tertiary.default.hex}}
+        ForegroundNormal={{colors.on_surface.default.hex}}
+        ForegroundPositive={{colors.tertiary_fixed.default.hex}}
+        ForegroundVisited={{colors.on_secondary_container.default.hex}}
+
+        [Colors:Selection]
+        BackgroundAlternate={{colors.surface_container_low.default.hex}}
+        BackgroundNormal={{colors.primary.default.hex}}
+        DecorationFocus={{colors.primary.default.hex}}
+        DecorationHover={{colors.primary.default.hex}}
+        ForegroundActive={{colors.on_primary.default.hex}}
+        ForegroundInactive={{colors.on_surface_variant.default.hex}}
+        ForegroundLink={{colors.secondary_fixed.default.hex}}
+        ForegroundNegative={{colors.error_container.default.hex}}
+        ForegroundNeutral={{colors.tertiary_fixed_dim.default.hex}}
+        ForegroundNormal={{colors.secondary_fixed.default.hex}}
+        ForegroundPositive={{colors.tertiary_container.default.hex}}
+        ForegroundVisited={{colors.on_secondary_container.default.hex}}
+
+        [Colors:Tooltip]
+        BackgroundAlternate={{colors.surface.default.hex}}
+        BackgroundNormal={{colors.surface_container.default.hex}}
+        DecorationFocus={{colors.primary.default.hex}}
+        DecorationHover={{colors.primary.default.hex}}
+        ForegroundActive={{colors.primary.default.hex}}
+        ForegroundInactive={{colors.on_surface_variant.default.hex}}
+        ForegroundLink={{colors.secondary.default.hex}}
+        ForegroundNegative={{colors.error.default.hex}}
+        ForegroundNeutral={{colors.tertiary.default.hex}}
+        ForegroundNormal={{colors.on_background.default.hex}}
+        ForegroundPositive={{colors.tertiary_fixed.default.hex}}
+        ForegroundVisited={{colors.on_secondary_container.default.hex}}
+
+        [Colors:View]
+        BackgroundAlternate={{colors.surface_container.default.hex}}
+        BackgroundNormal={{colors.background.default.hex}}
+        DecorationFocus={{colors.primary_container.default.hex}}
+        DecorationHover={{colors.on_primary.default.hex}}
+        ForegroundActive={{colors.primary.default.hex}}
+        ForegroundInactive={{colors.on_surface_variant.default.hex}}
+        ForegroundLink={{colors.secondary.default.hex}}
+        ForegroundNegative={{colors.error.default.hex}}
+        ForegroundNeutral={{colors.tertiary.default.hex}}
+        ForegroundNormal={{colors.on_surface.default.hex}}
+        ForegroundPositive={{colors.tertiary_fixed.default.hex}}
+        ForegroundVisited={{colors.on_secondary_container.default.hex}}
+
+        [Colors:Window]
+        BackgroundAlternate={{colors.primary_container.default.hex}}
+        BackgroundNormal={{colors.surface_container.default.hex}}
+        DecorationFocus={{colors.primary.default.hex}}
+        DecorationHover={{colors.primary.default.hex}}
+        ForegroundActive={{colors.primary.default.hex}}
+        ForegroundInactive={{colors.on_surface_variant.default.hex}}
+        ForegroundLink={{colors.secondary.default.hex}}
+        ForegroundNegative={{colors.error.default.hex}}
+        ForegroundNeutral={{colors.tertiary.default.hex}}
+        ForegroundNormal={{colors.on_surface.default.hex}}
+        ForegroundPositive={{colors.tertiary_fixed.default.hex}}
+        ForegroundVisited={{colors.on_secondary_container.default.hex}}
+
+        [General]
+        ColorScheme=Matugen
+        Name=matugen
+
+        [Appearance]
+        color_scheme=Matugen
+
+        [KDE]
+        contrast=4
+
+        [WM]
+        activeBackground={{colors.primary_container.default.hex}}
+        activeBlend={{colors.on_primary_container.default.hex}}
+        activeForeground={{colors.on_primary_container.default.hex}}
+        inactiveBackground={{colors.surface.default.hex}}
+        inactiveBlend={{colors.on_surface_variant.default.hex}}
+        inactiveForeground={{colors.on_surface_variant.default.hex}}
       '';
     };
   };

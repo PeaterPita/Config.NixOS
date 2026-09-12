@@ -19,7 +19,10 @@ in
 
       programs.nano.enable = false;
 
-      environment.systemPackages = with pkgs; [ foot.terminfo ];
+      environment.systemPackages = with pkgs; [
+        foot.terminfo
+        fd
+      ];
     }
 
     (lib.mkIf cfg {
@@ -35,12 +38,6 @@ in
       hardware.i2c.enable = true;
 
       services = {
-
-        mullvad-vpn = {
-          enable = true;
-          package = pkgs.mullvad-vpn;
-        };
-
         xserver = {
           enable = true;
           excludePackages = [ pkgs.xterm ];
@@ -49,7 +46,7 @@ in
 
       qt = {
         enable = true;
-        platformTheme = "kde";
+        platformTheme = "qt5ct";
         style = "breeze";
       };
 
