@@ -39,9 +39,13 @@ in
             scratchpadcolor={{colors.tertiary.dark.hex_stripped}}ff
             globalcolor={{colors.secondary_container.dark.hex_stripped}}ff
             overlaycolor={{colors.tertiary_container.dark.hex_stripped}}ff
-            jump_hit_fg_color={{colors.on_secondary_container.dark.hex_stripped}}ff
-            jump_hit_bg_color={{colors.on_surface.dark.hex_stripped}}ff
-            jump_hit_border_color={{colors.primary.dark.hex_stripped}}ff
+
+            jump_label_decorate_fg_color={{colors.on_secondary_container.dark.hex_stripped}}ff
+            jump_label_decorate_bg_color={{colors.on_surface.dark.hex_stripped}}ff
+            jump_label_decorate_focus_fg_color={{colors.on_surface.dark.hex_stripped}}ff
+            jump_label_decorate_focus_bg_color={{colors.on_secondary_container.dark.hex_stripped}}ff
+            jump_label_decorate_border_color={{colors.primary.dark.hex_stripped}}ff
+
           '';
         };
       };
@@ -200,8 +204,8 @@ in
             "SUPER+SHIFT,S,spawn_shell, ${screenshot-shell}/bin/screenshot-shell"
             "SUPER,P,spawn,waypaper"
 
-            "SUPER+SHIFT,F,togglefloating"
             "SUPER,F,togglemaximizescreen"
+            "SUPER+SHIFT,F,togglefloating"
             "SUPER+ALT,F,togglefullscreen"
 
             "SUPER,C,centerwin"
@@ -225,7 +229,9 @@ in
 
             "SUPER,I,minimized"
             "SUPER+SHIFT,I,restore_minimized"
-            "SUPER,Tab,toggle_scratchpad"
+            "SUPER,O,toggle_scratchpad"
+
+            "SUPER,Tab,toggleoverview"
 
             # Audio / Special
             "NONE,XF86AudioRaiseVolume,spawn,wpctl set-volume @DEFAULT_SINK@ 5%+"

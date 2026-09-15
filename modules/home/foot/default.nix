@@ -64,7 +64,6 @@ in
     };
 
     #   shellIntegration.enableZshIntegration = true;
-    #   extraConfig = "include themes/noctalia.conf";
     #   keybindings = {
     #     "ctrl+c" = "copy_or_interrupt";
     #

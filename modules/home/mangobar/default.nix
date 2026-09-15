@@ -19,6 +19,7 @@ in
     # Camera/Microphone Module
     # Image support, tray does something with pixmaps
     # Notification module
+    # Calender Widget
 
     services.mangobar = {
       enable = true;

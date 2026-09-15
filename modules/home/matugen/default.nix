@@ -110,9 +110,15 @@ in
       }
     );
 
-    modules.matugen.templates."qt" = {
-      outputPath = "~/.local/share/color-schemes/matugen.colors";
-      source = ./qt.colors.ini;
+    #####################################
+    #         Additional templates      #
+    # Overarching / very infrequent use #
+    #####################################
+    modules.matugen.templates = {
+      "qt" = {
+        outputPath = "~/.local/share/color-schemes/matugen.colors";
+        source = ./qt.colors.ini;
+      };
     };
   };
 }

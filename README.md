@@ -27,9 +27,7 @@
 | **Elysium**   | Off-Site Backup           | ⚫ Planned     |  Restic REST server                                    |                         |
 
 
-
 ## Homelab Services
-
 | Service | Host | Status |
 | :--- | :--- | :--- |
 | **Traefik**             | Hermes    | 🟢 Functional  |
@@ -55,6 +53,8 @@
 | **Personal Sites**      | Olympus   | 🟡 In-Progress |
 | **Speedtest Tracker**   | Olympus   | 🟢 Functional  |
 | **Filebrowser-quantum** | Olympus   | 🟢 Functional  |
+
+
 ## References / Resources
 - [NixOS Wiki](https://wiki.nixos.org/wiki/NixOS_Wiki)
 - [NixOS manual](https://nixos.org/manual/nix/stable)
