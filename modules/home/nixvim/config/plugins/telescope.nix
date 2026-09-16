@@ -13,65 +13,60 @@
     ];
 
     keymaps = {
-
-      "<leader>h" = {
+      "<leader>ht" = {
         action = "help_tags";
-        options = {
-          desc = "Help Tags";
-        };
+        options.desc = "[H]elp [T]ags";
+      };
+
+      "<leader>hk" = {
+        action = "keymaps";
+        options.desc = "[H]elp [K]eymappings";
       };
 
       "<leader>pf" = {
         action = "find_files";
-        options = {
-          desc = "Find project files";
-        };
+        options.desc = "Find [P]roject [F]iles";
       };
       "<leader>pa" = {
         action = "find_files no_ignore=true hidden=true";
-        options = {
-          desc = "All Search";
-        };
+        options.desc = "[P]roject [A]ll Search";
       };
       "<leader>ps" = {
         action = "live_grep";
-        options = {
-          desc = "Project Search";
-        };
+        options.desc = "[P]roject [S]earch";
       };
       "<leader>pb" = {
         action = "buffers";
-        options.desc = "Project Buffers";
+        options.desc = "[P]roject [B]uffers";
       };
-      "<leader>gc".action = "git_commits";
-      "<leader>gb".action = "git_branches";
+
+      "<leader>gc" = {
+        action = "git_commits";
+        options.desc = "[G]it [C]ommits";
+      };
+      "<leader>gb" = {
+        action = "git_branches";
+        options.desc = "[G]it [B]rances";
+      };
 
       "<leader>gd" = {
         action = "lsp_definitions";
-        options = {
-          desc = "Definitions";
-        };
+        options.desc = "[G]oto [D]efinitions";
       };
 
       "<leader>gi" = {
         action = "lsp_implementations";
-        options = {
-          desc = "Implementations";
-        };
+        options.desc = "[G]oto [I]mplementations";
       };
 
       "<leader>gr" = {
         action = "lsp_references";
-        options = {
-          desc = "References";
-        };
+        options.desc = "[G]oto [R]eferences";
       };
 
       "<leader>ws" = {
         action = "lsp_dynamic_workspace_symbols";
-        options = {
-          desc = "Workspace Symbols";
-        };
+        options.desc = "[W]orkspace [S]ymbols";
       };
     };
 
@@ -81,6 +76,7 @@
     {
       mode = "n";
       key = "<leader>gt";
+      options.desc = "[G]radle [T]asks";
       action.__raw = ''
         function()
           local pickers = require("telescope.pickers")
@@ -146,7 +142,6 @@
           }):find()
         end
       '';
-      options.desc = "Gradle Tasks";
     }
   ];
 

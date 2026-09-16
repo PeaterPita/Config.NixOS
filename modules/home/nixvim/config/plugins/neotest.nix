@@ -26,7 +26,7 @@
   keymaps = [
 
     {
-      options.desc = "Run the full suite of tests";
+      options.desc = "[T]est [A]ll";
       mode = "n";
       key = "<leader>ta";
       action.__raw = ''
@@ -38,35 +38,34 @@
       '';
     }
     {
-      options.desc = "Run the nearest test";
+      options.desc = "[T]est [N]earest";
       mode = "n";
-      key = "<leader>tr";
+      key = "<leader>tn";
       action = "<cmd>lua require('neotest').run.run()<CR>";
     }
 
     {
-      options.desc = "Run the current file";
+      options.desc = "[T]est [F]ile";
       mode = "n";
       key = "<leader>tf";
       action = "<cmd>lua require('neotest').run.run(vim.fn.expand('%')) <CR>";
     }
 
     {
-      options.desc = "Open the testing summary window";
+      options.desc = "[T]est [S]ummary";
       mode = "n";
       key = "<leader>ts";
       action = "<cmd>lua require('neotest').summary.toggle() <CR>";
     }
 
     {
-      options.desc = "Open the test output";
       mode = "n";
       key = "<leader>tk";
       action = "<cmd>lua require('neotest').output.open() <CR>";
     }
 
     {
-      options.desc = "Open the testing output panel / overview window";
+      options.desc = "[T]est [O]output";
       mode = "n";
       key = "<leader>to";
       action = "<cmd>lua require('neotest').output_panel.toggle()<CR>";

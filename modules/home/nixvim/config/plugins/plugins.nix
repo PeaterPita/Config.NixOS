@@ -59,7 +59,7 @@
       action = "<cmd>UndotreeToggle<cr>";
       options = {
         silent = true;
-        desc = "Undotree toggle";
+        desc = "[U]ndotree toggle";
       };
     }
 
@@ -67,14 +67,13 @@
       mode = "n";
       key = "<leader>e";
       action = "<cmd>Trouble diagnostics toggle<cr>";
+      options.desc = "[E]rros";
     }
 
     {
       key = "<leader>gs";
       action = "<cmd>Neogit<CR>";
-      options = {
-        desc = "Git manager";
-      };
+      options.desc = "[G]it [S]tatus";
     }
 
   ];

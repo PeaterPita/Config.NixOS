@@ -10,7 +10,6 @@
     vim.g.loaded_netrwPlugin = 1
   '';
   plugins.nvim-tree = {
-
     enable = true;
     openOnSetup = true;
     settings = {
@@ -23,11 +22,13 @@
       mode = "n";
       key = "<leader>ft";
       action = "<cmd>NvimTreeToggle<cr>";
+      options.desc = "[F]iletree [T]oggle";
     }
     {
       mode = "n";
       key = "<leader>ff";
       action = "<cmd>NvimTreeFindFile<cr>";
+      options.desc = "[F]iletree [F]ind";
     }
   ];
 

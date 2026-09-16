@@ -31,7 +31,7 @@
           }
         ];
 
-        lualine_y = ["neotest"];
+        lualine_y = [ "neotest" ];
 
         lualine_z = [
 
