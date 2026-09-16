@@ -40,8 +40,8 @@ in
             globalcolor={{colors.secondary_container.dark.hex_stripped}}ff
             overlaycolor={{colors.tertiary_container.dark.hex_stripped}}ff
 
-            jump_label_decorate_fg_color={{colors.on_secondary_container.dark.hex_stripped}}ff
-            jump_label_decorate_bg_color={{colors.on_surface.dark.hex_stripped}}ff
+            jump_label_decorate_fg_color={{colors.primary.dark.hex_stripped}}ff
+            jump_label_decorate_bg_color={{colors.secondary_container.dark.hex_stripped}}ff
             jump_label_decorate_focus_fg_color={{colors.on_surface.dark.hex_stripped}}ff
             jump_label_decorate_focus_bg_color={{colors.on_secondary_container.dark.hex_stripped}}ff
             jump_label_decorate_border_color={{colors.primary.dark.hex_stripped}}ff
@@ -231,7 +231,7 @@ in
             "SUPER+SHIFT,I,restore_minimized"
             "SUPER,O,toggle_scratchpad"
 
-            "SUPER,Tab,toggleoverview"
+            "SUPER,Tab,overcircle"
 
             # Audio / Special
             "NONE,XF86AudioRaiseVolume,spawn,wpctl set-volume @DEFAULT_SINK@ 5%+"
