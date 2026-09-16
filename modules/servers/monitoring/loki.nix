@@ -18,6 +18,7 @@ in
       configuration = {
         auth_enabled = false;
         server.http_listen_port = cfg.port;
+        analytics.reporting_enabled = false;
 
         common = {
           path_prefix = "/var/lib/loki";

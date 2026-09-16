@@ -42,6 +42,7 @@
             root_url = "https://${cfg.domain}.${vars.baseDomain}";
           };
 
+          analytics.reporting_enabled = false;
           security.secret_key = "$__file{${config.sops.secrets."grafana/secret_key".path}}";
         };
 
