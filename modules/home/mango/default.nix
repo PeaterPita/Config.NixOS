@@ -236,7 +236,7 @@ in
 
             # Audio / Special
             "NONE,XF86AudioRaiseVolume,spawn,wpctl set-volume @DEFAULT_SINK@ 5%+"
-            "NONE,XF86AudioLowerVolume,spawn,wpctl set-volume @DEFAULT__SINK@ 5%-"
+            "NONE,XF86AudioLowerVolume,spawn,wpctl set-volume @DEFAULT_SINK@ 5%-"
             "NONE,XF86AudioMute,spawn,wpctl set-mute @DEFAULT_SINK@ toggle"
             "NONE,XF86AudioMicMute, spawn, wpctl set-mute @DEFAULT_SOURCE@ toggle"
             "NONE,XF86AudioPlay, spawn, playerctl play-pause"

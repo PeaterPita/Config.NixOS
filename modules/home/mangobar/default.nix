@@ -56,6 +56,12 @@ in
             icon-size = 14;
           };
 
+          pulseaudio = {
+            on-scroll-up = "wpctl set-volume @DEFAULT_SINK@ 5%+";
+            on-scroll-down = "wpctl set-volume @DEFAULT_SINK@ 5%-";
+            scroll-interval = 100;
+          };
+
           network = {
             format = " {ifname}";
             format-alt = "↓{down} ↑{up}";
