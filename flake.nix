@@ -29,6 +29,11 @@
 
     };
 
+  # Inputs to remove:
+  # zen-browser
+  # mangobar
+  # disko
+  # noctalia
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";

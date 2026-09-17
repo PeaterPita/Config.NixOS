@@ -60,6 +60,7 @@ in
 
     wayland.windowManager.mango = {
       enable = true;
+
       settings = {
         source-optional = "./matugen.conf";
 
@@ -67,13 +68,13 @@ in
           "udiskie"
           "anyrun daemon"
           "waypaper --restore"
-          "mangobar"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
 
           "xrandr --output ${osConfig.monitors.primary.name} --primary"
         ];
         syncobj_enable = 1;
+        allow_tearing = 1;
         xwayland_persistence = 0;
 
         # Layout
@@ -287,6 +288,10 @@ in
           "appid:slurp,noblur:1"
           "appid:foot,focused_opacity:0.9,unfocused_opacity:0.9"
 
+        ];
+
+        layerrule = [
+          "layer_name:anyrun,noanim:1"
         ];
 
         ## Outputs
