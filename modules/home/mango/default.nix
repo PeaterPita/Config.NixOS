@@ -226,7 +226,7 @@ in
 
             # Scratch Pads
             "ALT,D,toggle_named_scratchpad,feishin,none,feishin"
-            "ALT,F,toggle_named_scratchpad,none,scratch-term,foot -T scratch-term"
+            "ALT,F,toggle_named_scratchpad,scratch-term,none,foot -a scratch-term"
 
             "SUPER,I,minimized"
             "SUPER+SHIFT,I,restore_minimized"
@@ -278,8 +278,8 @@ in
         ];
 
         windowrule = [
-          "isnamedscratchpad:1,isfloating:1,appid:feishin"
-          "isnamedscratchpad:1,isfloating:1,width:0.8,height:0.8,title:scratch-term"
+          "isnamedscratchpad:1,isfloating:1,isoverlay:1,appid:feishin"
+          "isnamedscratchpad:1,isfloating:1,width:0.8,height:0.8,appid:scratch-term"
           "title:^(Open File|Save File)$,isfloating:1"
           "appid:^(com.gabm.satty),isfloating:1"
           "appid:^(org.pulseaudio.pavucontrol|org.kde.polkit-kde-authentication-agent-1),isfloating:1"

@@ -27,6 +27,7 @@
         home.homeDirectory = "/home/${user}";
         home.stateVersion = "25.05";
         home.enableNixpkgsReleaseCheck = false;
+        xdg.mimeApps.enable = true;
       }
       ../users/${user} # Default user config. Applies to all machines that  user is present on
       (utils.importIfExists ../users/${user}/${hostname}.nix) # Per host user config. Only applies to that user on that host.
