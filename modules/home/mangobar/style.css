@@ -34,7 +34,7 @@
 }
 
 #tags:empty {
-    color: #665c54AF;
+    color: #665c54;
 }
 
 
@@ -44,6 +44,7 @@
 #tray,
 #network,
 #volume,
+#battery,
 #clock {
     padding-right: 8px;
 }

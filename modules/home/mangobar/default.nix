@@ -37,6 +37,7 @@ in
           modules-right = [
             "tray"
             "network"
+            "battery"
             "pulseaudio"
             "clock"
           ];
@@ -52,15 +53,15 @@ in
             scroll-interval = 100;
           };
 
-          tray = {
-            icon-size = 14;
-          };
+          tray.icon-size = 14;
 
           pulseaudio = {
             on-scroll-up = "wpctl set-volume @DEFAULT_SINK@ 5%+";
             on-scroll-down = "wpctl set-volume @DEFAULT_SINK@ 5%-";
             scroll-interval = 100;
           };
+
+          battery.format = "{icon} {percent}%";
 
           network = {
             format = " {ifname}";
