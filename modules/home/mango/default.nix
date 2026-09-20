@@ -132,6 +132,10 @@ in
           speed = "1.0";
         };
 
+        trackpad = {
+          natural_scrolling = 1;
+          disable_while_typing = 1;
+        };
         bind =
           let
             # TODO: results are not actually showing immediately?
@@ -270,6 +274,11 @@ in
           "SUPER,DOWN,focusdir,right"
           "SUPER+SHIFT,UP,viewtoleft_have_client"
           "SUPER+SHIFT,DOWN,viewtoright_have_client"
+        ];
+
+        gesturebind = [
+          "none,up,3,spawn,anyrun"
+          "none,down,3,spawn,pkill anyrun"
         ];
 
         # Rules
