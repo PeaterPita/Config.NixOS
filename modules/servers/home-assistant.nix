@@ -44,10 +44,15 @@
           "mqtt"
           "zha"
           "isal"
+          "mobile_app"
         ];
 
         config = {
           default_config = { };
+
+          automation = "!include automations.yaml";
+          script = "!include scripts.yaml";
+          scene = "!include scenes.yaml";
 
           http = {
             server_port = cfg.port;

@@ -28,7 +28,6 @@
     obs.enable = true;
     mango.enable = true;
     steam.enable = true;
-    sunshine.enable = true;
     nvidia.enable = true;
     hardware = {
       g502.enable = true;
