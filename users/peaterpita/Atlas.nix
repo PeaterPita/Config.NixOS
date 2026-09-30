@@ -12,7 +12,6 @@
   ];
 
   modules = {
-    noctalia.enable = true;
     mango.enable = true;
 
     zsh.enable = true;

@@ -19,7 +19,6 @@ in
 
   config = lib.mkIf cfg.enable {
     modules = {
-      noctalia.enable = true;
       foot.enable = true;
       anyrun.enable = true;
       mako.enable = true;
@@ -201,7 +200,7 @@ in
             "SUPER,W,killclient"
             "SUPER,R,reload_config"
 
-            "SUPER,L,spawn,noctalia msg session lock"
+            # "SUPER,L,spawn,noctalia msg session lock"
 
             "SUPER,Space,spawn,anyrun"
             "SUPER,V,spawn,${cliphist-anyrun}/bin/cliphist-anyrun"
