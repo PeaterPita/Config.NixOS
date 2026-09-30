@@ -16,6 +16,17 @@ in
   config = lib.mkIf cfg.enable {
     modules.starship.enable = true;
 
+    xdg.terminal-exec = {
+      enable = true;
+      settings.default = [ "foot.desktop" ];
+    };
+
+    xdg.configFile."kdeglobals".text = ''
+      [General]
+      TerminalApplication=foot
+      TerminalService=foot.desktop
+    '';
+
     modules.matugen.templates."foot" = {
       outputPath = "~/.config/foot/themes/matugen";
       reloadCmd = "pkill -SIGUSR1 foot";

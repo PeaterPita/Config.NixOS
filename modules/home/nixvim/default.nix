@@ -25,7 +25,15 @@ in
 
     home.packages = with pkgs; [
       nixfmt
+
+      man-pages
+      man-pages-posix
     ];
+
+    xdg.mimeApps.defaultApplications = {
+      "text/plain" = "nvim.desktop";
+      "text/markdown" = "nvim.desktop";
+    };
 
     modules.matugen = {
       templates."nvim" = {
@@ -58,10 +66,6 @@ in
 
     programs.nixvim = {
       _module.args = { inherit inputs osConfig; };
-
-      extraConfigLua = ''
-        vim.opt.rtp:append("/home/peaterpita/Coding/testing.nvim")
-      '';
 
       imports = builtins.filter (path: lib.hasSuffix ".nix" path) (
         lib.filesystem.listFilesRecursive ./config
