@@ -21,7 +21,6 @@ in
     environment.systemPackages = with pkgs; [
       swtpm
       virtio-win
-      adwaita-icon-theme
     ];
 
     virtualisation.libvirtd = {

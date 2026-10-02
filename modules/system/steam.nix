@@ -21,7 +21,11 @@ in
       };
     };
     hardware.steam-hardware.enable = true;
-    programs.gamescope.enable = true;
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+
     programs.steam = {
       enable = true;
       extraCompatPackages = with pkgs; [ proton-ge-bin ];
