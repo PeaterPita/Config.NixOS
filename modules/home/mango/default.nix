@@ -59,6 +59,8 @@ in
 
     wayland.windowManager.mango = {
       enable = true;
+      systemd.enable = true;
+      systemd.variables = [ "--all" ];
 
       settings = {
         source_optional = "./matugen.conf";
@@ -71,14 +73,16 @@ in
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
 
-          "xrandr --output ${osConfig.monitors.primary.name} --primary"
+          "discord"
+          "zen-beta"
+
+          # "xrandr --output ${osConfig.monitors.primary.name} --primary"
         ];
         sync_obj_enable = 1;
         allow_tearing = 1;
-        xwayland_persistence = 0;
 
         # Layout
-        circle_layout = "tile,scroller";
+        circle_layout = "fair,scroller";
         drag_tile_to_tile = 1;
         edge_scroller_pointer_focus = 0;
 
@@ -90,7 +94,7 @@ in
 
         # Apperance
         blur = 1;
-        blur_optimized = 0;
+        blur_optimized = 1;
 
         border_radius = 6;
         no_border_when_single = 1;
@@ -112,6 +116,8 @@ in
         ## Animations
         animations = 1;
         layer_animations = 1;
+        layer_shadows = 1;
+
         tag_animation_direction = 0;
         animation_type = {
           open = "zoom";
@@ -236,7 +242,10 @@ in
             "SUPER+SHIFT,I,restore_minimized"
             "SUPER,O,toggle_scratchpad"
 
-            "SUPER,Tab,overcircle"
+            "ALT,Tab,overcircle"
+            "SUPER,Tab,togglejump"
+
+            "SUPER+SHIFT,Z,spawn_shell, mmsg dispatch togglefloating && mmsg dispatch toggleglobal && msg dispatch toggleoverlay"
 
             # Audio / Special
             "NONE,XF86AudioRaiseVolume,spawn,wpctl set-volume @DEFAULT_SINK@ 5%+"
@@ -278,7 +287,7 @@ in
 
         gesturebind = [
           "none,up,3,spawn,anyrun"
-          "none,down,3,spawn,pkill anyrun"
+          "none,down,3,spawn,anyrun close"
         ];
 
         # Rules
@@ -286,23 +295,29 @@ in
           "id:*,monitor_name:HDMI-A-1,layout_name:scroller"
         ];
 
+        window_rule_once = [
+          "monitor:HDMI-A-1,tags:1,is_open_silent:1,app_id:discord"
+          "monitor:${osConfig.monitors.primary.name},tags:1,is_open_silent:1,app_id:zen-beta"
+
+        ];
+
         window_rule = [
           "is_named_scratchpad:1,is_floating:1,is_overlay:1,app_id:feishin"
           "is_named_scratchpad:1,is_floating:1,width:0.8,height:0.8,app_id:scratch-term"
+
           "title:^(Open File|Save File)$,is_floating:1"
           "app_id:^(com.gabm.satty),is_floating:1"
           "app_id:^(org.pulseaudio.pavucontrol|org.kde.polkit-kde-authentication-agent-1),is_floating:1"
 
-          "app_id:waypaper,is_floating:1,no_border:1,no_shadow:1,focused_opacity:0.9,unfocused_opacity:0.9"
-          "app_id:slurp,no_blur:1"
+          "app_id:waypaper,is_floating:1,no_border:1,no_shadow:1,is_global:1,focused_opacity:0.8,unfocused_opacity:0.8"
           "app_id:foot,focused_opacity:0.9,unfocused_opacity:0.9"
 
-          "title:Aperture,is_floating:1"
-
+          "app_id:Aperture,is_floating:1"
         ];
 
         layer_rule = [
-          "layer_name:anyrun,no_animation:1"
+          "layer_name:anyrun,no_animation:1, no_blur:1"
+          "layer_name:selection,no_animation:1,no_blur:1"
         ];
 
         ## Outputs
@@ -313,8 +328,9 @@ in
             x = builtins.elemAt splitPos 0;
             y = builtins.elemAt splitPos 1;
             disable = if monitor.enabled then "0" else "1";
+            primary = if monitor.primary then "1" else "0";
           in
-          "name:^${monitor.name}$,width:${toString monitor.width},height:${toString monitor.height},refresh:${toString monitor.refreshRate},x:${x},y:${y},scale:${toString monitor.scale},disable:${disable}"
+          "name:^${monitor.name}$,primary:${primary},width:${toString monitor.width},height:${toString monitor.height},refresh:${toString monitor.refreshRate},x:${x},y:${y},scale:${toString monitor.scale},disable:${disable}"
         ) osConfig.monitors.all;
 
       };

@@ -28,11 +28,7 @@ in
           output = osConfig.monitors.primary.name;
           height = 34;
           modules-left = [
-            "custom/nix"
             "workspaces"
-          ];
-          modules-center = [
-            "custom/music"
           ];
           modules-right = [
             "tray"
@@ -66,20 +62,6 @@ in
           network = {
             format = " {ifname}";
             format-alt = "↓{down} ↑{up}";
-          };
-
-          "custom/nix" = {
-            format = " 󱄅 ";
-            interval = 0;
-          };
-
-          "custom/music" = {
-            exec = "playerctl metadata --format '{{title}} - {{artist}}' || true";
-            interval = 2;
-            max-length = 360;
-            on-click = "playerctl play-pause";
-            on-scroll-up = "playerctl next";
-            on-scroll-down = "playerctl previous";
           };
         }
       ];
