@@ -23,10 +23,12 @@ in
       virtio-win
     ];
 
+    virtualisation.spiceUSBRedirection.enable = true;
     virtualisation.libvirtd = {
       enable = true;
       allowedBridges = [ "virbr0" ];
       qemu.swtpm.enable = true;
+      qemu.vhostUserPackages = [ pkgs.virtiofsd ];
     };
     programs.virt-manager.enable = true;
   };

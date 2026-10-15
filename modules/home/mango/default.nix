@@ -30,14 +30,14 @@ in
           outputPath = "~/.config/mango/matugen.conf";
           reloadCmd = "mmsg dispatch reload_config";
           text = ''
-            rootcolor={{colors.background.dark.hex_stripped}}ff
-            bordercolor={{colors.outline_variant.dark.hex_stripped}}ff
-            focuscolor={{colors.primary_container.dark.hex_stripped}}ff
-            maximizescreencolor={{colors.secondary.dark.hex_stripped}}ff
-            urgentcolor={{colors.error.dark.hex_stripped}}ff
-            scratchpadcolor={{colors.tertiary.dark.hex_stripped}}ff
-            globalcolor={{colors.secondary_container.dark.hex_stripped}}ff
-            overlaycolor={{colors.tertiary_container.dark.hex_stripped}}ff
+            root_color={{colors.background.dark.hex_stripped}}ff
+            border_color={{colors.outline_variant.dark.hex_stripped}}ff
+            focus_color={{colors.primary_container.dark.hex_stripped}}ff
+            maximized_screen_color={{colors.secondary.dark.hex_stripped}}ff
+            urgent_color={{colors.error.dark.hex_stripped}}ff
+            scratchpad_color={{colors.tertiary.dark.hex_stripped}}ff
+            global_color={{colors.secondary_container.dark.hex_stripped}}ff
+            overlay_color={{colors.tertiary_container.dark.hex_stripped}}ff
 
             jump_label_decorate_fg_color={{colors.primary.dark.hex_stripped}}ff
             jump_label_decorate_bg_color={{colors.secondary_container.dark.hex_stripped}}ff
@@ -61,18 +61,19 @@ in
       enable = true;
 
       settings = {
-        source-optional = "./matugen.conf";
+        source_optional = "./matugen.conf";
 
-        exec-once = [
+        exec_once = [
           "udiskie"
           "anyrun daemon"
           "waypaper --restore"
+          "aperture --daemon"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
 
           "xrandr --output ${osConfig.monitors.primary.name} --primary"
         ];
-        syncobj_enable = 1;
+        sync_obj_enable = 1;
         allow_tearing = 1;
         xwayland_persistence = 0;
 
@@ -97,16 +98,16 @@ in
         focused_opacity = 1.0;
         unfocused_opacity = 1.0;
 
-        borderpx = 2;
-        gappih = 6;
-        gappiv = 6;
+        border_px = 2;
+        gap_inner_horizontal = 6;
+        gap_inner_vertical = 6;
 
-        gappoh = 10;
-        gappov = 10;
+        gap_outer_horizontal = 10;
+        gap_outer_vertical = 10;
 
         shadows = 1;
         shadows_position_y = 4;
-        shadowscolor = "0x0000000066";
+        shadows_color = "0x0000000066";
 
         ## Animations
         animations = 1;
@@ -281,29 +282,31 @@ in
         ];
 
         # Rules
-        tagrule = [
+        tag_rule = [
           "id:*,monitor_name:HDMI-A-1,layout_name:scroller"
         ];
 
-        windowrule = [
-          "isnamedscratchpad:1,isfloating:1,isoverlay:1,appid:feishin"
-          "isnamedscratchpad:1,isfloating:1,width:0.8,height:0.8,appid:scratch-term"
-          "title:^(Open File|Save File)$,isfloating:1"
-          "appid:^(com.gabm.satty),isfloating:1"
-          "appid:^(org.pulseaudio.pavucontrol|org.kde.polkit-kde-authentication-agent-1),isfloating:1"
+        window_rule = [
+          "is_named_scratchpad:1,is_floating:1,is_overlay:1,app_id:feishin"
+          "is_named_scratchpad:1,is_floating:1,width:0.8,height:0.8,app_id:scratch-term"
+          "title:^(Open File|Save File)$,is_floating:1"
+          "app_id:^(com.gabm.satty),is_floating:1"
+          "app_id:^(org.pulseaudio.pavucontrol|org.kde.polkit-kde-authentication-agent-1),is_floating:1"
 
-          "appid:waypaper,isfloating:1,isnoborder:1,isnoshadow:1,focused_opacity:0.9,unfocused_opacity:0.9"
-          "appid:slurp,noblur:1"
-          "appid:foot,focused_opacity:0.9,unfocused_opacity:0.9"
+          "app_id:waypaper,is_floating:1,no_border:1,no_shadow:1,focused_opacity:0.9,unfocused_opacity:0.9"
+          "app_id:slurp,no_blur:1"
+          "app_id:foot,focused_opacity:0.9,unfocused_opacity:0.9"
+
+          "title:Aperture,is_floating:1"
 
         ];
 
-        layerrule = [
-          "layer_name:anyrun,noanim:1"
+        layer_rule = [
+          "layer_name:anyrun,no_animation:1"
         ];
 
         ## Outputs
-        monitorrule = map (
+        monitor_rule = map (
           monitor:
           let
             splitPos = lib.splitString "x" monitor.position;
