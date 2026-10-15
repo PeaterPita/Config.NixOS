@@ -15,7 +15,6 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    modules.dolphin.enable = true;
     programs.dconf.enable = true;
     services.udisks2.enable = true;
 

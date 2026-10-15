@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -9,6 +10,9 @@
     typescript
     jetbrains.idea
     obsidian
+    inkscape
+    inputs.aperture.packages.${pkgs.stdenv.hostPlatform.system}.default
+
   ];
 
   modules = {
@@ -27,6 +31,7 @@
     zen.enable = true;
     office.enable = true;
     scrcpy.enable = true;
+    dolphin.enable = true;
 
     gaming = {
       enable = true;
@@ -36,7 +41,7 @@
 
     # misc = {
     #   videoediting.enable = true;
-    #   art.enable = true;
+    # art.enable = true;
     #   research.enable = true;
     # };
   };

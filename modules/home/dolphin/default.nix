@@ -1,7 +1,7 @@
 {
   config,
-  pkgs,
   lib,
+  pkgs,
   ...
 }:
 
@@ -14,13 +14,18 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
+    home.packages = with pkgs; [
 
       ffmpeg
       kdePackages.dolphin
 
       kdePackages.ffmpegthumbs
+
     ];
+
+    xdg.mimeApps.defaultApplications = {
+      "inode/directory" = "org.kde.dolphin.desktop";
+    };
 
   };
 }

@@ -20,6 +20,7 @@
       moonlight.enable = true;
     };
 
+    dolphin.enable = true;
     zsh.enable = true;
     nixvim.enable = true;
     foot.enable = true;
