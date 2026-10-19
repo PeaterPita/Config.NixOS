@@ -16,7 +16,6 @@
     }
 
   ];
-
   lsp = {
     inlayHints.enable = true;
     servers = {
@@ -102,16 +101,27 @@
         config = {
           cmd = [
             "${pkgs.coreutils}/bin/env"
-
-            ## Should dynamically fetch prettier from the astro package but this works for now. Version bumps will break.
-            "NODE_PATH=${pkgs.typescript}/lib/node_modules:${pkgs.astro-language-server}/lib/node_modules/astro-language-server/node_modules/.pnpm/prettier@3.8.2/node_modules:${pkgs.astro-language-server}/lib/node_modules/astro-language-server/node_modules/.pnpm/prettier-plugin-astro@0.14.1/node_modules"
-
+            "NODE_PATH=${pkgs.typescript}/lib/node_modules"
             "astro-ls"
             "--stdio"
           ];
           init_options.typescript.tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
         };
       };
+
+      eslint = {
+        enable = true;
+        config.filetypes = [
+          "javascript"
+          "javascriptreact"
+          "typescript"
+          "typescriptreact"
+          "astro"
+        ];
+
+      };
+
+      biome.enable = true;
 
       ########
       # Misc #

@@ -2,11 +2,6 @@
   plugins = {
     lazydev.enable = true;
 
-    otter = {
-      enable = true;
-      settings.handle_leading_whitespace = true;
-    };
-
     none-ls = {
       enable = true;
       sources = {
