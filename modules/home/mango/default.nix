@@ -55,6 +55,7 @@ in
       grim
       slurp
       satty
+      xclip
     ];
 
     wayland.windowManager.mango = {
@@ -70,7 +71,9 @@ in
           "anyrun daemon"
           "waypaper --restore"
           "aperture --daemon"
+
           "wl-paste --type text --watch cliphist store"
+          "wl-paste --type text --watch env DISPLAY=:0 xclip -selection clipboard -i"
           "wl-paste --type image --watch cliphist store"
 
           "discord"
