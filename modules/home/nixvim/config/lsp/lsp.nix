@@ -121,15 +121,22 @@
 
       };
 
-      biome.enable = true;
-
       ########
       # Misc #
       ########
+
+      biome.enable = true;
       yamlls.enable = true;
       tombi.enable = true;
       marksman.enable = true;
-      sqruff.enable = true;
+
+      harper_ls = {
+        enable = true;
+        config.settings."harper-ls" = {
+          linters.SpellCheck = false;
+          dialect = "British";
+        };
+      };
 
       lua_ls =
         let
