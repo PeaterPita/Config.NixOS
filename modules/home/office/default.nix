@@ -14,6 +14,11 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+
+    xdg.mimeApps.associations.removed = {
+      "application/pdf" = [ "com.collaboraoffice.Office.desktop" ];
+    };
+
     home.packages = with pkgs; [
       # libreoffice-fresh
       # hunspell

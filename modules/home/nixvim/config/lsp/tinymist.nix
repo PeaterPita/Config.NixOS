@@ -6,7 +6,6 @@
       filetypes = [ "typst" ];
       settings = {
         exportPdf = "onType";
-        formatterMode = "typstfmt";
         lint = {
           enabled = true;
           when = "onType";
@@ -15,18 +14,31 @@
       };
       on_attach = lib.nixvim.mkRaw ''
         function(client, bufnr)
-            vim.api.nvim_create_user_command("OpenPdf", function()
-                local filepath = vim.api.nvim_buf_get_name(0)
-                if filepath:match("%.typ$") then
-                    local dir = vim.fn.expand("%:p:h")
-                    local filename = vim.fn.expand("%:t:r")
+            local name = vim.api.nvim_buf_get_name(bufnr)
+            local main = vim.fs.find("main.typ", {
+                upward = true,
+                path = vim.fs.dirname(name)
+            })[1]
 
-                    local pdf = dir .. "/build/".. filename .. ".pdf"
-                    local success, err = pcall(vim.ui.open, pdf)
-                    if not success then 
-                        vim.notify("Failed to open PDF: " .. tostring(err), vim.log.levels.ERROR)
-                    end 
-                end 
+
+            if main then 
+                vim.g.typst_pinned = main
+                client:exec_cmd({
+                    title = "pin",
+                    command = "tinymist.pinMain",
+                    arguments = { main },
+                }, {bufnr = bufnr})
+            end 
+
+            vim.api.nvim_create_user_command("OpenPdf", function()
+                local root = main and vim.fs.dirname(main) or vim.fn.expand("%:p:h")
+                local filename = main and "main" or vim.fn.expand("%:t:r")
+
+                local ok, err = pcall(vim.ui.open, root .. "/build/" .. filename .. ".pdf")
+
+                if not ok then
+                    vim.notify("Failed to open PDF: " .. tostring(err), vim.log.levels.ERROR)
+                end
             end, {})
             
             vim.keymap.set("n", "<leader>tp", function()
