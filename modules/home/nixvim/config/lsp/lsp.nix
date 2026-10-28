@@ -186,7 +186,7 @@
       }
 
       {
-        key = "K";
+        key = "<C-space>";
         lspBufAction = "hover";
       }
 

@@ -56,5 +56,7 @@
     cursorline = true;
     ignorecase = true;
     smartcase = true;
+
+    winborder = "rounded";
   };
 }
