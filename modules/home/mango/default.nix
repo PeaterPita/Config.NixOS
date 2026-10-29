@@ -20,7 +20,7 @@ in
   config = lib.mkIf cfg.enable {
     modules = {
       foot.enable = true;
-      anyrun.enable = true;
+      fuzzel.enable = true;
       mako.enable = true;
       mangobar.enable = true;
 
@@ -68,7 +68,6 @@ in
 
         exec_once = [
           "udiskie"
-          "anyrun daemon"
           "waypaper --restore"
           "aperture --daemon"
 
@@ -78,8 +77,6 @@ in
 
           "discord"
           "zen-beta"
-
-          # "xrandr --output ${osConfig.monitors.primary.name} --primary"
         ];
         sync_obj_enable = 1;
         allow_tearing = 1;
@@ -147,10 +144,9 @@ in
         };
         bind =
           let
-            # TODO: results are not actually showing immediately?
-            cmd = "anyrun --plugins libstdin.so --show-results-immediately true";
-            cliphist-anyrun = pkgs.writeShellApplication {
-              name = "cliphist-anyrun";
+            cmd = "fuzzel --dmenu -p 'Clipboard: '";
+            cliphist-fuzzel = pkgs.writeShellApplication {
+              name = "cliphist-fuzzel";
               text = ''
                 export CLIPHIST_PREVIEW_WIDTH=500
 
@@ -212,8 +208,8 @@ in
 
             # "SUPER,L,spawn,noctalia msg session lock"
 
-            "SUPER,Space,spawn,anyrun"
-            "SUPER,V,spawn,${cliphist-anyrun}/bin/cliphist-anyrun"
+            "SUPER,Space,spawn,fuzzel"
+            "SUPER,V,spawn,${cliphist-fuzzel}/bin/cliphist-fuzzel"
 
             "SUPER+SHIFT,S,spawn_shell, ${screenshot-shell}/bin/screenshot-shell"
             "SUPER,P,spawn,waypaper"
@@ -289,8 +285,8 @@ in
         ];
 
         gesturebind = [
-          "none,up,3,spawn,anyrun"
-          "none,down,3,spawn,anyrun close"
+          "none,up,3,spawn,fuzzel"
+          "none,down,3,spawn,fuzzel close"
         ];
 
         # Rules
@@ -319,7 +315,7 @@ in
         ];
 
         layer_rule = [
-          "layer_name:anyrun,no_animation:1, no_blur:1"
+          "layer_name:fuzzel,no_animation:1, no_blur:1"
           "layer_name:selection,no_animation:1,no_blur:1"
         ];
 
