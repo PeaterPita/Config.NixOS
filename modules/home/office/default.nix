@@ -20,12 +20,6 @@ in
     };
 
     home.packages = with pkgs; [
-      # libreoffice-fresh
-      # hunspell
-      # hunspellDicts.en_GB-ise
-      # hyphenDicts.en_US
-      # openjdk25
-
       collabora-desktop
     ];
 

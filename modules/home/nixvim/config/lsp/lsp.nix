@@ -66,6 +66,7 @@
         };
       };
       cmake.enable = true;
+      mesonlsp.enable = true;
 
       ##########
       # Python #

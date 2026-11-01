@@ -18,7 +18,10 @@
 
   networking.interfaces.enp3s0.wakeOnLan.enable = true;
   networking.firewall = {
-    allowedTCPPorts = [ 2307 ];
+    allowedTCPPorts = [
+      2307
+      4321
+    ];
     allowedUDPPorts = [ 2307 ];
   };
   modules = {
