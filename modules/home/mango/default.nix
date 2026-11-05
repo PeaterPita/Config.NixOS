@@ -77,6 +77,9 @@ in
 
           "discord"
           "zen-beta"
+
+          "systemctl --user import-environment XDG_SESSION_ID"
+          "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         ];
         sync_obj_enable = 1;
         allow_tearing = 1;

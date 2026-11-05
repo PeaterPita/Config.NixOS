@@ -11,12 +11,12 @@
     jetbrains.idea
     obsidian
     inkscape
-    inputs.aperture.packages.${pkgs.stdenv.hostPlatform.system}.default
-
   ];
 
   modules = {
     mango.enable = true;
+
+    malware.enable = true;
 
     zsh.enable = true;
     nixvim.enable = true;
