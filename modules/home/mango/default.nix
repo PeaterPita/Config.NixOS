@@ -315,6 +315,10 @@ in
           "app_id:foot,focused_opacity:0.9,unfocused_opacity:0.9"
 
           "app_id:Aperture,is_floating:1"
+
+          "app_id:^ghidra-Ghidra$,is_floating:1"
+          "app_id:^ghidra-Ghidra$,title:^(Ghidra:|CodeBrowser|Debugger|Version Tracking|Emulator).*,is_floating:0"
+
         ];
 
         layer_rule = [
