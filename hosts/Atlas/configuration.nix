@@ -26,8 +26,6 @@
   };
   modules = {
     kdeConnect.enable = true;
-    virt.enable = true;
-
     obs.enable = true;
     mango.enable = true;
     steam.enable = true;

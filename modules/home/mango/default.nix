@@ -50,11 +50,19 @@ in
       };
     };
 
-    home.packages = with pkgs; [
+    services.flameshot = {
+      enable = true;
+      settings.General = {
+        showHelp = false;
+        showSidePanelButton = false;
+        disabledTrayIcon = true;
+        showStartupLaunchMessage = false;
+        useGrimAdapter = true;
+        showAbortNotification = false;
+      };
+    };
 
-      grim
-      slurp
-      satty
+    home.packages = with pkgs; [
       xclip
     ];
 
@@ -167,39 +175,6 @@ in
               '';
             };
 
-            screenshot-shell = pkgs.writeShellApplication {
-              name = "screenshot-shell";
-              runtimeInputs = with pkgs; [
-                grim
-                slurp
-                wl-clipboard
-                satty
-                wayfreeze
-                libnotify
-              ];
-              text = ''
-                filename=$(date +%Y-%m-%d_%H%M%S)
-                mkdir -p ~/Pictures/Screenshots/
-
-                wayfreeze --hide-cursor &
-                pid=$!
-                sleep 0.1
-
-
-                if geom=$(slurp -d); then 
-                    grim -g "$geom" - | tee ~/Pictures/Screenshots/"$filename.png" | wl-copy --type image/png
-
-                    kill "$pid"
-
-
-                    satty --filename ~/Pictures/Screenshots/"$filename.png" --init-tool brush --copy-command wl-copy
-                    notify-send Screenshot "Screenshot Saved at: ~/Pictures/Screenshots/$filename.png" 
-                fi
-
-                kill "$pid" 2>/dev/null || true
-              '';
-            };
-
           in
 
           [
@@ -214,7 +189,7 @@ in
             "SUPER,Space,spawn,fuzzel"
             "SUPER,V,spawn,${cliphist-fuzzel}/bin/cliphist-fuzzel"
 
-            "SUPER+SHIFT,S,spawn_shell, ${screenshot-shell}/bin/screenshot-shell"
+            "SUPER+SHIFT,S,spawn,flameshot gui"
             "SUPER,P,spawn,waypaper"
 
             "SUPER,F,togglemaximizescreen"
@@ -247,7 +222,7 @@ in
             "ALT,Tab,overcircle"
             "SUPER,Tab,togglejump"
 
-            "SUPER+SHIFT,Z,spawn_shell, mmsg dispatch togglefloating && mmsg dispatch toggleglobal && msg dispatch toggleoverlay"
+            "SUPER+SHIFT,Z,spawn_shell, mmsg dispatch togglefloating && mmsg dispatch toggleglobal && mmsg dispatch toggleoverlay"
 
             # Audio / Special
             "NONE,XF86AudioRaiseVolume,spawn,wpctl set-volume @DEFAULT_SINK@ 5%+"
@@ -289,7 +264,7 @@ in
 
         gesturebind = [
           "none,up,3,spawn,fuzzel"
-          "none,down,3,spawn,fuzzel close"
+          "none,down,3,spawn,pkill fuzzel"
         ];
 
         # Rules
@@ -319,10 +294,15 @@ in
           "app_id:^ghidra-Ghidra$,is_floating:1"
           "app_id:^ghidra-Ghidra$,title:^(Ghidra:|CodeBrowser|Debugger|Version Tracking|Emulator).*,is_floating:0"
 
+          ## Borderlands 2
+          "app_id:steam_app_49520,confine_pointer:1"
+
+          ## For some reason is_full screen is not being accepted. Fireshot is still just on the main output
+          "title:flameshot,is_floating:1,is_fullscreen:0,no_border:1,no_shadow:1,no_animation:1"
         ];
 
         layer_rule = [
-          "layer_name:fuzzel,no_animation:1, no_blur:1"
+          "layer_name:fuzzel,no_animation:1,no_blur:1"
           "layer_name:selection,no_animation:1,no_blur:1"
         ];
 
