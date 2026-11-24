@@ -13,7 +13,6 @@
     mpv.enable = true;
     firefox.enable = true;
     syncthing.enable = true;
-    office.enable = true;
 
     gaming = {
       enable = true;

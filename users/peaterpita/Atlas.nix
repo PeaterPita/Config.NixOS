@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   ...
 }:
 {
@@ -8,7 +7,6 @@
   home.packages = with pkgs; [
     parsec-bin
     typescript
-    jetbrains.idea
     obsidian
     inkscape
   ];
@@ -29,7 +27,6 @@
     mpv.enable = true;
     firefox.enable = true;
     zen.enable = true;
-    office.enable = true;
     scrcpy.enable = true;
     dolphin.enable = true;
 

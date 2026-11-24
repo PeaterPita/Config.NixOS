@@ -6,13 +6,6 @@
     # File Commands #
     #################
     {
-      ## chmod Execute to current file
-      mode = [ "n" ];
-      key = "<leader>x";
-      action = "<cmd>!chmod +x %<CR>";
-      options.silent = true;
-    }
-    {
       # Swap currently selected with
       mode = [ "n" ];
       key = "<leader>s";

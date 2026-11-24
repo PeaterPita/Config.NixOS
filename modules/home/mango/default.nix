@@ -146,7 +146,7 @@ in
         # Input
         mouse.accel = {
           profile = 1;
-          speed = "1.0";
+          speed = 1.0;
         };
 
         trackpad = {
